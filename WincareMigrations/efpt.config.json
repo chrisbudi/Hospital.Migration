@@ -1,0 +1,418 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "MAersContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "NewModels",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "WincareMigrations",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[TM_ANTRIAN_COUNTER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_ANTRIAN_COUNTER_AUDIO]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_ANTRIAN_LAYANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_ANTRIAN_LOKASI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_ASAL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_ASAL_GROUP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_ATURANPAKAI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_BANK]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_BARANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_BARANG_ATURANPAKAI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_COA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_COA_GOLONGAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_COA_KLASIFIKASI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_COA_SUBKLASIFIKASI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_COUNTTRAFFIC]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DEPARTEMENT]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DIAGNOSA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DIAGNOSA_MATRIX]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DOKTER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DOKTER_HONOR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DOKTER_NOTE]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DTD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_EXTENTIONTELP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_FARMAKOTERAPI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_FARMAKOTERAPI_SUB]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_GIZI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_GUDANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_HARGABARANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_HARGAKAMAR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_HARGAREKANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_HASILLAB]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_HASILRAD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_JADWALDOKTER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_KAMARINAP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_KAMARINAP_HARGA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_KAMARINAP_REKANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_KELOMPOKBARANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_KODEPOS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_LABORATORIUM]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_LABORATORIUM_GROUP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_LABORATORIUM_HARGA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_LABORATORIUM_REKANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_MAP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tm_master_lab2]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tm_master_paket_h]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tm_master_rad2]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tm_master_tnd]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tm_master_tnd2]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_MODULE]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_MODULE_DETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_MORFOLOGI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_OBATUNIT]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PAKET_HARGA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PAKET_HARGA_BARU]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PAKET_MATRIX]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PAKET_REKANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PAKETDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PASIEN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PEMERIKSAANPENUNJANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PEMERIKSAANPENUNJANGDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_RADIOLOGI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_RADIOLOGI_GROUP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_RADIOLOGI_HARGA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_RADIOLOGI_REKANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_REKANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_RUANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tm_september2015]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_SETTING_ADM]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_SETTING_BAYAR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_SETTING_DAFTAR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_SETTING_KOMPUTER_ANTRIAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_SETTING_PEMERIKSAAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_SETTING_PRSHN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_SMF]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_STANDARTFIELD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_STANDARTFIELD_GROUP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_STATUS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_SUPPLIER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_GROUP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_HARGA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_MATRIX]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_PELAYANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_REKANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_REKANAN_SUB]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIFDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIFNONMEDIS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIFNONMEDIS_GROUP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIFNONMEDIS_HARGA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIFNONMEDIS_MATRIX]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIFNONMEDIS_REKANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TINDAKAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_USER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_USER_GROUP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TMH_KAMAR]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "desktop-vor3dpq.WinCare2.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

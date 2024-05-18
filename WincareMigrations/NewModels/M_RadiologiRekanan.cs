@@ -1,0 +1,42 @@
+﻿
+
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WincareMigrations.NewModels;
+
+[Table("M_RadiologiRekanan")]
+public partial class M_RadiologiRekanan
+{
+    [Key]
+    [Column("IdRadrekanan")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid IdRadrekanan { get; set; }
+
+    [Column("OldIdRadrekanan", TypeName = "numeric(18, 0)")]
+    public decimal OldIdRadrekanan { get; set; }
+
+    [Required]
+    [Column("KdPemeriksaanRad")]
+    [StringLength(6)]
+    [Unicode(false)]
+    public string KdPemeriksaanRad { get; set; }
+
+    [Column("IdPemeriksaanRad", TypeName = "numeric(18, 0)")]
+    public decimal IdPemeriksaanRad { get; set; }
+
+    [Column("RekananId", TypeName = "numeric(18, 0)")]
+    public decimal RekananId { get; set; }
+
+    [Column("IsAktif")]
+    public bool? IsAktif { get; set; }
+
+    [ForeignKey("RekananId")]
+    [InverseProperty("M_RadiologiRekanans")]
+    public virtual M_Rekanan Rekanan { get; set; }
+
+    [ForeignKey("IdPemeriksaanRad")]
+    [InverseProperty("M_RadiologiRekanans")]
+    public virtual M_Radiologi KdpemeriksaanRadNavigation { get; set; }
+}
