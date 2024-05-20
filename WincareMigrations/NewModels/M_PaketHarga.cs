@@ -40,64 +40,64 @@ public partial class M_PaketHarga
     public string Kelas { get; set; }
 
     [Column("Jumlah", TypeName = "decimal(18, 0)")]
-    public decimal? DJumlah { get; set; }
+    public decimal? Jumlah { get; set; }
 
     [Column("Harga", TypeName = "decimal(18, 0)")]
-    public decimal? DHarga { get; set; }
+    public decimal? Harga { get; set; }
 
     [Column("Cito", TypeName = "decimal(18, 0)")]
-    public decimal? DCito { get; set; }
+    public decimal? Cito { get; set; }
 
     [Column("Penyulit", TypeName = "decimal(18, 0)")]
     public decimal? DPenyulit { get; set; }
 
     [Column("SecondTnd", TypeName = "decimal(18, 0)")]
-    public decimal? DSecondTnd { get; set; }
+    public decimal? SecondTnd { get; set; }
 
     [Column("Adm", TypeName = "decimal(18, 0)")]
-    public decimal? DAdm { get; set; }
+    public decimal? Adm { get; set; }
 
     [Column("Diskon", TypeName = "decimal(18, 0)")]
-    public decimal? DDiskon { get; set; }
+    public decimal? Diskon { get; set; }
 
     [Column("Subtotal", TypeName = "decimal(18, 0)")]
     public decimal? DSubtotal { get; set; }
 
     [Column("Beapasien", TypeName = "decimal(18, 0)")]
-    public decimal? DBeapasien { get; set; }
+    public decimal? Beapasien { get; set; }
 
     [Column("Bearekanan", TypeName = "decimal(18, 0)")]
-    public decimal? DBearekanan { get; set; }
+    public decimal? Bearekanan { get; set; }
 
     [Column("Jasamedis", TypeName = "decimal(18, 0)")]
-    public decimal? DJasamedis { get; set; }
+    public decimal? Jasamedis { get; set; }
 
     [Column("Jasamedis2", TypeName = "decimal(18, 0)")]
-    public decimal? DJasamedis2 { get; set; }
+    public decimal? Jasamedis2 { get; set; }
 
     [Column("Jasamedis3", TypeName = "decimal(18, 0)")]
-    public decimal? DJasamedis3 { get; set; }
+    public decimal? Jasamedis3 { get; set; }
 
     [Column("Jasamedis4", TypeName = "decimal(18, 0)")]
-    public decimal? DJasamedis4 { get; set; }
+    public decimal? Jasamedis4 { get; set; }
 
     [Column("Jasamedis5", TypeName = "decimal(18, 0)")]
-    public decimal? DJasamedis5 { get; set; }
+    public decimal? Jasamedis5 { get; set; }
 
     [Column("JasaRS", TypeName = "decimal(18, 0)")]
-    public decimal? DJasars { get; set; }
+    public decimal? JasaRS { get; set; }
 
     [Column("BahanAlkes", TypeName = "decimal(18, 0)")]
-    public decimal? DBahanalkes { get; set; }
+    public decimal? BahanAlkes { get; set; }
 
     [Column("TglAwal", TypeName = "TIMESTAMP")]
-    public DateTime? DTglawal { get; set; }
+    public DateTime? Tglawal { get; set; }
 
     [Column("TglAkhir", TypeName = "TIMESTAMP")]
-    public DateTime? DTglakhir { get; set; }
+    public DateTime? Tglakhir { get; set; }
 
     [Column("LastUpdate", TypeName = "TIMESTAMP")]
-    public DateTime? DLastupdate { get; set; }
+    public DateTime? Lastupdate { get; set; }
 
     [Column("By")]
     [StringLength(50)]

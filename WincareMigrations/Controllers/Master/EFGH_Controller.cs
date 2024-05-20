@@ -150,6 +150,22 @@ namespace WincareMigrations.Controllers.Master
 
             _dbs.AddRange(jadwalDokter);
 
+            var rekanan = _dbWin.TmRekanans.Select(m => new M_Rekanan()
+            {
+                IdRekanan = m.Rekananid,
+                NmRekanan = m.VNmrekanan,
+                Alamat = m.VAlamat,
+                Alias = m.VAlias,
+                IsAktif = m.IsAktif,
+                IsCob = m.IsCob ?? true,
+                IsPaketbhp = m.IsPaketbhp,
+                IsTarif = m.IsTarif,
+                IsTarifNonMed = m.IsTarifnonmed,
+                KdAkun = m.VKdakun,
+                Kota = m.VKota,
+                Telp = m.VTelp,
+            });
+
             _dbs.SaveChanges();
 
             return Task.FromResult<IActionResult>(Ok("Asal"));

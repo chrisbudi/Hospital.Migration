@@ -1,0 +1,402 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "WinCare2Context",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "Wincare.Pelayanan.Migration",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[LIS_HASIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LIS_MSGQUEUE]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_ASAL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_ATURANPAKAI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DIAGNOSA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DIAGNOSA_MATRIX]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DOKTER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DOKTER_HONOR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DOKTER_NOTE]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_DTD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_FARMAKOTERAPI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_FARMAKOTERAPI_SUB]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_GUDANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_HARGABARANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_JADWALDOKTER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_MORFOLOGI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_OBATUNIT]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PAKET_HARGA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PAKET_MATRIX]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PAKET_REKANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PAKETDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PASIEN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PEMERIKSAANPENUNJANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_PEMERIKSAANPENUNJANGDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_REKANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_RUANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_STANDARTFIELD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_STANDARTFIELD_GROUP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_STATUS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_GROUP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_HARGA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_MATRIX]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_PELAYANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_REKANAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIF_REKANAN_SUB]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TARIFDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TM_TINDAKAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TR_ITEMOBATLANGSUNG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TR_ITEMPAKET]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TR_JADWALDOKTER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TR_PELUNASANDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TR_PEMBAYARANDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TR_PEMBELIANDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TR_PEMERIKSAANPENUNJANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TR_PEMESANANDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TR_PENERIMAANDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TR_PERMINTAANDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TR_RETURDETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_ACOUNTPASIEN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_DIAGNOSA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_DIAGNOSA_DETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_DIAGNOSAREKAP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_HASILPEMERIKSAANPDS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_HISTORY_STOK]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_KUITANSI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_KUITANSIALKES]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_KUITANSIRESEP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_KUITANSIRETUR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_KUITANSIUDD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_KUNJUNGAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_OBATALKES]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_OBATLANGSUNG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PAKET]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PAKET_PB]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PAKET_PB_APP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PAKET_PB_APP_DETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PAKET_PB_PAKAI]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PAKET_PB_PAKAI_DETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PAKET_PB_RETUR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PAKET_PB_RETUR_DETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PASIENPDS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PASIENPENUNJANG]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PASIENUGD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PEMBAYARAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PEMBAYARAN_DETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PEMERIKSAANPA]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_PENJADWALAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_RESEP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_RESEP_TULISRACIKAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_RESEPUDD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_RETUR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_RETUR_APP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_RETUR_APP_DETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_RETUR_DIST]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_RETUR_DIST_DETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_RETURALKES]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_RETURSUPPLIER]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_TINDAKAN]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_TINDAKAN_DETAIL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TT_TRANSAKSI]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "desktop-vor3dpq.WinCare2.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

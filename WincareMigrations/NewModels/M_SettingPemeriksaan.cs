@@ -8,14 +8,14 @@ namespace WincareMigrations.NewModels;
 public partial class M_SettingPemeriksaan
 {
     [Key]
-    [Column("IdSettingPeriksaan", TypeName = "numeric(18, 0)")]
+    [Column("IdSettingPeriksaan")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdSettingperiksa { get; set; }
+    public int IdSettingperiksa { get; set; }
 
     [Column("NmPemeriksaan")]
     [StringLength(50)]
     [Unicode(false)]
-    public string VNmpemeriksaan { get; set; }
+    public string Nmpemeriksaan { get; set; }
 
 
     [Column("Group")]

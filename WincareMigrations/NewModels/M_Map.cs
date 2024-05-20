@@ -17,7 +17,7 @@ public partial class M_Map
     [Column("NmMap")]
     [StringLength(50)]
     [Unicode(false)]
-    public string VNmmap { get; set; }
+    public string Nmmap { get; set; }
 
     [Required]
     [Column("KodeRuangan")]

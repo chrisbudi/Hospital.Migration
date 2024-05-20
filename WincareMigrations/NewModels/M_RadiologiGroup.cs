@@ -17,7 +17,7 @@ public partial class M_RadiologiGroup
     [Column("Nmgroup")]
     [StringLength(100)]
     [Unicode(false)]
-    public string VNmgroup { get; set; }
+    public string Nmgroup { get; set; }
 
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }

@@ -18,12 +18,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Obatunit
 {
     [Key]
-    [Column("IdObatUnit")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("IdObatUnit", TypeName = "numeric(18, 0)")]
     public decimal IdObatUnit { get; set; }
-
-    [Column("OldIdObatUnit", TypeName = "numeric(18, 0)")]
-    public decimal OldIdObatUnit { get; set; }
 
     [Column("BarangId")]
     public Guid? BarangId { get; set; }

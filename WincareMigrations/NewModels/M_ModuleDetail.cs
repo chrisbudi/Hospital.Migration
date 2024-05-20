@@ -23,7 +23,7 @@ public partial class M_ModuleDetail
     [Column("NmModuleDetailSub")]
     [StringLength(50)]
     [Unicode(false)]
-    public string VNmModuleDetailSub { get; set; }
+    public string NmModuleDetailSub { get; set; }
 
     [Column("Urut", TypeName = "numeric(18, 0)")]
     public decimal? Urut { get; set; }

@@ -8,12 +8,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_LaboratoriumRekanan
 {
     [Key]
-    [Column("IdLabrekanan")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdLabRekanan { get; set; }
-
-    [Column("OldIdLabrekanan", TypeName = "numeric(18, 0)")]
-    public decimal OldIdLabRekanan { get; set; }
+    [Column("IdLabrekanan", TypeName = "numeric(18, 0)")]
+    public decimal IdLabRekanan { get; set; }
 
     [Column("KdPemeriksaanLab")]
     [StringLength(8)]

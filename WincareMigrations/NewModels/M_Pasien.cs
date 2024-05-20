@@ -28,6 +28,7 @@ public partial class M_Pasien
     public Guid IdPasien { get; set; }
 
     [Column("OldIdPasien", TypeName = "numeric(18, 0)")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public decimal OldIdPasien { get; set; }
 
     [Column("PasienNo")]

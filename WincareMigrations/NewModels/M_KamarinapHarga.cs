@@ -6,12 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 public partial class M_KamarinapHarga
 {
     [Key]
-    [Column("IdKamarInapHarga")]
+    [Column("IdKamarInapHarga", TypeName = "numeric(18, 0)")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdKamarInapHarga { get; set; }
-
-    [Column("OldIdKamarInapHarga", TypeName = "numeric(18, 0)")]
-    public decimal OldIdKamarInapHarga { get; set; }
+    public decimal IdKamarInapHarga { get; set; }
 
     [Column("KdTmpTidur")]
     [StringLength(6)]

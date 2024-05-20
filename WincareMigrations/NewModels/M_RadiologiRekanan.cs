@@ -10,12 +10,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_RadiologiRekanan
 {
     [Key]
-    [Column("IdRadrekanan")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdRadrekanan { get; set; }
-
-    [Column("OldIdRadrekanan", TypeName = "numeric(18, 0)")]
-    public decimal OldIdRadrekanan { get; set; }
+    [Column("IdRadrekanan", TypeName = "numeric(18, 0)")]
+    public decimal IdRadrekanan { get; set; }
 
     [Required]
     [Column("KdPemeriksaanRad")]

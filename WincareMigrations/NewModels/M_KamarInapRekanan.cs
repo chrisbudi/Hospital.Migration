@@ -9,12 +9,9 @@ public partial class M_KamarInapRekanan
 {
 
     [Key]
-    [Column("IdKamarinaprek")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdKamarinaprek { get; set; }
-
-    [Column("OldIdKamarinaprek", TypeName = "numeric(18, 0)")]
-    public decimal OldIdKamarinaprek { get; set; }
+    [Column("IdKamarinaprek", TypeName = "numeric(18, 0)")]
+    public decimal IdKamarinaprek { get; set; }
 
     [Required]
     [Column("KdTmpTidur")]

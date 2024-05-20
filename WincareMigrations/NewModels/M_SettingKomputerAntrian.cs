@@ -14,8 +14,8 @@ public partial class M_SettingKomputerAntrian
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    [Column("IdSettingKomp", TypeName = "numeric(18, 0)")]
-    public decimal IdSettingKomp { get; set; }
+    [Column("IdSettingKomp")]
+    public int IdSettingKomp { get; set; }
 
     [Column("NmKomputer")]
     [StringLength(50)]
