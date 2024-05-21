@@ -2,18 +2,28 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TR_PEMBAYARANDETAIL")]
 public partial class TrPembayarandetail
 {
+    [Key]
+    [Column("PEMBAYARANDETAILID", TypeName = "numeric(18, 0)")]
     public decimal Pembayarandetailid { get; set; }
 
+    [Column("PEMBAYARANID", TypeName = "numeric(18, 0)")]
     public decimal? Pembayaranid { get; set; }
 
+    [Column("PENERIMAANID", TypeName = "numeric(18, 0)")]
     public decimal? Penerimaanid { get; set; }
 
+    [Column("DISCOUNT", TypeName = "decimal(18, 0)")]
     public decimal? Discount { get; set; }
 
+    [Column("TOTAL", TypeName = "decimal(18, 0)")]
     public decimal? Total { get; set; }
 }

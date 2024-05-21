@@ -2,18 +2,39 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TM_ATURANPAKAI")]
+[Index("IdAturanpakai", Name = "IX_TM_ATURANPAKAI_ID_ATURANPAKAI")]
+[Index("IsAktif", Name = "IX_TM_ATURANPAKAI_IS_AKTIF")]
+[Index("VKdaturanpakai", Name = "IX_TM_ATURANPAKAI_V_KDATURANPAKAI")]
+[Index("VKetaturanpakai", Name = "IX_TM_ATURANPAKAI_V_KETATURANPAKAI")]
+[Index("VNmaturanpakai", Name = "IX_TM_ATURANPAKAI_V_NMATURANPAKAI")]
 public partial class TmAturanpakai
 {
+    [Column("ID_ATURANPAKAI", TypeName = "numeric(18, 0)")]
     public decimal IdAturanpakai { get; set; }
 
+    [Key]
+    [Column("V_KDATURANPAKAI")]
+    [StringLength(10)]
+    [Unicode(false)]
     public string VKdaturanpakai { get; set; }
 
+    [Column("V_NMATURANPAKAI")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VNmaturanpakai { get; set; }
 
+    [Column("V_KETATURANPAKAI")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKetaturanpakai { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 }

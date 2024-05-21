@@ -2,20 +2,38 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TM_MORFOLOGI")]
 public partial class TmMorfologi
 {
+    [Column("ID_MORFOLOGI", TypeName = "numeric(18, 0)")]
     public decimal IdMorfologi { get; set; }
 
+    [Key]
+    [Column("V_KDMORFOLOGI")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string VKdmorfologi { get; set; }
 
+    [Column("V_NMMORFOLOGI")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmmorfologi { get; set; }
 
+    [Column("V_KDDIAGNOSA")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string VKddiagnosa { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 
+    [ForeignKey("VKddiagnosa")]
+    [InverseProperty("TmMorfologis")]
     public virtual TmDiagnosa VKddiagnosaNavigation { get; set; }
 }

@@ -2,18 +2,34 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TM_TINDAKAN")]
 public partial class TmTindakan
 {
+    [Column("ID_TINDAKAN", TypeName = "numeric(18, 0)")]
     public decimal IdTindakan { get; set; }
 
+    [Key]
+    [Column("V_KDTINDAKAN")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string VKdtindakan { get; set; }
 
+    [Column("V_NMTINDAKAN")]
+    [StringLength(200)]
+    [Unicode(false)]
     public string VNmtindakan { get; set; }
 
+    [Column("V_NMPENDEK")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmpendek { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 }

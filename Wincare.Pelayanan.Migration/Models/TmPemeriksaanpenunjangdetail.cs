@@ -2,36 +2,68 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TM_PEMERIKSAANPENUNJANGDETAIL")]
 public partial class TmPemeriksaanpenunjangdetail
 {
+    [Key]
+    [Column("ID_PENUNJANGDETAIL", TypeName = "numeric(18, 0)")]
     public decimal IdPenunjangdetail { get; set; }
 
+    [Column("ID_MASTERPEMERIKSAANPENUNJANG", TypeName = "numeric(18, 0)")]
     public decimal? IdMasterpemeriksaanpenunjang { get; set; }
 
+    [Column("V_KDPEMERIKSAAN")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string VKdpemeriksaan { get; set; }
 
+    [Column("V_KDDETAIL")]
+    [StringLength(10)]
+    [Unicode(false)]
     public string VKddetail { get; set; }
 
+    [Column("V_NMDETAIL")]
+    [StringLength(200)]
+    [Unicode(false)]
     public string VNmdetail { get; set; }
 
+    [Column("V_GROUP")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VGroup { get; set; }
 
+    [Column("V_TIPE")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VTipe { get; set; }
 
+    [Column("D_JUMLAH", TypeName = "decimal(18, 0)")]
     public decimal? DJumlah { get; set; }
 
+    [Column("D_HARGA", TypeName = "decimal(18, 0)")]
     public decimal? DHarga { get; set; }
 
+    [Column("D_BEAPASIEN", TypeName = "decimal(18, 0)")]
     public decimal? DBeapasien { get; set; }
 
+    [Column("D_BEAREKANAN", TypeName = "decimal(18, 0)")]
     public decimal? DBearekanan { get; set; }
 
+    [Column("V_KODETARIF")]
+    [StringLength(10)]
+    [Unicode(false)]
     public string VKodetarif { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 
+    [ForeignKey("IdMasterpemeriksaanpenunjang")]
+    [InverseProperty("TmPemeriksaanpenunjangdetails")]
     public virtual TmPemeriksaanpenunjang IdMasterpemeriksaanpenunjangNavigation { get; set; }
 }

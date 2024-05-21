@@ -2,22 +2,40 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TM_DOKTER_HONOR")]
 public partial class TmDokterHonor
 {
+    [Column("ID", TypeName = "numeric(18, 0)")]
     public decimal Id { get; set; }
 
+    [Key]
+    [Column("V_KDDOKTER")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKddokter { get; set; }
 
+    [Column("V_NMDOKTER")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmdokter { get; set; }
 
+    [Column("D_TARIF", TypeName = "decimal(18, 0)")]
     public decimal? DTarif { get; set; }
 
+    [Column("D_JASAMEDIS", TypeName = "decimal(18, 0)")]
     public decimal? DJasamedis { get; set; }
 
+    [Column("D_JASARS", TypeName = "decimal(18, 0)")]
     public decimal? DJasars { get; set; }
 
+    [Column("V_KET")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKet { get; set; }
 }

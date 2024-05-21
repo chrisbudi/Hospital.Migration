@@ -197,1366 +197,179 @@ public partial class WinCare2Context : DbContext
     {
         modelBuilder.Entity<LisHasil>(entity =>
         {
-            entity.HasKey(e => e.Idn);
-
-            entity.ToTable("LIS_HASIL");
-
-            entity.Property(e => e.Idn)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("idn");
-            entity.Property(e => e.Flag)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("flag");
-            entity.Property(e => e.Hasil)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("hasil");
-            entity.Property(e => e.IdPasienlab)
-                .IsRequired()
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .HasColumnName("id_pasienlab");
-            entity.Property(e => e.KodeTest)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("kode_test");
-            entity.Property(e => e.NmTest)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("nm_test");
-            entity.Property(e => e.NoUrut).HasColumnName("no_urut");
-            entity.Property(e => e.Normal)
-                .HasMaxLength(80)
-                .IsUnicode(false)
-                .HasColumnName("normal");
-            entity.Property(e => e.Type)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("type");
-            entity.Property(e => e.Unit)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .HasColumnName("unit");
-        });
-
-        modelBuilder.Entity<LisMsgqueue>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToTable("LIS_MSGQUEUE");
-
-            entity.Property(e => e.IdPasienlab)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_PASIENLAB");
+            entity.Property(e => e.Idn).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmAsal>(entity =>
         {
-            entity.HasKey(e => e.VKdasal);
-
-            entity.ToTable("TM_ASAL");
-
-            entity.HasIndex(e => e.IdAsal, "IX_TM_ASAL_ID_ASAL");
-
-            entity.HasIndex(e => e.IdAsalgroup, "IX_TM_ASAL_ID_ASALGROUP");
-
-            entity.HasIndex(e => e.IsAktif, "IX_TM_ASAL_IS_AKTIF");
-
-            entity.HasIndex(e => e.VKdasal, "IX_TM_ASAL_V_KDASAL");
-
-            entity.HasIndex(e => e.VNmasal, "IX_TM_ASAL_V_NMASAL");
-
-            entity.Property(e => e.VKdasal)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDASAL");
-            entity.Property(e => e.IdAsal)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_ASAL");
-            entity.Property(e => e.IdAsalgroup)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_ASALGROUP");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VNmasal)
-                .IsRequired()
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMASAL");
+            entity.Property(e => e.IdAsal).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmAturanpakai>(entity =>
         {
-            entity.HasKey(e => e.VKdaturanpakai);
-
-            entity.ToTable("TM_ATURANPAKAI");
-
-            entity.HasIndex(e => e.IdAturanpakai, "IX_TM_ATURANPAKAI_ID_ATURANPAKAI");
-
-            entity.HasIndex(e => e.IsAktif, "IX_TM_ATURANPAKAI_IS_AKTIF");
-
-            entity.HasIndex(e => e.VKdaturanpakai, "IX_TM_ATURANPAKAI_V_KDATURANPAKAI");
-
-            entity.HasIndex(e => e.VKetaturanpakai, "IX_TM_ATURANPAKAI_V_KETATURANPAKAI");
-
-            entity.HasIndex(e => e.VNmaturanpakai, "IX_TM_ATURANPAKAI_V_NMATURANPAKAI");
-
-            entity.Property(e => e.VKdaturanpakai)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDATURANPAKAI");
-            entity.Property(e => e.IdAturanpakai)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_ATURANPAKAI");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VKetaturanpakai)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KETATURANPAKAI");
-            entity.Property(e => e.VNmaturanpakai)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NMATURANPAKAI");
+            entity.Property(e => e.IdAturanpakai).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmDiagnosa>(entity =>
         {
-            entity.HasKey(e => e.VKddiagnosa);
-
-            entity.ToTable("TM_DIAGNOSA");
-
-            entity.HasIndex(e => e.VNmdiagnosa, "IX_TM_DIAGNOSA_NMDIAG");
-
-            entity.HasIndex(e => e.VKddiagnosa, "IX_TM_DIAGNOSA_VKDDIAG");
-
-            entity.Property(e => e.VKddiagnosa)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDIAGNOSA");
-            entity.Property(e => e.CIspenyakit).HasColumnName("C_ISPENYAKIT");
-            entity.Property(e => e.IdDiagnosa)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_DIAGNOSA");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VKddtd)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDTD");
-            entity.Property(e => e.VNmdiagnosa)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDIAGNOSA");
+            entity.Property(e => e.IdDiagnosa).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmDiagnosaMatrix>(entity =>
         {
-            entity.HasKey(e => e.IdMatrixdiagnosa);
-
-            entity.ToTable("TM_DIAGNOSA_MATRIX");
-
-            entity.Property(e => e.IdMatrixdiagnosa)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_MATRIXDIAGNOSA");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VKddiagnosa)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDIAGNOSA");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
+            entity.Property(e => e.IdMatrixdiagnosa).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmDokter>(entity =>
         {
-            entity.HasKey(e => e.VKddokter);
-
             entity.ToTable("TM_DOKTER", tb =>
                 {
                     tb.HasTrigger("INSERT_TM_ASAL");
                     tb.HasTrigger("UPDATE_TM_ASAL");
                 });
 
-            entity.HasIndex(e => e.VKddokter, "IX_TM_DOKTER");
-
-            entity.HasIndex(e => e.VNmdokter, "IX_TM_DOKTER_1");
-
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.CAktif).HasColumnName("C_AKTIF");
-            entity.Property(e => e.IdDokter)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_DOKTER");
-            entity.Property(e => e.ImFotodokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("IM_FOTODOKTER");
-            entity.Property(e => e.IsTtd)
-                .HasColumnType("text")
-                .HasColumnName("IS_TTD");
-            entity.Property(e => e.Pin)
-                .HasColumnType("numeric(18, 2)")
-                .HasColumnName("PIN");
-            entity.Property(e => e.VAlamatdokter)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_ALAMATDOKTER");
-            entity.Property(e => e.VAlamatpraktek)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_ALAMATPRAKTEK");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKdakun)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDAKUN");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNosip)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NOSIP");
-            entity.Property(e => e.VSpesialisasidokter)
-                .HasMaxLength(60)
-                .IsUnicode(false)
-                .HasColumnName("V_SPESIALISASIDOKTER");
-            entity.Property(e => e.VTelpdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_TELPDOKTER");
-            entity.Property(e => e.VTelppraktek)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_TELPPRAKTEK");
+            entity.Property(e => e.IdDokter).ValueGeneratedOnAdd();
+            entity.Property(e => e.VKodetarif).IsFixedLength();
         });
 
         modelBuilder.Entity<TmDokterHonor>(entity =>
         {
-            entity.HasKey(e => e.VKddokter);
-
-            entity.ToTable("TM_DOKTER_HONOR");
-
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.DJasamedis)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS");
-            entity.Property(e => e.DJasars)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASARS");
-            entity.Property(e => e.DTarif)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_TARIF");
-            entity.Property(e => e.Id)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID");
-            entity.Property(e => e.VKet)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KET");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmDokterNote>(entity =>
         {
-            entity.HasKey(e => e.IdDokter);
-
-            entity.ToTable("TM_DOKTER_NOTE");
-
-            entity.Property(e => e.IdDokter)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_DOKTER");
-            entity.Property(e => e.Keterangan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("KETERANGAN");
-            entity.Property(e => e.TglInput)
-                .HasColumnType("datetime")
-                .HasColumnName("TGL_INPUT");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKddokter)
-                .IsRequired()
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
+            entity.Property(e => e.IdDokter).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmDtd>(entity =>
         {
             entity.HasKey(e => e.VKddtd).HasName("PK_TM_DTD1");
 
-            entity.ToTable("TM_DTD");
-
-            entity.Property(e => e.VKddtd)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDTD");
-            entity.Property(e => e.IdDtd)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_DTD");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VNmdtd)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDTD");
+            entity.Property(e => e.IdDtd).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmFarmakoterapi>(entity =>
         {
-            entity.HasKey(e => e.IdFarmakoterapi);
-
-            entity.ToTable("TM_FARMAKOTERAPI");
-
-            entity.Property(e => e.IdFarmakoterapi)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_FARMAKOTERAPI");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VNmfarmakoterapi)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_NMFARMAKOTERAPI");
+            entity.Property(e => e.IdFarmakoterapi).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmFarmakoterapiSub>(entity =>
         {
-            entity.HasKey(e => e.IdSubfarmakoterapi);
+            entity.Property(e => e.IdSubfarmakoterapi).ValueGeneratedOnAdd();
 
-            entity.ToTable("TM_FARMAKOTERAPI_SUB");
-
-            entity.Property(e => e.IdSubfarmakoterapi)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_SUBFARMAKOTERAPI");
-            entity.Property(e => e.IdFarmakoterapi)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_FARMAKOTERAPI");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VNmsubfarmakoterapi)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_NMSUBFARMAKOTERAPI");
-
-            entity.HasOne(d => d.IdFarmakoterapiNavigation).WithMany(p => p.TmFarmakoterapiSubs)
-                .HasForeignKey(d => d.IdFarmakoterapi)
-                .HasConstraintName("FK_TM_FARMAKOTERAPI_SUB_TM_FARMAKOTERAPI");
+            entity.HasOne(d => d.IdFarmakoterapiNavigation).WithMany(p => p.TmFarmakoterapiSubs).HasConstraintName("FK_TM_FARMAKOTERAPI_SUB_TM_FARMAKOTERAPI");
         });
 
         modelBuilder.Entity<TmGudang>(entity =>
         {
-            entity.HasKey(e => e.VKodeinventory);
-
-            entity.ToTable("TM_GUDANG");
-
-            entity.HasIndex(e => e.IsRequest, "IX_TM_GUDANG_ISREQUEST");
-
-            entity.HasIndex(e => e.IsAktif, "IX_TM_GUDANG_IS_AKTIF");
-
-            entity.HasIndex(e => e.VKodeinventory, "IX_TM_GUDANG_KDINV");
-
-            entity.HasIndex(e => e.IsListropp, "IX_TM_GUDANG_LISROP");
-
-            entity.HasIndex(e => e.VNamagudangobat, "IX_TM_GUDANG_NAMAGUDANG");
-
-            entity.Property(e => e.VKodeinventory)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODEINVENTORY");
-            entity.Property(e => e.IdGudangobat)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_GUDANGOBAT");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.IsListropp).HasColumnName("IS_LISTROPP");
-            entity.Property(e => e.IsPaketbhp).HasColumnName("IS_PAKETBHP");
-            entity.Property(e => e.IsRequest).HasColumnName("IS_REQUEST");
-            entity.Property(e => e.IsReturbhp).HasColumnName("IS_RETURBHP");
-            entity.Property(e => e.IsTipebarang)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .HasColumnName("IS_TIPEBARANG");
-            entity.Property(e => e.VNamagudangobat)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NAMAGUDANGOBAT");
+            entity.Property(e => e.IdGudangobat).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmHargabarang>(entity =>
         {
-            entity.HasKey(e => e.Idhargabeli);
-
-            entity.ToTable("TM_HARGABARANG");
-
-            entity.HasIndex(e => e.Barangid, "IX_TM_HARGABARANG_barangid");
-
-            entity.HasIndex(e => e.Diskonoff, "IX_TM_HARGABARANG_diskonoff");
-
-            entity.HasIndex(e => e.Diskonon, "IX_TM_HARGABARANG_diskonon");
-
-            entity.HasIndex(e => e.Harga, "IX_TM_HARGABARANG_harga");
-
-            entity.HasIndex(e => e.IsAktif, "IX_TM_HARGABARANG_isaktif");
-
-            entity.HasIndex(e => e.Lastupdate, "IX_TM_HARGABARANG_lastupdate");
-
-            entity.HasIndex(e => e.Ppn, "IX_TM_HARGABARANG_ppn");
-
-            entity.HasIndex(e => e.Supplierid, "IX_TM_HARGABARANG_supplierid");
-
-            entity.Property(e => e.Idhargabeli)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("IDHARGABELI");
-            entity.Property(e => e.Barangid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("BARANGID");
-            entity.Property(e => e.Diskonoff)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("DISKONOFF");
-            entity.Property(e => e.Diskonon)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("DISKONON");
-            entity.Property(e => e.Harga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("HARGA");
-            entity.Property(e => e.Inputby)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("INPUTBY");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.Lastupdate)
-                .HasColumnType("datetime")
-                .HasColumnName("LASTUPDATE");
-            entity.Property(e => e.Ppn)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("PPN");
-            entity.Property(e => e.Supplierid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("SUPPLIERID");
+            entity.Property(e => e.Idhargabeli).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmJadwaldokter>(entity =>
         {
             entity.HasKey(e => e.IdJadwal).HasName("PK_TR_JADWALDOKTER");
 
-            entity.ToTable("TM_JADWALDOKTER");
+            entity.Property(e => e.IdJadwal).ValueGeneratedOnAdd();
 
-            entity.HasIndex(e => e.IdJadwal, "IX_TM_JADWALDOKTER");
-
-            entity.HasIndex(e => e.VKddokter, "IX_TM_JADWALDOKTER_1");
-
-            entity.HasIndex(e => e.VKoderuangan, "IX_TM_JADWALDOKTER_2");
-
-            entity.HasIndex(e => e.VNamaklinik, "IX_TM_JADWALDOKTER_3");
-
-            entity.HasIndex(e => e.VHari, "IX_TM_JADWALDOKTER_4");
-
-            entity.HasIndex(e => e.VJamstart, "IX_TM_JADWALDOKTER_5");
-
-            entity.HasIndex(e => e.VJamfinish, "IX_TM_JADWALDOKTER_6");
-
-            entity.HasIndex(e => e.IsAktif, "IX_TM_JADWALDOKTER_7");
-
-            entity.Property(e => e.IdJadwal)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_JADWAL");
-            entity.Property(e => e.IServistime).HasColumnName("I_SERVISTIME");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VHari)
-                .IsRequired()
-                .HasMaxLength(30)
-                .IsUnicode(false)
-                .HasColumnName("V_HARI");
-            entity.Property(e => e.VJamfinish)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_JAMFINISH");
-            entity.Property(e => e.VJamstart)
-                .IsRequired()
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_JAMSTART");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKoderuangan)
-                .IsRequired()
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.VNamaklinik)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NAMAKLINIK");
-
-            entity.HasOne(d => d.VKddokterNavigation).WithMany(p => p.TmJadwaldokters)
-                .HasForeignKey(d => d.VKddokter)
-                .HasConstraintName("FK_TM_JADWALDOKTER_TM_DOKTER_(kddokter)");
+            entity.HasOne(d => d.VKddokterNavigation).WithMany(p => p.TmJadwaldokters).HasConstraintName("FK_TM_JADWALDOKTER_TM_DOKTER_(kddokter)");
 
             entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TmJadwaldokters)
-                .HasForeignKey(d => d.VKoderuangan)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TM_JADWALDOKTER_TM_RUANG_(kdruangan)");
         });
 
         modelBuilder.Entity<TmMorfologi>(entity =>
         {
-            entity.HasKey(e => e.VKdmorfologi);
+            entity.Property(e => e.IdMorfologi).ValueGeneratedOnAdd();
 
-            entity.ToTable("TM_MORFOLOGI");
-
-            entity.Property(e => e.VKdmorfologi)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDMORFOLOGI");
-            entity.Property(e => e.IdMorfologi)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_MORFOLOGI");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VKddiagnosa)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDIAGNOSA");
-            entity.Property(e => e.VNmmorfologi)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMMORFOLOGI");
-
-            entity.HasOne(d => d.VKddiagnosaNavigation).WithMany(p => p.TmMorfologis)
-                .HasForeignKey(d => d.VKddiagnosa)
-                .HasConstraintName("FK_TM_MORFOLOGI_TM_DIAGNOSA");
+            entity.HasOne(d => d.VKddiagnosaNavigation).WithMany(p => p.TmMorfologis).HasConstraintName("FK_TM_MORFOLOGI_TM_DIAGNOSA");
         });
 
         modelBuilder.Entity<TmObatunit>(entity =>
         {
-            entity.HasKey(e => e.IdObatunit);
-
             entity.ToTable("TM_OBATUNIT", tb =>
                 {
                     tb.HasTrigger("INSERT_EXPIRED");
                     tb.HasTrigger("UPDATE_EXPIRED");
                 });
 
-            entity.HasIndex(e => e.Barangid, "IX_TM_OBATUNIT_barangid");
-
-            entity.HasIndex(e => e.DExpireddate, "IX_TM_OBATUNIT_d_expireddate");
-
-            entity.HasIndex(e => e.DStokmax, "IX_TM_OBATUNIT_d_stokmax");
-
-            entity.HasIndex(e => e.DStokmin, "IX_TM_OBATUNIT_d_stokmin");
-
-            entity.HasIndex(e => e.DStoknow, "IX_TM_OBATUNIT_d_stoknow");
-
-            entity.HasIndex(e => e.IdObatunit, "IX_TM_OBATUNIT_id_obatunit");
-
-            entity.HasIndex(e => e.IsAktif, "IX_TM_OBATUNIT_is_aktif");
-
-            entity.HasIndex(e => e.VKodeinventory, "IX_TM_OBATUNIT_v_kdinventory");
-
-            entity.HasIndex(e => e.VKdobat, "IX_TM_OBATUNIT_v_kdobat");
-
-            entity.HasIndex(e => e.VRod, "IX_TM_OBATUNIT_v_rod");
-
-            entity.HasIndex(e => e.VNmobat, "IX_TM_OBATUNIT_vnmobat");
-
-            entity.Property(e => e.IdObatunit)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_OBATUNIT");
-            entity.Property(e => e.Barangid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("BARANGID");
-            entity.Property(e => e.DExpireddate)
-                .HasColumnType("datetime")
-                .HasColumnName("D_EXPIREDDATE");
-            entity.Property(e => e.DStokmax)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_STOKMAX");
-            entity.Property(e => e.DStokmin)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_STOKMIN");
-            entity.Property(e => e.DStoknow)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_STOKNOW");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKdobat)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDOBAT");
-            entity.Property(e => e.VKodeinventory)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODEINVENTORY");
-            entity.Property(e => e.VNmobat)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMOBAT");
-            entity.Property(e => e.VRod).HasColumnName("V_ROD");
+            entity.Property(e => e.IdObatunit).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmPaketHarga>(entity =>
         {
-            entity.HasKey(e => e.IdPaketkelas);
-
-            entity.ToTable("TM_PAKET_HARGA");
-
-            entity.Property(e => e.IdPaketkelas)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETKELAS");
-            entity.Property(e => e.D2tnd)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_2TND");
-            entity.Property(e => e.DAdm)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_ADM");
-            entity.Property(e => e.DBahanalkes)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BAHANALKES");
-            entity.Property(e => e.DBeapasien)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAPASIEN");
-            entity.Property(e => e.DBearekanan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAREKANAN");
-            entity.Property(e => e.DCito)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_CITO");
-            entity.Property(e => e.DDiskon)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_DISKON");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DJasamedis)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS");
-            entity.Property(e => e.DJasamedis2)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS2");
-            entity.Property(e => e.DJasamedis3)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS3");
-            entity.Property(e => e.DJasamedis4)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS4");
-            entity.Property(e => e.DJasamedis5)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS5");
-            entity.Property(e => e.DJasars)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASARS");
-            entity.Property(e => e.DJumlah)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JUMLAH");
-            entity.Property(e => e.DLastupdate)
-                .HasColumnType("datetime")
-                .HasColumnName("D_LASTUPDATE");
-            entity.Property(e => e.DPenyulit)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_PENYULIT");
-            entity.Property(e => e.DSubtotal)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_SUBTOTAL");
-            entity.Property(e => e.DTglakhir)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLAKHIR");
-            entity.Property(e => e.DTglawal)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLAWAL");
-            entity.Property(e => e.IdMasterpemeriksaanpenunjang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_MASTERPEMERIKSAANPENUNJANG");
-            entity.Property(e => e.IdPenunjangdetail)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PENUNJANGDETAIL");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKelas)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KELAS");
+            entity.Property(e => e.IdPaketkelas).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmPaketMatrix>(entity =>
         {
-            entity.HasKey(e => new { e.IdMasterpemeriksaanpenunjang, e.VKoderuangan });
-
-            entity.ToTable("TM_PAKET_MATRIX");
-
-            entity.Property(e => e.IdMasterpemeriksaanpenunjang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_MASTERPEMERIKSAANPENUNJANG");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.IdPaketmatrix)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETMATRIX");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
+            entity.Property(e => e.IdPaketmatrix).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmPaketRekanan>(entity =>
         {
-            entity.HasKey(e => e.IdPaketrekanan);
-
-            entity.ToTable("TM_PAKET_REKANAN");
-
-            entity.Property(e => e.IdPaketrekanan)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETREKANAN");
-            entity.Property(e => e.IdMasterpemeriksaanpenunjang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_MASTERPEMERIKSAANPENUNJANG");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID");
-        });
-
-        modelBuilder.Entity<TmPaketdetail>(entity =>
-        {
-            entity.HasKey(e => e.IdPaketdetail);
-
-            entity.ToTable("TM_PAKETDETAIL");
-
-            entity.Property(e => e.IdPaketdetail)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETDETAIL");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.Rekanan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("REKANAN");
-            entity.Property(e => e.VGroup)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_GROUP");
-            entity.Property(e => e.VKdpaketdetail)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KDPAKETDETAIL");
-            entity.Property(e => e.VNmpaketdetail)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NMPAKETDETAIL");
-            entity.Property(e => e.VTipe)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_TIPE");
+            entity.Property(e => e.IdPaketrekanan).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmPasien>(entity =>
         {
-            entity.HasKey(e => e.IdPasien);
+            entity.Property(e => e.CIscetakkartu).IsFixedLength();
+            entity.Property(e => e.IdNumpasien).ValueGeneratedOnAdd();
 
-            entity.ToTable("TM_PASIEN");
-
-            entity.HasIndex(e => e.VAgamapasien, "IX_TM_PASIEN_agama");
-
-            entity.HasIndex(e => e.VAlamatpasien, "IX_TM_PASIEN_alamat");
-
-            entity.HasIndex(e => e.IsBlacklist, "IX_TM_PASIEN_blacklist");
-
-            entity.HasIndex(e => e.VHppasien, "IX_TM_PASIEN_hp");
-
-            entity.HasIndex(e => e.IdPasien, "IX_TM_PASIEN_idpasien");
-
-            entity.HasIndex(e => e.IsAktif, "IX_TM_PASIEN_isaktif");
-
-            entity.HasIndex(e => e.CKelaminpasien, "IX_TM_PASIEN_kelamin");
-
-            entity.HasIndex(e => e.VKotapasien, "IX_TM_PASIEN_kota");
-
-            entity.HasIndex(e => e.VNamapasien, "IX_TM_PASIEN_namapasien");
-
-            entity.HasIndex(e => e.VNoktpsimpasien, "IX_TM_PASIEN_noktp");
-
-            entity.HasIndex(e => e.VNopenjamin, "IX_TM_PASIEN_nopenjamin");
-
-            entity.HasIndex(e => e.VPekerjaanpasien, "IX_TM_PASIEN_pekerjaan");
-
-            entity.HasIndex(e => e.VStatuskwnpasien, "IX_TM_PASIEN_statuskawin");
-
-            entity.HasIndex(e => e.VTelppasien, "IX_TM_PASIEN_telp");
-
-            entity.HasIndex(e => e.VTmptlahirpasien, "IX_TM_PASIEN_tempatlahir");
-
-            entity.HasIndex(e => e.DTgllahirpasien, "IX_TM_PASIEN_tgllahir");
-
-            entity.HasIndex(e => e.IdNumpasien, "idnumpasien");
-
-            entity.Property(e => e.IdPasien)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("ID_PASIEN");
-            entity.Property(e => e.CGoldarah)
-                .HasMaxLength(3)
-                .IsUnicode(false)
-                .HasColumnName("C_GOLDARAH");
-            entity.Property(e => e.CIscetakkartu)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_ISCETAKKARTU");
-            entity.Property(e => e.CKelaminpasien)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("C_KELAMINPASIEN");
-            entity.Property(e => e.DTgldaftar)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLDAFTAR");
-            entity.Property(e => e.DTgllahirpasien)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLLAHIRPASIEN");
-            entity.Property(e => e.IdNumpasien)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_NUMPASIEN");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.IsBlacklist).HasColumnName("IS_BLACKLIST");
-            entity.Property(e => e.IsKunjungan).HasColumnName("IS_KUNJUNGAN");
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID");
-            entity.Property(e => e.VAgamapasien)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_AGAMAPASIEN");
-            entity.Property(e => e.VAlamatpasien)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_ALAMATPASIEN");
-            entity.Property(e => e.VAlamatpekerjaan)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_ALAMATPEKERJAAN");
-            entity.Property(e => e.VAlamatpenanggung)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_ALAMATPENANGGUNG");
-            entity.Property(e => e.VAlergipasien)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_ALERGIPASIEN");
-            entity.Property(e => e.VAyahpasien)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_AYAHPASIEN");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VCatkhuspasien)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_CATKHUSPASIEN");
-            entity.Property(e => e.VHppasien)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("V_HPPASIEN");
-            entity.Property(e => e.VIbupasien)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_IBUPASIEN");
-            entity.Property(e => e.VJenisidentitas)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_JENISIDENTITAS");
-            entity.Property(e => e.VJenispasien)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_JENISPASIEN");
-            entity.Property(e => e.VKodepos)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODEPOS");
-            entity.Property(e => e.VKotapasien)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KOTAPASIEN");
-            entity.Property(e => e.VNamakelpasien)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NAMAKELPASIEN");
-            entity.Property(e => e.VNamapasien)
-                .IsRequired()
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NAMAPASIEN");
-            entity.Property(e => e.VNamapenanggung)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NAMAPENANGGUNG");
-            entity.Property(e => e.VNoktpsimpasien)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NOKTPSIMPASIEN");
-            entity.Property(e => e.VNopenjamin)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NOPENJAMIN");
-            entity.Property(e => e.VPasanganpasien)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_PASANGANPASIEN");
-            entity.Property(e => e.VPekerjaanpasien)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_PEKERJAANPASIEN");
-            entity.Property(e => e.VPendidikanpasien)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_PENDIDIKANPASIEN");
-            entity.Property(e => e.VPerusahaan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_PERUSAHAAN");
-            entity.Property(e => e.VPetugas)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_PETUGAS");
-            entity.Property(e => e.VProvinsi)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_PROVINSI");
-            entity.Property(e => e.VRhesus)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_RHESUS");
-            entity.Property(e => e.VStatuskwnpasien)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUSKWNPASIEN");
-            entity.Property(e => e.VSuku)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_SUKU");
-            entity.Property(e => e.VTelppasien)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_TELPPASIEN");
-            entity.Property(e => e.VTelppekerjaan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_TELPPEKERJAAN");
-            entity.Property(e => e.VTelppenanggung)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_TELPPENANGGUNG");
-            entity.Property(e => e.VTmptlahirpasien)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_TMPTLAHIRPASIEN");
-            entity.Property(e => e.VWarganegara)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_WARGANEGARA");
-
-            entity.HasOne(d => d.Rekanan).WithMany(p => p.TmPasiens)
-                .HasForeignKey(d => d.Rekananid)
-                .HasConstraintName("FK_TM_PASIEN_TM_REKANAN_(rekananid)");
+            entity.HasOne(d => d.Rekanan).WithMany(p => p.TmPasiens).HasConstraintName("FK_TM_PASIEN_TM_REKANAN_(rekananid)");
         });
 
         modelBuilder.Entity<TmPemeriksaanpenunjang>(entity =>
         {
-            entity.HasKey(e => e.IdMasterpemeriksaanpenunjang);
-
             entity.ToTable("TM_PEMERIKSAANPENUNJANG", tb => tb.HasTrigger("UPDATE_V_KDPEMERIKSAAN"));
 
-            entity.Property(e => e.IdMasterpemeriksaanpenunjang)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_MASTERPEMERIKSAANPENUNJANG");
-            entity.Property(e => e.DBeapasien)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAPASIEN");
-            entity.Property(e => e.DBearekanan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAREKANAN");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.IdGrouptarif)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_GROUPTARIF");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKdpemeriksaan)
-                .IsRequired()
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDPEMERIKSAAN");
-            entity.Property(e => e.VNmpemeriksaan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMPEMERIKSAAN");
-            entity.Property(e => e.VPenunjang)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("V_PENUNJANG");
+            entity.Property(e => e.IdMasterpemeriksaanpenunjang).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmPemeriksaanpenunjangdetail>(entity =>
         {
-            entity.HasKey(e => e.IdPenunjangdetail);
+            entity.Property(e => e.IdPenunjangdetail).ValueGeneratedOnAdd();
 
-            entity.ToTable("TM_PEMERIKSAANPENUNJANGDETAIL");
-
-            entity.Property(e => e.IdPenunjangdetail)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PENUNJANGDETAIL");
-            entity.Property(e => e.DBeapasien)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAPASIEN");
-            entity.Property(e => e.DBearekanan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAREKANAN");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DJumlah)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JUMLAH");
-            entity.Property(e => e.IdMasterpemeriksaanpenunjang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_MASTERPEMERIKSAANPENUNJANG");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VGroup)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_GROUP");
-            entity.Property(e => e.VKddetail)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDETAIL");
-            entity.Property(e => e.VKdpemeriksaan)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDPEMERIKSAAN");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNmdetail)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDETAIL");
-            entity.Property(e => e.VTipe)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_TIPE");
-
-            entity.HasOne(d => d.IdMasterpemeriksaanpenunjangNavigation).WithMany(p => p.TmPemeriksaanpenunjangdetails)
-                .HasForeignKey(d => d.IdMasterpemeriksaanpenunjang)
-                .HasConstraintName("FK_TM_PEMERIKSAANPENUNJANGDETAIL_TM_PEMERIKSAANPENUNJANG");
+            entity.HasOne(d => d.IdMasterpemeriksaanpenunjangNavigation).WithMany(p => p.TmPemeriksaanpenunjangdetails).HasConstraintName("FK_TM_PEMERIKSAANPENUNJANGDETAIL_TM_PEMERIKSAANPENUNJANG");
         });
 
         modelBuilder.Entity<TmRekanan>(entity =>
         {
-            entity.HasKey(e => e.Rekananid);
-
-            entity.ToTable("TM_REKANAN");
-
-            entity.HasIndex(e => e.IdNumrekanan, "IX_TM_REKANAN");
-
-            entity.HasIndex(e => e.Rekananid, "IX_TM_REKANAN_1");
-
-            entity.HasIndex(e => e.VNmrekanan, "IX_TM_REKANAN_2");
-
-            entity.HasIndex(e => e.IsAktif, "IX_TM_REKANAN_3");
-
-            entity.HasIndex(e => e.VAlias, "IX_TM_REKANAN_4");
-
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID");
-            entity.Property(e => e.IdNumrekanan)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_NUMREKANAN");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.IsCob)
-                .HasDefaultValue(false)
-                .HasColumnName("IS_COB");
-            entity.Property(e => e.IsPaketbhp).HasColumnName("IS_PAKETBHP");
-            entity.Property(e => e.IsTarif).HasColumnName("IS_TARIF");
-            entity.Property(e => e.IsTarifnonmed).HasColumnName("IS_TARIFNONMED");
-            entity.Property(e => e.VAlamat)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_ALAMAT");
-            entity.Property(e => e.VAlias)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_ALIAS");
-            entity.Property(e => e.VKdakun)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDAKUN");
-            entity.Property(e => e.VKota)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KOTA");
-            entity.Property(e => e.VNmrekanan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMREKANAN");
-            entity.Property(e => e.VTelp)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_TELP");
+            entity.Property(e => e.IdNumrekanan).ValueGeneratedOnAdd();
+            entity.Property(e => e.IsCob).HasDefaultValue(false);
         });
 
         modelBuilder.Entity<TmRuang>(entity =>
         {
-            entity.HasKey(e => e.VKoderuangan);
+            entity.Property(e => e.IdNumruang).ValueGeneratedOnAdd();
+            entity.Property(e => e.Kelompok).IsFixedLength();
 
-            entity.ToTable("TM_RUANG");
+            entity.HasOne(d => d.KodeRequestobatNavigation).WithMany(p => p.TmRuangKodeRequestobatNavigations).HasConstraintName("FK_TM_RUANG_TM_GUDANG2_(requestobat)");
 
-            entity.HasIndex(e => e.VKoderuangan, "IX_TM_RUANG");
-
-            entity.HasIndex(e => e.Nama, "IX_TM_RUANG_1");
-
-            entity.HasIndex(e => e.Kamar, "IX_TM_RUANG_2");
-
-            entity.HasIndex(e => e.VKodeinventory, "IX_TM_RUANG_3");
-
-            entity.HasIndex(e => e.KodeRequestobat, "IX_TM_RUANG_4");
-
-            entity.HasIndex(e => e.KodeTarif, "IX_TM_RUANG_5");
-
-            entity.HasIndex(e => e.IsAktif, "IX_TM_RUANG_6");
-
-            entity.HasIndex(e => e.IdNumruang, "IX_TM_RUANG_7");
-
-            entity.HasIndex(e => e.VKdinhealth, "IX_V_KDINHEALTH");
-
-            entity.HasIndex(e => e.VLyninhealth, "IX_V_LYNINHEALTH");
-
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.IdNumruang)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_NUMRUANG");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.IsTarif).HasColumnName("IS_TARIF");
-            entity.Property(e => e.Kamar)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("KAMAR");
-            entity.Property(e => e.Kelompok)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("KELOMPOK");
-            entity.Property(e => e.KodeRequestobat)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("KODE_REQUESTOBAT");
-            entity.Property(e => e.KodeTarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("KODE_TARIF");
-            entity.Property(e => e.Nama)
-                .IsRequired()
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("NAMA");
-            entity.Property(e => e.Noruang)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("NORUANG");
-            entity.Property(e => e.VGdgpaket)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_GDGPAKET");
-            entity.Property(e => e.VGdgpenerimaan)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_GDGPENERIMAAN");
-            entity.Property(e => e.VGdgretur)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_GDGRETUR");
-            entity.Property(e => e.VKdinhealth)
-                .HasMaxLength(3)
-                .IsUnicode(false)
-                .HasColumnName("V_KDINHEALTH");
-            entity.Property(e => e.VKodeinventory)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODEINVENTORY");
-            entity.Property(e => e.VLyninhealth)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_LYNINHEALTH");
-
-            entity.HasOne(d => d.KodeRequestobatNavigation).WithMany(p => p.TmRuangKodeRequestobatNavigations)
-                .HasForeignKey(d => d.KodeRequestobat)
-                .HasConstraintName("FK_TM_RUANG_TM_GUDANG2_(requestobat)");
-
-            entity.HasOne(d => d.VKodeinventoryNavigation).WithMany(p => p.TmRuangVKodeinventoryNavigations)
-                .HasForeignKey(d => d.VKodeinventory)
-                .HasConstraintName("FK_TM_RUANG_TM_GUDANG_(kdinventory)");
+            entity.HasOne(d => d.VKodeinventoryNavigation).WithMany(p => p.TmRuangVKodeinventoryNavigations).HasConstraintName("FK_TM_RUANG_TM_GUDANG_(kdinventory)");
         });
 
         modelBuilder.Entity<TmStandartfield>(entity =>
         {
-            entity.HasKey(e => e.VKodefield);
+            entity.Property(e => e.IdField).ValueGeneratedOnAdd();
 
-            entity.ToTable("TM_STANDARTFIELD");
-
-            entity.Property(e => e.VKodefield)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODEFIELD");
-            entity.Property(e => e.IdField)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_FIELD");
-            entity.Property(e => e.IdFieldgroup)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_FIELDGROUP");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VDeskfield)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_DESKFIELD");
-            entity.Property(e => e.VKeterangan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KETERANGAN");
-
-            entity.HasOne(d => d.IdFieldgroupNavigation).WithMany(p => p.TmStandartfields)
-                .HasForeignKey(d => d.IdFieldgroup)
-                .HasConstraintName("FK_TM_STANDARTFIELD_TM_STANDARTFIELD_GROUP");
+            entity.HasOne(d => d.IdFieldgroupNavigation).WithMany(p => p.TmStandartfields).HasConstraintName("FK_TM_STANDARTFIELD_TM_STANDARTFIELD_GROUP");
         });
 
         modelBuilder.Entity<TmStandartfieldGroup>(entity =>
         {
-            entity.HasKey(e => e.IdFieldgroup);
-
-            entity.ToTable("TM_STANDARTFIELD_GROUP");
-
-            entity.Property(e => e.IdFieldgroup)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_FIELDGROUP");
-            entity.Property(e => e.DTanggal)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TANGGAL");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VKeterangan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KETERANGAN");
-            entity.Property(e => e.VNmfieldgroup)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NMFIELDGROUP");
-        });
-
-        modelBuilder.Entity<TmStatus>(entity =>
-        {
-            entity.HasKey(e => e.IdStatus);
-
-            entity.ToTable("TM_STATUS");
-
-            entity.HasIndex(e => e.VStatus, "IX_TM_STATUS");
-
-            entity.HasIndex(e => e.IdStatus, "IX_TM_STATUS_1");
-
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
+            entity.Property(e => e.IdFieldgroup).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmTarifGroup>(entity =>
         {
-            entity.HasKey(e => e.IdGrouptarif);
-
-            entity.ToTable("TM_TARIF_GROUP");
-
-            entity.Property(e => e.IdGrouptarif)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_GROUPTARIF");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VAliasgroup)
-                .HasMaxLength(3)
-                .IsUnicode(false)
-                .HasColumnName("V_ALIASGROUP");
-            entity.Property(e => e.VKdakun)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDAKUN");
-            entity.Property(e => e.VNmgrouptarif)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("V_NMGROUPTARIF");
+            entity.Property(e => e.IdGrouptarif).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmTarifHarga>(entity =>
@@ -1565,3768 +378,512 @@ public partial class WinCare2Context : DbContext
 
             entity.ToTable("TM_TARIF_HARGA", tb => tb.HasTrigger("UPDATE_STATUS_TM_TARIF_HARGA"));
 
-            entity.Property(e => e.IdTarifkelas)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_TARIFKELAS");
-            entity.Property(e => e.D2tnd)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_2TND");
-            entity.Property(e => e.DAdm)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_ADM");
-            entity.Property(e => e.DBahanalkes)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BAHANALKES");
-            entity.Property(e => e.DBeapasien)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAPASIEN");
-            entity.Property(e => e.DBearekanan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAREKANAN");
-            entity.Property(e => e.DCito)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_CITO");
-            entity.Property(e => e.DDiskon)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_DISKON");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DJasamedis)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS");
-            entity.Property(e => e.DJasamedis2)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS2");
-            entity.Property(e => e.DJasamedis3)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS3");
-            entity.Property(e => e.DJasamedis4)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS4");
-            entity.Property(e => e.DJasamedis5)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS5");
-            entity.Property(e => e.DJasars)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASARS");
-            entity.Property(e => e.DLastupdate)
-                .HasColumnType("datetime")
-                .HasColumnName("D_LASTUPDATE");
-            entity.Property(e => e.DPenyulit)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_PENYULIT");
-            entity.Property(e => e.DTglakhir)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLAKHIR");
-            entity.Property(e => e.DTglawal)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLAWAL");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKdtarifdetail)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDTARIFDETAIL");
-            entity.Property(e => e.VKelas)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KELAS");
+            entity.Property(e => e.IdTarifkelas).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmTarifMatrix>(entity =>
         {
-            entity.HasKey(e => new { e.VKdtarifdetail, e.VKoderuangan });
-
-            entity.ToTable("TM_TARIF_MATRIX");
-
-            entity.Property(e => e.VKdtarifdetail)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KDTARIFDETAIL");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.IdTarifmatrix)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_TARIFMATRIX");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
+            entity.Property(e => e.IdTarifmatrix).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmTarifPelayanan>(entity =>
         {
             entity.HasKey(e => e.VKodetariflayan).HasName("PK_TM_TARIF_LAYANAN");
 
-            entity.ToTable("TM_TARIF_PELAYANAN");
-
-            entity.Property(e => e.VKodetariflayan)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIFLAYAN");
-            entity.Property(e => e.IdTariflayan)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_TARIFLAYAN");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VNamatariflayan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NAMATARIFLAYAN");
+            entity.Property(e => e.IdTariflayan).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmTarifRekanan>(entity =>
         {
             entity.HasKey(e => e.IdTarifrekanan).HasName("PK_TM_TARIF_REKANAN2");
 
-            entity.ToTable("TM_TARIF_REKANAN");
-
-            entity.Property(e => e.IdTarifrekanan)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_TARIFREKANAN");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID");
-            entity.Property(e => e.VKdtarifdetail)
-                .IsRequired()
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDTARIFDETAIL");
+            entity.Property(e => e.IdTarifrekanan).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmTarifRekananSub>(entity =>
         {
-            entity.HasKey(e => e.IdTarifrekanansub);
-
-            entity.ToTable("TM_TARIF_REKANAN_SUB");
-
-            entity.Property(e => e.IdTarifrekanansub)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_TARIFREKANANSUB");
-            entity.Property(e => e.RekananidDt)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID_DT");
-            entity.Property(e => e.RekananidHd)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID_HD");
+            entity.Property(e => e.IdTarifrekanansub).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TmTarifdetail>(entity =>
         {
-            entity.HasKey(e => e.VKdtarifdetail);
+            entity.Property(e => e.IdTarifdetail).ValueGeneratedOnAdd();
 
-            entity.ToTable("TM_TARIFDETAIL");
+            entity.HasOne(d => d.IdGrouptarifNavigation).WithMany(p => p.TmTarifdetails).HasConstraintName("FK_TM_TARIFDETAIL_TM_TARIF_GROUP");
 
-            entity.Property(e => e.VKdtarifdetail)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDTARIFDETAIL");
-            entity.Property(e => e.IdGrouptarif)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_GROUPTARIF");
-            entity.Property(e => e.IdTarifdetail)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_TARIFDETAIL");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VKodetariflayan)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIFLAYAN");
-            entity.Property(e => e.VNmtarifdetail)
-                .IsRequired()
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMTARIFDETAIL");
-
-            entity.HasOne(d => d.IdGrouptarifNavigation).WithMany(p => p.TmTarifdetails)
-                .HasForeignKey(d => d.IdGrouptarif)
-                .HasConstraintName("FK_TM_TARIFDETAIL_TM_TARIF_GROUP");
-
-            entity.HasOne(d => d.VKodetariflayanNavigation).WithMany(p => p.TmTarifdetails)
-                .HasForeignKey(d => d.VKodetariflayan)
-                .HasConstraintName("FK_TM_TARIFDETAIL_TM_TARIF_PELAYANAN");
+            entity.HasOne(d => d.VKodetariflayanNavigation).WithMany(p => p.TmTarifdetails).HasConstraintName("FK_TM_TARIFDETAIL_TM_TARIF_PELAYANAN");
         });
 
         modelBuilder.Entity<TmTindakan>(entity =>
         {
-            entity.HasKey(e => e.VKdtindakan);
-
-            entity.ToTable("TM_TINDAKAN");
-
-            entity.Property(e => e.VKdtindakan)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDTINDAKAN");
-            entity.Property(e => e.IdTindakan)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_TINDAKAN");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VNmpendek)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMPENDEK");
-            entity.Property(e => e.VNmtindakan)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_NMTINDAKAN");
+            entity.Property(e => e.IdTindakan).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TrItemobatlangsung>(entity =>
         {
-            entity.HasKey(e => e.IdItemobatlangsung);
+            entity.Property(e => e.IdItemobatlangsung).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
 
-            entity.ToTable("TR_ITEMOBATLANGSUNG");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TrItemobatlangsungs).HasConstraintName("FK_TR_ITEMOBATLANGSUNG_TM_STATUS");
 
-            entity.Property(e => e.IdItemobatlangsung)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_ITEMOBATLANGSUNG");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DDiskon)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_DISKON");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DJumlah)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JUMLAH");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VApprove)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKdobat)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDOBAT");
-            entity.Property(e => e.VNmobat)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMOBAT");
-            entity.Property(e => e.VNoitem)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_NOITEM");
-            entity.Property(e => e.VNokuitansi)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_NOKUITANSI");
-            entity.Property(e => e.VNoteobat)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NOTEOBAT");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TrItemobatlangsungs)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TR_ITEMOBATLANGSUNG_TM_STATUS");
-
-            entity.HasOne(d => d.VNokuitansiNavigation).WithMany(p => p.TrItemobatlangsungs)
-                .HasForeignKey(d => d.VNokuitansi)
-                .HasConstraintName("FK_TR_ITEMOBATLANGSUNG_TT_OBATLANGSUNG");
+            entity.HasOne(d => d.VNokuitansiNavigation).WithMany(p => p.TrItemobatlangsungs).HasConstraintName("FK_TR_ITEMOBATLANGSUNG_TT_OBATLANGSUNG");
         });
 
         modelBuilder.Entity<TrItempaket>(entity =>
         {
-            entity.HasKey(e => e.IdDetailpaket);
+            entity.Property(e => e.IdDetailpaket).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
 
-            entity.ToTable("TR_ITEMPAKET");
+            entity.HasOne(d => d.IdPaketNavigation).WithMany(p => p.TrItempakets).HasConstraintName("FK_TR_ITEMPAKET_TT_PAKET");
 
-            entity.Property(e => e.IdDetailpaket)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_DETAILPAKET");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.D2tnd)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_2TND");
-            entity.Property(e => e.DAdm)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_ADM");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DBahanalkes)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BAHANALKES");
-            entity.Property(e => e.DBeapasien)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAPASIEN");
-            entity.Property(e => e.DBearekanan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAREKANAN");
-            entity.Property(e => e.DCito)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_CITO");
-            entity.Property(e => e.DDiskon)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_DISKON");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DJasamedis)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS");
-            entity.Property(e => e.DJasamedis2)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS2");
-            entity.Property(e => e.DJasamedis3)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS3");
-            entity.Property(e => e.DJasamedis4)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS4");
-            entity.Property(e => e.DJasamedis5)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS5");
-            entity.Property(e => e.DJasars)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASARS");
-            entity.Property(e => e.DJumlah)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JUMLAH");
-            entity.Property(e => e.DPenyulit)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_PENYULIT");
-            entity.Property(e => e.DSubtotal)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_SUBTOTAL");
-            entity.Property(e => e.IdMasterpemeriksaanpenunjang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_MASTERPEMERIKSAANPENUNJANG");
-            entity.Property(e => e.IdPaket)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKET");
-            entity.Property(e => e.IdPenunjangdetail)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PENUNJANGDETAIL");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VGroup)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_GROUP");
-            entity.Property(e => e.VKddetail)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDETAIL");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNmdetail)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDETAIL");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNomorpaket)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_NOMORPAKET");
-            entity.Property(e => e.VTipe)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_TIPE");
-
-            entity.HasOne(d => d.IdPaketNavigation).WithMany(p => p.TrItempakets)
-                .HasForeignKey(d => d.IdPaket)
-                .HasConstraintName("FK_TR_ITEMPAKET_TT_PAKET");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TrItempakets)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TR_ITEMPAKET_TM_STATUS");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TrItempakets).HasConstraintName("FK_TR_ITEMPAKET_TM_STATUS");
         });
 
         modelBuilder.Entity<TrJadwaldokter>(entity =>
         {
             entity.HasKey(e => e.IdJadwal).HasName("PK__TR_JADWA__B4819F47A45DBF36");
-
-            entity.ToTable("TR_JADWALDOKTER");
-
-            entity.Property(e => e.IdJadwal).HasColumnName("ID_JADWAL");
-            entity.Property(e => e.IServistime).HasColumnName("I_SERVISTIME");
-            entity.Property(e => e.IsAktif).HasColumnName("IS_AKTIF");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VHari)
-                .HasMaxLength(30)
-                .IsUnicode(false)
-                .HasColumnName("V_HARI");
-            entity.Property(e => e.VJamfinish)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_JAMFINISH");
-            entity.Property(e => e.VJamstart)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_JAMSTART");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.VNamaklinik)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_NAMAKLINIK");
         });
 
         modelBuilder.Entity<TrPelunasandetail>(entity =>
         {
-            entity.HasKey(e => e.Pelunasandetailid);
-
-            entity.ToTable("TR_PELUNASANDETAIL");
-
-            entity.Property(e => e.Pelunasandetailid)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PELUNASANDETAILID");
-            entity.Property(e => e.Discount)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("DISCOUNT");
-            entity.Property(e => e.Pelunasanid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PELUNASANID");
-            entity.Property(e => e.Pembayaranid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PEMBAYARANID");
-            entity.Property(e => e.Total)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("TOTAL");
+            entity.Property(e => e.Pelunasandetailid).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TrPembayarandetail>(entity =>
         {
-            entity.HasKey(e => e.Pembayarandetailid);
-
-            entity.ToTable("TR_PEMBAYARANDETAIL");
-
-            entity.Property(e => e.Pembayarandetailid)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PEMBAYARANDETAILID");
-            entity.Property(e => e.Discount)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("DISCOUNT");
-            entity.Property(e => e.Pembayaranid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PEMBAYARANID");
-            entity.Property(e => e.Penerimaanid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PENERIMAANID");
-            entity.Property(e => e.Total)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("TOTAL");
+            entity.Property(e => e.Pembayarandetailid).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TrPembeliandetail>(entity =>
         {
-            entity.HasKey(e => e.Pembeliandetailid);
-
-            entity.ToTable("TR_PEMBELIANDETAIL");
-
-            entity.Property(e => e.Pembeliandetailid)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PEMBELIANDETAILID");
-            entity.Property(e => e.Barangid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("BARANGID");
-            entity.Property(e => e.Discount)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("DISCOUNT");
-            entity.Property(e => e.Discountnominal)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("DISCOUNTNOMINAL");
-            entity.Property(e => e.Harga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("HARGA");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.Jumlah)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("JUMLAH");
-            entity.Property(e => e.Jumlaheceran)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("JUMLAHECERAN");
-            entity.Property(e => e.Pembelianid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PEMBELIANID");
-            entity.Property(e => e.Subtotal)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("SUBTOTAL");
+            entity.Property(e => e.Pembeliandetailid).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TrPemeriksaanpenunjang>(entity =>
         {
-            entity.HasKey(e => e.Idnum);
-
-            entity.ToTable("TR_PEMERIKSAANPENUNJANG");
-
-            entity.Property(e => e.Idnum)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("IDNUM");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DBeapasien)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAPASIEN");
-            entity.Property(e => e.DBearekanan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAREKANAN");
-            entity.Property(e => e.DDiskon)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_DISKON");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.IdMasterpemeriksaanpenunjang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_MASTERPEMERIKSAANPENUNJANG");
-            entity.Property(e => e.IdPasienpenunjang)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_PASIENPENUNJANG");
-            entity.Property(e => e.VApprove)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VHasil)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_HASIL");
-            entity.Property(e => e.VKdpemeriksaan)
-                .IsRequired()
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDPEMERIKSAAN");
-            entity.Property(e => e.VNmpemeriksaan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMPEMERIKSAAN");
-            entity.Property(e => e.VPenunjang)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("V_PENUNJANG");
+            entity.Property(e => e.Idnum).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApprove).IsFixedLength();
         });
 
         modelBuilder.Entity<TrPemesanandetail>(entity =>
         {
             entity.HasKey(e => e.Pemesanandetailid).HasName("PK_TR_PEMESANANDETAIL_1");
 
-            entity.ToTable("TR_PEMESANANDETAIL");
-
-            entity.Property(e => e.Pemesanandetailid)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PEMESANANDETAILID");
-            entity.Property(e => e.Barangid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("BARANGID");
-            entity.Property(e => e.Discountnominal)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("DISCOUNTNOMINAL");
-            entity.Property(e => e.Harga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("HARGA");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.Jumlah)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("JUMLAH");
-            entity.Property(e => e.Pemesananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PEMESANANID");
-            entity.Property(e => e.Permintaandetailid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PERMINTAANDETAILID");
-            entity.Property(e => e.Subtotal)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("SUBTOTAL");
+            entity.Property(e => e.Pemesanandetailid).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TrPenerimaandetail>(entity =>
         {
-            entity.HasKey(e => e.Penerimaandetailid);
-
-            entity.ToTable("TR_PENERIMAANDETAIL");
-
-            entity.Property(e => e.Penerimaandetailid)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PENERIMAANDETAILID");
-            entity.Property(e => e.Barangid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("BARANGID");
-            entity.Property(e => e.Discountnominal)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("DISCOUNTNOMINAL");
-            entity.Property(e => e.Expired)
-                .HasColumnType("datetime")
-                .HasColumnName("EXPIRED");
-            entity.Property(e => e.Harga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("HARGA");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.Isi)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("ISI");
-            entity.Property(e => e.Jumlah)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("JUMLAH");
-            entity.Property(e => e.Nobatch)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("NOBATCH");
-            entity.Property(e => e.Pemesanandetailid)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("PEMESANANDETAILID");
-            entity.Property(e => e.Penerimaanid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PENERIMAANID");
-            entity.Property(e => e.Subtotal)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("SUBTOTAL");
+            entity.Property(e => e.Penerimaandetailid).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TrPermintaandetail>(entity =>
         {
-            entity.HasKey(e => e.Permintaandetailid);
-
-            entity.ToTable("TR_PERMINTAANDETAIL");
-
-            entity.HasIndex(e => e.Barangid, "IX_TR_PERMINTAANDETAIL_brgid");
-
-            entity.HasIndex(e => e.Jumlah, "IX_TR_PERMINTAANDETAIL_jml");
-
-            entity.HasIndex(e => e.Jumlahminta, "IX_TR_PERMINTAANDETAIL_jmlminta");
-
-            entity.HasIndex(e => e.Jumlahpesan, "IX_TR_PERMINTAANDETAIL_jmlpesan");
-
-            entity.HasIndex(e => e.Permintaanid, "IX_TR_PERMINTAANDETAIL_permintaanid");
-
-            entity.Property(e => e.Permintaandetailid)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PERMINTAANDETAILID");
-            entity.Property(e => e.Barangid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("BARANGID");
-            entity.Property(e => e.DTglCc)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL_CC");
-            entity.Property(e => e.DTglKeu)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL_KEU");
-            entity.Property(e => e.DTglPem)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL_PEM");
-            entity.Property(e => e.DTglinput)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLINPUT");
-            entity.Property(e => e.Discavg)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("DISCAVG");
-            entity.Property(e => e.Hargaavg)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("HARGAAVG");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.Inputby)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("INPUTBY");
-            entity.Property(e => e.Ispesan).HasColumnName("ISPESAN");
-            entity.Property(e => e.Jumlah)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("JUMLAH");
-            entity.Property(e => e.Jumlahminta)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("JUMLAHMINTA");
-            entity.Property(e => e.Jumlahpesan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("JUMLAHPESAN");
-            entity.Property(e => e.Permintaanid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PERMINTAANID");
-            entity.Property(e => e.Status)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("STATUS");
-            entity.Property(e => e.Subtotalavg)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("SUBTOTALAVG");
-            entity.Property(e => e.VApproveCc)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_CC");
-            entity.Property(e => e.VApproveKeu)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_KEU");
-            entity.Property(e => e.VApprovePem)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_PEM");
+            entity.Property(e => e.Permintaandetailid).ValueGeneratedOnAdd();
+            entity.Property(e => e.Status).IsFixedLength();
         });
 
         modelBuilder.Entity<TrReturdetail>(entity =>
         {
-            entity.HasKey(e => e.Returdetailid);
+            entity.Property(e => e.Returdetailid).ValueGeneratedOnAdd();
 
-            entity.ToTable("TR_RETURDETAIL");
-
-            entity.Property(e => e.Returdetailid)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("RETURDETAILID");
-            entity.Property(e => e.Barangid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("BARANGID");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.Jumlah)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("JUMLAH");
-            entity.Property(e => e.Returid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("RETURID");
-
-            entity.HasOne(d => d.Retur).WithMany(p => p.TrReturdetails)
-                .HasForeignKey(d => d.Returid)
-                .HasConstraintName("FK_TR_RETURDETAIL_TT_RETURBELI");
+            entity.HasOne(d => d.Retur).WithMany(p => p.TrReturdetails).HasConstraintName("FK_TR_RETURDETAIL_TT_RETURBELI");
         });
 
         modelBuilder.Entity<TtAcountpasien>(entity =>
         {
-            entity.HasKey(e => e.IdAcountpasien);
-
-            entity.ToTable("TT_ACOUNTPASIEN");
-
-            entity.Property(e => e.IdAcountpasien)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_ACOUNTPASIEN");
-            entity.Property(e => e.Biaya)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("BIAYA");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DTgl)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL");
-            entity.Property(e => e.Disc)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("DISC");
-            entity.Property(e => e.IdRegistrasi)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.Item)
-                .IsRequired()
-                .HasMaxLength(250)
-                .IsUnicode(false)
-                .HasColumnName("ITEM");
-            entity.Property(e => e.Paket)
-                .HasMaxLength(250)
-                .IsUnicode(false)
-                .HasColumnName("PAKET");
-            entity.Property(e => e.Unit)
-                .HasMaxLength(150)
-                .IsUnicode(false)
-                .HasDefaultValueSql("((0))")
-                .HasColumnName("UNIT");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
+            entity.Property(e => e.IdAcountpasien).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
+            entity.Property(e => e.Unit).HasDefaultValueSql("((0))");
         });
 
         modelBuilder.Entity<TtDiagnosa>(entity =>
         {
             entity.HasKey(e => e.VNomordiagnosa).HasName("PK_TT_DIAGNOSA_1");
 
-            entity.ToTable("TT_DIAGNOSA");
-
-            entity.Property(e => e.VNomordiagnosa)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_NOMORDIAGNOSA");
-            entity.Property(e => e.DTgldiagnosa)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLDIAGNOSA");
-            entity.Property(e => e.IdDiagnosa)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_DIAGNOSA");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNote)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_NOTE");
+            entity.Property(e => e.IdDiagnosa).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TtDiagnosaDetail>(entity =>
         {
             entity.HasKey(e => e.IdDiagnosadetail).HasName("PK_TT_DIAGNOSA");
 
-            entity.ToTable("TT_DIAGNOSA_DETAIL");
+            entity.Property(e => e.IdDiagnosadetail).ValueGeneratedOnAdd();
 
-            entity.HasIndex(e => e.VKddiagnosa, "IX_TT_DIAGNOSA_DETAIL_kddiagnosa");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtDiagnosaDetails).HasConstraintName("FK_TT_DIAGNOSA_TM_STATUS");
 
-            entity.HasIndex(e => e.VJenisdiagnosa, "IX_TT_DIAGNOSA_DETAIL_v_jenisdiagnosa");
+            entity.HasOne(d => d.VKddokterNavigation).WithMany(p => p.TtDiagnosaDetails).HasConstraintName("FK_TT_DIAGNOSA_TM_DOKTER");
 
-            entity.HasIndex(e => e.VNmdiagnosa, "IX_TT_DIAGNOSA_DETAIL_vnmdiagnosa");
-
-            entity.Property(e => e.IdDiagnosadetail)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_DIAGNOSADETAIL");
-            entity.Property(e => e.DTgl)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VJenisdiagnosa)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_JENISDIAGNOSA");
-            entity.Property(e => e.VKddiagnosa)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDIAGNOSA");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VLain)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_LAIN");
-            entity.Property(e => e.VNmdiagnosa)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDIAGNOSA");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNomordiagnosa)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_NOMORDIAGNOSA");
-            entity.Property(e => e.VNote)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_NOTE");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtDiagnosaDetails)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_DIAGNOSA_TM_STATUS");
-
-            entity.HasOne(d => d.VKddokterNavigation).WithMany(p => p.TtDiagnosaDetails)
-                .HasForeignKey(d => d.VKddokter)
-                .HasConstraintName("FK_TT_DIAGNOSA_TM_DOKTER");
-
-            entity.HasOne(d => d.VNomordiagnosaNavigation).WithMany(p => p.TtDiagnosaDetails)
-                .HasForeignKey(d => d.VNomordiagnosa)
-                .HasConstraintName("FK_TT_DIAGNOSA_DETAIL_TT_DIAGNOSA");
+            entity.HasOne(d => d.VNomordiagnosaNavigation).WithMany(p => p.TtDiagnosaDetails).HasConstraintName("FK_TT_DIAGNOSA_DETAIL_TT_DIAGNOSA");
         });
 
         modelBuilder.Entity<TtDiagnosarekap>(entity =>
         {
-            entity.HasKey(e => e.IdDiagnosarekap);
+            entity.Property(e => e.IdDiagnosarekap).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_DIAGNOSAREKAP");
-
-            entity.Property(e => e.IdDiagnosarekap)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_DIAGNOSAREKAP");
-            entity.Property(e => e.DTgl)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL");
-            entity.Property(e => e.DTglrm)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLRM");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKdkomplikasi)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDKOMPLIKASI");
-            entity.Property(e => e.VKdmasuk)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDMASUK");
-            entity.Property(e => e.VKdoperasi)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDOPERASI");
-            entity.Property(e => e.VKdsekunder)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDSEKUNDER");
-            entity.Property(e => e.VKdutama)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDUTAMA");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VLain)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_LAIN");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNmkomplikasi)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMKOMPLIKASI");
-            entity.Property(e => e.VNmmasuk)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMMASUK");
-            entity.Property(e => e.VNmoperasi)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMOPERASI");
-            entity.Property(e => e.VNmsekunder)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMSEKUNDER");
-            entity.Property(e => e.VNmutama)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMUTAMA");
-
-            entity.HasOne(d => d.IdRegistrasiNavigation).WithMany(p => p.TtDiagnosarekaps)
-                .HasForeignKey(d => d.IdRegistrasi)
-                .HasConstraintName("FK_TT_DIAGNOSAREKAP_TT_KUNJUNGAN");
+            entity.HasOne(d => d.IdRegistrasiNavigation).WithMany(p => p.TtDiagnosarekaps).HasConstraintName("FK_TT_DIAGNOSAREKAP_TT_KUNJUNGAN");
         });
 
         modelBuilder.Entity<TtHasilpemeriksaanpd>(entity =>
         {
-            entity.HasKey(e => e.IdAnamnesis);
-
-            entity.ToTable("TT_HASILPEMERIKSAANPDS");
-
-            entity.Property(e => e.IdAnamnesis)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_ANAMNESIS");
-            entity.Property(e => e.DBerat)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("D_BERAT");
-            entity.Property(e => e.DNadi)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("D_NADI");
-            entity.Property(e => e.DRr)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("D_RR");
-            entity.Property(e => e.DSuhu)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("D_SUHU");
-            entity.Property(e => e.DTensi)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("D_TENSI");
-            entity.Property(e => e.DTensi2)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("D_TENSI2");
-            entity.Property(e => e.DTgl)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL");
-            entity.Property(e => e.DTinggi)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("D_TINGGI");
-            entity.Property(e => e.IdRegistrasi)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.VAnamnesis)
-                .IsUnicode(false)
-                .HasColumnName("V_ANAMNESIS");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VPmrksnfisik)
-                .IsUnicode(false)
-                .HasColumnName("V_PMRKSNFISIK");
-            entity.Property(e => e.VPmrksnlanjutan)
-                .IsUnicode(false)
-                .HasColumnName("V_PMRKSNLANJUTAN");
-            entity.Property(e => e.VPmrksnpenunjang)
-                .IsUnicode(false)
-                .HasColumnName("V_PMRKSNPENUNJANG");
+            entity.Property(e => e.IdAnamnesis).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TtHistoryStok>(entity =>
         {
-            entity.HasKey(e => e.IdHistory);
+            entity.Property(e => e.IdHistory).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_HISTORY_STOK");
-
-            entity.HasIndex(e => e.DKeluar, "IX_TT_HISTORY_STOK_d_keluar");
-
-            entity.HasIndex(e => e.DLastupdate, "IX_TT_HISTORY_STOK_d_lastupdate");
-
-            entity.HasIndex(e => e.DMasuk, "IX_TT_HISTORY_STOK_d_masuk");
-
-            entity.HasIndex(e => e.DTgltransaksi, "IX_TT_HISTORY_STOK_d_tgltransaksi");
-
-            entity.HasIndex(e => e.IdBarang, "IX_TT_HISTORY_STOK_id_barang");
-
-            entity.HasIndex(e => e.IdHistory, "IX_TT_HISTORY_STOK_id_history");
-
-            entity.HasIndex(e => e.VBy, "IX_TT_HISTORY_STOK_v_by");
-
-            entity.HasIndex(e => e.VKodetarif, "IX_TT_HISTORY_STOK_v_kodetarif");
-
-            entity.HasIndex(e => e.VLayanan, "IX_TT_HISTORY_STOK_v_layanan");
-
-            entity.Property(e => e.IdHistory)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_HISTORY");
-            entity.Property(e => e.DHargabeli)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGABELI");
-            entity.Property(e => e.DHargajual)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGAJUAL");
-            entity.Property(e => e.DKeluar)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_KELUAR");
-            entity.Property(e => e.DLastupdate)
-                .HasColumnType("datetime")
-                .HasColumnName("D_LASTUPDATE");
-            entity.Property(e => e.DMasuk)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_MASUK");
-            entity.Property(e => e.DTgltransaksi)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLTRANSAKSI");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdKuitansi)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("ID_KUITANSI");
-            entity.Property(e => e.IdTransaksi)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("ID_TRANSAKSI");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKeterangan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_KETERANGAN");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VLayanan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_LAYANAN");
-
-            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtHistoryStoks)
-                .HasForeignKey(d => d.VKodetarif)
-                .HasConstraintName("FK_TT_HISTORY_STOK_TM_GUDANG");
+            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtHistoryStoks).HasConstraintName("FK_TT_HISTORY_STOK_TM_GUDANG");
         });
 
         modelBuilder.Entity<TtKuitansi>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_TT_EDITKUITANSI");
 
-            entity.ToTable("TT_KUITANSI");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID");
-            entity.Property(e => e.DNominal)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_NOMINAL");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKeterangan)
-                .HasColumnType("text")
-                .HasColumnName("V_KETERANGAN");
-            entity.Property(e => e.VTerimadari)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_TERIMADARI");
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TtKuitansialke>(entity =>
         {
-            entity.HasKey(e => e.IdKuitansialkes);
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
+            entity.Property(e => e.IdNumalkes).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_KUITANSIALKES");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtKuitansialkes).HasConstraintName("FK_TT_KUITANSIALKES_TM_STATUS");
 
-            entity.HasIndex(e => e.IdNumalkes, "IX_TT_KUITANSIALKES");
+            entity.HasOne(d => d.VKodeinventoryNavigation).WithMany(p => p.TtKuitansialkes).HasConstraintName("FK_TT_KUITANSIALKES_TM_GUDANG");
 
-            entity.HasIndex(e => e.DTgl, "IX_TT_KUITANSIALKES_tgl");
-
-            entity.Property(e => e.IdKuitansialkes)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_KUITANSIALKES");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DTgl)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL");
-            entity.Property(e => e.IdNumalkes)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_NUMALKES");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKodeinventory)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODEINVENTORY");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtKuitansialkes)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_KUITANSIALKES_TM_STATUS");
-
-            entity.HasOne(d => d.VKodeinventoryNavigation).WithMany(p => p.TtKuitansialkes)
-                .HasForeignKey(d => d.VKodeinventory)
-                .HasConstraintName("FK_TT_KUITANSIALKES_TM_GUDANG");
-
-            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtKuitansialkes)
-                .HasForeignKey(d => d.VKoderuangan)
-                .HasConstraintName("FK_TT_KUITANSIALKES_TM_RUANG");
+            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtKuitansialkes).HasConstraintName("FK_TT_KUITANSIALKES_TM_RUANG");
         });
 
         modelBuilder.Entity<TtKuitansiresep>(entity =>
         {
-            entity.HasKey(e => e.IdKuitansiresep);
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApproveAa).IsFixedLength();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
+            entity.Property(e => e.Idn).ValueGeneratedOnAdd();
+            entity.Property(e => e.TtdDokter).HasDefaultValue("");
 
-            entity.ToTable("TT_KUITANSIRESEP");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtKuitansireseps).HasConstraintName("FK_TT_KUITANSIRESEP_TM_STATUS");
 
-            entity.HasIndex(e => e.IdKuitansiresep, "IX_TT_KUITANSIRESEP");
+            entity.HasOne(d => d.VKddokterNavigation).WithMany(p => p.TtKuitansireseps).HasConstraintName("FK_TT_KUITANSIRESEP_TM_DOKTER");
 
-            entity.HasIndex(e => e.IdRegistrasi, "IX_TT_KUITANSIRESEP_1");
+            entity.HasOne(d => d.VKoderequestobatNavigation).WithMany(p => p.TtKuitansireseps).HasConstraintName("FK_TT_KUITANSIRESEP_TM_GUDANG");
 
-            entity.HasIndex(e => e.VNmdokter, "IX_TT_KUITANSIRESEP_2");
-
-            entity.HasIndex(e => e.VKoderuangan, "IX_TT_KUITANSIRESEP_3");
-
-            entity.HasIndex(e => e.VKoderequestobat, "IX_TT_KUITANSIRESEP_4");
-
-            entity.HasIndex(e => e.VKodetarif, "IX_TT_KUITANSIRESEP_5");
-
-            entity.HasIndex(e => e.VKddokter, "IX_TT_KUITANSIRESEP_6");
-
-            entity.HasIndex(e => e.Idn, "IX_TT_KUITANSIRESEP_idn");
-
-            entity.HasIndex(e => e.VNoresep, "IX_TT_KUITANSIRESEP_noresep");
-
-            entity.HasIndex(e => e.VStatus, "IX_TT_KUITANSIRESEP_status");
-
-            entity.HasIndex(e => e.Statusnotif, "IX_TT_KUITANSIRESEP_statusnotif");
-
-            entity.HasIndex(e => e.DTgl, "IX_TT_KUITANSIRESEP_tgl");
-
-            entity.HasIndex(e => e.VTiperesep, "IX_TT_KUITANSIRESEP_tiperesep");
-
-            entity.Property(e => e.IdKuitansiresep)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_KUITANSIRESEP");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApproveAa)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_AA");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApproveAa)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_AA");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DTgl)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.Idn)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("IDN");
-            entity.Property(e => e.Statusnotif)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("STATUSNOTIF");
-            entity.Property(e => e.TtdDokter)
-                .IsRequired()
-                .HasDefaultValue("")
-                .HasColumnType("text")
-                .HasColumnName("TTD_DOKTER");
-            entity.Property(e => e.VApproveAa)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_AA");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKoderequestobat)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODEREQUESTOBAT");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNoresep)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NORESEP");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
-            entity.Property(e => e.VTiperesep)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_TIPERESEP");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtKuitansireseps)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_KUITANSIRESEP_TM_STATUS");
-
-            entity.HasOne(d => d.VKddokterNavigation).WithMany(p => p.TtKuitansireseps)
-                .HasForeignKey(d => d.VKddokter)
-                .HasConstraintName("FK_TT_KUITANSIRESEP_TM_DOKTER");
-
-            entity.HasOne(d => d.VKoderequestobatNavigation).WithMany(p => p.TtKuitansireseps)
-                .HasForeignKey(d => d.VKoderequestobat)
-                .HasConstraintName("FK_TT_KUITANSIRESEP_TM_GUDANG");
-
-            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtKuitansireseps)
-                .HasForeignKey(d => d.VKoderuangan)
-                .HasConstraintName("FK_TT_KUITANSIRESEP_TM_RUANG");
+            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtKuitansireseps).HasConstraintName("FK_TT_KUITANSIRESEP_TM_RUANG");
         });
 
         modelBuilder.Entity<TtKuitansiretur>(entity =>
         {
-            entity.HasKey(e => e.VNomorretur);
-
-            entity.ToTable("TT_KUITANSIRETUR");
-
-            entity.HasIndex(e => e.IdRetur, "IX_TT_KUITANSIRETURP_idretur");
-
-            entity.HasIndex(e => e.DTglretur, "IX_TT_KUITANSIRETUR_d_tglretur");
-
-            entity.HasIndex(e => e.VKodetarif, "IX_TT_KUITANSIRETUR_v_kodetarif");
-
-            entity.HasIndex(e => e.VNomorretur, "IX_TT_KUITANSIRETUR_v_nomorretur");
-
-            entity.Property(e => e.VNomorretur)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_NOMORRETUR");
-            entity.Property(e => e.DTglretur)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLRETUR");
-            entity.Property(e => e.IdRegistrasi)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdRetur)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_RETUR");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VApprove)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
+            entity.Property(e => e.IdRetur).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TtKuitansiudd>(entity =>
         {
-            entity.HasKey(e => e.IdKuitansiudd);
+            entity.Property(e => e.IdKuitansiudd).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_KUITANSIUDD");
-
-            entity.Property(e => e.IdKuitansiudd)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_KUITANSIUDD");
-            entity.Property(e => e.CStatus).HasColumnName("C_STATUS");
-            entity.Property(e => e.DTgl)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKoderequestobat)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODEREQUESTOBAT");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNorequest)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NOREQUEST");
-
-            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtKuitansiudds)
-                .HasForeignKey(d => d.VKoderuangan)
-                .HasConstraintName("FK_TT_KUITANSIUDD_TM_RUANG");
+            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtKuitansiudds).HasConstraintName("FK_TT_KUITANSIUDD_TM_RUANG");
         });
 
         modelBuilder.Entity<TtKunjungan>(entity =>
         {
-            entity.HasKey(e => e.IdRegistrasi);
-
-            entity.ToTable("TT_KUNJUNGAN");
-
-            entity.HasIndex(e => e.IdRegistrasi, "IX_TT_KUNJUNGAN");
-
-            entity.HasIndex(e => e.IdPasien, "IX_TT_KUNJUNGAN_1");
-
-            entity.HasIndex(e => e.Rekananid, "IX_TT_KUNJUNGAN_2");
-
-            entity.HasIndex(e => e.VTujuankunjungan, "IX_TT_KUNJUNGAN_3");
-
-            entity.HasIndex(e => e.DTglpulang, "IX_TT_KUNJUNGAN_4");
-
-            entity.HasIndex(e => e.DTglkunjungan, "IX_TT_KUNJUNGAN_5");
-
-            entity.HasIndex(e => e.IdNumkunjungan, "IX_TT_KUNJUNGAN_6");
-
-            entity.HasIndex(e => e.IsCob, "IX_TT_KUNJUNGAN_cob");
-
-            entity.HasIndex(e => e.CIsbatal, "IX_TT_KUNJUNGAN_isbatal");
-
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.CIsbatal)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_ISBATAL");
-            entity.Property(e => e.DTglkunjungan)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLKUNJUNGAN");
-            entity.Property(e => e.DTglotorisasi)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLOTORISASI");
-            entity.Property(e => e.DTglpulang)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLPULANG");
-            entity.Property(e => e.IdNumkunjungan)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_NUMKUNJUNGAN");
-            entity.Property(e => e.IdPasien)
-                .IsRequired()
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("ID_PASIEN");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.IsCob).HasColumnName("IS_COB");
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID");
-            entity.Property(e => e.VAlasanbatal)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_ALASANBATAL");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VJamkunjungan)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_JAMKUNJUNGAN");
-            entity.Property(e => e.VKet)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_KET");
-            entity.Property(e => e.VNomorsep)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasDefaultValue("")
-                .HasColumnName("V_NOMORSEP");
-            entity.Property(e => e.VOtorisasi)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_OTORISASI");
-            entity.Property(e => e.VTransaksi)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("V_TRANSAKSI");
-            entity.Property(e => e.VTujuankunjungan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_TUJUANKUNJUNGAN");
-            entity.Property(e => e.VUmur)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_UMUR");
+            entity.Property(e => e.CIsbatal).IsFixedLength();
+            entity.Property(e => e.IdNumkunjungan).ValueGeneratedOnAdd();
+            entity.Property(e => e.VNomorsep).HasDefaultValue("");
 
             entity.HasOne(d => d.IdPasienNavigation).WithMany(p => p.TtKunjungans)
-                .HasForeignKey(d => d.IdPasien)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TT_KUNJUNGAN_TM_PASIEN_(idpasien)");
 
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtKunjungans)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_KUNJUNGAN_TM_STATUS");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtKunjungans).HasConstraintName("FK_TT_KUNJUNGAN_TM_STATUS");
 
             entity.HasOne(d => d.Rekanan).WithMany(p => p.TtKunjungans)
-                .HasForeignKey(d => d.Rekananid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TT_KUNJUNGAN_TM_REKANAN_(rekananid)");
         });
 
         modelBuilder.Entity<TtObatalke>(entity =>
         {
-            entity.HasKey(e => e.IdAlkes);
+            entity.Property(e => e.IdAlkes).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
 
-            entity.ToTable("TT_OBATALKES");
-
-            entity.HasIndex(e => e.IdAlkes, "IX_TT_OBATALKES");
-
-            entity.HasIndex(e => e.IdKuitansialkes, "IX_TT_OBATALKES_1");
-
-            entity.HasIndex(e => e.IJml, "IX_TT_OBATALKES_2");
-
-            entity.Property(e => e.IdAlkes)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_ALKES");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DDiskon)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_DISKON");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.IJml)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("I_JML");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdKuitansialkes)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_KUITANSIALKES");
-            entity.Property(e => e.IdObatalkes)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_OBATALKES");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKdobatalkes)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDOBATALKES");
-            entity.Property(e => e.VNmobatalkes)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMOBATALKES");
-            entity.Property(e => e.VNote)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("V_NOTE");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtObatalkes)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_OBATALKES_TM_STATUS");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtObatalkes).HasConstraintName("FK_TT_OBATALKES_TM_STATUS");
         });
 
         modelBuilder.Entity<TtObatlangsung>(entity =>
         {
-            entity.HasKey(e => e.VNokuitansi);
+            entity.Property(e => e.BBayar).IsFixedLength();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
+            entity.Property(e => e.IdObatlangsung).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_OBATLANGSUNG");
-
-            entity.HasIndex(e => e.IdRekanan, "IX_TT_OBATLANGSUNG");
-
-            entity.HasIndex(e => e.DTanggal, "IX_TT_OBATLANGSUNG_1");
-
-            entity.HasIndex(e => e.VNmpembeli, "IX_TT_OBATLANGSUNG_2");
-
-            entity.HasIndex(e => e.IdRegistrasi, "IX_TT_OBATLANGSUNG_3");
-
-            entity.HasIndex(e => e.VNokuitansi, "IX_TT_OBATLANGSUNG_4");
-
-            entity.HasIndex(e => e.VNmdokter, "IX_TT_OBATLANGSUNG_5");
-
-            entity.HasIndex(e => e.VKoderequestobat, "IX_TT_OBATLANGSUNG_6");
-
-            entity.Property(e => e.VNokuitansi)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_NOKUITANSI");
-            entity.Property(e => e.BBayar)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("B_BAYAR");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DBiaya)
-                .HasMaxLength(30)
-                .IsUnicode(false)
-                .HasColumnName("D_BIAYA");
-            entity.Property(e => e.DJasar)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("D_JASAR");
-            entity.Property(e => e.DTanggal)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TANGGAL");
-            entity.Property(e => e.DTglapp)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLAPP");
-            entity.Property(e => e.IdObatlangsung)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_OBATLANGSUNG");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdRekanan)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_REKANAN");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKeterangan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_KETERANGAN");
-            entity.Property(e => e.VKoderequestobat)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODEREQUESTOBAT");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNmpembeli)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NMPEMBELI");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtObatlangsungs)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_OBATLANGSUNG_TM_STATUS");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtObatlangsungs).HasConstraintName("FK_TT_OBATLANGSUNG_TM_STATUS");
         });
 
         modelBuilder.Entity<TtPaket>(entity =>
         {
-            entity.HasKey(e => e.IdPaket);
-
             entity.ToTable("TT_PAKET", tb => tb.HasTrigger("UPDATE_TT_TRANSAKSI"));
 
-            entity.HasIndex(e => e.VNomorpaket, "IX_TT_PAKET");
+            entity.Property(e => e.IdPaket).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
+            entity.Property(e => e.VKddokter).IsFixedLength();
+            entity.Property(e => e.VKdpemeriksaan).IsFixedLength();
+            entity.Property(e => e.VKodetarif).IsFixedLength();
+            entity.Property(e => e.VNmdokter).IsFixedLength();
+            entity.Property(e => e.VNmpemeriksaan).IsFixedLength();
+            entity.Property(e => e.VNmunit).IsFixedLength();
 
-            entity.HasIndex(e => e.IdRegistrasi, "IX_TT_PAKET_1");
+            entity.HasOne(d => d.IdMasterpemeriksaanpenunjangNavigation).WithMany(p => p.TtPakets).HasConstraintName("FK_TT_PAKET_TM_PEMERIKSAANPENUNJANG");
 
-            entity.HasIndex(e => e.DTgl, "IX_TT_PAKET_3");
+            entity.HasOne(d => d.IdRegistrasiNavigation).WithMany(p => p.TtPakets).HasConstraintName("FK_TT_PAKET_TT_KUNJUNGAN");
 
-            entity.HasIndex(e => e.VNmpemeriksaan, "IX_TT_PAKET_4");
-
-            entity.Property(e => e.IdPaket)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKET");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DBeapasien)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAPASIEN");
-            entity.Property(e => e.DBearekanan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAREKANAN");
-            entity.Property(e => e.DDiskon)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_DISKON");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DTgl)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL");
-            entity.Property(e => e.IdMasterpemeriksaanpenunjang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_MASTERPEMERIKSAANPENUNJANG");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdRekanan)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_REKANAN");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VApprove)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKdpemeriksaan)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("V_KDPEMERIKSAAN");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNmpemeriksaan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("V_NMPEMERIKSAAN");
-            entity.Property(e => e.VNmunit)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("V_NMUNIT");
-            entity.Property(e => e.VNomorpaket)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_NOMORPAKET");
-
-            entity.HasOne(d => d.IdMasterpemeriksaanpenunjangNavigation).WithMany(p => p.TtPakets)
-                .HasForeignKey(d => d.IdMasterpemeriksaanpenunjang)
-                .HasConstraintName("FK_TT_PAKET_TM_PEMERIKSAANPENUNJANG");
-
-            entity.HasOne(d => d.IdRegistrasiNavigation).WithMany(p => p.TtPakets)
-                .HasForeignKey(d => d.IdRegistrasi)
-                .HasConstraintName("FK_TT_PAKET_TT_KUNJUNGAN");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtPakets)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_PAKET_TM_STATUS");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtPakets).HasConstraintName("FK_TT_PAKET_TM_STATUS");
         });
 
         modelBuilder.Entity<TtPaketPb>(entity =>
         {
-            entity.HasKey(e => e.IdPaketpb);
-
-            entity.ToTable("TT_PAKET_PB");
-
-            entity.HasIndex(e => e.IdPaketpb, "IX_TT_PAKET_PB_ID_PAKETPB");
-
-            entity.HasIndex(e => e.VKodetarif, "IX_TT_PAKET_PB_V_KODETARIF");
-
-            entity.Property(e => e.IdPaketpb)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB");
-            entity.Property(e => e.DTglpaket)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLPAKET");
-            entity.Property(e => e.IdMasterpemeriksaanpenunjang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_MASTERPEMERIKSAANPENUNJANG");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKdpemeriksaan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KDPEMERIKSAAN");
-            entity.Property(e => e.VKeterangan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KETERANGAN");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNamadokter)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NAMADOKTER");
-            entity.Property(e => e.VNmpaketpb)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMPAKETPB");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
+            entity.Property(e => e.IdPaketpb).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TtPaketPbApp>(entity =>
         {
-            entity.HasKey(e => e.IdPaketpbApp);
+            entity.Property(e => e.IdPaketpbApp).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_PAKET_PB_APP");
+            entity.HasOne(d => d.IdPaketpbNavigation).WithMany(p => p.TtPaketPbApps).HasConstraintName("FK_TT_PAKET_PB_APP_TT_PAKET_PB");
 
-            entity.Property(e => e.IdPaketpbApp)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB_APP");
-            entity.Property(e => e.DTglapp)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLAPP");
-            entity.Property(e => e.IdPaketpb)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VByapp)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BYAPP");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VKodetarifgdg)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIFGDG");
+            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtPaketPbAppVKodetarifNavigations).HasConstraintName("FK_TT_PAKET_PB_APP_TM_GUDANG");
 
-            entity.HasOne(d => d.IdPaketpbNavigation).WithMany(p => p.TtPaketPbApps)
-                .HasForeignKey(d => d.IdPaketpb)
-                .HasConstraintName("FK_TT_PAKET_PB_APP_TT_PAKET_PB");
-
-            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtPaketPbAppVKodetarifNavigations)
-                .HasForeignKey(d => d.VKodetarif)
-                .HasConstraintName("FK_TT_PAKET_PB_APP_TM_GUDANG");
-
-            entity.HasOne(d => d.VKodetarifgdgNavigation).WithMany(p => p.TtPaketPbAppVKodetarifgdgNavigations)
-                .HasForeignKey(d => d.VKodetarifgdg)
-                .HasConstraintName("FK_TT_PAKET_PB_APP_TM_GUDANG1");
+            entity.HasOne(d => d.VKodetarifgdgNavigation).WithMany(p => p.TtPaketPbAppVKodetarifgdgNavigations).HasConstraintName("FK_TT_PAKET_PB_APP_TM_GUDANG1");
         });
 
         modelBuilder.Entity<TtPaketPbAppDetail>(entity =>
         {
-            entity.HasKey(e => e.IdPaketpbAppdetail);
+            entity.Property(e => e.IdPaketpbAppdetail).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_PAKET_PB_APP_DETAIL");
-
-            entity.Property(e => e.IdPaketpbAppdetail)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB_APPDETAIL");
-            entity.Property(e => e.DJml)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("D_JML");
-            entity.Property(e => e.DJmlapp)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("D_JMLAPP");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdPaketpbApp)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB_APP");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VByapp)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BYAPP");
-
-            entity.HasOne(d => d.IdPaketpbAppNavigation).WithMany(p => p.TtPaketPbAppDetails)
-                .HasForeignKey(d => d.IdPaketpbApp)
-                .HasConstraintName("FK_TT_PAKET_PB_APP_DETAIL_TT_PAKET_PB_APP");
+            entity.HasOne(d => d.IdPaketpbAppNavigation).WithMany(p => p.TtPaketPbAppDetails).HasConstraintName("FK_TT_PAKET_PB_APP_DETAIL_TT_PAKET_PB_APP");
         });
 
         modelBuilder.Entity<TtPaketPbPakai>(entity =>
         {
-            entity.HasKey(e => e.IdPaketpbPakai);
+            entity.Property(e => e.IdPaketpbPakai).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_PAKET_PB_PAKAI");
+            entity.HasOne(d => d.IdPaketpbNavigation).WithMany(p => p.TtPaketPbPakais).HasConstraintName("FK_TT_PAKET_PB_PAKAI_TT_PAKET_PB");
 
-            entity.Property(e => e.IdPaketpbPakai)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB_PAKAI");
-            entity.Property(e => e.DTglpaketPakai)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLPAKET_PAKAI");
-            entity.Property(e => e.IdPaketpb)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdRekanan)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_REKANAN");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.IsPaketbhp).HasColumnName("IS_PAKETBHP");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
+            entity.HasOne(d => d.IdRekananNavigation).WithMany(p => p.TtPaketPbPakais).HasConstraintName("FK_TT_PAKET_PB_PAKAI_TM_REKANAN");
 
-            entity.HasOne(d => d.IdPaketpbNavigation).WithMany(p => p.TtPaketPbPakais)
-                .HasForeignKey(d => d.IdPaketpb)
-                .HasConstraintName("FK_TT_PAKET_PB_PAKAI_TT_PAKET_PB");
-
-            entity.HasOne(d => d.IdRekananNavigation).WithMany(p => p.TtPaketPbPakais)
-                .HasForeignKey(d => d.IdRekanan)
-                .HasConstraintName("FK_TT_PAKET_PB_PAKAI_TM_REKANAN");
-
-            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtPaketPbPakais)
-                .HasForeignKey(d => d.VKodetarif)
-                .HasConstraintName("FK_TT_PAKET_PB_PAKAI_TM_GUDANG");
+            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtPaketPbPakais).HasConstraintName("FK_TT_PAKET_PB_PAKAI_TM_GUDANG");
         });
 
         modelBuilder.Entity<TtPaketPbPakaiDetail>(entity =>
         {
-            entity.HasKey(e => e.IdPaketpbPakaidetail);
+            entity.Property(e => e.IdPaketpbPakaidetail).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
 
-            entity.ToTable("TT_PAKET_PB_PAKAI_DETAIL");
-
-            entity.Property(e => e.IdPaketpbPakaidetail)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB_PAKAIDETAIL");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DHargajual)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGAJUAL");
-            entity.Property(e => e.DJml)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("D_JML");
-            entity.Property(e => e.DJmlpakai)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("D_JMLPAKAI");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdPaketpbPakai)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB_PAKAI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-
-            entity.HasOne(d => d.IdPaketpbPakaiNavigation).WithMany(p => p.TtPaketPbPakaiDetails)
-                .HasForeignKey(d => d.IdPaketpbPakai)
-                .HasConstraintName("FK_TT_PAKET_PB_PAKAI_DETAIL_TT_PAKET_PB_PAKAI");
+            entity.HasOne(d => d.IdPaketpbPakaiNavigation).WithMany(p => p.TtPaketPbPakaiDetails).HasConstraintName("FK_TT_PAKET_PB_PAKAI_DETAIL_TT_PAKET_PB_PAKAI");
         });
 
         modelBuilder.Entity<TtPaketPbRetur>(entity =>
         {
-            entity.HasKey(e => e.IdPaketpbRetur);
+            entity.Property(e => e.IdPaketpbRetur).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_PAKET_PB_RETUR");
-
-            entity.Property(e => e.IdPaketpbRetur)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB_RETUR");
-            entity.Property(e => e.DTglretur)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLRETUR");
-            entity.Property(e => e.IdPaketpb)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB");
-            entity.Property(e => e.IdPaketpbPakai)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB_PAKAI");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdRekanan)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_REKANAN");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VKodetarifgdg)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIFGDG");
-
-            entity.HasOne(d => d.IdPaketpbNavigation).WithMany(p => p.TtPaketPbReturs)
-                .HasForeignKey(d => d.IdPaketpb)
-                .HasConstraintName("FK_TT_PAKET_PB_RETUR_TT_PAKET_PB");
+            entity.HasOne(d => d.IdPaketpbNavigation).WithMany(p => p.TtPaketPbReturs).HasConstraintName("FK_TT_PAKET_PB_RETUR_TT_PAKET_PB");
 
             entity.HasOne(d => d.IdPaketpbPakaiNavigation).WithMany(p => p.TtPaketPbReturs)
-                .HasForeignKey(d => d.IdPaketpbPakai)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TT_PAKET_PB_RETUR_TT_PAKET_PB_PAKAI");
 
-            entity.HasOne(d => d.IdRekananNavigation).WithMany(p => p.TtPaketPbReturs)
-                .HasForeignKey(d => d.IdRekanan)
-                .HasConstraintName("FK_TT_PAKET_PB_RETUR_TM_REKANAN");
+            entity.HasOne(d => d.IdRekananNavigation).WithMany(p => p.TtPaketPbReturs).HasConstraintName("FK_TT_PAKET_PB_RETUR_TM_REKANAN");
 
-            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtPaketPbReturVKodetarifNavigations)
-                .HasForeignKey(d => d.VKodetarif)
-                .HasConstraintName("FK_TT_PAKET_PB_RETUR_TM_GUDANG");
+            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtPaketPbReturVKodetarifNavigations).HasConstraintName("FK_TT_PAKET_PB_RETUR_TM_GUDANG");
 
-            entity.HasOne(d => d.VKodetarifgdgNavigation).WithMany(p => p.TtPaketPbReturVKodetarifgdgNavigations)
-                .HasForeignKey(d => d.VKodetarifgdg)
-                .HasConstraintName("FK_TT_PAKET_PB_RETUR_TM_GUDANG1");
+            entity.HasOne(d => d.VKodetarifgdgNavigation).WithMany(p => p.TtPaketPbReturVKodetarifgdgNavigations).HasConstraintName("FK_TT_PAKET_PB_RETUR_TM_GUDANG1");
         });
 
         modelBuilder.Entity<TtPaketPbReturDetail>(entity =>
         {
-            entity.HasKey(e => e.IdPaketpbReturdetail);
+            entity.Property(e => e.IdPaketpbReturdetail).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_PAKET_PB_RETUR_DETAIL");
-
-            entity.Property(e => e.IdPaketpbReturdetail)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB_RETURDETAIL");
-            entity.Property(e => e.DHargajual)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGAJUAL");
-            entity.Property(e => e.DJml)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("D_JML");
-            entity.Property(e => e.DJmlpakai)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("D_JMLPAKAI");
-            entity.Property(e => e.DSisa)
-                .HasColumnType("decimal(18, 2)")
-                .HasColumnName("D_SISA");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdPaketpbRetur)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_PAKETPB_RETUR");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-
-            entity.HasOne(d => d.IdPaketpbReturNavigation).WithMany(p => p.TtPaketPbReturDetails)
-                .HasForeignKey(d => d.IdPaketpbRetur)
-                .HasConstraintName("FK_TT_PAKET_PB_RETUR_DETAIL_TT_PAKET_PB_RETUR");
+            entity.HasOne(d => d.IdPaketpbReturNavigation).WithMany(p => p.TtPaketPbReturDetails).HasConstraintName("FK_TT_PAKET_PB_RETUR_DETAIL_TT_PAKET_PB_RETUR");
         });
 
         modelBuilder.Entity<TtPasienpd>(entity =>
         {
             entity.HasKey(e => e.IdPasienpds).HasName("PK_TT_PASIENPDS2");
 
-            entity.ToTable("TT_PASIENPDS");
+            entity.Property(e => e.CIsdone).IsFixedLength();
+            entity.Property(e => e.IdNumpasienpds).ValueGeneratedOnAdd();
+            entity.Property(e => e.VJam).IsFixedLength();
 
-            entity.HasIndex(e => e.DTgldatang, "IX_TT_PASIENPDS_d_tgldtg");
-
-            entity.HasIndex(e => e.IdNumpasienpds, "IX_TT_PASIENPDS_idnum");
-
-            entity.HasIndex(e => e.IdRegistrasi, "IX_TT_PASIENPDS_idreg");
-
-            entity.HasIndex(e => e.IdStatus, "IX_TT_PASIENPDS_idstatus");
-
-            entity.HasIndex(e => e.IdVoucher, "IX_TT_PASIENPDS_idvoucher");
-
-            entity.HasIndex(e => e.VKddokter, "IX_TT_PASIENPDS_kddokter");
-
-            entity.HasIndex(e => e.VKdpengirim, "IX_TT_PASIENPDS_kdpengirim");
-
-            entity.HasIndex(e => e.VKoderuangan, "IX_TT_PASIENPDS_koderuang");
-
-            entity.Property(e => e.IdPasienpds)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_PASIENPDS");
-            entity.Property(e => e.CIsdone)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_ISDONE");
-            entity.Property(e => e.DTgldatang)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLDATANG");
-            entity.Property(e => e.IUrut).HasColumnName("I_URUT");
-            entity.Property(e => e.IdJadwal)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_JADWAL");
-            entity.Property(e => e.IdNumpasienpds)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_NUMPASIENPDS");
-            entity.Property(e => e.IdRegistrasi)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.IdVoucher).HasColumnName("ID_VOUCHER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VJam)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("V_JAM");
-            entity.Property(e => e.VKddokter)
-                .IsRequired()
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKdpengirim)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDPENGIRIM");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.VNmpengirim)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMPENGIRIM");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(30)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
-
-            entity.HasOne(d => d.IdJadwalNavigation).WithMany(p => p.TtPasienpds)
-                .HasForeignKey(d => d.IdJadwal)
-                .HasConstraintName("FK_TT_PASIENPDS_TM_JADWALDOKTER");
+            entity.HasOne(d => d.IdJadwalNavigation).WithMany(p => p.TtPasienpds).HasConstraintName("FK_TT_PASIENPDS_TM_JADWALDOKTER");
 
             entity.HasOne(d => d.IdRegistrasiNavigation).WithMany(p => p.TtPasienpds)
-                .HasForeignKey(d => d.IdRegistrasi)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TT_PASIENPDS_TT_KUNJUNGAN");
 
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtPasienpds)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_PASIENPDS_TM_STATUS");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtPasienpds).HasConstraintName("FK_TT_PASIENPDS_TM_STATUS");
 
             entity.HasOne(d => d.VKddokterNavigation).WithMany(p => p.TtPasienpds)
-                .HasForeignKey(d => d.VKddokter)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TT_PASIENPDS_TM_DOKTER_(dokter)");
 
-            entity.HasOne(d => d.VKdpengirimNavigation).WithMany(p => p.TtPasienpds)
-                .HasForeignKey(d => d.VKdpengirim)
-                .HasConstraintName("FK_TT_PASIENPDS_TM_ASAL_(pengirim)");
+            entity.HasOne(d => d.VKdpengirimNavigation).WithMany(p => p.TtPasienpds).HasConstraintName("FK_TT_PASIENPDS_TM_ASAL_(pengirim)");
 
-            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtPasienpds)
-                .HasForeignKey(d => d.VKoderuangan)
-                .HasConstraintName("FK_TT_PASIENPDS_TM_RUANG_(koderuangan)");
+            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtPasienpds).HasConstraintName("FK_TT_PASIENPDS_TM_RUANG_(koderuangan)");
         });
 
         modelBuilder.Entity<TtPasienpenunjang>(entity =>
         {
             entity.HasKey(e => e.IdPasienpenunjang).HasName("PK_TT_PASIENHEMO");
 
-            entity.ToTable("TT_PASIENPENUNJANG");
+            entity.Property(e => e.CIsdone).IsFixedLength();
+            entity.Property(e => e.IdNumpasienpenj).ValueGeneratedOnAdd();
 
-            entity.HasIndex(e => new { e.IdRegistrasi, e.DTglkunjungan, e.VPenunjang, e.VKddokter, e.IdPasienpenunjang, e.CIsdone, e.IdNumpasienpenj }, "IX_TT_PASIENPENUNJANG").IsUnique();
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtPasienpenunjangs).HasConstraintName("FK_TT_PASIENPENUNJANG_TM_STATUS");
 
-            entity.Property(e => e.IdPasienpenunjang)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_PASIENPENUNJANG");
-            entity.Property(e => e.CIsdone)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_ISDONE");
-            entity.Property(e => e.DTglkunjungan)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLKUNJUNGAN");
-            entity.Property(e => e.IUrut).HasColumnName("I_URUT");
-            entity.Property(e => e.IdNumpasienpenj)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_NUMPASIENPENJ");
-            entity.Property(e => e.IdPasien)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("ID_PASIEN");
-            entity.Property(e => e.IdRegistrasi)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VJam)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_JAM");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKdpengirim)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDPENGIRIM");
-            entity.Property(e => e.VKdunit)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KDUNIT");
-            entity.Property(e => e.VKelas)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KELAS");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(60)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNmpengirim)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMPENGIRIM");
-            entity.Property(e => e.VNote)
-                .HasMaxLength(250)
-                .IsUnicode(false)
-                .HasColumnName("V_NOTE");
-            entity.Property(e => e.VPenunjang)
-                .IsRequired()
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("V_PENUNJANG");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
-            entity.Property(e => e.VUnit)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_UNIT");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtPasienpenunjangs)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_PASIENPENUNJANG_TM_STATUS");
-
-            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtPasienpenunjangs)
-                .HasForeignKey(d => d.VKoderuangan)
-                .HasConstraintName("FK_TT_PASIENPENUNJANG_TM_RUANG");
+            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtPasienpenunjangs).HasConstraintName("FK_TT_PASIENPENUNJANG_TM_RUANG");
         });
 
         modelBuilder.Entity<TtPasienugd>(entity =>
         {
-            entity.HasKey(e => e.IdNumpasienugd);
-
-            entity.ToTable("TT_PASIENUGD");
-
-            entity.HasIndex(e => e.IdNumpasienugd, "IX_TT_PASIENUGD_idnum");
-
-            entity.HasIndex(e => e.IdPasienigd, "IX_TT_PASIENUGD_idpasienigd");
-
-            entity.HasIndex(e => e.IdRegistrasi, "IX_TT_PASIENUGD_idreg");
-
-            entity.HasIndex(e => e.CIsdone, "IX_TT_PASIENUGD_isdone");
-
-            entity.HasIndex(e => e.VKddokter, "IX_TT_PASIENUGD_kddokter");
-
-            entity.HasIndex(e => e.VKoderuangan, "IX_TT_PASIENUGD_kdruang");
-
-            entity.HasIndex(e => e.VNmdokter, "IX_TT_PASIENUGD_nmdokter");
-
-            entity.HasIndex(e => e.DTgldatang, "IX_TT_PASIENUGD_tgl");
-
-            entity.HasIndex(e => e.VKdpengirim, "IX_TT_PASIENUGD_vkdpengirim");
-
-            entity.Property(e => e.IdNumpasienugd)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_NUMPASIENUGD");
-            entity.Property(e => e.BDiberitahukankekeluarga).HasColumnName("B_DIBERITAHUKANKEKELUARGA");
-            entity.Property(e => e.BDiberitahukankepolisi).HasColumnName("B_DIBERITAHUKANKEPOLISI");
-            entity.Property(e => e.BKasuskecelakaan).HasColumnName("B_KASUSKECELAKAAN");
-            entity.Property(e => e.BKasuspolisi).HasColumnName("B_KASUSPOLISI");
-            entity.Property(e => e.BPendarahan).HasColumnName("B_PENDARAHAN");
-            entity.Property(e => e.BVisum).HasColumnName("B_VISUM");
-            entity.Property(e => e.CIsdone)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_ISDONE");
-            entity.Property(e => e.CNadi)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_NADI");
-            entity.Property(e => e.CSuhutubuh)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_SUHUTUBUH");
-            entity.Property(e => e.CTekanandarah)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_TEKANANDARAH");
-            entity.Property(e => e.DTgldatang)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLDATANG");
-            entity.Property(e => e.DTglkelakaan)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLKELAKAAN");
-            entity.Property(e => e.DTglpemberitahuan)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLPEMBERITAHUAN");
-            entity.Property(e => e.DTglpulang)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLPULANG");
-            entity.Property(e => e.IdPasienigd)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_PASIENIGD");
-            entity.Property(e => e.IdRegistrasi)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VAnamnese)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_ANAMNESE");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VCarakeluar)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_CARAKELUAR");
-            entity.Property(e => e.VDibawaoleh)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_DIBAWAOLEH");
-            entity.Property(e => e.VJamdatang)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_JAMDATANG");
-            entity.Property(e => e.VJampemberitahuan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_JAMPEMBERITAHUAN");
-            entity.Property(e => e.VJampulang)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_JAMPULANG");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKdpengirim)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDPENGIRIM");
-            entity.Property(e => e.VKeadaanterakhir)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KEADAANTERAKHIR");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNmpemberitahu)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMPEMBERITAHU");
-            entity.Property(e => e.VNmpengirim)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMPENGIRIM");
-            entity.Property(e => e.VPemeriksaanfisik)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_PEMERIKSAANFISIK");
-            entity.Property(e => e.VPemeriksaanlanjutan)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_PEMERIKSAANLANJUTAN");
-            entity.Property(e => e.VPemeriksaanpenunjang)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_PEMERIKSAANPENUNJANG");
-            entity.Property(e => e.VPenjamin)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_PENJAMIN");
-            entity.Property(e => e.VRiwayatsingkat)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_RIWAYATSINGKAT");
-            entity.Property(e => e.VTmpkecelakaan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_TMPKECELAKAAN");
+            entity.Property(e => e.IdNumpasienugd).ValueGeneratedOnAdd();
+            entity.Property(e => e.CIsdone).IsFixedLength();
+            entity.Property(e => e.CNadi).IsFixedLength();
+            entity.Property(e => e.CSuhutubuh).IsFixedLength();
+            entity.Property(e => e.CTekanandarah).IsFixedLength();
 
             entity.HasOne(d => d.IdRegistrasiNavigation).WithMany(p => p.TtPasienugds)
-                .HasForeignKey(d => d.IdRegistrasi)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TT_PASIENUGD_TT_KUNJUNGAN");
 
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtPasienugds)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_PASIENUGD_TM_STATUS");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtPasienugds).HasConstraintName("FK_TT_PASIENUGD_TM_STATUS");
 
-            entity.HasOne(d => d.VKddokterNavigation).WithMany(p => p.TtPasienugds)
-                .HasForeignKey(d => d.VKddokter)
-                .HasConstraintName("FK_TT_PASIENUGD_TM_DOKTER");
+            entity.HasOne(d => d.VKddokterNavigation).WithMany(p => p.TtPasienugds).HasConstraintName("FK_TT_PASIENUGD_TM_DOKTER");
 
-            entity.HasOne(d => d.VKdpengirimNavigation).WithMany(p => p.TtPasienugds)
-                .HasForeignKey(d => d.VKdpengirim)
-                .HasConstraintName("FK_TT_PASIENUGD_TM_ASAL");
+            entity.HasOne(d => d.VKdpengirimNavigation).WithMany(p => p.TtPasienugds).HasConstraintName("FK_TT_PASIENUGD_TM_ASAL");
 
-            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtPasienugds)
-                .HasForeignKey(d => d.VKoderuangan)
-                .HasConstraintName("FK_TT_PASIENUGD_TM_RUANG");
+            entity.HasOne(d => d.VKoderuanganNavigation).WithMany(p => p.TtPasienugds).HasConstraintName("FK_TT_PASIENUGD_TM_RUANG");
         });
 
         modelBuilder.Entity<TtPembayaran>(entity =>
         {
             entity.HasKey(e => e.VNomorbyrpasien).HasName("PK_TT_PEMBAYARAN_1");
 
-            entity.ToTable("TT_PEMBAYARAN");
-
-            entity.HasIndex(e => e.DTgl, "IX_TT_PEMBAYARAN");
-
-            entity.HasIndex(e => e.VNomorbyrpasien, "IX_TT_PEMBAYARAN_1");
-
-            entity.HasIndex(e => e.VBy, "IX_TT_PEMBAYARAN_2");
-
-            entity.HasIndex(e => e.DJumlah, "IX_TT_PEMBAYARAN_3");
-
-            entity.Property(e => e.VNomorbyrpasien)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_NOMORBYRPASIEN");
-            entity.Property(e => e.DJumlah)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JUMLAH");
-            entity.Property(e => e.DTgl)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL");
-            entity.Property(e => e.IdRegistrasi)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.Idpembayaran)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("IDPEMBAYARAN");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
+            entity.Property(e => e.Idpembayaran).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<TtPembayaranDetail>(entity =>
         {
             entity.HasKey(e => e.Idn).HasName("PK_TT_PEMBAYARAN");
 
-            entity.ToTable("TT_PEMBAYARAN_DETAIL");
+            entity.Property(e => e.Idn).ValueGeneratedOnAdd();
+            entity.Property(e => e.CStatus).IsFixedLength();
 
-            entity.HasIndex(e => e.IdRegistrasi, "IX_TT_PEMBAYARAN_DETAIL");
-
-            entity.HasIndex(e => e.DTgl, "IX_TT_PEMBAYARAN_DETAIL_1");
-
-            entity.HasIndex(e => e.DChargekredit, "IX_TT_PEMBAYARAN_DETAIL_10");
-
-            entity.HasIndex(e => e.DCompliment, "IX_TT_PEMBAYARAN_DETAIL_11");
-
-            entity.HasIndex(e => e.DKembali, "IX_TT_PEMBAYARAN_DETAIL_12");
-
-            entity.HasIndex(e => e.IdStatus, "IX_TT_PEMBAYARAN_DETAIL_13");
-
-            entity.HasIndex(e => e.VNomorbyrpasien, "IX_TT_PEMBAYARAN_DETAIL_14");
-
-            entity.HasIndex(e => e.DBayartunai, "IX_TT_PEMBAYARAN_DETAIL_15");
-
-            entity.HasIndex(e => e.VBy, "IX_TT_PEMBAYARAN_DETAIL_16");
-
-            entity.HasIndex(e => e.DBeapasien, "IX_TT_PEMBAYARAN_DETAIL_2");
-
-            entity.HasIndex(e => e.DBearekanan, "IX_TT_PEMBAYARAN_DETAIL_3");
-
-            entity.HasIndex(e => e.DPerjanjianprshn, "IX_TT_PEMBAYARAN_DETAIL_4");
-
-            entity.HasIndex(e => e.DAsuransi, "IX_TT_PEMBAYARAN_DETAIL_5");
-
-            entity.HasIndex(e => e.DBayarkredit, "IX_TT_PEMBAYARAN_DETAIL_6");
-
-            entity.HasIndex(e => e.DBayartransfer, "IX_TT_PEMBAYARAN_DETAIL_7");
-
-            entity.HasIndex(e => e.Idn, "IX_TT_PEMBAYARAN_DETAIL_8");
-
-            entity.HasIndex(e => e.DBeacharge, "IX_TT_PEMBAYARAN_DETAIL_9");
-
-            entity.Property(e => e.Idn)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("IDN");
-            entity.Property(e => e.CStatus)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_STATUS");
-            entity.Property(e => e.DAdministrasi)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_ADMINISTRASI");
-            entity.Property(e => e.DAsuransi)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_ASURANSI");
-            entity.Property(e => e.DBayarkredit)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BAYARKREDIT");
-            entity.Property(e => e.DBayartransfer)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BAYARTRANSFER");
-            entity.Property(e => e.DBayartunai)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BAYARTUNAI");
-            entity.Property(e => e.DBeacharge)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEACHARGE");
-            entity.Property(e => e.DBeapasien)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAPASIEN");
-            entity.Property(e => e.DBearekanan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAREKANAN");
-            entity.Property(e => e.DChargekredit)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_CHARGEKREDIT");
-            entity.Property(e => e.DCompliment)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_COMPLIMENT");
-            entity.Property(e => e.DDeposit)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_DEPOSIT");
-            entity.Property(e => e.DJumlah)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JUMLAH");
-            entity.Property(e => e.DKembali)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_KEMBALI");
-            entity.Property(e => e.DLainlain)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_LAINLAIN");
-            entity.Property(e => e.DMaterai)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_MATERAI");
-            entity.Property(e => e.DPerjanjianprshn)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_PERJANJIANPRSHN");
-            entity.Property(e => e.DTgl)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGL");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKreditjeniscard)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_KREDITJENISCARD");
-            entity.Property(e => e.VKreditnamabank)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_KREDITNAMABANK");
-            entity.Property(e => e.VKreditnobatch)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_KREDITNOBATCH");
-            entity.Property(e => e.VKreditnocard)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_KREDITNOCARD");
-            entity.Property(e => e.VNomorbyrpasien)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_NOMORBYRPASIEN");
-            entity.Property(e => e.VNonamacc)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_NONAMACC");
-            entity.Property(e => e.VOtorisasi)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_OTORISASI");
-            entity.Property(e => e.VTransfernamabank)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_TRANSFERNAMABANK");
-            entity.Property(e => e.VTransfernomor)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_TRANSFERNOMOR");
-            entity.Property(e => e.VTransfernorekasal)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_TRANSFERNOREKASAL");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtPembayaranDetails)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_PEMBAYARAN_TM_STATUS");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtPembayaranDetails).HasConstraintName("FK_TT_PEMBAYARAN_TM_STATUS");
         });
 
         modelBuilder.Entity<TtPemeriksaanpa>(entity =>
         {
-            entity.HasKey(e => new { e.IdPasienlab, e.VKdpemeriksaanlab });
+            entity.Property(e => e.VNmdokter).IsFixedLength();
 
-            entity.ToTable("TT_PEMERIKSAANPA");
-
-            entity.Property(e => e.IdPasienlab)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_PASIENLAB");
-            entity.Property(e => e.VKdpemeriksaanlab)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("V_KDPEMERIKSAANLAB");
-            entity.Property(e => e.DTgljawaban)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLJAWABAN");
-            entity.Property(e => e.DTglterima)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLTERIMA");
-            entity.Property(e => e.VBahan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_BAHAN");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VCatatan)
-                .HasColumnType("text")
-                .HasColumnName("V_CATATAN");
-            entity.Property(e => e.VDiagnosa)
-                .HasMaxLength(500)
-                .IsUnicode(false)
-                .HasColumnName("V_DIAGNOSA");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKesimpulan)
-                .HasColumnType("text")
-                .HasColumnName("V_KESIMPULAN");
-            entity.Property(e => e.VMakro)
-                .HasColumnType("text")
-                .HasColumnName("V_MAKRO");
-            entity.Property(e => e.VMikro)
-                .HasColumnType("text")
-                .HasColumnName("V_MIKRO");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNmpemeriksaan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMPEMERIKSAAN");
-            entity.Property(e => e.VPeriksakemarin)
-                .HasColumnType("text")
-                .HasColumnName("V_PERIKSAKEMARIN");
-            entity.Property(e => e.VRingkasan)
-                .HasColumnType("text")
-                .HasColumnName("V_RINGKASAN");
-            entity.Property(e => e.VSaran)
-                .HasColumnType("text")
-                .HasColumnName("V_SARAN");
-
-            entity.HasOne(d => d.VKddokterNavigation).WithMany(p => p.TtPemeriksaanpas)
-                .HasForeignKey(d => d.VKddokter)
-                .HasConstraintName("FK_TT_PEMERIKSAANPA_TM_DOKTER");
+            entity.HasOne(d => d.VKddokterNavigation).WithMany(p => p.TtPemeriksaanpas).HasConstraintName("FK_TT_PEMERIKSAANPA_TM_DOKTER");
         });
 
         modelBuilder.Entity<TtPenjadwalan>(entity =>
         {
-            entity.HasKey(e => e.IdPenjadwalan);
+            entity.Property(e => e.IdPenjadwalan).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_PENJADWALAN");
-
-            entity.Property(e => e.IdPenjadwalan)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_Penjadwalan");
-            entity.Property(e => e.DTglInput)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TglInput");
-            entity.Property(e => e.DTglJadwal)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TglJadwal");
-            entity.Property(e => e.IUrut).HasColumnName("I_Urut");
-            entity.Property(e => e.IdJadwal)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_Jadwal");
-            entity.Property(e => e.IdPasien)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("ID_Pasien");
-            entity.Property(e => e.VAlamatPasien)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_AlamatPasien");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VJam)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_Jam");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDokter");
-            entity.Property(e => e.VKet)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_KET");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("V_KODERUANGAN");
-            entity.Property(e => e.VNamaPasien)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NamaPasien");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
-            entity.Property(e => e.VTelpPasien)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_TelpPasien");
-
-            entity.HasOne(d => d.IdPasienNavigation).WithMany(p => p.TtPenjadwalans)
-                .HasForeignKey(d => d.IdPasien)
-                .HasConstraintName("FK_TT_PENJADWALAN_TM_PASIEN");
+            entity.HasOne(d => d.IdPasienNavigation).WithMany(p => p.TtPenjadwalans).HasConstraintName("FK_TT_PENJADWALAN_TM_PASIEN");
         });
 
         modelBuilder.Entity<TtResep>(entity =>
         {
             entity.HasKey(e => e.IdObatresep).HasName("PK_TT_RESEPX");
 
-            entity.ToTable("TT_RESEP");
-
-            entity.HasIndex(e => e.IdKuitansiresep, "IX_TT_RESEP");
-
-            entity.HasIndex(e => e.IdBarang, "IX_TT_RESEP_1");
-
-            entity.HasIndex(e => e.DJml, "IX_TT_RESEP_2");
-
-            entity.HasIndex(e => e.DJmltebus, "IX_TT_RESEP_3");
-
-            entity.Property(e => e.IdObatresep)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_OBATRESEP");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApproveAa)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_AA");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApproveAa)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_AA");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DDiskon)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_DISKON");
-            entity.Property(e => e.DDosisracikan)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("D_DOSISRACIKAN");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DJml)
-                .HasColumnType("decimal(9, 3)")
-                .HasColumnName("D_JML");
-            entity.Property(e => e.DJmlracikan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JMLRACIKAN");
-            entity.Property(e => e.DJmltebus)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JMLTEBUS");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdKuitansiresep)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_KUITANSIRESEP");
-            entity.Property(e => e.IdResep)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_RESEP");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID");
-            entity.Property(e => e.VApproveAa)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_AA");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKdobat)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDOBAT");
-            entity.Property(e => e.VNmobat)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMOBAT");
-            entity.Property(e => e.VNmracikan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_NMRACIKAN");
-            entity.Property(e => e.VNoteobat)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_NOTEOBAT");
+            entity.Property(e => e.IdObatresep).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApproveAa).IsFixedLength();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
+            entity.Property(e => e.DDosisracikan).IsFixedLength();
         });
 
         modelBuilder.Entity<TtResepTulisracikan>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("TT_RESEP_TULISRACIKAN");
-
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("c_approve");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("d_approve");
-            entity.Property(e => e.DTgl)
-                .HasColumnType("datetime")
-                .HasColumnName("d_tgl");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("id_registrasi");
-            entity.Property(e => e.IdStatus).HasColumnName("id_status");
-            entity.Property(e => e.Idn)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("idn");
-            entity.Property(e => e.NoteFarmasi)
-                .HasColumnType("text")
-                .HasColumnName("note_farmasi");
-            entity.Property(e => e.NotePerawat)
-                .HasColumnType("text")
-                .HasColumnName("note_perawat");
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("rekananid");
-            entity.Property(e => e.TtdDokter)
-                .HasColumnType("text")
-                .HasColumnName("ttd_dokter");
-            entity.Property(e => e.VApprove)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("v_approve");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("v_by");
-            entity.Property(e => e.VKddokter)
-                .IsRequired()
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("v_kddokter");
-            entity.Property(e => e.VKoderequestobat)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("v_koderequestobat");
-            entity.Property(e => e.VKoderuangan)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("v_koderuangan");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("v_kodetarif");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("v_nmdokter");
-            entity.Property(e => e.VNoresep)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("v_noresep");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("v_status");
+            entity.Property(e => e.CApprove).IsFixedLength();
         });
 
         modelBuilder.Entity<TtResepudd>(entity =>
         {
-            entity.HasKey(e => e.IdResepudd);
+            entity.Property(e => e.IdResepudd).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_RESEPUDD");
-
-            entity.Property(e => e.IdResepudd)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_RESEPUDD");
-            entity.Property(e => e.CStatus).HasColumnName("C_STATUS");
-            entity.Property(e => e.CTipeaskes)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("C_TIPEASKES");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DJml)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JML");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdKuitansiudd)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_KUITANSIUDD");
-            entity.Property(e => e.VApprove)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKdobat)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDOBAT");
-            entity.Property(e => e.VNmobat)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMOBAT");
-            entity.Property(e => e.VNote)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_NOTE");
-
-            entity.HasOne(d => d.IdKuitansiuddNavigation).WithMany(p => p.TtResepudds)
-                .HasForeignKey(d => d.IdKuitansiudd)
-                .HasConstraintName("FK_TT_RESEPUDD_TT_KUITANSIUDD");
+            entity.HasOne(d => d.IdKuitansiuddNavigation).WithMany(p => p.TtResepudds).HasConstraintName("FK_TT_RESEPUDD_TT_KUITANSIUDD");
         });
 
         modelBuilder.Entity<TtRetur>(entity =>
         {
-            entity.HasKey(e => e.IdReturdetail);
+            entity.Property(e => e.IdReturdetail).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
 
-            entity.ToTable("TT_RETUR");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtReturs).HasConstraintName("FK_TT_RETUR_TM_STATUS");
 
-            entity.HasIndex(e => e.DJml, "IX_TT_RETUR_d_jml");
-
-            entity.HasIndex(e => e.DTglretur, "IX_TT_RETUR_d_tglretur");
-
-            entity.HasIndex(e => e.IdResep, "IX_TT_RETUR_idresep");
-
-            entity.HasIndex(e => e.IdReturdetail, "IX_TT_RETUR_idreturdetail");
-
-            entity.HasIndex(e => e.VBy, "IX_TT_RETUR_v_by");
-
-            entity.HasIndex(e => e.DHarga, "d_harga");
-
-            entity.Property(e => e.IdReturdetail)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_RETURDETAIL");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DJml)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JML");
-            entity.Property(e => e.DTglretur)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLRETUR");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdRegistrasi)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdResep)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_RESEP");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.Rekananid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("REKANANID");
-            entity.Property(e => e.VApprove)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKdobat)
-                .IsRequired()
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDOBAT");
-            entity.Property(e => e.VNmobat)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMOBAT");
-            entity.Property(e => e.VNomorretur)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_NOMORRETUR");
-            entity.Property(e => e.VNote)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_NOTE");
-            entity.Property(e => e.VSettingretur)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .HasColumnName("V_SETTINGRETUR");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtReturs)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_RETUR_TM_STATUS");
-
-            entity.HasOne(d => d.VNomorreturNavigation).WithMany(p => p.TtReturs)
-                .HasForeignKey(d => d.VNomorretur)
-                .HasConstraintName("FK_TT_RETUR_TT_KUITANSIRETUR");
+            entity.HasOne(d => d.VNomorreturNavigation).WithMany(p => p.TtReturs).HasConstraintName("FK_TT_RETUR_TT_KUITANSIRETUR");
         });
 
         modelBuilder.Entity<TtReturApp>(entity =>
         {
-            entity.HasKey(e => e.IdReturapp);
+            entity.Property(e => e.IdReturapp).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_RETUR_APP");
-
-            entity.Property(e => e.IdReturapp)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_RETURAPP");
-            entity.Property(e => e.DTglapp)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLAPP");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-
-            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtReturApps)
-                .HasForeignKey(d => d.VKodetarif)
-                .HasConstraintName("FK_TT_RETUR_APP_TM_GUDANG");
+            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtReturApps).HasConstraintName("FK_TT_RETUR_APP_TM_GUDANG");
         });
 
         modelBuilder.Entity<TtReturAppDetail>(entity =>
         {
-            entity.HasKey(e => e.IdReturappdetail);
+            entity.Property(e => e.IdReturappdetail).ValueGeneratedOnAdd();
+            entity.Property(e => e.IdStatus).IsFixedLength();
 
-            entity.ToTable("TT_RETUR_APP_DETAIL");
-
-            entity.Property(e => e.IdReturappdetail)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_RETURAPPDETAIL");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DJml)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JML");
-            entity.Property(e => e.DTglretur)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLRETUR");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdPasien)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("ID_PASIEN");
-            entity.Property(e => e.IdResep)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_RESEP");
-            entity.Property(e => e.IdReturapp)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_RETURAPP");
-            entity.Property(e => e.IdReturdetail)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_RETURDETAIL");
-            entity.Property(e => e.IdStatus)
-                .HasMaxLength(10)
-                .IsFixedLength()
-                .HasColumnName("ID_STATUS");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VNamapasien)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NAMAPASIEN");
-            entity.Property(e => e.VNmobat)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMOBAT");
-            entity.Property(e => e.VRuangan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_RUANGAN");
-            entity.Property(e => e.VTujuankunjungan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_TUJUANKUNJUNGAN");
-
-            entity.HasOne(d => d.IdReturappNavigation).WithMany(p => p.TtReturAppDetails)
-                .HasForeignKey(d => d.IdReturapp)
-                .HasConstraintName("FK_TT_RETUR_APP_DETAIL_TT_RETUR_APP");
+            entity.HasOne(d => d.IdReturappNavigation).WithMany(p => p.TtReturAppDetails).HasConstraintName("FK_TT_RETUR_APP_DETAIL_TT_RETUR_APP");
         });
 
         modelBuilder.Entity<TtReturDist>(entity =>
         {
-            entity.HasKey(e => e.IdReturdist);
+            entity.Property(e => e.IdReturdist).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_RETUR_DIST");
-
-            entity.Property(e => e.IdReturdist)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_RETURDIST");
-            entity.Property(e => e.DTgldist)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLDIST");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-
-            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtReturDists)
-                .HasForeignKey(d => d.VKodetarif)
-                .HasConstraintName("FK_TT_RETUR_DIST_TM_GUDANG");
+            entity.HasOne(d => d.VKodetarifNavigation).WithMany(p => p.TtReturDists).HasConstraintName("FK_TT_RETUR_DIST_TM_GUDANG");
         });
 
         modelBuilder.Entity<TtReturDistDetail>(entity =>
         {
-            entity.HasKey(e => e.IdReturdistdetail);
+            entity.Property(e => e.IdReturdistdetail).ValueGeneratedOnAdd();
 
-            entity.ToTable("TT_RETUR_DIST_DETAIL");
-
-            entity.Property(e => e.IdReturdistdetail)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_RETURDISTDETAIL");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DJml)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JML");
-            entity.Property(e => e.DTglretur)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLRETUR");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdPasien)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("ID_PASIEN");
-            entity.Property(e => e.IdResep)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_RESEP");
-            entity.Property(e => e.IdReturdetail)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_RETURDETAIL");
-            entity.Property(e => e.IdReturdist)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_RETURDIST");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VNamapasien)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NAMAPASIEN");
-            entity.Property(e => e.VNmobat)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMOBAT");
-            entity.Property(e => e.VRuangan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_RUANGAN");
-            entity.Property(e => e.VTujuankunjungan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_TUJUANKUNJUNGAN");
-
-            entity.HasOne(d => d.IdReturdistNavigation).WithMany(p => p.TtReturDistDetails)
-                .HasForeignKey(d => d.IdReturdist)
-                .HasConstraintName("FK_TT_RETUR_DIST_DETAIL_TT_RETUR_DIST");
+            entity.HasOne(d => d.IdReturdistNavigation).WithMany(p => p.TtReturDistDetails).HasConstraintName("FK_TT_RETUR_DIST_DETAIL_TT_RETUR_DIST");
         });
 
         modelBuilder.Entity<TtReturalke>(entity =>
         {
-            entity.HasKey(e => e.IdReturalkes);
-
-            entity.ToTable("TT_RETURALKES");
-
-            entity.Property(e => e.IdReturalkes)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_RETURALKES");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApproveVer)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE_VER");
-            entity.Property(e => e.CTipeaskes)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("C_TIPEASKES");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApproveVer)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE_VER");
-            entity.Property(e => e.DHarga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_HARGA");
-            entity.Property(e => e.DJml)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JML");
-            entity.Property(e => e.DTglretur)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLRETUR");
-            entity.Property(e => e.IdAlkes)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_ALKES");
-            entity.Property(e => e.IdBarang)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_BARANG");
-            entity.Property(e => e.IdRegistrasi)
-                .IsRequired()
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.VApprove)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE");
-            entity.Property(e => e.VApproveVer)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE_VER");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKdobat)
-                .IsRequired()
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDOBAT");
-            entity.Property(e => e.VNmobat)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMOBAT");
-            entity.Property(e => e.VNote)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("V_NOTE");
-            entity.Property(e => e.VSettingretur)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .HasColumnName("V_SETTINGRETUR");
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApproveVer).IsFixedLength();
         });
 
         modelBuilder.Entity<TtRetursupplier>(entity =>
         {
             entity.HasKey(e => e.Returid).HasName("PK_TT_RETURBELI");
 
-            entity.ToTable("TT_RETURSUPPLIER");
-
-            entity.Property(e => e.Returid)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("RETURID");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.Inputby)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("INPUTBY");
-            entity.Property(e => e.Koderuang)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .HasColumnName("KODERUANG");
-            entity.Property(e => e.Nomor)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("NOMOR");
-            entity.Property(e => e.Note)
-                .HasMaxLength(500)
-                .IsUnicode(false)
-                .HasColumnName("NOTE");
-            entity.Property(e => e.Penerimaanid)
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("PENERIMAANID");
-            entity.Property(e => e.Status)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("STATUS");
-            entity.Property(e => e.Tanggal)
-                .HasColumnType("datetime")
-                .HasColumnName("TANGGAL");
+            entity.Property(e => e.Returid).ValueGeneratedOnAdd();
+            entity.Property(e => e.Status).IsFixedLength();
         });
 
         modelBuilder.Entity<TtTindakan>(entity =>
         {
-            entity.HasKey(e => e.IdTindakan);
+            entity.Property(e => e.IdTindakan).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApprove2).IsFixedLength();
 
-            entity.ToTable("TT_TINDAKAN");
+            entity.HasOne(d => d.IdRegistrasiNavigation).WithMany(p => p.TtTindakans).HasConstraintName("FK_TT_TINDAKAN_TT_KUNJUNGAN");
 
-            entity.HasIndex(e => e.DTgltindakan, "IX_TT_TINDAKAN");
-
-            entity.HasIndex(e => e.IdRegistrasi, "IX_TT_TINDAKAN_1");
-
-            entity.HasIndex(e => e.VNomortindakan, "IX_TT_TINDAKAN_2");
-
-            entity.HasIndex(e => e.VKodetarif, "IX_TT_TINDAKAN_3");
-
-            entity.Property(e => e.IdTindakan)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_TINDAKAN");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApprove2)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE2");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApprove2)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE2");
-            entity.Property(e => e.DTgltindakan)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLTINDAKAN");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VApprove)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNomortindakan)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_NOMORTINDAKAN");
-            entity.Property(e => e.VNote)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_NOTE");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
-
-            entity.HasOne(d => d.IdRegistrasiNavigation).WithMany(p => p.TtTindakans)
-                .HasForeignKey(d => d.IdRegistrasi)
-                .HasConstraintName("FK_TT_TINDAKAN_TT_KUNJUNGAN");
-
-            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtTindakans)
-                .HasForeignKey(d => d.IdStatus)
-                .HasConstraintName("FK_TT_TINDAKAN_TM_STATUS");
+            entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.TtTindakans).HasConstraintName("FK_TT_TINDAKAN_TM_STATUS");
         });
 
         modelBuilder.Entity<TtTindakanDetail>(entity =>
@@ -5339,151 +896,9 @@ public partial class WinCare2Context : DbContext
                     tb.HasTrigger("UPDATE_STATUS_TINDAKAN");
                 });
 
-            entity.HasIndex(e => e.VNomortindakan, "IX_TT_TINDAKAN_DETAIL");
-
-            entity.HasIndex(e => e.DBeapasien, "IX_TT_TINDAKAN_DETAIL_1");
-
-            entity.HasIndex(e => e.DBearekanan, "IX_TT_TINDAKAN_DETAIL_2");
-
-            entity.HasIndex(e => e.DBiaya, "IX_TT_TINDAKAN_DETAIL_3");
-
-            entity.HasIndex(e => e.IJml, "IX_TT_TINDAKAN_DETAIL_4");
-
-            entity.Property(e => e.IdTindakandetail)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID_TINDAKANDETAIL");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApprove2)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE2");
-            entity.Property(e => e.D2tnd)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_2TND");
-            entity.Property(e => e.DAdm)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_ADM");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApprove2)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE2");
-            entity.Property(e => e.DBahanalkes)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BAHANALKES");
-            entity.Property(e => e.DBeapasien)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAPASIEN");
-            entity.Property(e => e.DBearekanan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BEAREKANAN");
-            entity.Property(e => e.DBiaya)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_BIAYA");
-            entity.Property(e => e.DCito)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_CITO");
-            entity.Property(e => e.DDiskon)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_DISKON");
-            entity.Property(e => e.DJasamedis)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS");
-            entity.Property(e => e.DJasamedis2)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS2");
-            entity.Property(e => e.DJasamedis3)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASAMEDIS3");
-            entity.Property(e => e.DJasars)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_JASARS");
-            entity.Property(e => e.DPenyulit)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_PENYULIT");
-            entity.Property(e => e.DSubtotal)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("D_SUBTOTAL");
-            entity.Property(e => e.DTgltindakan)
-                .HasColumnType("datetime")
-                .HasColumnName("D_TGLTINDAKAN");
-            entity.Property(e => e.IJml).HasColumnName("I_JML");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.VApprove)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE");
-            entity.Property(e => e.VApprove2)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE2");
-            entity.Property(e => e.VBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_BY");
-            entity.Property(e => e.VGroup)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_GROUP");
-            entity.Property(e => e.VKddokter)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER");
-            entity.Property(e => e.VKddokter2)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER2");
-            entity.Property(e => e.VKddokter3)
-                .HasMaxLength(6)
-                .IsUnicode(false)
-                .HasColumnName("V_KDDOKTER3");
-            entity.Property(e => e.VKdtindakan)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("V_KDTINDAKAN");
-            entity.Property(e => e.VKodetarif)
-                .HasMaxLength(2)
-                .IsUnicode(false)
-                .HasColumnName("V_KODETARIF");
-            entity.Property(e => e.VNmdokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER");
-            entity.Property(e => e.VNmdokter2)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER2");
-            entity.Property(e => e.VNmdokter3)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMDOKTER3");
-            entity.Property(e => e.VNmtindakan)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_NMTINDAKAN");
-            entity.Property(e => e.VNomortindakan)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_NOMORTINDAKAN");
-            entity.Property(e => e.VNote)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("V_NOTE");
-            entity.Property(e => e.VStatus)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("V_STATUS");
+            entity.Property(e => e.IdTindakandetail).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApprove2).IsFixedLength();
         });
 
         modelBuilder.Entity<TtTransaksi>(entity =>
@@ -5494,167 +909,10 @@ public partial class WinCare2Context : DbContext
                     tb.HasTrigger("UPDATE_STATUS_TRANSAKSI");
                 });
 
-            entity.HasIndex(e => e.Id, "IX_TT_TRANSAKSI");
-
-            entity.HasIndex(e => e.IdRegistrasi, "IX_TT_TRANSAKSI_1");
-
-            entity.HasIndex(e => e.Bearekanan, "IX_TT_TRANSAKSI_10");
-
-            entity.HasIndex(e => e.Harga, "IX_TT_TRANSAKSI_11");
-
-            entity.HasIndex(e => e.KodeItem, "IX_TT_TRANSAKSI_12");
-
-            entity.HasIndex(e => e.CApprove, "IX_TT_TRANSAKSI_13");
-
-            entity.HasIndex(e => e.CApprove2, "IX_TT_TRANSAKSI_14");
-
-            entity.HasIndex(e => e.IdStatus, "IX_TT_TRANSAKSI_15");
-
-            entity.HasIndex(e => e.IdTransaksi, "IX_TT_TRANSAKSI_2");
-
-            entity.HasIndex(e => e.Unit, "IX_TT_TRANSAKSI_3");
-
-            entity.HasIndex(e => e.Paket, "IX_TT_TRANSAKSI_4");
-
-            entity.HasIndex(e => e.Item, "IX_TT_TRANSAKSI_5");
-
-            entity.HasIndex(e => e.Jumlah, "IX_TT_TRANSAKSI_6");
-
-            entity.HasIndex(e => e.Diskon, "IX_TT_TRANSAKSI_7");
-
-            entity.HasIndex(e => e.Subtotal, "IX_TT_TRANSAKSI_8");
-
-            entity.HasIndex(e => e.Beapasien, "IX_TT_TRANSAKSI_9");
-
-            entity.HasIndex(e => e.DApprove, "IX_TT_TRANSAKSI_d_approve");
-
-            entity.HasIndex(e => e.DApprove2, "IX_TT_TRANSAKSI_d_approve2");
-
-            entity.HasIndex(e => e.Inputby, "IX_TT_TRANSAKSI_inputby");
-
-            entity.HasIndex(e => e.IsBayar, "IX_TT_TRANSAKSI_isbayar");
-
-            entity.HasIndex(e => e.VNomorbyrpasien, "IX_TT_TRANSAKSI_nobayar");
-
-            entity.HasIndex(e => e.VApprove, "IX_TT_TRANSAKSI_v_approve");
-
-            entity.HasIndex(e => e.VApprove2, "IX_TT_TRANSAKSI_v_approve2");
-
-            entity.Property(e => e.Id)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("numeric(18, 0)")
-                .HasColumnName("ID");
-            entity.Property(e => e.Beapasien)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("BEAPASIEN");
-            entity.Property(e => e.Bearekanan)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("BEAREKANAN");
-            entity.Property(e => e.CApprove)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE");
-            entity.Property(e => e.CApprove2)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("C_APPROVE2");
-            entity.Property(e => e.DApprove)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE");
-            entity.Property(e => e.DApprove2)
-                .HasColumnType("datetime")
-                .HasColumnName("D_APPROVE2");
-            entity.Property(e => e.Diskon)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("DISKON");
-            entity.Property(e => e.GroupTransaksi)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("GROUP_TRANSAKSI");
-            entity.Property(e => e.Harga)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("HARGA");
-            entity.Property(e => e.IdRegistrasi)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("ID_REGISTRASI");
-            entity.Property(e => e.IdStatus).HasColumnName("ID_STATUS");
-            entity.Property(e => e.IdTransaksi)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("ID_TRANSAKSI");
-            entity.Property(e => e.Inputby)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("INPUTBY");
-            entity.Property(e => e.IsBayar)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("IS_BAYAR");
-            entity.Property(e => e.Item)
-                .HasMaxLength(300)
-                .IsUnicode(false)
-                .HasColumnName("ITEM");
-            entity.Property(e => e.Jumlah)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("JUMLAH");
-            entity.Property(e => e.KodeDokter)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("KODE_DOKTER");
-            entity.Property(e => e.KodeItem)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("KODE_ITEM");
-            entity.Property(e => e.KodeUnit)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("KODE_UNIT");
-            entity.Property(e => e.NamaDokter)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("NAMA_DOKTER");
-            entity.Property(e => e.NamaItem)
-                .HasMaxLength(200)
-                .IsUnicode(false)
-                .HasColumnName("NAMA_ITEM");
-            entity.Property(e => e.NoKuitansi)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("NO_KUITANSI");
-            entity.Property(e => e.Paket)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("PAKET");
-            entity.Property(e => e.Subtotal)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("SUBTOTAL");
-            entity.Property(e => e.Tanggal)
-                .HasColumnType("datetime")
-                .HasColumnName("TANGGAL");
-            entity.Property(e => e.Unit)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("UNIT");
-            entity.Property(e => e.VApprove)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE");
-            entity.Property(e => e.VApprove2)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("V_APPROVE2");
-            entity.Property(e => e.VKeterangan)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("V_KETERANGAN");
-            entity.Property(e => e.VNomorbyrpasien)
-                .HasMaxLength(12)
-                .IsUnicode(false)
-                .HasColumnName("V_NOMORBYRPASIEN");
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            entity.Property(e => e.CApprove).IsFixedLength();
+            entity.Property(e => e.CApprove2).IsFixedLength();
+            entity.Property(e => e.IsBayar).IsFixedLength();
         });
 
         OnModelCreatingPartial(modelBuilder);

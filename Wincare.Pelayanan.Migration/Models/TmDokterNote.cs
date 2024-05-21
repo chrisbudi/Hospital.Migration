@@ -2,18 +2,35 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TM_DOKTER_NOTE")]
 public partial class TmDokterNote
 {
+    [Key]
+    [Column("ID_DOKTER", TypeName = "numeric(18, 0)")]
     public decimal IdDokter { get; set; }
 
+    [Required]
+    [Column("V_KDDOKTER")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKddokter { get; set; }
 
+    [Column("KETERANGAN")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string Keterangan { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("TGL_INPUT", TypeName = "datetime")]
     public DateTime? TglInput { get; set; }
 }

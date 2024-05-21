@@ -2,58 +2,119 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TT_RESEP")]
+[Index("IdKuitansiresep", Name = "IX_TT_RESEP")]
+[Index("IdBarang", Name = "IX_TT_RESEP_1")]
+[Index("DJml", Name = "IX_TT_RESEP_2")]
+[Index("DJmltebus", Name = "IX_TT_RESEP_3")]
 public partial class TtResep
 {
+    [Key]
+    [Column("ID_OBATRESEP", TypeName = "numeric(18, 0)")]
     public decimal IdObatresep { get; set; }
 
+    [Column("ID_RESEP")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdResep { get; set; }
 
+    [Required]
+    [Column("ID_KUITANSIRESEP")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdKuitansiresep { get; set; }
 
+    [Column("ID_BARANG", TypeName = "numeric(18, 0)")]
     public decimal? IdBarang { get; set; }
 
+    [Column("V_KDOBAT")]
+    [StringLength(10)]
+    [Unicode(false)]
     public string VKdobat { get; set; }
 
+    [Column("V_NMOBAT")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmobat { get; set; }
 
+    [Column("V_NMRACIKAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VNmracikan { get; set; }
 
+    [Column("D_DOSISRACIKAN")]
+    [StringLength(10)]
+    [Unicode(false)]
     public string DDosisracikan { get; set; }
 
+    [Column("D_JML", TypeName = "decimal(9, 3)")]
     public decimal? DJml { get; set; }
 
+    [Column("D_JMLRACIKAN", TypeName = "decimal(18, 0)")]
     public decimal? DJmlracikan { get; set; }
 
+    [Column("D_HARGA", TypeName = "decimal(18, 0)")]
     public decimal? DHarga { get; set; }
 
+    [Column("D_JMLTEBUS", TypeName = "decimal(18, 0)")]
     public decimal? DJmltebus { get; set; }
 
+    [Column("V_NOTEOBAT")]
+    [StringLength(200)]
+    [Unicode(false)]
     public string VNoteobat { get; set; }
 
+    [Column("D_DISKON", TypeName = "decimal(18, 0)")]
     public decimal? DDiskon { get; set; }
 
+    [Column("REKANANID", TypeName = "numeric(18, 0)")]
     public decimal? Rekananid { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("C_APPROVE")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CApprove { get; set; }
 
+    [Column("D_APPROVE", TypeName = "datetime")]
     public DateTime? DApprove { get; set; }
 
+    [Column("V_APPROVE_AA")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VApproveAa { get; set; }
 
+    [Column("C_APPROVE_AA")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CApproveAa { get; set; }
 
+    [Column("D_APPROVE_AA", TypeName = "datetime")]
     public DateTime? DApproveAa { get; set; }
 
+    [Column("V_APPROVE_VER")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VApproveVer { get; set; }
 
+    [Column("C_APPROVE_VER")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CApproveVer { get; set; }
 
+    [Column("D_APPROVE_VER", TypeName = "datetime")]
     public DateTime? DApproveVer { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 }

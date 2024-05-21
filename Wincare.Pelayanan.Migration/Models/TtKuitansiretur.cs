@@ -2,30 +2,65 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TT_KUITANSIRETUR")]
+[Index("IdRetur", Name = "IX_TT_KUITANSIRETURP_idretur")]
+[Index("DTglretur", Name = "IX_TT_KUITANSIRETUR_d_tglretur")]
+[Index("VKodetarif", Name = "IX_TT_KUITANSIRETUR_v_kodetarif")]
+[Index("VNomorretur", Name = "IX_TT_KUITANSIRETUR_v_nomorretur")]
 public partial class TtKuitansiretur
 {
+    [Column("ID_RETUR", TypeName = "numeric(18, 0)")]
     public decimal IdRetur { get; set; }
 
+    [Key]
+    [Column("V_NOMORRETUR")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string VNomorretur { get; set; }
 
+    [Required]
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
+    [Column("D_TGLRETUR", TypeName = "datetime")]
     public DateTime? DTglretur { get; set; }
 
+    [Column("V_KODETARIF")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string VKodetarif { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("V_APPROVE")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VApprove { get; set; }
 
+    [Column("V_KDDOKTER")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKddokter { get; set; }
 
+    [Column("V_NMDOKTER")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmdokter { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [InverseProperty("VNomorreturNavigation")]
     public virtual ICollection<TtRetur> TtReturs { get; set; } = new List<TtRetur>();
 }

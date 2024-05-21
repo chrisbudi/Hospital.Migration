@@ -2,16 +2,29 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TM_DTD")]
 public partial class TmDtd
 {
+    [Column("ID_DTD", TypeName = "numeric(18, 0)")]
     public decimal IdDtd { get; set; }
 
+    [Key]
+    [Column("V_KDDTD")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string VKddtd { get; set; }
 
+    [Column("V_NMDTD")]
+    [StringLength(200)]
+    [Unicode(false)]
     public string VNmdtd { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 }

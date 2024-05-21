@@ -2,38 +2,69 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TT_PAKET_PB_PAKAI")]
 public partial class TtPaketPbPakai
 {
+    [Key]
+    [Column("ID_PAKETPB_PAKAI", TypeName = "numeric(18, 0)")]
     public decimal IdPaketpbPakai { get; set; }
 
+    [Column("D_TGLPAKET_PAKAI", TypeName = "datetime")]
     public DateTime? DTglpaketPakai { get; set; }
 
+    [Column("ID_PAKETPB", TypeName = "numeric(18, 0)")]
     public decimal? IdPaketpb { get; set; }
 
+    [Column("V_KODETARIF")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string VKodetarif { get; set; }
 
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
+    [Column("ID_REKANAN", TypeName = "numeric(18, 0)")]
     public decimal? IdRekanan { get; set; }
 
+    [Column("IS_PAKETBHP")]
     public bool? IsPaketbhp { get; set; }
 
+    [Column("V_STATUS")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string VStatus { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [ForeignKey("IdPaketpb")]
+    [InverseProperty("TtPaketPbPakais")]
     public virtual TtPaketPb IdPaketpbNavigation { get; set; }
 
+    [ForeignKey("IdRekanan")]
+    [InverseProperty("TtPaketPbPakais")]
     public virtual TmRekanan IdRekananNavigation { get; set; }
 
+    [InverseProperty("IdPaketpbPakaiNavigation")]
     public virtual ICollection<TtPaketPbPakaiDetail> TtPaketPbPakaiDetails { get; set; } = new List<TtPaketPbPakaiDetail>();
 
+    [InverseProperty("IdPaketpbPakaiNavigation")]
     public virtual ICollection<TtPaketPbRetur> TtPaketPbReturs { get; set; } = new List<TtPaketPbRetur>();
 
+    [ForeignKey("VKodetarif")]
+    [InverseProperty("TtPaketPbPakais")]
     public virtual TmGudang VKodetarifNavigation { get; set; }
 }

@@ -2,34 +2,68 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TT_ACOUNTPASIEN")]
 public partial class TtAcountpasien
 {
+    [Key]
+    [Column("ID_ACOUNTPASIEN", TypeName = "numeric(18, 0)")]
     public decimal IdAcountpasien { get; set; }
 
+    [Required]
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
+    [Required]
+    [Column("ITEM")]
+    [StringLength(250)]
+    [Unicode(false)]
     public string Item { get; set; }
 
+    [Column("BIAYA", TypeName = "decimal(18, 0)")]
     public decimal? Biaya { get; set; }
 
+    [Column("PAKET")]
+    [StringLength(250)]
+    [Unicode(false)]
     public string Paket { get; set; }
 
+    [Column("UNIT")]
+    [StringLength(150)]
+    [Unicode(false)]
     public string Unit { get; set; }
 
+    [Column("DISC", TypeName = "decimal(18, 0)")]
     public decimal? Disc { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("D_TGL", TypeName = "datetime")]
     public DateTime? DTgl { get; set; }
 
+    [Column("C_APPROVE_VER")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CApproveVer { get; set; }
 
+    [Column("V_APPROVE_VER")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VApproveVer { get; set; }
 
+    [Column("D_APPROVE_VER", TypeName = "datetime")]
     public DateTime? DApproveVer { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 }

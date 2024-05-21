@@ -2,22 +2,44 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TM_ASAL")]
+[Index("IdAsal", Name = "IX_TM_ASAL_ID_ASAL")]
+[Index("IdAsalgroup", Name = "IX_TM_ASAL_ID_ASALGROUP")]
+[Index("IsAktif", Name = "IX_TM_ASAL_IS_AKTIF")]
+[Index("VKdasal", Name = "IX_TM_ASAL_V_KDASAL")]
+[Index("VNmasal", Name = "IX_TM_ASAL_V_NMASAL")]
 public partial class TmAsal
 {
+    [Column("ID_ASAL", TypeName = "numeric(18, 0)")]
     public decimal IdAsal { get; set; }
 
+    [Column("ID_ASALGROUP", TypeName = "numeric(18, 0)")]
     public decimal? IdAsalgroup { get; set; }
 
+    [Key]
+    [Column("V_KDASAL")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKdasal { get; set; }
 
+    [Required]
+    [Column("V_NMASAL")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmasal { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool IsAktif { get; set; }
 
+    [InverseProperty("VKdpengirimNavigation")]
     public virtual ICollection<TtPasienpd> TtPasienpds { get; set; } = new List<TtPasienpd>();
 
+    [InverseProperty("VKdpengirimNavigation")]
     public virtual ICollection<TtPasienugd> TtPasienugds { get; set; } = new List<TtPasienugd>();
 }

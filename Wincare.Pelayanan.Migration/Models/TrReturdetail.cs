@@ -2,20 +2,32 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TR_RETURDETAIL")]
 public partial class TrReturdetail
 {
+    [Key]
+    [Column("RETURDETAILID", TypeName = "numeric(18, 0)")]
     public decimal Returdetailid { get; set; }
 
+    [Column("BARANGID", TypeName = "numeric(18, 0)")]
     public decimal? Barangid { get; set; }
 
+    [Column("RETURID", TypeName = "numeric(18, 0)")]
     public decimal? Returid { get; set; }
 
+    [Column("JUMLAH", TypeName = "decimal(18, 2)")]
     public decimal? Jumlah { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [ForeignKey("Returid")]
+    [InverseProperty("TrReturdetails")]
     public virtual TtRetursupplier Retur { get; set; }
 }

@@ -2,28 +2,60 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("LIS_HASIL")]
 public partial class LisHasil
 {
+    [Required]
+    [Column("id_pasienlab")]
+    [StringLength(15)]
+    [Unicode(false)]
     public string IdPasienlab { get; set; }
 
+    [Column("no_urut")]
     public int? NoUrut { get; set; }
 
+    [Column("kode_test")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string KodeTest { get; set; }
 
+    [Column("nm_test")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string NmTest { get; set; }
 
+    [Column("hasil")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string Hasil { get; set; }
 
+    [Column("unit")]
+    [StringLength(15)]
+    [Unicode(false)]
     public string Unit { get; set; }
 
+    [Column("normal")]
+    [StringLength(80)]
+    [Unicode(false)]
     public string Normal { get; set; }
 
+    [Column("flag")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string Flag { get; set; }
 
+    [Column("type")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string Type { get; set; }
 
+    [Key]
+    [Column("idn", TypeName = "numeric(18, 0)")]
     public decimal Idn { get; set; }
 }

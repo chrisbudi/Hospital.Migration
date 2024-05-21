@@ -2,16 +2,29 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[PrimaryKey("IdMasterpemeriksaanpenunjang", "VKoderuangan")]
+[Table("TM_PAKET_MATRIX")]
 public partial class TmPaketMatrix
 {
+    [Column("ID_PAKETMATRIX", TypeName = "numeric(18, 0)")]
     public decimal IdPaketmatrix { get; set; }
 
+    [Key]
+    [Column("ID_MASTERPEMERIKSAANPENUNJANG", TypeName = "numeric(18, 0)")]
     public decimal IdMasterpemeriksaanpenunjang { get; set; }
 
+    [Key]
+    [Column("V_KODERUANGAN")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VKoderuangan { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 }

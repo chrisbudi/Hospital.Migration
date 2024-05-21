@@ -2,10 +2,19 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Keyless]
+[Table("LIS_MSGQUEUE")]
 public partial class LisMsgqueue
 {
+    [Required]
+    [Column("ID_PASIENLAB")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdPasienlab { get; set; }
 }

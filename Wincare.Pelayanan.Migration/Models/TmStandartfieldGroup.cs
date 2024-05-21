@@ -2,20 +2,35 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TM_STANDARTFIELD_GROUP")]
 public partial class TmStandartfieldGroup
 {
+    [Key]
+    [Column("ID_FIELDGROUP", TypeName = "numeric(18, 0)")]
     public decimal IdFieldgroup { get; set; }
 
+    [Column("V_NMFIELDGROUP")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VNmfieldgroup { get; set; }
 
+    [Column("D_TANGGAL", TypeName = "datetime")]
     public DateTime? DTanggal { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 
+    [Column("V_KETERANGAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKeterangan { get; set; }
 
+    [InverseProperty("IdFieldgroupNavigation")]
     public virtual ICollection<TmStandartfield> TmStandartfields { get; set; } = new List<TmStandartfield>();
 }

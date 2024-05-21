@@ -2,26 +2,40 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TR_PEMESANANDETAIL")]
 public partial class TrPemesanandetail
 {
+    [Key]
+    [Column("PEMESANANDETAILID", TypeName = "numeric(18, 0)")]
     public decimal Pemesanandetailid { get; set; }
 
+    [Column("BARANGID", TypeName = "numeric(18, 0)")]
     public decimal? Barangid { get; set; }
 
+    [Column("PEMESANANID", TypeName = "numeric(18, 0)")]
     public decimal? Pemesananid { get; set; }
 
+    [Column("JUMLAH", TypeName = "decimal(18, 0)")]
     public decimal? Jumlah { get; set; }
 
+    [Column("HARGA", TypeName = "decimal(18, 0)")]
     public decimal? Harga { get; set; }
 
+    [Column("DISCOUNTNOMINAL", TypeName = "decimal(18, 2)")]
     public decimal? Discountnominal { get; set; }
 
+    [Column("SUBTOTAL", TypeName = "decimal(18, 0)")]
     public decimal? Subtotal { get; set; }
 
+    [Column("PERMINTAANDETAILID", TypeName = "numeric(18, 0)")]
     public decimal? Permintaandetailid { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 }

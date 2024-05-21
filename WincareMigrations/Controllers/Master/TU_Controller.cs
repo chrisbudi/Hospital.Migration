@@ -46,6 +46,7 @@ namespace WincareMigrations.Controllers.Master
                 Kdtarifdetail = m.VKdtarifdetail,
                 Lastupdate = m.DLastupdate,
                 OldIdTarifkelas = m.IdTarifkelas,
+
                 OldRekananId = m.Rekananid,
                 SecondTnd = m.D2tnd,
                 Tglakhir = m.DTglakhir,

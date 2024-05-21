@@ -2,38 +2,80 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TT_HISTORY_STOK")]
+[Index("DKeluar", Name = "IX_TT_HISTORY_STOK_d_keluar")]
+[Index("DLastupdate", Name = "IX_TT_HISTORY_STOK_d_lastupdate")]
+[Index("DMasuk", Name = "IX_TT_HISTORY_STOK_d_masuk")]
+[Index("DTgltransaksi", Name = "IX_TT_HISTORY_STOK_d_tgltransaksi")]
+[Index("IdBarang", Name = "IX_TT_HISTORY_STOK_id_barang")]
+[Index("IdHistory", Name = "IX_TT_HISTORY_STOK_id_history")]
+[Index("VBy", Name = "IX_TT_HISTORY_STOK_v_by")]
+[Index("VKodetarif", Name = "IX_TT_HISTORY_STOK_v_kodetarif")]
+[Index("VLayanan", Name = "IX_TT_HISTORY_STOK_v_layanan")]
 public partial class TtHistoryStok
 {
+    [Key]
+    [Column("ID_HISTORY", TypeName = "numeric(18, 0)")]
     public decimal IdHistory { get; set; }
 
+    [Column("ID_TRANSAKSI")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string IdTransaksi { get; set; }
 
+    [Column("ID_KUITANSI")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string IdKuitansi { get; set; }
 
+    [Column("D_TGLTRANSAKSI", TypeName = "datetime")]
     public DateTime? DTgltransaksi { get; set; }
 
+    [Column("V_KODETARIF")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string VKodetarif { get; set; }
 
+    [Column("V_LAYANAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VLayanan { get; set; }
 
+    [Column("ID_BARANG", TypeName = "numeric(18, 0)")]
     public decimal? IdBarang { get; set; }
 
+    [Column("D_MASUK", TypeName = "decimal(18, 0)")]
     public decimal? DMasuk { get; set; }
 
+    [Column("D_KELUAR", TypeName = "decimal(18, 0)")]
     public decimal? DKeluar { get; set; }
 
+    [Column("D_HARGABELI", TypeName = "decimal(18, 0)")]
     public decimal? DHargabeli { get; set; }
 
+    [Column("D_HARGAJUAL", TypeName = "decimal(18, 0)")]
     public decimal? DHargajual { get; set; }
 
+    [Column("V_KETERANGAN")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VKeterangan { get; set; }
 
+    [Column("D_LASTUPDATE", TypeName = "datetime")]
     public DateTime? DLastupdate { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [ForeignKey("VKodetarif")]
+    [InverseProperty("TtHistoryStoks")]
     public virtual TmGudang VKodetarifNavigation { get; set; }
 }

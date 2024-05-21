@@ -2,22 +2,39 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TT_RETUR_DIST")]
 public partial class TtReturDist
 {
+    [Key]
+    [Column("ID_RETURDIST", TypeName = "numeric(18, 0)")]
     public decimal IdReturdist { get; set; }
 
+    [Column("D_TGLDIST", TypeName = "datetime")]
     public DateTime? DTgldist { get; set; }
 
+    [Column("V_KODETARIF")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string VKodetarif { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [InverseProperty("IdReturdistNavigation")]
     public virtual ICollection<TtReturDistDetail> TtReturDistDetails { get; set; } = new List<TtReturDistDetail>();
 
+    [ForeignKey("VKodetarif")]
+    [InverseProperty("TtReturDists")]
     public virtual TmGudang VKodetarifNavigation { get; set; }
 }

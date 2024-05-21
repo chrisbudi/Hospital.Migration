@@ -2,46 +2,93 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Keyless]
+[Table("TT_RESEP_TULISRACIKAN")]
 public partial class TtResepTulisracikan
 {
+    [Column("idn", TypeName = "decimal(18, 0)")]
     public decimal Idn { get; set; }
 
+    [Column("v_noresep")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string VNoresep { get; set; }
 
+    [Column("id_registrasi")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
+    [Column("d_tgl", TypeName = "datetime")]
     public DateTime? DTgl { get; set; }
 
+    [Required]
+    [Column("v_kddokter")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKddokter { get; set; }
 
+    [Column("v_nmdokter")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmdokter { get; set; }
 
+    [Column("rekananid", TypeName = "decimal(18, 0)")]
     public decimal? Rekananid { get; set; }
 
+    [Column("v_koderuangan")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VKoderuangan { get; set; }
 
+    [Column("v_koderequestobat")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string VKoderequestobat { get; set; }
 
+    [Column("v_kodetarif")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string VKodetarif { get; set; }
 
+    [Column("note_perawat", TypeName = "text")]
     public string NotePerawat { get; set; }
 
+    [Column("note_farmasi", TypeName = "text")]
     public string NoteFarmasi { get; set; }
 
+    [Column("v_by")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("v_status")]
+    [StringLength(20)]
+    [Unicode(false)]
     public string VStatus { get; set; }
 
+    [Column("v_approve")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VApprove { get; set; }
 
+    [Column("c_approve")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CApprove { get; set; }
 
+    [Column("d_approve", TypeName = "datetime")]
     public DateTime? DApprove { get; set; }
 
+    [Column("ttd_dokter", TypeName = "text")]
     public string TtdDokter { get; set; }
 
+    [Column("id_status")]
     public int? IdStatus { get; set; }
 }

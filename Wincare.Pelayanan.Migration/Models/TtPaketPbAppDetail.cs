@@ -2,24 +2,40 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TT_PAKET_PB_APP_DETAIL")]
 public partial class TtPaketPbAppDetail
 {
+    [Key]
+    [Column("ID_PAKETPB_APPDETAIL", TypeName = "numeric(18, 0)")]
     public decimal IdPaketpbAppdetail { get; set; }
 
+    [Column("ID_PAKETPB_APP", TypeName = "numeric(18, 0)")]
     public decimal? IdPaketpbApp { get; set; }
 
+    [Column("ID_BARANG", TypeName = "numeric(18, 0)")]
     public decimal? IdBarang { get; set; }
 
+    [Column("D_JML", TypeName = "decimal(18, 2)")]
     public decimal? DJml { get; set; }
 
+    [Column("D_JMLAPP", TypeName = "decimal(18, 2)")]
     public decimal? DJmlapp { get; set; }
 
+    [Column("V_BYAPP")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VByapp { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [ForeignKey("IdPaketpbApp")]
+    [InverseProperty("TtPaketPbAppDetails")]
     public virtual TtPaketPbApp IdPaketpbAppNavigation { get; set; }
 }

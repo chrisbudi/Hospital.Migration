@@ -2,32 +2,51 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TR_PENERIMAANDETAIL")]
 public partial class TrPenerimaandetail
 {
+    [Key]
+    [Column("PENERIMAANDETAILID", TypeName = "numeric(18, 0)")]
     public decimal Penerimaandetailid { get; set; }
 
+    [Column("PENERIMAANID", TypeName = "numeric(18, 0)")]
     public decimal? Penerimaanid { get; set; }
 
+    [Column("BARANGID", TypeName = "numeric(18, 0)")]
     public decimal? Barangid { get; set; }
 
+    [Column("JUMLAH", TypeName = "decimal(18, 0)")]
     public decimal? Jumlah { get; set; }
 
+    [Column("EXPIRED", TypeName = "datetime")]
     public DateTime? Expired { get; set; }
 
+    [Column("NOBATCH")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string Nobatch { get; set; }
 
+    [Column("HARGA", TypeName = "decimal(18, 0)")]
     public decimal? Harga { get; set; }
 
+    [Column("DISCOUNTNOMINAL", TypeName = "decimal(18, 2)")]
     public decimal? Discountnominal { get; set; }
 
+    [Column("SUBTOTAL", TypeName = "decimal(18, 0)")]
     public decimal? Subtotal { get; set; }
 
+    [Column("ISI", TypeName = "decimal(18, 0)")]
     public decimal? Isi { get; set; }
 
+    [Column("PEMESANANDETAILID", TypeName = "decimal(18, 0)")]
     public decimal? Pemesanandetailid { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 }

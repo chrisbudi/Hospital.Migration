@@ -2,38 +2,76 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TR_PEMERIKSAANPENUNJANG")]
 public partial class TrPemeriksaanpenunjang
 {
+    [Key]
+    [Column("IDNUM", TypeName = "numeric(18, 0)")]
     public decimal Idnum { get; set; }
 
+    [Required]
+    [Column("ID_PASIENPENUNJANG")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdPasienpenunjang { get; set; }
 
+    [Column("ID_MASTERPEMERIKSAANPENUNJANG", TypeName = "numeric(18, 0)")]
     public decimal? IdMasterpemeriksaanpenunjang { get; set; }
 
+    [Required]
+    [Column("V_KDPEMERIKSAAN")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string VKdpemeriksaan { get; set; }
 
+    [Column("V_NMPEMERIKSAAN")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmpemeriksaan { get; set; }
 
+    [Column("V_HASIL")]
+    [StringLength(300)]
+    [Unicode(false)]
     public string VHasil { get; set; }
 
+    [Column("D_HARGA", TypeName = "decimal(18, 0)")]
     public decimal? DHarga { get; set; }
 
+    [Column("D_BEAPASIEN", TypeName = "decimal(18, 0)")]
     public decimal? DBeapasien { get; set; }
 
+    [Column("D_BEAREKANAN", TypeName = "decimal(18, 0)")]
     public decimal? DBearekanan { get; set; }
 
+    [Column("V_PENUNJANG")]
+    [StringLength(20)]
+    [Unicode(false)]
     public string VPenunjang { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("D_DISKON", TypeName = "decimal(18, 0)")]
     public decimal? DDiskon { get; set; }
 
+    [Column("C_APPROVE")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CApprove { get; set; }
 
+    [Column("V_APPROVE")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VApprove { get; set; }
 
+    [Column("D_APPROVE", TypeName = "datetime")]
     public DateTime? DApprove { get; set; }
 }

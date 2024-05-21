@@ -2,40 +2,78 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TT_RETUR_DIST_DETAIL")]
 public partial class TtReturDistDetail
 {
+    [Key]
+    [Column("ID_RETURDISTDETAIL", TypeName = "numeric(18, 0)")]
     public decimal IdReturdistdetail { get; set; }
 
+    [Column("ID_RETURDIST", TypeName = "numeric(18, 0)")]
     public decimal? IdReturdist { get; set; }
 
+    [Column("ID_RETURDETAIL")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdReturdetail { get; set; }
 
+    [Column("ID_RESEP")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdResep { get; set; }
 
+    [Column("D_TGLRETUR", TypeName = "datetime")]
     public DateTime? DTglretur { get; set; }
 
+    [Column("ID_BARANG", TypeName = "numeric(18, 0)")]
     public decimal? IdBarang { get; set; }
 
+    [Column("V_NMOBAT")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmobat { get; set; }
 
+    [Column("D_JML", TypeName = "decimal(18, 0)")]
     public decimal? DJml { get; set; }
 
+    [Column("D_HARGA", TypeName = "decimal(18, 0)")]
     public decimal? DHarga { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("ID_PASIEN")]
+    [StringLength(10)]
+    [Unicode(false)]
     public string IdPasien { get; set; }
 
+    [Column("V_NAMAPASIEN")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNamapasien { get; set; }
 
+    [Column("V_TUJUANKUNJUNGAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VTujuankunjungan { get; set; }
 
+    [Column("V_RUANGAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VRuangan { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [ForeignKey("IdReturdist")]
+    [InverseProperty("TtReturDistDetails")]
     public virtual TtReturDist IdReturdistNavigation { get; set; }
 }

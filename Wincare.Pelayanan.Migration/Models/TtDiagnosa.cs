@@ -2,24 +2,47 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TT_DIAGNOSA")]
 public partial class TtDiagnosa
 {
+    [Column("ID_DIAGNOSA", TypeName = "numeric(18, 0)")]
     public decimal IdDiagnosa { get; set; }
 
+    [Key]
+    [Column("V_NOMORDIAGNOSA")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string VNomordiagnosa { get; set; }
 
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
+    [Column("D_TGLDIAGNOSA", TypeName = "datetime")]
     public DateTime? DTgldiagnosa { get; set; }
 
+    [Column("V_KODETARIF")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string VKodetarif { get; set; }
 
+    [Column("V_NOTE")]
+    [StringLength(300)]
+    [Unicode(false)]
     public string VNote { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [InverseProperty("VNomordiagnosaNavigation")]
     public virtual ICollection<TtDiagnosaDetail> TtDiagnosaDetails { get; set; } = new List<TtDiagnosaDetail>();
 }

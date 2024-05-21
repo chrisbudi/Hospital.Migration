@@ -2,16 +2,27 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TM_FARMAKOTERAPI")]
 public partial class TmFarmakoterapi
 {
+    [Key]
+    [Column("ID_FARMAKOTERAPI", TypeName = "numeric(18, 0)")]
     public decimal IdFarmakoterapi { get; set; }
 
+    [Column("V_NMFARMAKOTERAPI")]
+    [StringLength(200)]
+    [Unicode(false)]
     public string VNmfarmakoterapi { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 
+    [InverseProperty("IdFarmakoterapiNavigation")]
     public virtual ICollection<TmFarmakoterapiSub> TmFarmakoterapiSubs { get; set; } = new List<TmFarmakoterapiSub>();
 }

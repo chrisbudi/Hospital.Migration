@@ -2,16 +2,29 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TM_DIAGNOSA_MATRIX")]
 public partial class TmDiagnosaMatrix
 {
+    [Key]
+    [Column("ID_MATRIXDIAGNOSA", TypeName = "numeric(18, 0)")]
     public decimal IdMatrixdiagnosa { get; set; }
 
+    [Column("V_KODERUANGAN")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VKoderuangan { get; set; }
 
+    [Column("V_KDDIAGNOSA")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string VKddiagnosa { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 }

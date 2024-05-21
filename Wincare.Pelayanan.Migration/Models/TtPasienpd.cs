@@ -2,52 +2,115 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TT_PASIENPDS")]
+[Index("DTgldatang", Name = "IX_TT_PASIENPDS_d_tgldtg")]
+[Index("IdNumpasienpds", Name = "IX_TT_PASIENPDS_idnum")]
+[Index("IdRegistrasi", Name = "IX_TT_PASIENPDS_idreg")]
+[Index("IdStatus", Name = "IX_TT_PASIENPDS_idstatus")]
+[Index("IdVoucher", Name = "IX_TT_PASIENPDS_idvoucher")]
+[Index("VKddokter", Name = "IX_TT_PASIENPDS_kddokter")]
+[Index("VKdpengirim", Name = "IX_TT_PASIENPDS_kdpengirim")]
+[Index("VKoderuangan", Name = "IX_TT_PASIENPDS_koderuang")]
 public partial class TtPasienpd
 {
+    [Column("ID_NUMPASIENPDS", TypeName = "numeric(18, 0)")]
     public decimal IdNumpasienpds { get; set; }
 
+    [Required]
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
+    [Column("V_KDPENGIRIM")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKdpengirim { get; set; }
 
+    [Column("V_NMPENGIRIM")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmpengirim { get; set; }
 
+    [Required]
+    [Column("V_KDDOKTER")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKddokter { get; set; }
 
+    [Column("D_TGLDATANG", TypeName = "datetime")]
     public DateTime DTgldatang { get; set; }
 
+    [Column("I_URUT")]
     public int? IUrut { get; set; }
 
+    [Column("V_JAM")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VJam { get; set; }
 
+    [Column("ID_JADWAL", TypeName = "numeric(18, 0)")]
     public decimal? IdJadwal { get; set; }
 
+    [Column("C_ISDONE")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CIsdone { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Key]
+    [Column("ID_PASIENPDS")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdPasienpds { get; set; }
 
+    [Column("V_STATUS")]
+    [StringLength(30)]
+    [Unicode(false)]
     public string VStatus { get; set; }
 
+    [Column("V_KODERUANGAN")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VKoderuangan { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [Column("ID_VOUCHER")]
     public bool? IdVoucher { get; set; }
 
+    [ForeignKey("IdJadwal")]
+    [InverseProperty("TtPasienpds")]
     public virtual TmJadwaldokter IdJadwalNavigation { get; set; }
 
+    [ForeignKey("IdRegistrasi")]
+    [InverseProperty("TtPasienpds")]
     public virtual TtKunjungan IdRegistrasiNavigation { get; set; }
 
+    [ForeignKey("IdStatus")]
+    [InverseProperty("TtPasienpds")]
     public virtual TmStatus IdStatusNavigation { get; set; }
 
+    [ForeignKey("VKddokter")]
+    [InverseProperty("TtPasienpds")]
     public virtual TmDokter VKddokterNavigation { get; set; }
 
+    [ForeignKey("VKdpengirim")]
+    [InverseProperty("TtPasienpds")]
     public virtual TmAsal VKdpengirimNavigation { get; set; }
 
+    [ForeignKey("VKoderuangan")]
+    [InverseProperty("TtPasienpds")]
     public virtual TmRuang VKoderuanganNavigation { get; set; }
 }

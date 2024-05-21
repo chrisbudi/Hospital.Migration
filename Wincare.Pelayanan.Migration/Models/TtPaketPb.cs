@@ -2,36 +2,71 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
+[Table("TT_PAKET_PB")]
+[Index("IdPaketpb", Name = "IX_TT_PAKET_PB_ID_PAKETPB")]
+[Index("VKodetarif", Name = "IX_TT_PAKET_PB_V_KODETARIF")]
 public partial class TtPaketPb
 {
+    [Key]
+    [Column("ID_PAKETPB", TypeName = "numeric(18, 0)")]
     public decimal IdPaketpb { get; set; }
 
+    [Column("D_TGLPAKET", TypeName = "datetime")]
     public DateTime? DTglpaket { get; set; }
 
+    [Column("V_KODETARIF")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string VKodetarif { get; set; }
 
+    [Column("ID_MASTERPEMERIKSAANPENUNJANG", TypeName = "numeric(18, 0)")]
     public decimal? IdMasterpemeriksaanpenunjang { get; set; }
 
+    [Column("V_KDPEMERIKSAAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKdpemeriksaan { get; set; }
 
+    [Column("V_NMPAKETPB")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmpaketpb { get; set; }
 
+    [Column("V_KETERANGAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKeterangan { get; set; }
 
+    [Column("V_NAMADOKTER")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VNamadokter { get; set; }
 
+    [Column("V_STATUS")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string VStatus { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [InverseProperty("IdPaketpbNavigation")]
     public virtual ICollection<TtPaketPbApp> TtPaketPbApps { get; set; } = new List<TtPaketPbApp>();
 
+    [InverseProperty("IdPaketpbNavigation")]
     public virtual ICollection<TtPaketPbPakai> TtPaketPbPakais { get; set; } = new List<TtPaketPbPakai>();
 
+    [InverseProperty("IdPaketpbNavigation")]
     public virtual ICollection<TtPaketPbRetur> TtPaketPbReturs { get; set; } = new List<TtPaketPbRetur>();
 }
