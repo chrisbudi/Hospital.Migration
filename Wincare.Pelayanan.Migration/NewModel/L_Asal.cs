@@ -11,7 +11,7 @@ namespace WincareMigrations.NewModels;
 [Index("IsAktif", Name = "IX_M_Asal_IsAktif")]
 [Index("KdAsal", Name = "IX_M_Asal_Kdasal")]
 [Index("NmAsal", Name = "IX_M_Asal_Nmasal")]
-public partial class M_Asal
+public partial class L_Asal
 {
 
     [Key]

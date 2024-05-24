@@ -8,29 +8,33 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.NewModels;;
 
-[Table("TM_DOKTER_NOTE")]
-public partial class TmDokterNote
+[Table("L_DokterNote")]
+public partial class L_DokterNote
 {
     [Key]
-    [Column("ID_DOKTER", TypeName = "numeric(18, 0)")]
+    [Column("IdDokterNote", TypeName = "numeric(18, 0)")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public decimal IdDokterNote { get; set; }
+
+    [Column("IdDokter", TypeName = "numeric(18, 0)")]
     public decimal IdDokter { get; set; }
 
     [Required]
-    [Column("V_KDDOKTER")]
+    [Column("KdDokter")]
     [StringLength(6)]
     [Unicode(false)]
-    public string VKddokter { get; set; }
+    public string KdDokter { get; set; }
 
-    [Column("KETERANGAN")]
+    [Column("Keterangan")]
     [StringLength(100)]
     [Unicode(false)]
     public string Keterangan { get; set; }
 
-    [Column("V_BY")]
+    [Column("By")]
     [StringLength(50)]
     [Unicode(false)]
-    public string VBy { get; set; }
+    public string By { get; set; }
 
-    [Column("TGL_INPUT", TypeName = "datetime")]
+    [Column("TglInput", TypeName = "TIMESTAMP")]
     public DateTime? TglInput { get; set; }
 }
