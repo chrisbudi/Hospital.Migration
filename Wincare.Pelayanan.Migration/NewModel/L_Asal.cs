@@ -44,8 +44,7 @@ public partial class L_Asal
     public virtual ICollection<TtPasienugd> TtPasienugds { get; set; } = new List<TtPasienugd>();
 
 
-
-    //[ForeignKey("IdAsalGroup")]
-    //[InverseProperty("MAsals")]
-    //public virtual M_AsalGroup IdAsalgroupNavigation { get; set; }
+   //[ForeignKey("IdAsalGroup")]
+   //[InverseProperty("MAsals")]
+   //public virtual M_AsalGroup IdAsalgroupNavigation { get; set; }
 }
