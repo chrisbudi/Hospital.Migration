@@ -19,7 +19,7 @@ public partial class WinCare2Context : DbContext
 
     public virtual DbSet<TmAsal> TmAsals { get; set; }
 
-    public virtual DbSet<TmAturanpakai> TmAturanpakais { get; set; }
+    public virtual DbSet<L_Aturanpakai> TmAturanpakais { get; set; }
 
     public virtual DbSet<TmDiagnosa> TmDiagnosas { get; set; }
 
@@ -205,7 +205,7 @@ public partial class WinCare2Context : DbContext
             entity.Property(e => e.IdAsal).ValueGeneratedOnAdd();
         });
 
-        modelBuilder.Entity<TmAturanpakai>(entity =>
+        modelBuilder.Entity<L_Aturanpakai>(entity =>
         {
             entity.Property(e => e.IdAturanpakai).ValueGeneratedOnAdd();
         });

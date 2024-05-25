@@ -11,7 +11,7 @@ namespace WincareMigrations.NewModels;
 [Index("IsAktif", Name = "IX_M_Asal_IsAktif")]
 [Index("KdAsal", Name = "IX_M_Asal_Kdasal")]
 [Index("NmAsal", Name = "IX_M_Asal_Nmasal")]
-public partial class M_Asal
+public partial class L_Asal
 {
 
     [Key]
@@ -44,8 +44,7 @@ public partial class M_Asal
     public virtual ICollection<TtPasienugd> TtPasienugds { get; set; } = new List<TtPasienugd>();
 
 
-
-    //[ForeignKey("IdAsalGroup")]
-    //[InverseProperty("MAsals")]
-    //public virtual M_AsalGroup IdAsalgroupNavigation { get; set; }
+   //[ForeignKey("IdAsalGroup")]
+   //[InverseProperty("MAsals")]
+   //public virtual M_AsalGroup IdAsalgroupNavigation { get; set; }
 }
