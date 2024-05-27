@@ -19,8 +19,8 @@ public partial class TrPelunasandetail
     public decimal OldPelunasandetailid { get; set; }
 
 
-    [Column("PELUNASANID", TypeName = "numeric(18, 0)")]
-    public decimal? Pelunasanid { get; set; }
+    [Column("PelunasanId", TypeName = "numeric(18, 0)")]
+    public decimal? PelunasanId { get; set; }
 
     [Column("PEMBAYARANID", TypeName = "numeric(18, 0)")]
     public decimal? Pembayaranid { get; set; }

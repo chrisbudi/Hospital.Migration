@@ -61,7 +61,7 @@ public partial class TmBarang
 
     public decimal? Stoknow { get; set; }
 
-    public string Nobatch { get; set; }
+    public string? Nobatch { get; set; }
 
     public byte[] Timestamp { get; set; }
 

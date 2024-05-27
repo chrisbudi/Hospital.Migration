@@ -4,10 +4,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace WincareMigrations.Migrations
+namespace Wincare.Core.Migrations
 {
     /// <inheritdoc />
-    public partial class initialMigrate : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -162,7 +162,8 @@ namespace WincareMigrations.Migrations
                 name: "M_CountTraffic",
                 columns: table => new
                 {
-                    IdCountTraffic = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdCountTraffic = table.Column<Guid>(type: "uuid", nullable: false),
+                    OldIdCountTraffic = table.Column<decimal>(type: "numeric", nullable: false),
                     Tanggal = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
                     jam = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Menu = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
@@ -210,7 +211,7 @@ namespace WincareMigrations.Migrations
                     IdRuangan = table.Column<decimal>(type: "numeric", nullable: false),
                     KodeRuangan = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
                     IdDiagnosa = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
-                    KdDiagnosa = table.Column<decimal>(type: "numeric", unicode: false, maxLength: 8, nullable: false),
+                    KdDiagnosa = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -345,8 +346,7 @@ namespace WincareMigrations.Migrations
                 name: "M_KamarinapRekanan",
                 columns: table => new
                 {
-                    IdKamarinaprek = table.Column<Guid>(type: "uuid", nullable: false),
-                    OldIdKamarinaprek = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdKamarinaprek = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KdTmpTidur = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
                     RekananId = table.Column<Guid>(type: "uuid", nullable: false),
                     OldRekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
@@ -461,8 +461,7 @@ namespace WincareMigrations.Migrations
                 name: "M_ObatUnit",
                 columns: table => new
                 {
-                    IdObatUnit = table.Column<decimal>(type: "numeric", nullable: false),
-                    OldIdObatUnit = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdObatUnit = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     BarangId = table.Column<Guid>(type: "uuid", nullable: true),
                     OldBarangId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     KdObat = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
@@ -720,7 +719,8 @@ namespace WincareMigrations.Migrations
                 name: "M_SettingKomputerAntrian",
                 columns: table => new
                 {
-                    IdSettingKomp = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdSettingKomp = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NmKomputer = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     KdLokasi = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
                     KdJenisLayanan = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
@@ -736,7 +736,8 @@ namespace WincareMigrations.Migrations
                 name: "M_SettingPemeriksaan",
                 columns: table => new
                 {
-                    IdSettingPeriksaan = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdSettingPeriksaan = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NmPemeriksaan = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Group = table.Column<string>(type: "character varying(20)", unicode: false, maxLength: 20, nullable: false),
                     IsTampil = table.Column<bool>(type: "boolean", nullable: true)
@@ -1361,7 +1362,7 @@ namespace WincareMigrations.Migrations
                     Nama = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     Satuan = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Merk = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
-                    Ukuran = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
+                    Ukuran = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: true),
                     Jenis = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     ExpiredDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
                     Etiket = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
@@ -1383,7 +1384,7 @@ namespace WincareMigrations.Migrations
                     StokMax = table.Column<decimal>(type: "numeric(18,2)", nullable: true),
                     StokNow = table.Column<decimal>(type: "numeric(18,2)", nullable: true),
                     NoBatch = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
-                    Timestamp = table.Column<byte[]>(type: "bytea", rowVersion: true, nullable: false),
+                    Timestamp = table.Column<byte[]>(type: "bytea", rowVersion: true, nullable: true),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true),
                     IsFormularium = table.Column<bool>(type: "boolean", nullable: true),
                     EtiketQty = table.Column<bool>(type: "boolean", nullable: true)
@@ -1481,8 +1482,7 @@ namespace WincareMigrations.Migrations
                 name: "M_LaboratoriumRekanan",
                 columns: table => new
                 {
-                    IdLabrekanan = table.Column<Guid>(type: "uuid", nullable: false),
-                    OldIdLabrekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdLabrekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KdPemeriksaanLab = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
                     IdPemeriksaanLab = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     RekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
@@ -1554,8 +1554,7 @@ namespace WincareMigrations.Migrations
                 name: "M_RadiologiRekanan",
                 columns: table => new
                 {
-                    IdRadrekanan = table.Column<Guid>(type: "uuid", nullable: false),
-                    OldIdRadrekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdRadrekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KdPemeriksaanRad = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
                     IdPemeriksaanRad = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     RekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
@@ -1804,8 +1803,7 @@ namespace WincareMigrations.Migrations
                 name: "M_KamarinapHarga",
                 columns: table => new
                 {
-                    IdKamarInapHarga = table.Column<Guid>(type: "uuid", nullable: false),
-                    OldIdKamarInapHarga = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdKamarInapHarga = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KdTmpTidur = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
                     IdKamarInap = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     RekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),

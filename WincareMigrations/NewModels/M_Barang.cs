@@ -59,7 +59,7 @@ public partial class M_Barang
     [Column("Ukuran")]
     [StringLength(50)]
     [Unicode(false)]
-    public string Ukuran { get; set; }
+    public string? Ukuran { get; set; }
 
     [Column("Jenis")]
     [StringLength(50)]
@@ -145,7 +145,7 @@ public partial class M_Barang
     public string Nobatch { get; set; }
 
     [Column("Timestamp")]
-    public byte[] Timestamp { get; set; }
+    public byte[]? Timestamp { get; set; }
 
     [Column("IsAktif")]
     public bool? Isaktif { get; set; }

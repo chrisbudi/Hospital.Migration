@@ -70,7 +70,7 @@ public partial class M_Dokter
     public string Kdakun { get; set; }
 
     [Column("IdCoa")]
-    public Guid IdCoa { get; set; }
+    public Guid? IdCoa { get; set; }
 
     [Column("By")]
     [StringLength(50)]

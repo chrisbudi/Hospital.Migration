@@ -12,26 +12,6 @@ namespace WincareMigrations.Controllers.Master
         [HttpGet()]
         public Task<IActionResult> GetEFGHJCoa()
         {
-            // load source 
-            var farmako = _dbWin.TmFarmakoterapis.
-                Select(m => new M_Farmakoterapi()
-                {
-                    IdFarmakoterapi = m.IdFarmakoterapi,
-                    Nmfarmakoterapi = m.VNmfarmakoterapi,
-                    IsAktif = m.IsAktif
-                }).ToList();
-            _dbs.AddRange(farmako);
-
-            var subfarmako = _dbWin.TmFarmakoterapiSubs.
-                Select(m => new M_FarmakoterapiSub()
-                {
-                    IdFarmakoterapi = m.IdFarmakoterapi,
-                    IdSubfarmakoterapi = m.IdSubfarmakoterapi,
-                    NmSubFarmakoterapi = m.VNmsubfarmakoterapi,
-                    IsAktif = m.IsAktif
-                }).ToList();
-
-            _dbs.AddRange(subfarmako);
 
 
             var gudang = _dbWin.TmGudangs

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.Models;
 
-[Table("TM_ASAL")]
+[Table("L_Asal")]
 [Index("IdAsal", Name = "IX_TM_ASAL_ID_ASAL")]
 [Index("IdAsalgroup", Name = "IX_TM_ASAL_ID_ASALGROUP")]
 [Index("IsAktif", Name = "IX_TM_ASAL_IS_AKTIF")]

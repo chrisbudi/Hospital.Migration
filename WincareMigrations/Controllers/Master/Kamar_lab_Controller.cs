@@ -66,18 +66,6 @@ namespace WincareMigrations.Controllers.Master
             _dbs.AddRange(kmrInap);
 
 
-            var kelBarang = _dbWin.TmKelompokbarangs.Select(m => new M_KelompokBarang()
-            {
-                IdGroupTarif = m.IdGrouptarif,
-                KelompokId = m.Kelompokid,
-                Kode = m.Kode,
-                Margin = m.Margin,
-                Nama = m.Nama,
-                Note = m.Note,
-                IsAktif = m.IsAktif,
-            }).ToList();
-
-            _dbs.AddRange(kelBarang);
 
             var kodePos = _dbWin.TmKodepos.Select(m => new M_Kodepos()
             {

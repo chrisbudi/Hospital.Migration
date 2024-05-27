@@ -9,11 +9,11 @@ using WincareMigrations.NewModels;
 
 #nullable disable
 
-namespace WincareMigrations.Migrations
+namespace Wincare.Core.Migrations
 {
     [DbContext(typeof(SimpleContext))]
-    [Migration("20240517043913_initialMigrate")]
-    partial class initialMigrate
+    [Migration("20240526164957_initialCreate")]
+    partial class initialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -220,9 +220,9 @@ namespace WincareMigrations.Migrations
 
             modelBuilder.Entity("M_KamarinapHarga", b =>
                 {
-                    b.Property<Guid>("IdKamarInapHarga")
+                    b.Property<decimal>("IdKamarInapHarga")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("numeric(18, 0)")
                         .HasColumnName("IdKamarInapHarga");
 
                     b.Property<decimal?>("Adm")
@@ -282,10 +282,6 @@ namespace WincareMigrations.Migrations
                         .IsUnicode(false)
                         .HasColumnType("character varying(6)")
                         .HasColumnName("KdTmpTidur");
-
-                    b.Property<decimal>("OldIdKamarInapHarga")
-                        .HasColumnType("numeric(18, 0)")
-                        .HasColumnName("OldIdKamarInapHarga");
 
                     b.Property<decimal?>("Penyulit")
                         .HasColumnType("decimal(18, 0)")
@@ -912,7 +908,6 @@ namespace WincareMigrations.Migrations
 
                     b.Property<byte[]>("Timestamp")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea")
                         .HasColumnName("Timestamp");
@@ -926,7 +921,6 @@ namespace WincareMigrations.Migrations
                         .IsFixedLength();
 
                     b.Property<string>("Ukuran")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("character varying(50)")
@@ -1209,9 +1203,9 @@ namespace WincareMigrations.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_CountTraffic", b =>
                 {
-                    b.Property<decimal>("Idcounttraffic")
+                    b.Property<Guid>("Idcounttraffic")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("uuid")
                         .HasColumnName("IdCountTraffic");
 
                     b.Property<string>("By")
@@ -1234,6 +1228,10 @@ namespace WincareMigrations.Migrations
                         .IsUnicode(false)
                         .HasColumnType("character varying(50)")
                         .HasColumnName("Menu");
+
+                    b.Property<decimal>("OldIdcounttraffic")
+                        .HasColumnType("numeric")
+                        .HasColumnName("OldIdCountTraffic");
 
                     b.Property<string>("Submenu")
                         .IsRequired()
@@ -1334,10 +1332,11 @@ namespace WincareMigrations.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("IsAktif");
 
-                    b.Property<decimal>("Kddiagnosa")
+                    b.Property<string>("Kddiagnosa")
+                        .IsRequired()
                         .HasMaxLength(8)
                         .IsUnicode(false)
-                        .HasColumnType("numeric")
+                        .HasColumnType("character varying(8)")
                         .HasColumnName("KdDiagnosa");
 
                     b.Property<string>("Koderuangan")
@@ -1479,11 +1478,11 @@ namespace WincareMigrations.Migrations
                         .HasColumnType("numeric")
                         .HasColumnName("Id");
 
-                    b.Property<decimal?>("DJasaMedis")
+                    b.Property<decimal?>("JasaMedis")
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("JasaMedis");
 
-                    b.Property<decimal?>("DJasaRS")
+                    b.Property<decimal?>("JasaRS")
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("JasaRS");
 
@@ -1977,9 +1976,9 @@ namespace WincareMigrations.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_KamarInapRekanan", b =>
                 {
-                    b.Property<Guid>("IdKamarinaprek")
+                    b.Property<decimal>("IdKamarinaprek")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("numeric(18, 0)")
                         .HasColumnName("IdKamarinaprek");
 
                     b.Property<bool?>("IsAktif")
@@ -1992,10 +1991,6 @@ namespace WincareMigrations.Migrations
                         .IsUnicode(false)
                         .HasColumnType("character varying(6)")
                         .HasColumnName("KdTmpTidur");
-
-                    b.Property<decimal>("OldIdKamarinaprek")
-                        .HasColumnType("numeric(18, 0)")
-                        .HasColumnName("OldIdKamarinaprek");
 
                     b.Property<decimal>("OldRekananId")
                         .HasColumnType("numeric(18, 0)")
@@ -2298,9 +2293,9 @@ namespace WincareMigrations.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_LaboratoriumRekanan", b =>
                 {
-                    b.Property<Guid>("IdLabRekanan")
+                    b.Property<decimal>("IdLabRekanan")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("numeric(18, 0)")
                         .HasColumnName("IdLabrekanan");
 
                     b.Property<decimal?>("IdPemeriksaanLab")
@@ -2317,10 +2312,6 @@ namespace WincareMigrations.Migrations
                         .IsUnicode(false)
                         .HasColumnType("character varying(8)")
                         .HasColumnName("KdPemeriksaanLab");
-
-                    b.Property<decimal>("OldIdLabRekanan")
-                        .HasColumnType("numeric(18, 0)")
-                        .HasColumnName("OldIdLabrekanan");
 
                     b.Property<decimal>("RekananId")
                         .HasColumnType("numeric(18, 0)")
@@ -2362,19 +2353,19 @@ namespace WincareMigrations.Migrations
                         .HasColumnType("character varying(5)")
                         .HasColumnName("KodeRuangan");
 
+                    b.Property<string>("Nmmap")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("NmMap");
+
                     b.Property<string>("Note")
                         .IsRequired()
                         .HasMaxLength(200)
                         .IsUnicode(false)
                         .HasColumnType("character varying(200)")
                         .HasColumnName("Note");
-
-                    b.Property<string>("VNmmap")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("NmMap");
 
                     b.HasKey("IdMapid");
 
@@ -2529,16 +2520,16 @@ namespace WincareMigrations.Migrations
                         .HasColumnType("character varying(50)")
                         .HasColumnName("NmModulDetail");
 
-                    b.Property<decimal?>("Urut")
-                        .HasColumnType("numeric(18, 0)")
-                        .HasColumnName("Urut");
-
-                    b.Property<string>("VNmModuleDetailSub")
+                    b.Property<string>("NmModuleDetailSub")
                         .IsRequired()
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("character varying(50)")
                         .HasColumnName("NmModuleDetailSub");
+
+                    b.Property<decimal?>("Urut")
+                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnName("Urut");
 
                     b.HasKey("IdModuledetail");
 
@@ -2594,7 +2585,7 @@ namespace WincareMigrations.Migrations
                 {
                     b.Property<decimal>("IdObatUnit")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric")
+                        .HasColumnType("numeric(18, 0)")
                         .HasColumnName("IdObatUnit");
 
                     b.Property<Guid?>("BarangId")
@@ -2640,10 +2631,6 @@ namespace WincareMigrations.Migrations
                     b.Property<decimal?>("OldBarangId")
                         .HasColumnType("numeric(18, 0)")
                         .HasColumnName("OldBarangId");
-
-                    b.Property<decimal>("OldIdObatUnit")
-                        .HasColumnType("numeric(18, 0)")
-                        .HasColumnName("OldIdObatUnit");
 
                     b.Property<bool?>("Rod")
                         .HasColumnType("boolean")
@@ -2695,6 +2682,22 @@ namespace WincareMigrations.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("IdPaketkelas");
 
+                    b.Property<decimal?>("Adm")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("Adm");
+
+                    b.Property<decimal?>("BahanAlkes")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("BahanAlkes");
+
+                    b.Property<decimal?>("Beapasien")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("Beapasien");
+
+                    b.Property<decimal?>("Bearekanan")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("Bearekanan");
+
                     b.Property<string>("By")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -2702,85 +2705,25 @@ namespace WincareMigrations.Migrations
                         .HasColumnType("character varying(50)")
                         .HasColumnName("By");
 
-                    b.Property<decimal?>("DAdm")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("Adm");
-
-                    b.Property<decimal?>("DBahanalkes")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("BahanAlkes");
-
-                    b.Property<decimal?>("DBeapasien")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("Beapasien");
-
-                    b.Property<decimal?>("DBearekanan")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("Bearekanan");
-
-                    b.Property<decimal?>("DCito")
+                    b.Property<decimal?>("Cito")
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Cito");
-
-                    b.Property<decimal?>("DDiskon")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("Diskon");
-
-                    b.Property<decimal?>("DHarga")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("Harga");
-
-                    b.Property<decimal?>("DJasamedis")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("Jasamedis");
-
-                    b.Property<decimal?>("DJasamedis2")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("Jasamedis2");
-
-                    b.Property<decimal?>("DJasamedis3")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("Jasamedis3");
-
-                    b.Property<decimal?>("DJasamedis4")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("Jasamedis4");
-
-                    b.Property<decimal?>("DJasamedis5")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("Jasamedis5");
-
-                    b.Property<decimal?>("DJasars")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("JasaRS");
-
-                    b.Property<decimal?>("DJumlah")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("Jumlah");
-
-                    b.Property<DateTime?>("DLastupdate")
-                        .HasColumnType("TIMESTAMP")
-                        .HasColumnName("LastUpdate");
 
                     b.Property<decimal?>("DPenyulit")
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Penyulit");
 
-                    b.Property<decimal?>("DSecondTnd")
-                        .HasColumnType("decimal(18, 0)")
-                        .HasColumnName("SecondTnd");
-
                     b.Property<decimal?>("DSubtotal")
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Subtotal");
 
-                    b.Property<DateTime?>("DTglakhir")
-                        .HasColumnType("TIMESTAMP")
-                        .HasColumnName("TglAkhir");
+                    b.Property<decimal?>("Diskon")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("Diskon");
 
-                    b.Property<DateTime?>("DTglawal")
-                        .HasColumnType("TIMESTAMP")
-                        .HasColumnName("TglAwal");
+                    b.Property<decimal?>("Harga")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("Harga");
 
                     b.Property<Guid>("IdMasterPemeriksaanPenunjang")
                         .HasColumnType("uuid")
@@ -2794,12 +2737,44 @@ namespace WincareMigrations.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("IsAktif");
 
+                    b.Property<decimal?>("JasaRS")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("JasaRS");
+
+                    b.Property<decimal?>("Jasamedis")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("Jasamedis");
+
+                    b.Property<decimal?>("Jasamedis2")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("Jasamedis2");
+
+                    b.Property<decimal?>("Jasamedis3")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("Jasamedis3");
+
+                    b.Property<decimal?>("Jasamedis4")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("Jasamedis4");
+
+                    b.Property<decimal?>("Jasamedis5")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("Jasamedis5");
+
+                    b.Property<decimal?>("Jumlah")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("Jumlah");
+
                     b.Property<string>("Kelas")
                         .IsRequired()
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("character varying(50)")
                         .HasColumnName("Kelas");
+
+                    b.Property<DateTime?>("Lastupdate")
+                        .HasColumnType("TIMESTAMP")
+                        .HasColumnName("LastUpdate");
 
                     b.Property<decimal>("OldIdMasterPemeriksaanPenunjang")
                         .HasColumnType("numeric(18, 0)")
@@ -2820,6 +2795,18 @@ namespace WincareMigrations.Migrations
                     b.Property<Guid>("RekananId")
                         .HasColumnType("uuid")
                         .HasColumnName("RekananId");
+
+                    b.Property<decimal?>("SecondTnd")
+                        .HasColumnType("decimal(18, 0)")
+                        .HasColumnName("SecondTnd");
+
+                    b.Property<DateTime?>("Tglakhir")
+                        .HasColumnType("TIMESTAMP")
+                        .HasColumnName("TglAkhir");
+
+                    b.Property<DateTime?>("Tglawal")
+                        .HasColumnType("TIMESTAMP")
+                        .HasColumnName("TglAwal");
 
                     b.HasKey("IdPaketkelas");
 
@@ -3253,6 +3240,7 @@ namespace WincareMigrations.Migrations
                         .HasColumnName("Noktpsimpasien");
 
                     b.Property<decimal>("OldIdPasien")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("numeric(18, 0)")
                         .HasColumnName("OldIdPasien");
 
@@ -3615,7 +3603,7 @@ namespace WincareMigrations.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("IsAktif");
 
-                    b.Property<string>("VNmgroup")
+                    b.Property<string>("Nmgroup")
                         .IsRequired()
                         .HasMaxLength(100)
                         .IsUnicode(false)
@@ -3740,9 +3728,9 @@ namespace WincareMigrations.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_RadiologiRekanan", b =>
                 {
-                    b.Property<Guid>("IdRadrekanan")
+                    b.Property<decimal>("IdRadrekanan")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("numeric(18, 0)")
                         .HasColumnName("IdRadrekanan");
 
                     b.Property<decimal>("IdPemeriksaanRad")
@@ -3759,10 +3747,6 @@ namespace WincareMigrations.Migrations
                         .IsUnicode(false)
                         .HasColumnType("character varying(6)")
                         .HasColumnName("KdPemeriksaanRad");
-
-                    b.Property<decimal>("OldIdRadrekanan")
-                        .HasColumnType("numeric(18, 0)")
-                        .HasColumnName("OldIdRadrekanan");
 
                     b.Property<decimal>("RekananId")
                         .HasColumnType("numeric(18, 0)")
@@ -4105,10 +4089,12 @@ namespace WincareMigrations.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_SettingKomputerAntrian", b =>
                 {
-                    b.Property<decimal>("IdSettingKomp")
+                    b.Property<int>("IdSettingKomp")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("integer")
                         .HasColumnName("IdSettingKomp");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdSettingKomp"));
 
                     b.Property<string>("KdCounter")
                         .IsRequired()
@@ -4159,10 +4145,12 @@ namespace WincareMigrations.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_SettingPemeriksaan", b =>
                 {
-                    b.Property<decimal>("IdSettingperiksa")
+                    b.Property<int>("IdSettingperiksa")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("integer")
                         .HasColumnName("IdSettingPeriksaan");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdSettingperiksa"));
 
                     b.Property<string>("Group")
                         .IsRequired()
@@ -4175,7 +4163,7 @@ namespace WincareMigrations.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("IsTampil");
 
-                    b.Property<string>("VNmpemeriksaan")
+                    b.Property<string>("Nmpemeriksaan")
                         .IsRequired()
                         .HasMaxLength(50)
                         .IsUnicode(false)

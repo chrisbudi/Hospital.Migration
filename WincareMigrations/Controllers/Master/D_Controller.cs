@@ -13,119 +13,149 @@ namespace WincareMigrations.Controllers.Master
         public Task<IActionResult> GetBankCoa()
         {
             // load source 
-            var dept = _dbWin.TmDepartements.Select(m => new M_Departement()
+            if (!_dbs.TmDepartements.Any())
             {
-                IdDepartment = m.IdDepartment,
-                NamaDepartemen = m.NamaDepartemen
-            });
+                var dept = _dbWin.TmDepartements.Select(m => new M_Departement()
+                {
+                    IdDepartment = m.IdDepartment == 0 ? 1 : m.IdDepartment,
+                    NamaDepartemen = m.NamaDepartemen ?? ""
+                });
+                _dbs.AddRange(dept);
+                _dbs.SaveChanges();
+            }
 
-
-            var diag = _dbWin.TmDiagnosas.Select(m => new M_Diagnosa()
+            if (!_dbs.TmDtds.Any())
             {
-                IdDiagnosa = m.IdDiagnosa,
-                KdDiagnosa = m.VKddiagnosa,
-                NmDiagnosa = m.VNmdiagnosa,
-                IsAktif = m.IsAktif,
-                IsPenyakit = m.CIspenyakit,
-                KdDTD = m.VKddtd,
-            });
-
-
-            var diagMat = _dbWin.TmDiagnosaMatrices.Select(m => new M_DiagnosaMatrix()
+                var dtd = _dbWin.TmDtds.Select(m => new M_Dtd()
+                {
+                    IdDtd = m.IdDtd,
+                    Kddtd = m.VKddtd ?? "",
+                    Nmdtd = m.VNmdtd,
+                    IsAktif = m.IsAktif
+                });
+                _dbs.AddRange(dtd);
+                _dbs.SaveChanges();
+            }
+            if (!_dbs.TmDiagnosas.Any())
             {
-                IdDiagnosaMatrix = m.IdMatrixdiagnosa,
-                Kddiagnosa = m.VKddiagnosa,
-                Koderuangan = m.VKoderuangan,
-                IsAktif = m.IsAktif
-            });
-            // mapping id diagnosa, mapping id ruangan
+                var diag = _dbWin.TmDiagnosas.Select(m => new M_Diagnosa()
+                {
+                    IdDiagnosa = m.IdDiagnosa,
+                    KdDiagnosa = m.VKddiagnosa,
+                    NmDiagnosa = m.VNmdiagnosa,
+                    IsAktif = m.IsAktif,
+                    IsPenyakit = m.CIspenyakit,
+                    KdDTD = m.VKddtd ?? "",
+                });
+                _dbs.AddRange(diag);
+                _dbs.SaveChanges();
+            }
 
-            var dokter = _dbWin.TmDokters.Select(m => new M_Dokter()
+            if (!_dbs.TmDiagnosaMatrices.Any())
             {
-                IdDokter = m.IdDokter,
-                KdDokter = m.VKddokter,
-                NmDokter = m.VNmdokter,
-                Alamatdokter = m.VAlamatdokter,
-                Alamatpraktek = m.VAlamatpraktek,
-                By = m.VBy,
-                //IdCoa = m.VKdakun,
-                ImgFotodokter = m.ImFotodokter,
-                IsAktif = m.CAktif,
-                Kdakun = m.VKdakun,
-                Kodetarif = m.VKodetarif,
-                Nosip = m.VNosip,
-                Pin = m.Pin,
-                Spesialisasidokter = m.VSpesialisasidokter,
-                Telpdokter = m.VTelpdokter,
-                Telppraktek = m.VTelppraktek,
-                Ttd = m.IsTtd,
-            });
+
+
+                var diagMat = _dbWin.TmDiagnosaMatrices.Select(m => new M_DiagnosaMatrix()
+                {
+                    IdDiagnosaMatrix = m.IdMatrixdiagnosa,
+                    Kddiagnosa = m.VKddiagnosa,
+                    Koderuangan = m.VKoderuangan,
+                    IsAktif = m.IsAktif
+                });
+                _dbs.AddRange(diagMat);
+                _dbs.SaveChanges();
+                // mapping id diagnosa, mapping id ruangan
+            }
+            if (!_dbs.TmDokters.Any())
+            {
+
+                var dokter = _dbWin.TmDokters.Select(m => new M_Dokter()
+                {
+                    IdDokter = m.IdDokter,
+                    KdDokter = m.VKddokter,
+                    NmDokter = m.VNmdokter,
+                    Alamatdokter = m.VAlamatdokter ?? "",
+                    Alamatpraktek = m.VAlamatpraktek ?? "",
+                    By = m.VBy,
+                    //IdCoa = m.VKdakun,
+                    ImgFotodokter = m.ImFotodokter ?? "",
+                    IsAktif = m.CAktif,
+                    Kdakun = m.VKdakun ?? "",
+                    Kodetarif = m.VKodetarif ?? "",
+                    Nosip = m.VNosip ?? "",
+                    Pin = m.Pin,
+                    Spesialisasidokter = m.VSpesialisasidokter ?? "",
+                    Telpdokter = m.VTelpdokter ?? "",
+                    Telppraktek = m.VTelppraktek ?? "",
+                    Ttd = m.IsTtd ?? "",
+                });
+                _dbs.AddRange(dokter);
+                _dbs.SaveChanges();
+            }
             // mapping id coa
 
-            var dokHonor = _dbWin.TmDokterHonors.Select(m => new M_DokterHonor()
+            if (!_dbs.TmDokterHonors.Any())
             {
-                Id = m.Id,
-                NmDokter = m.VNmdokter,
-                KdDokter = m.VKddokter,
-                Tarif = m.DTarif,
-                JasaMedis = m.DJasamedis,
-                JasaRS = m.DJasars,
-                Ket = m.VKet
-            });
+                var dokHonor = _dbWin.TmDokterHonors.Select(m => new M_DokterHonor()
+                {
+                    Id = m.Id,
+                    NmDokter = m.VNmdokter,
+                    KdDokter = m.VKddokter,
+                    Tarif = m.DTarif,
+                    JasaMedis = m.DJasamedis,
+                    JasaRS = m.DJasars,
+                    Ket = m.VKet
+                });
+                _dbs.AddRange(dokHonor);
+                _dbs.SaveChanges();
+            }
 
-
-
-            var dokNote = _dbWin.TmDokterNotes.Select(m => new M_DokterNote()
+            if (!_dbs.TmDokterNotes.Any())
             {
-                IdDokter = m.IdDokter,
-                KdDokter = m.VKddokter,
-                By = m.VBy,
-                Keterangan = m.Keterangan,
-                TglInput = m.TglInput
-            });
+                var dokNote = _dbWin.TmDokterNotes.Select(m => new M_DokterNote()
+                {
+                    IdDokter = m.IdDokter,
+                    KdDokter = m.VKddokter,
+                    By = m.VBy,
+                    Keterangan = m.Keterangan,
+                    TglInput = m.TglInput
+                });
 
-            var dtd = _dbWin.TmDtds.Select(m => new M_Dtd()
+                _dbs.AddRange(dokNote);
+                _dbs.SaveChanges();
+            }
+
+
+            if (!_dbs.TmRuangs.Any())
             {
-                IdDtd = m.IdDtd,
-                Kddtd = m.VKddtd,
-                Nmdtd = m.VNmdtd,
-                IsAktif = m.IsAktif
-            });
+                var ruang = _dbWin.TmRuangs.Select(m => new M_Ruang()
+                {
+                    IdRuang = m.IdNumruang,
+                    Koderuangan = m.VKoderuangan,
+                    Nama = m.Nama,
+                    GdgPaket = m.VGdgpaket,
+                    GdgPenerimaan = m.VGdgpenerimaan,
+                    GdgRetur = m.VGdgretur,
+                    IsTarif = m.IsTarif,
+                    Kamar = m.Kamar,
+                    KdInhealth = m.VKdinhealth,
+                    Kelompok = m.Kelompok,
+                    KodeInventory = m.VKodeinventory,
+                    KodeRequestObat = m.KodeRequestobat,
+                    KodeTarif = m.KodeTarif,
+                    LynInhealth = m.VLyninhealth,
+                    Noruang = m.Noruang,
+                    IsAktif = m.IsAktif,
+                });
+                _dbs.AddRange(ruang);
 
+                _dbs.SaveChanges();
 
-            var ruang = _dbWin.TmRuangs.Select(m => new M_Ruang()
-            {
-                IdRuang = m.IdNumruang,
-                Koderuangan = m.VKoderuangan,
-                Nama = m.Nama,
-                GdgPaket = m.VGdgpaket,
-                GdgPenerimaan = m.VGdgpenerimaan,
-                GdgRetur = m.VGdgretur,
-                IsTarif = m.IsTarif,
-                Kamar = m.Kamar,
-                KdInhealth = m.VKdinhealth,
-                Kelompok = m.Kelompok,
-                KodeInventory = m.VKodeinventory,
-                KodeRequestObat = m.KodeRequestobat,
-                KodeTarif = m.KodeTarif,
-                LynInhealth = m.VLyninhealth,
-                Noruang = m.Noruang,
-                IsAktif = m.IsAktif,
-            });
+            }
 
             // gudang -> koderequest gudang obat
             // inventory -> kode inventory
 
-            _dbs.AddRange(ruang);
-            _dbs.AddRange(dept);
-            _dbs.AddRange(diag);
-            _dbs.AddRange(diagMat);
-            _dbs.AddRange(dokter);
-            _dbs.AddRange(dokHonor);
-            _dbs.AddRange(dokNote);
-            _dbs.AddRange(dtd);
-
-            _dbs.SaveChanges();
 
             return Task.FromResult<IActionResult>(Ok("Asal"));
         }
