@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
-[Table("TM_TARIFDETAIL")]
+[Table("TM_TARIFDETAL")]
 public partial class TmTarifdetail
 {
     [Column("ID_TARIFDETAIL", TypeName = "numeric(18, 0)")]
