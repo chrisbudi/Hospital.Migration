@@ -8,83 +8,83 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
-[Table("TM_DOKTER")]
-[Index("VKddokter", Name = "IX_TM_DOKTER")]
-[Index("VNmdokter", Name = "IX_TM_DOKTER_1")]
+[Table("D_Dokter")]
+[Index("Kddokter", Name = "IX_DOKTER")]
+[Index("Nmdokter", Name = "IX_DOKTER_1")]
 public partial class TmDokter
 {
-    [Column("ID_DOKTER", TypeName = "numeric(18, 0)")]
+    [Column("IdDokter", TypeName = "numeric(18, 0)")]
     public decimal IdDokter { get; set; }
 
     [Key]
-    [Column("V_KDDOKTER")]
+    [Column("KdDokter")]
     [StringLength(6)]
     [Unicode(false)]
-    public string VKddokter { get; set; }
+    public string KdDokter { get; set; }
 
-    [Column("V_NMDOKTER")]
+    [Column("NmDokter")]
     [StringLength(100)]
     [Unicode(false)]
-    public string VNmdokter { get; set; }
+    public string NmDokter { get; set; }
 
-    [Column("V_SPESIALISASIDOKTER")]
+    [Column("SpesialisasiDokter")]
     [StringLength(60)]
     [Unicode(false)]
-    public string VSpesialisasidokter { get; set; }
+    public string SpesialisasiDokter { get; set; }
 
-    [Column("V_ALAMATDOKTER")]
+    [Column("AlamatDokter")]
     [StringLength(200)]
     [Unicode(false)]
-    public string VAlamatdokter { get; set; }
+    public string AlamatDokter { get; set; }
 
-    [Column("V_TELPDOKTER")]
+    [Column("TelpDokter")]
     [StringLength(100)]
     [Unicode(false)]
-    public string VTelpdokter { get; set; }
+    public string TelpDokter { get; set; }
 
-    [Column("V_ALAMATPRAKTEK")]
+    [Column("AlamatPraktek")]
     [StringLength(200)]
     [Unicode(false)]
-    public string VAlamatpraktek { get; set; }
+    public string AlamatPraktek { get; set; }
 
-    [Column("V_TELPPRAKTEK")]
+    [Column("TelpPraktek")]
     [StringLength(100)]
     [Unicode(false)]
-    public string VTelppraktek { get; set; }
+    public string TelpPraktek { get; set; }
 
-    [Column("C_AKTIF")]
-    public bool? CAktif { get; set; }
+    [Column("Aktif")]
+    public bool? Aktif { get; set; }
 
-    [Column("IM_FOTODOKTER")]
+    [Column("FotoDokter")]
     [StringLength(100)]
     [Unicode(false)]
-    public string ImFotodokter { get; set; }
+    public string FotoDokter { get; set; }
 
-    [Column("V_KODETARIF")]
+    [Column("KodeTarif")]
     [StringLength(2)]
     [Unicode(false)]
-    public string VKodetarif { get; set; }
+    public string KodeTarif { get; set; }
 
-    [Column("V_KDAKUN")]
+    [Column("KdAkun")]
     [StringLength(8)]
     [Unicode(false)]
-    public string VKdakun { get; set; }
+    public string KdAkun { get; set; }
 
-    [Column("V_BY")]
+    [Column("By")]
     [StringLength(50)]
     [Unicode(false)]
-    public string VBy { get; set; }
+    public string By { get; set; }
 
-    [Column("IS_TTD", TypeName = "text")]
-    public string IsTtd { get; set; }
+    [Column("Ttd", TypeName = "text")]
+    public string Ttd { get; set; }
 
-    [Column("PIN", TypeName = "numeric(18, 2)")]
+    [Column("Pin", TypeName = "numeric(18, 2)")]
     public decimal? Pin { get; set; }
 
-    [Column("V_NOSIP")]
+    [Column("NoSip")]
     [StringLength(50)]
     [Unicode(false)]
-    public string VNosip { get; set; }
+    public string NoSip { get; set; }
 
     [InverseProperty("VKddokterNavigation")]
     public virtual ICollection<TmJadwaldokter> TmJadwaldokters { get; set; } = new List<TmJadwaldokter>();
