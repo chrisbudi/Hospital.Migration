@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
-[Table("TM_DOKTERDDDD")]
+[Table("TM_DOKTERDDDDaaaaa")]
 [Index("VKddokter", Name = "IX_TM_DOKTER")]
 [Index("VNmdokter", Name = "IX_TM_DOKTER_1")]
 public partial class TmDokter
