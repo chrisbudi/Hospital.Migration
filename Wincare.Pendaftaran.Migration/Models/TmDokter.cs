@@ -2,52 +2,105 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TM_DOKTER")]
+[Index("VKddokter", Name = "IX_TM_DOKTER")]
+[Index("VNmdokter", Name = "IX_TM_DOKTER_1")]
 public partial class TmDokter
 {
+    [Column("ID_DOKTER", TypeName = "numeric(18, 0)")]
     public decimal IdDokter { get; set; }
 
+    [Key]
+    [Column("V_KDDOKTER")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKddokter { get; set; }
 
+    [Column("V_NMDOKTER")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmdokter { get; set; }
 
+    [Column("V_SPESIALISASIDOKTER")]
+    [StringLength(60)]
+    [Unicode(false)]
     public string VSpesialisasidokter { get; set; }
 
+    [Column("V_ALAMATDOKTER")]
+    [StringLength(200)]
+    [Unicode(false)]
     public string VAlamatdokter { get; set; }
 
+    [Column("V_TELPDOKTER")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VTelpdokter { get; set; }
 
+    [Column("V_ALAMATPRAKTEK")]
+    [StringLength(200)]
+    [Unicode(false)]
     public string VAlamatpraktek { get; set; }
 
+    [Column("V_TELPPRAKTEK")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VTelppraktek { get; set; }
 
+    [Column("C_AKTIF")]
     public bool? CAktif { get; set; }
 
+    [Column("IM_FOTODOKTER")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string ImFotodokter { get; set; }
 
+    [Column("V_KODETARIF")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string VKodetarif { get; set; }
 
+    [Column("V_KDAKUN")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string VKdakun { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("IS_TTD", TypeName = "text")]
     public string IsTtd { get; set; }
 
+    [Column("PIN", TypeName = "numeric(18, 2)")]
     public decimal? Pin { get; set; }
 
+    [Column("V_NOSIP")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VNosip { get; set; }
 
+    [InverseProperty("VKddokterNavigation")]
     public virtual ICollection<TmJadwaldokter> TmJadwaldokters { get; set; } = new List<TmJadwaldokter>();
 
+    [InverseProperty("VKddokterNavigation")]
     public virtual ICollection<TtKuitansiresep> TtKuitansireseps { get; set; } = new List<TtKuitansiresep>();
 
+    [InverseProperty("VKddokterNavigation")]
     public virtual ICollection<TtPasienlab> TtPasienlabVKddokterNavigations { get; set; } = new List<TtPasienlab>();
 
+    [InverseProperty("VKddokterpjawabNavigation")]
     public virtual ICollection<TtPasienlab> TtPasienlabVKddokterpjawabNavigations { get; set; } = new List<TtPasienlab>();
 
+    [InverseProperty("VKddokterNavigation")]
     public virtual ICollection<TtPasienrad> TtPasienrads { get; set; } = new List<TtPasienrad>();
 
+    [InverseProperty("VKddokterNavigation")]
     public virtual ICollection<TtPasienugd> TtPasienugds { get; set; } = new List<TtPasienugd>();
 }

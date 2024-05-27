@@ -2,40 +2,78 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TM_REKANAN")]
+[Index("IdNumrekanan", Name = "IX_TM_REKANAN")]
+[Index("Rekananid", Name = "IX_TM_REKANAN_1")]
+[Index("VNmrekanan", Name = "IX_TM_REKANAN_2")]
+[Index("IsAktif", Name = "IX_TM_REKANAN_3")]
+[Index("VAlias", Name = "IX_TM_REKANAN_4")]
 public partial class TmRekanan
 {
+    [Column("ID_NUMREKANAN", TypeName = "numeric(18, 0)")]
     public decimal IdNumrekanan { get; set; }
 
+    [Key]
+    [Column("REKANANID", TypeName = "numeric(18, 0)")]
     public decimal Rekananid { get; set; }
 
+    [Column("V_NMREKANAN")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmrekanan { get; set; }
 
+    [Column("V_ALAMAT")]
+    [StringLength(200)]
+    [Unicode(false)]
     public string VAlamat { get; set; }
 
+    [Column("V_KOTA")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKota { get; set; }
 
+    [Column("V_TELP")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VTelp { get; set; }
 
+    [Column("V_ALIAS")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VAlias { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 
+    [Column("V_KDAKUN")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string VKdakun { get; set; }
 
+    [Column("IS_PAKETBHP")]
     public bool? IsPaketbhp { get; set; }
 
+    [Column("IS_TARIF")]
     public bool? IsTarif { get; set; }
 
+    [Column("IS_TARIFNONMED")]
     public bool? IsTarifnonmed { get; set; }
 
+    [Column("IS_COB")]
     public bool? IsCob { get; set; }
 
+    [InverseProperty("Rekanan")]
     public virtual ICollection<TmPasien> TmPasiens { get; set; } = new List<TmPasien>();
 
+    [InverseProperty("Rekanan")]
     public virtual ICollection<TtKunjungan> TtKunjungans { get; set; } = new List<TtKunjungan>();
 
+    [InverseProperty("Rekanan")]
     public virtual ICollection<TthKunjungan> TthKunjungans { get; set; } = new List<TthKunjungan>();
 }

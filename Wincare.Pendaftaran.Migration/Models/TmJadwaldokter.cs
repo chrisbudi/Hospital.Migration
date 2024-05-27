@@ -2,30 +2,71 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TM_JADWALDOKTER")]
+[Index("IdJadwal", Name = "IX_TM_JADWALDOKTER")]
+[Index("VKddokter", Name = "IX_TM_JADWALDOKTER_1")]
+[Index("VKoderuangan", Name = "IX_TM_JADWALDOKTER_2")]
+[Index("VNamaklinik", Name = "IX_TM_JADWALDOKTER_3")]
+[Index("VHari", Name = "IX_TM_JADWALDOKTER_4")]
+[Index("VJamstart", Name = "IX_TM_JADWALDOKTER_5")]
+[Index("VJamfinish", Name = "IX_TM_JADWALDOKTER_6")]
+[Index("IsAktif", Name = "IX_TM_JADWALDOKTER_7")]
 public partial class TmJadwaldokter
 {
+    [Key]
+    [Column("ID_JADWAL", TypeName = "numeric(18, 0)")]
     public decimal IdJadwal { get; set; }
 
+    [Column("V_KDDOKTER")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKddokter { get; set; }
 
+    [Required]
+    [Column("V_HARI")]
+    [StringLength(30)]
+    [Unicode(false)]
     public string VHari { get; set; }
 
+    [Required]
+    [Column("V_JAMSTART")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VJamstart { get; set; }
 
+    [Column("V_JAMFINISH")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VJamfinish { get; set; }
 
+    [Required]
+    [Column("V_KODERUANGAN")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VKoderuangan { get; set; }
 
+    [Column("V_NAMAKLINIK")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNamaklinik { get; set; }
 
+    [Column("I_SERVISTIME")]
     public int? IServistime { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 
+    [ForeignKey("VKddokter")]
+    [InverseProperty("TmJadwaldokters")]
     public virtual TmDokter VKddokterNavigation { get; set; }
 
+    [ForeignKey("VKoderuangan")]
+    [InverseProperty("TmJadwaldokters")]
     public virtual TmRuang VKoderuanganNavigation { get; set; }
 }

@@ -2,22 +2,45 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TM_KODEPOS")]
 public partial class TmKodepo
 {
+    [Key]
+    [Column("ID_KODEPOS", TypeName = "numeric(18, 0)")]
     public decimal IdKodepos { get; set; }
 
+    [Required]
+    [Column("V_KDKODEPOS")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VKdkodepos { get; set; }
 
+    [Column("V_KELURAHAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKelurahan { get; set; }
 
+    [Column("V_KECAMATAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKecamatan { get; set; }
 
+    [Column("V_KABUPATEN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKabupaten { get; set; }
 
+    [Column("V_PROVINSI")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VProvinsi { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 }

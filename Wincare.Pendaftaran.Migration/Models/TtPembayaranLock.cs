@@ -2,14 +2,24 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TT_PEMBAYARAN_LOCK")]
 public partial class TtPembayaranLock
 {
+    [Key]
+    [Column("ID_LOCKBAYAR", TypeName = "numeric(18, 0)")]
     public decimal IdLockbayar { get; set; }
 
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
+    [Column("LOCK_UNLOCK")]
     public bool? LockUnlock { get; set; }
 }

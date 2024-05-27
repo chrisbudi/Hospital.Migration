@@ -2,16 +2,31 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[PrimaryKey("VKdtarifdetail", "VKoderuangan")]
+[Table("TM_TARIF_MATRIX")]
 public partial class TmTarifMatrix
 {
+    [Column("ID_TARIFMATRIX", TypeName = "numeric(18, 0)")]
     public decimal IdTarifmatrix { get; set; }
 
+    [Key]
+    [Column("V_KDTARIFDETAIL")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKdtarifdetail { get; set; }
 
+    [Key]
+    [Column("V_KODERUANGAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKoderuangan { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 }

@@ -2,18 +2,30 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TM_SETTING_ADM")]
 public partial class TmSettingAdm
 {
+    [Key]
+    [Column("ID_NUMADM", TypeName = "numeric(18, 0)")]
     public decimal IdNumadm { get; set; }
 
+    [Column("REKANANID", TypeName = "numeric(18, 0)")]
     public decimal? Rekananid { get; set; }
 
+    [Column("V_KATEGORI")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKategori { get; set; }
 
+    [Column("D_BIAYA", TypeName = "decimal(18, 0)")]
     public decimal? DBiaya { get; set; }
 
+    [Column("D_PERCENT", TypeName = "decimal(18, 2)")]
     public decimal? DPercent { get; set; }
 }

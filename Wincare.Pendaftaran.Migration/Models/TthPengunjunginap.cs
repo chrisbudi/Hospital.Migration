@@ -2,32 +2,61 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TTH_PENGUNJUNGINAP")]
 public partial class TthPengunjunginap
 {
+    [Key]
+    [Column("IDPENGUNJUNGINAP", TypeName = "numeric(18, 0)")]
     public decimal Idpengunjunginap { get; set; }
 
+    [Column("IDKUNJUNGAN", TypeName = "numeric(18, 0)")]
     public decimal Idkunjungan { get; set; }
 
+    [Column("TGLMASUK", TypeName = "datetime")]
     public DateTime? Tglmasuk { get; set; }
 
+    [Column("TGLKELUAR", TypeName = "datetime")]
     public DateTime? Tglkeluar { get; set; }
 
+    [Column("KAMAR")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string Kamar { get; set; }
 
+    [Column("KELAS")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string Kelas { get; set; }
 
+    [Column("HARGA", TypeName = "decimal(18, 0)")]
     public decimal? Harga { get; set; }
 
+    [Column("STATUS")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string Status { get; set; }
 
+    [Column("VBY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string Vby { get; set; }
 
+    [Column("V_KODERUANGAN")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VKoderuangan { get; set; }
 
+    [ForeignKey("Idkunjungan")]
+    [InverseProperty("TthPengunjunginaps")]
     public virtual TthKunjungan IdkunjunganNavigation { get; set; }
 
+    [ForeignKey("Kamar")]
+    [InverseProperty("TthPengunjunginaps")]
     public virtual TmhKamar KamarNavigation { get; set; }
 }

@@ -2,26 +2,48 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TMH_KAMAR")]
 public partial class TmhKamar
 {
+    [Column("IDKAMAR", TypeName = "numeric(18, 0)")]
     public decimal Idkamar { get; set; }
 
+    [Key]
+    [Column("KAMAR")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string Kamar { get; set; }
 
+    [Column("KELAS")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string Kelas { get; set; }
 
+    [Column("HARGA", TypeName = "decimal(18, 0)")]
     public decimal? Harga { get; set; }
 
+    [Column("STATUS")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string Status { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 
+    [Column("V_KODERUANGAN")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VKoderuangan { get; set; }
 
+    [InverseProperty("KamarNavigation")]
     public virtual ICollection<TthKunjungan> TthKunjungans { get; set; } = new List<TthKunjungan>();
 
+    [InverseProperty("KamarNavigation")]
     public virtual ICollection<TthPengunjunginap> TthPengunjunginaps { get; set; } = new List<TthPengunjunginap>();
 }

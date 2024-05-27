@@ -2,66 +2,134 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TT_KUNJUNGAN")]
+[Index("IdRegistrasi", Name = "IX_TT_KUNJUNGAN")]
+[Index("IdPasien", Name = "IX_TT_KUNJUNGAN_1")]
+[Index("Rekananid", Name = "IX_TT_KUNJUNGAN_2")]
+[Index("VTujuankunjungan", Name = "IX_TT_KUNJUNGAN_3")]
+[Index("DTglpulang", Name = "IX_TT_KUNJUNGAN_4")]
+[Index("DTglkunjungan", Name = "IX_TT_KUNJUNGAN_5")]
+[Index("IdNumkunjungan", Name = "IX_TT_KUNJUNGAN_6")]
+[Index("IsCob", Name = "IX_TT_KUNJUNGAN_cob")]
+[Index("CIsbatal", Name = "IX_TT_KUNJUNGAN_isbatal")]
 public partial class TtKunjungan
 {
+    [Column("ID_NUMKUNJUNGAN", TypeName = "numeric(18, 0)")]
     public decimal IdNumkunjungan { get; set; }
 
+    [Key]
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
+    [Required]
+    [Column("ID_PASIEN")]
+    [StringLength(10)]
+    [Unicode(false)]
     public string IdPasien { get; set; }
 
+    [Column("D_TGLKUNJUNGAN", TypeName = "datetime")]
     public DateTime? DTglkunjungan { get; set; }
 
+    [Column("V_JAMKUNJUNGAN")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string VJamkunjungan { get; set; }
 
+    [Column("D_TGLPULANG", TypeName = "datetime")]
     public DateTime? DTglpulang { get; set; }
 
+    [Column("V_TUJUANKUNJUNGAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VTujuankunjungan { get; set; }
 
+    [Column("C_ISBATAL")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CIsbatal { get; set; }
 
+    [Column("V_ALASANBATAL")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VAlasanbatal { get; set; }
 
+    [Column("REKANANID", TypeName = "numeric(18, 0)")]
     public decimal Rekananid { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("V_KET")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VKet { get; set; }
 
+    [Column("V_OTORISASI")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VOtorisasi { get; set; }
 
+    [Column("D_TGLOTORISASI", TypeName = "datetime")]
     public DateTime? DTglotorisasi { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [Column("V_TRANSAKSI", TypeName = "decimal(18, 0)")]
     public decimal? VTransaksi { get; set; }
 
+    [Column("V_UMUR")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VUmur { get; set; }
 
+    [Column("IS_COB")]
     public bool? IsCob { get; set; }
 
+    [Column("V_NOMORSEP")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VNomorsep { get; set; }
 
+    [ForeignKey("IdPasien")]
+    [InverseProperty("TtKunjungans")]
     public virtual TmPasien IdPasienNavigation { get; set; }
 
+    [ForeignKey("Rekananid")]
+    [InverseProperty("TtKunjungans")]
     public virtual TmRekanan Rekanan { get; set; }
 
+    [InverseProperty("IdRegistrasiNavigation")]
     public virtual ICollection<TtBetinap> TtBetinaps { get; set; } = new List<TtBetinap>();
 
+    [InverseProperty("IdRegistrasiNavigation")]
     public virtual ICollection<TtDeposit> TtDeposits { get; set; } = new List<TtDeposit>();
 
+    [InverseProperty("IdRegistrasiNavigation")]
     public virtual ICollection<TtPaidout> TtPaidouts { get; set; } = new List<TtPaidout>();
 
+    [InverseProperty("IdRegistrasiNavigation")]
     public virtual ICollection<TtPaket> TtPakets { get; set; } = new List<TtPaket>();
 
+    [InverseProperty("IdRegistrasiNavigation")]
     public virtual ICollection<TtPasienlab> TtPasienlabs { get; set; } = new List<TtPasienlab>();
 
+    [InverseProperty("IdRegistrasiNavigation")]
     public virtual ICollection<TtPasienrad> TtPasienrads { get; set; } = new List<TtPasienrad>();
 
+    [InverseProperty("IdRegistrasiNavigation")]
     public virtual ICollection<TtPasienugd> TtPasienugds { get; set; } = new List<TtPasienugd>();
 
+    [InverseProperty("IdRegistrasiNavigation")]
     public virtual ICollection<TtTindakan> TtTindakans { get; set; } = new List<TtTindakan>();
 }

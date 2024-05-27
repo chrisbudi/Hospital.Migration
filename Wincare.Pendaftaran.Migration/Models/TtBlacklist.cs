@@ -2,18 +2,34 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TT_BLACKLIST")]
 public partial class TtBlacklist
 {
+    [Key]
+    [Column("ID_BLACKLIST", TypeName = "numeric(18, 0)")]
     public decimal IdBlacklist { get; set; }
 
+    [Column("ID_PASIEN")]
+    [StringLength(10)]
+    [Unicode(false)]
     public string IdPasien { get; set; }
 
+    [Column("D_TGL", TypeName = "datetime")]
     public DateTime? DTgl { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("V_KETERANGAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKeterangan { get; set; }
 }

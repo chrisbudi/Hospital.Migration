@@ -2,44 +2,88 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TT_OBATALKES")]
+[Index("IdAlkes", Name = "IX_TT_OBATALKES")]
+[Index("IdKuitansialkes", Name = "IX_TT_OBATALKES_1")]
+[Index("IJml", Name = "IX_TT_OBATALKES_2")]
 public partial class TtObatalke
 {
+    [Key]
+    [Column("ID_ALKES", TypeName = "numeric(18, 0)")]
     public decimal IdAlkes { get; set; }
 
+    [Column("ID_OBATALKES")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdObatalkes { get; set; }
 
+    [Column("ID_KUITANSIALKES")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdKuitansialkes { get; set; }
 
+    [Column("ID_BARANG", TypeName = "numeric(18, 0)")]
     public decimal? IdBarang { get; set; }
 
+    [Column("V_KDOBATALKES")]
+    [StringLength(10)]
+    [Unicode(false)]
     public string VKdobatalkes { get; set; }
 
+    [Column("V_NMOBATALKES")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmobatalkes { get; set; }
 
+    [Column("D_HARGA", TypeName = "decimal(18, 0)")]
     public decimal? DHarga { get; set; }
 
+    [Column("I_JML", TypeName = "decimal(18, 0)")]
     public decimal? IJml { get; set; }
 
+    [Column("V_NOTE")]
+    [StringLength(255)]
+    [Unicode(false)]
     public string VNote { get; set; }
 
+    [Column("D_DISKON", TypeName = "decimal(18, 0)")]
     public decimal? DDiskon { get; set; }
 
+    [Column("REKANANID", TypeName = "numeric(18, 0)")]
     public decimal? Rekananid { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("C_APPROVE")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CApprove { get; set; }
 
+    [Column("D_APPROVE", TypeName = "datetime")]
     public DateTime? DApprove { get; set; }
 
+    [Column("V_APPROVE_VER")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VApproveVer { get; set; }
 
+    [Column("C_APPROVE_VER")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CApproveVer { get; set; }
 
+    [Column("D_APPROVE_VER", TypeName = "datetime")]
     public DateTime? DApproveVer { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 }

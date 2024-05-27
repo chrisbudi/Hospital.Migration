@@ -2,72 +2,170 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TT_PASIENINAP")]
+[Index("CIsdone", Name = "IX_TT_PASIENINAP_c_isdone")]
+[Index("DTgldatang", Name = "IX_TT_PASIENINAP_d_tgldatang")]
+[Index("IdNum", Name = "IX_TT_PASIENINAP_idnum")]
+[Index("IdPasieninap", Name = "IX_TT_PASIENINAP_idpaiseninap")]
+[Index("IdRegistrasi", Name = "IX_TT_PASIENINAP_idregistrasi")]
+[Index("VKdpengirim", Name = "IX_TT_PASIENINAP_v_kdpengirim")]
+[Index("VNmpengirim", Name = "IX_TT_PASIENINAP_v_nmpengirim")]
+[Index("VKddokter", Name = "IX_TT_PASIENINAP_vkddokter")]
 public partial class TtPasieninap
 {
+    [Column("ID_NUM", TypeName = "numeric(18, 0)")]
     public decimal IdNum { get; set; }
 
+    [Key]
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
+    [Column("ID_PASIENINAP")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdPasieninap { get; set; }
 
+    [Column("D_TGLDATANG", TypeName = "datetime")]
     public DateTime? DTgldatang { get; set; }
 
+    [Column("V_JAMDATANG")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VJamdatang { get; set; }
 
+    [Column("V_KDDOKTER")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKddokter { get; set; }
 
+    [Column("V_CARAMASUK")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VCaramasuk { get; set; }
 
+    [Column("V_KDPENGIRIM")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKdpengirim { get; set; }
 
+    [Column("V_NMPENGIRIM")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmpengirim { get; set; }
 
+    [Column("V_TIPEPENGIRIM")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VTipepengirim { get; set; }
 
+    [Column("V_KELUHAN")]
+    [StringLength(300)]
+    [Unicode(false)]
     public string VKeluhan { get; set; }
 
+    [Column("V_KETERANGANAWAL")]
+    [StringLength(300)]
+    [Unicode(false)]
     public string VKeteranganawal { get; set; }
 
+    [Column("V_NMPENJAMIN")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmpenjamin { get; set; }
 
+    [Column("V_ALAMATPENJAMIN")]
+    [StringLength(200)]
+    [Unicode(false)]
     public string VAlamatpenjamin { get; set; }
 
+    [Column("V_TELPPENJAMIN")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VTelppenjamin { get; set; }
 
+    [Column("B_JAMINPRIBADI")]
     public bool? BJaminpribadi { get; set; }
 
+    [Column("D_TGLPULANG", TypeName = "datetime")]
     public DateTime? DTglpulang { get; set; }
 
+    [Column("V_JAMPULANG")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VJampulang { get; set; }
 
+    [Column("V_CARAKELUAR")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VCarakeluar { get; set; }
 
+    [Column("V_KEADAANAKHIR")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKeadaanakhir { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("C_ISDONE")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CIsdone { get; set; }
 
+    [Column("NOTE")]
+    [StringLength(500)]
+    [Unicode(false)]
     public string Note { get; set; }
 
+    [Column("DOKTER1")]
+    [StringLength(20)]
+    [Unicode(false)]
     public string Dokter1 { get; set; }
 
+    [Column("DOKTER2")]
+    [StringLength(20)]
+    [Unicode(false)]
     public string Dokter2 { get; set; }
 
+    [Column("DOKTER3")]
+    [StringLength(20)]
+    [Unicode(false)]
     public string Dokter3 { get; set; }
 
+    [Column("DOKTER4")]
+    [StringLength(20)]
+    [Unicode(false)]
     public string Dokter4 { get; set; }
 
+    [Column("DOKTER5")]
+    [StringLength(20)]
+    [Unicode(false)]
     public string Dokter5 { get; set; }
 
+    [Column("V_KODERUANGAN")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VKoderuangan { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [Column("V_HAKKELAS")]
+    [StringLength(20)]
+    [Unicode(false)]
     public string VHakkelas { get; set; }
 
+    [ForeignKey("VKoderuangan")]
+    [InverseProperty("TtPasieninaps")]
     public virtual TmRuang VKoderuanganNavigation { get; set; }
 }

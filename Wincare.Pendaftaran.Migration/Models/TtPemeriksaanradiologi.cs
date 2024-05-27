@@ -2,68 +2,135 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TT_PEMERIKSAANRADIOLOGI")]
+[Index("IdNumpasienrad", Name = "IX_TT_PEMERIKSAANRADIOLOGI_idnum")]
+[Index("IdPasienrad", Name = "IX_TT_PEMERIKSAANRADIOLOGI_idpasienrad")]
+[Index("VKelompok", Name = "IX_TT_PEMERIKSAANRADIOLOGI_kelompok")]
+[Index("VNmpemeriksaanrad", Name = "IX_TT_PEMERIKSAANRADIOLOGI_nmpemeriksaan")]
+[Index("VKdrad", Name = "IX_TT_PEMERIKSAANRADIOLOGI_vkdrad")]
+[Index("VKelas", Name = "IX_TT_PEMERIKSAANRADIOLOGI_vkelas")]
 public partial class TtPemeriksaanradiologi
 {
+    [Key]
+    [Column("ID_NUMPASIENRAD", TypeName = "numeric(18, 0)")]
     public decimal IdNumpasienrad { get; set; }
 
+    [Required]
+    [Column("ID_PASIENRAD")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdPasienrad { get; set; }
 
+    [Required]
+    [Column("V_KDRAD")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string VKdrad { get; set; }
 
+    [Column("V_NMPEMERIKSAANRAD")]
+    [StringLength(200)]
+    [Unicode(false)]
     public string VNmpemeriksaanrad { get; set; }
 
+    [Column("D_HARGA", TypeName = "decimal(18, 0)")]
     public decimal? DHarga { get; set; }
 
+    [Column("D_CITO", TypeName = "decimal(18, 0)")]
     public decimal? DCito { get; set; }
 
+    [Column("D_PENYULIT", TypeName = "decimal(18, 0)")]
     public decimal? DPenyulit { get; set; }
 
+    [Column("D_2TND", TypeName = "decimal(18, 0)")]
     public decimal? D2tnd { get; set; }
 
+    [Column("D_ADM", TypeName = "decimal(18, 0)")]
     public decimal? DAdm { get; set; }
 
+    [Column("D_DISKON", TypeName = "decimal(18, 0)")]
     public decimal? DDiskon { get; set; }
 
+    [Column("D_SUBTOTAL", TypeName = "decimal(18, 0)")]
     public decimal? DSubtotal { get; set; }
 
+    [Column("D_BEAPASIEN", TypeName = "decimal(18, 0)")]
     public decimal? DBeapasien { get; set; }
 
+    [Column("D_BEAREKANAN", TypeName = "decimal(18, 0)")]
     public decimal? DBearekanan { get; set; }
 
+    [Column("D_JASABACA", TypeName = "decimal(18, 0)")]
     public decimal? DJasabaca { get; set; }
 
+    [Column("D_JASAPENGIRIM", TypeName = "decimal(18, 0)")]
     public decimal? DJasapengirim { get; set; }
 
+    [Column("D_JASARS", TypeName = "decimal(18, 0)")]
     public decimal? DJasars { get; set; }
 
+    [Column("D_BAHANALKES", TypeName = "decimal(18, 0)")]
     public decimal? DBahanalkes { get; set; }
 
+    [Column("V_KELOMPOK")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VKelompok { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("V_APPROVE")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VApprove { get; set; }
 
+    [Column("C_APPROVE")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CApprove { get; set; }
 
+    [Column("D_APPROVE", TypeName = "datetime")]
     public DateTime? DApprove { get; set; }
 
+    [Column("V_APPROVE_ANA")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VApproveAna { get; set; }
 
+    [Column("C_APPROVE_ANA")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CApproveAna { get; set; }
 
+    [Column("D_APPROVE_ANA", TypeName = "datetime")]
     public DateTime? DApproveAna { get; set; }
 
+    [Column("V_APPROVE_VER")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VApproveVer { get; set; }
 
+    [Column("C_APPROVE_VER")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CApproveVer { get; set; }
 
+    [Column("D_APPROVE_VER", TypeName = "datetime")]
     public DateTime? DApproveVer { get; set; }
 
+    [Column("V_KELAS")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKelas { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 }

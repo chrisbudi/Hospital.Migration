@@ -2,14 +2,22 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TM_TARIF_REKANAN_SUB")]
 public partial class TmTarifRekananSub
 {
+    [Key]
+    [Column("ID_TARIFREKANANSUB", TypeName = "numeric(18, 0)")]
     public decimal IdTarifrekanansub { get; set; }
 
+    [Column("REKANANID_HD", TypeName = "numeric(18, 0)")]
     public decimal RekananidHd { get; set; }
 
+    [Column("REKANANID_DT", TypeName = "numeric(18, 0)")]
     public decimal RekananidDt { get; set; }
 }

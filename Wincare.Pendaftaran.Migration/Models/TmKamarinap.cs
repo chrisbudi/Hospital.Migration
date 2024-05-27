@@ -2,32 +2,66 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TM_KAMARINAP")]
+[Index("VKdtmptidur", Name = "IX_TM_KAMARINAP_v_kdtmptidur")]
+[Index("VLantai", Name = "IX_TM_KAMARINAP_v_lantai")]
 public partial class TmKamarinap
 {
+    [Column("ID_KAMARINAP", TypeName = "numeric(18, 0)")]
     public decimal IdKamarinap { get; set; }
 
+    [Key]
+    [Column("V_KDTMPTIDUR")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKdtmptidur { get; set; }
 
+    [Required]
+    [Column("V_KELAS")]
+    [StringLength(20)]
+    [Unicode(false)]
     public string VKelas { get; set; }
 
+    [Column("V_LANTAI")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VLantai { get; set; }
 
+    [Column("V_NOKAMAR")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VNokamar { get; set; }
 
+    [Column("V_KODETARIF")]
+    [StringLength(2)]
+    [Unicode(false)]
     public string VKodetarif { get; set; }
 
+    [Column("V_KODERUANGAN")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VKoderuangan { get; set; }
 
+    [Column("C_ISI")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CIsi { get; set; }
 
+    [Column("I_X")]
     public int? IX { get; set; }
 
+    [Column("I_Y")]
     public int? IY { get; set; }
 
+    [Column("ID_MAPID", TypeName = "numeric(18, 0)")]
     public decimal? IdMapid { get; set; }
 
+    [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }
 }

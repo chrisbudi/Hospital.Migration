@@ -2,24 +2,45 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TT_PLAFONBPJS")]
 public partial class TtPlafonbpj
 {
+    [Key]
+    [Column("IDBPJS", TypeName = "numeric(18, 0)")]
     public decimal Idbpjs { get; set; }
 
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
+    [Column("D_TGL", TypeName = "datetime")]
     public DateTime? DTgl { get; set; }
 
+    [Column("D_BPJS", TypeName = "decimal(18, 0)")]
     public decimal? DBpjs { get; set; }
 
+    [Column("V_KETERANGAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKeterangan { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("V_STATUS")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VStatus { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 }

@@ -2,30 +2,66 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TR_HASILLAB")]
+[Index("IdHasillab", Name = "IX_TR_HASILLAB")]
+[Index("VHasil", Name = "IX_TR_HASILLAB_1")]
+[Index("VNistandart", Name = "IX_TR_HASILLAB_2")]
+[Index("IdDetilpemeriksaanlab", Name = "IX_TR_HASILLAB_3")]
+[Index("IdPasienlab", Name = "IX_TR_HASILLAB_4")]
 public partial class TrHasillab
 {
+    [Key]
+    [Column("ID_HASILLAB", TypeName = "numeric(18, 0)")]
     public decimal IdHasillab { get; set; }
 
+    [Column("ID_DETILPEMERIKSAANLAB")]
     public int? IdDetilpemeriksaanlab { get; set; }
 
+    [Column("ID_PASIENLAB")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdPasienlab { get; set; }
 
+    [Column("V_KDPEMERIKSAANLAB")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string VKdpemeriksaanlab { get; set; }
 
+    [Column("V_NMPEMERIKSAAN")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmpemeriksaan { get; set; }
 
+    [Column("V_HASIL")]
+    [StringLength(255)]
+    [Unicode(false)]
     public string VHasil { get; set; }
 
+    [Column("V_NISTANDART")]
+    [StringLength(300)]
+    [Unicode(false)]
     public string VNistandart { get; set; }
 
+    [Column("V_SATUAN")]
+    [StringLength(300)]
+    [Unicode(false)]
     public string VSatuan { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [ForeignKey("IdPasienlab")]
+    [InverseProperty("TrHasillabs")]
     public virtual TtPasienlab IdPasienlabNavigation { get; set; }
 }

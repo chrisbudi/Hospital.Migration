@@ -2,90 +2,201 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TT_PASIENUGD")]
+[Index("IdNumpasienugd", Name = "IX_TT_PASIENUGD_idnum")]
+[Index("IdPasienigd", Name = "IX_TT_PASIENUGD_idpasienigd")]
+[Index("IdRegistrasi", Name = "IX_TT_PASIENUGD_idreg")]
+[Index("CIsdone", Name = "IX_TT_PASIENUGD_isdone")]
+[Index("VKddokter", Name = "IX_TT_PASIENUGD_kddokter")]
+[Index("VKoderuangan", Name = "IX_TT_PASIENUGD_kdruang")]
+[Index("VNmdokter", Name = "IX_TT_PASIENUGD_nmdokter")]
+[Index("DTgldatang", Name = "IX_TT_PASIENUGD_tgl")]
+[Index("VKdpengirim", Name = "IX_TT_PASIENUGD_vkdpengirim")]
 public partial class TtPasienugd
 {
+    [Key]
+    [Column("ID_NUMPASIENUGD", TypeName = "numeric(18, 0)")]
     public decimal IdNumpasienugd { get; set; }
 
+    [Required]
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
+    [Column("ID_PASIENIGD")]
+    [StringLength(12)]
+    [Unicode(false)]
     public string IdPasienigd { get; set; }
 
+    [Column("D_TGLDATANG", TypeName = "datetime")]
     public DateTime DTgldatang { get; set; }
 
+    [Column("V_JAMDATANG")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VJamdatang { get; set; }
 
+    [Column("V_DIBAWAOLEH")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VDibawaoleh { get; set; }
 
+    [Column("D_TGLPULANG", TypeName = "datetime")]
     public DateTime? DTglpulang { get; set; }
 
+    [Column("V_JAMPULANG")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VJampulang { get; set; }
 
+    [Column("V_CARAKELUAR")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VCarakeluar { get; set; }
 
+    [Column("B_KASUSPOLISI")]
     public bool? BKasuspolisi { get; set; }
 
+    [Column("B_KASUSKECELAKAAN")]
     public bool? BKasuskecelakaan { get; set; }
 
+    [Column("B_VISUM")]
     public bool? BVisum { get; set; }
 
+    [Column("D_TGLKELAKAAN", TypeName = "datetime")]
     public DateTime? DTglkelakaan { get; set; }
 
+    [Column("V_TMPKECELAKAAN")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VTmpkecelakaan { get; set; }
 
+    [Column("B_DIBERITAHUKANKEKELUARGA")]
     public bool? BDiberitahukankekeluarga { get; set; }
 
+    [Column("B_DIBERITAHUKANKEPOLISI")]
     public bool? BDiberitahukankepolisi { get; set; }
 
+    [Column("V_KEADAANTERAKHIR")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKeadaanterakhir { get; set; }
 
+    [Column("D_TGLPEMBERITAHUAN", TypeName = "datetime")]
     public DateTime? DTglpemberitahuan { get; set; }
 
+    [Column("V_JAMPEMBERITAHUAN")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VJampemberitahuan { get; set; }
 
+    [Column("V_NMPEMBERITAHU")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmpemberitahu { get; set; }
 
+    [Column("V_PENJAMIN")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VPenjamin { get; set; }
 
+    [Column("V_RIWAYATSINGKAT")]
+    [StringLength(300)]
+    [Unicode(false)]
     public string VRiwayatsingkat { get; set; }
 
+    [Column("B_PENDARAHAN")]
     public bool? BPendarahan { get; set; }
 
+    [Column("C_SUHUTUBUH")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string CSuhutubuh { get; set; }
 
+    [Column("C_NADI")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string CNadi { get; set; }
 
+    [Column("C_TEKANANDARAH")]
+    [StringLength(8)]
+    [Unicode(false)]
     public string CTekanandarah { get; set; }
 
+    [Column("V_ANAMNESE")]
+    [StringLength(300)]
+    [Unicode(false)]
     public string VAnamnese { get; set; }
 
+    [Column("V_PEMERIKSAANFISIK")]
+    [StringLength(300)]
+    [Unicode(false)]
     public string VPemeriksaanfisik { get; set; }
 
+    [Column("V_PEMERIKSAANLANJUTAN")]
+    [StringLength(300)]
+    [Unicode(false)]
     public string VPemeriksaanlanjutan { get; set; }
 
+    [Column("V_PEMERIKSAANPENUNJANG")]
+    [StringLength(300)]
+    [Unicode(false)]
     public string VPemeriksaanpenunjang { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [Column("C_ISDONE")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CIsdone { get; set; }
 
+    [Column("V_KDPENGIRIM")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKdpengirim { get; set; }
 
+    [Column("V_NMPENGIRIM")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmpengirim { get; set; }
 
+    [Column("V_KDDOKTER")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKddokter { get; set; }
 
+    [Column("V_NMDOKTER")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNmdokter { get; set; }
 
+    [Column("V_KODERUANGAN")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VKoderuangan { get; set; }
 
+    [Column("ID_STATUS")]
     public int? IdStatus { get; set; }
 
+    [ForeignKey("IdRegistrasi")]
+    [InverseProperty("TtPasienugds")]
     public virtual TtKunjungan IdRegistrasiNavigation { get; set; }
 
+    [ForeignKey("VKddokter")]
+    [InverseProperty("TtPasienugds")]
     public virtual TmDokter VKddokterNavigation { get; set; }
 
+    [ForeignKey("VKoderuangan")]
+    [InverseProperty("TtPasienugds")]
     public virtual TmRuang VKoderuanganNavigation { get; set; }
 }

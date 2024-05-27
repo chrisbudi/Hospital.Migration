@@ -2,34 +2,73 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
+[Table("TT_PASIEN_RENCANA_RAD")]
 public partial class TtPasienRencanaRad
 {
+    [Key]
+    [Column("ID_RENCANAKEGIATAN", TypeName = "numeric(18, 0)")]
     public decimal IdRencanakegiatan { get; set; }
 
+    [Column("D_TGL", TypeName = "datetime")]
     public DateTime? DTgl { get; set; }
 
+    [Column("V_JAM")]
+    [StringLength(5)]
+    [Unicode(false)]
     public string VJam { get; set; }
 
+    [Column("ID_PASIEN")]
+    [StringLength(10)]
+    [Unicode(false)]
     public string IdPasien { get; set; }
 
+    [Column("V_NAMAPASIEN")]
+    [StringLength(100)]
+    [Unicode(false)]
     public string VNamapasien { get; set; }
 
+    [Column("V_TELEPON")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VTelepon { get; set; }
 
+    [Column("V_KDDOKTER")]
+    [StringLength(6)]
+    [Unicode(false)]
     public string VKddokter { get; set; }
 
+    [Column("V_NMDOKTER")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VNmdokter { get; set; }
 
+    [Column("V_KELOMPOK")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKelompok { get; set; }
 
+    [Column("V_KEGIATAN")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VKegiatan { get; set; }
 
+    [Column("C_STATUS")]
+    [StringLength(1)]
+    [Unicode(false)]
     public string CStatus { get; set; }
 
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
     public string VBy { get; set; }
 
+    [ForeignKey("IdPasien")]
+    [InverseProperty("TtPasienRencanaRads")]
     public virtual TmPasien IdPasienNavigation { get; set; }
 }
