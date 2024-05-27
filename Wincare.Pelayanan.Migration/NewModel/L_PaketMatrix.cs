@@ -8,19 +8,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.NewModels;;
 
-[Table("TM_PAKET_REKANAN")]
-public partial class TmPaketRekanan
+[Table("L_PaketMatrix")]
+public partial class L_PaketMatrix
 {
     [Key]
-    [Column("ID_PAKETREKANAN", TypeName = "numeric(18, 0)")]
-    public decimal IdPaketrekanan { get; set; }
+    [Column("IdPaketMatrix")]
+    public Guid IdPaketmatrix { get; set; }
 
-    [Column("ID_MASTERPEMERIKSAANPENUNJANG", TypeName = "numeric(18, 0)")]
+    [Column("OldIdPaketmatrix", TypeName = "numeric(18, 0)")]
+    public decimal OldIdPaketmatrix { get; set; }
+
+    [Column("IdMasterpemeriksaanpenunjang", TypeName = "numeric(18, 0)")]
     public decimal IdMasterpemeriksaanpenunjang { get; set; }
 
-    [Column("REKANANID", TypeName = "numeric(18, 0)")]
-    public decimal Rekananid { get; set; }
+    [Column("Koderuangan")]
+    [StringLength(5)]
+    [Unicode(false)]
+    public string KodeRuangan { get; set; }
 
-    [Column("IS_AKTIF")]
+    [Column("IsAktif")]
     public bool? IsAktif { get; set; }
 }
