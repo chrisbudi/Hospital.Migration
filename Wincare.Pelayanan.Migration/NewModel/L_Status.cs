@@ -8,25 +8,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.NewModels;
 
-[Table("L_DTD")]
-public partial class L_Dtd
+[Table("L_Status")]
+[Index("Status", Name = "IX_L_Status")]
+[Index("IdStatus", Name = "IX_L_Status_1")]
+public partial class L_Status
 {
-    [Key]
-    [Column("IdDTD", TypeName = "numeric(18, 0)")]
+     [Key]
+    [Column("IdStatus")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdDtd { get; set; }
+    public int IdStatus { get; set; }
 
-    [Column("KdDTD")]
-    [StringLength(8)]
+    [Column("VStatus")]
+    [StringLength(50)]
     [Unicode(false)]
-    [Required]
-    public string Kddtd { get; set; }
-
-    [Column("NmDTD")]
-    [StringLength(200)]
-    [Unicode(false)]
-    public string Nmdtd { get; set; }
-
-    [Column("IsAktif")]
-    public bool? IsAktif { get; set; }
+    public string Status { get; set; }
 }

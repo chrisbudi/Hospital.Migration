@@ -8,21 +8,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.NewModels;
 
-[Table("L_PaketRekanan")]
-public partial class L_PaketRekanan
+[Table("L_TarifRekanan")]
+public partial class L_TarifRekanan
 {
    [Key]
-    [Column("IdPaketRekanan")]
-    public Guid IdPaketRekanan { get; set; }
+    [Column("IdTarifRekanan")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid IdTarifRekanan { get; set; }
 
-    [Column("OldIdPaketRekanan", TypeName = "numeric(18, 0)")]
-    public decimal OldIdPaketRekanan { get; set; }
+    [Column("OldIdTarifRekanan", TypeName = "numeric(18, 0)")]
+    public decimal OldIdTarifRekanan { get; set; }
 
-    [Column("IdMasterPemeriksaanPenunjang")]
-    public Guid IdMasterPemeriksaanPenunjang { get; set; }
-
-    [Column("OldIdMasterPemeriksaanPenunjang", TypeName = "numeric(18, 0)")]
-    public decimal OldIdMasterPemeriksaanPenunjang { get; set; }
+    [Required]
+    [Column("KdTarifDetail")]
+    [StringLength(10)]
+    [Unicode(false)]
+    public string KdTarifDetail { get; set; }
 
     [Column("RekananId")]
     public Guid RekananId { get; set; }

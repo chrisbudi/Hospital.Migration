@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Table("L_PaketMatrix")]
 public partial class L_PaketMatrix

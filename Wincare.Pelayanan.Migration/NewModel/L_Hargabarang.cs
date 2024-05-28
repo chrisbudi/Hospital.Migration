@@ -6,17 +6,17 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Table("L_HargaBarang")]
-[Index("BarangId", Name = "IX_M_HargaBarang_barangId")]
-[Index("DiskonOff", Name = "IX_M_HargaBarang_diskonOff")]
-[Index("DiskonOn", Name = "IX_M_HargaBarang_diskonOn")]
-[Index("Harga", Name = "IX_M_HargaBarang_harga")]
-[Index("IsAktif", Name = "IX_M_HargaBarang_IsAktif")]
-[Index("LastUpdate", Name = "IX_M_HargaBarang_lastupdate")]
-[Index("Ppn", Name = "IX_M_HargaBarang_ppn")]
-[Index("SupplierId", Name = "IX_M_HargaBarang_supplierId")]
+[Index("BarangId", Name = "IX_L_HargaBarang_barangId")]
+[Index("DiskonOff", Name = "IX_L_HargaBarang_diskonOff")]
+[Index("DiskonOn", Name = "IX_L_HargaBarang_diskonOn")]
+[Index("Harga", Name = "IX_L_HargaBarang_harga")]
+[Index("IsAktif", Name = "IX_L_HargaBarang_IsAktif")]
+[Index("LastUpdate", Name = "IX_L_HargaBarang_lastupdate")]
+[Index("Ppn", Name = "IX_L_HargaBarang_ppn")]
+[Index("SupplierId", Name = "IX_L_HargaBarang_supplierId")]
 public partial class L_Hargabarang
 {
     [Key]

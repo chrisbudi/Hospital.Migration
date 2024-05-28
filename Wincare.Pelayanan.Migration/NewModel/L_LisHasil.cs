@@ -6,26 +6,35 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
-[Table("LIS_HASIL")]
-public partial class LisHasil
+[Table("L_LisHasil")]
+public partial class L_LisHasil
 {
+    [Key]
+    [Column("idn", TypeName = "numeric(18, 0)")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid Idn { get; set; }
+    
+    [Column("OldIdn", TypeName = "numeric(18, 0)")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public decimal Idn { get; set; }
+
     [Required]
-    [Column("id_pasienlab")]
+    [Column("IdPasienlab")]
     [StringLength(15)]
     [Unicode(false)]
     public string IdPasienlab { get; set; }
 
-    [Column("no_urut")]
+    [Column("NoUrut")]
     public int? NoUrut { get; set; }
 
-    [Column("kode_test")]
+    [Column("KodeTest")]
     [StringLength(8)]
     [Unicode(false)]
     public string KodeTest { get; set; }
 
-    [Column("nm_test")]
+    [Column("NmTest")]
     [StringLength(100)]
     [Unicode(false)]
     public string NmTest { get; set; }
@@ -54,8 +63,5 @@ public partial class LisHasil
     [StringLength(2)]
     [Unicode(false)]
     public string Type { get; set; }
-
-    [Key]
-    [Column("idn", TypeName = "numeric(18, 0)")]
-    public decimal Idn { get; set; }
+    
 }

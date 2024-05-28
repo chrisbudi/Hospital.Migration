@@ -6,14 +6,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Table("L_Gudang")]
-[Index("IsRequest", Name = "IX_M_Gudang_Isrequest")]
-[Index("IsAktif", Name = "IX_M_Gudang_IsAktif")]
-[Index("KodeInventory", Name = "IX_M_GudangKdinv")]
-[Index("IsListropp", Name = "IX_M_GudangLisrop")]
-[Index("NamaGudangObat", Name = "IX_M_GudangNamagudang")]
+[Index("IsRequest", Name = "IX_L_Gudang_Isrequest")]
+[Index("IsAktif", Name = "IX_L_Gudang_IsAktif")]
+[Index("KodeInventory", Name = "IX_L_GudangKdinv")]
+[Index("IsListropp", Name = "IX_L_GudangLisrop")]
+[Index("NamaGudangObat", Name = "IX_L_GudangNamagudang")]
 public partial class L_Gudang
 {
     [Key]

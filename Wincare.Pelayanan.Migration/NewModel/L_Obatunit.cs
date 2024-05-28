@@ -6,20 +6,20 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Table("L_ObatUnit")]
-[Index("BarangId", Name = "IX_M_ObatUnit_barangid")]
-[Index("ExpiredDate", Name = "IX_M_ObatUnit_d_expireddate")]
-[Index("StokMax", Name = "IX_M_ObatUnit_d_stokmax")]
-[Index("StokMin", Name = "IX_M_ObatUnit_d_stokmin")]
-[Index("StokNow", Name = "IX_M_ObatUnit_d_stoknow")]
-[Index("IdObatUnit", Name = "IX_M_ObatUnit_id_obatunit")]
-[Index("IsAktif", Name = "IX_M_ObatUnit_is_aktif")]
-[Index("KodeInventory", Name = "IX_M_ObatUnit_v_kdinventory")]
-[Index("KdObat", Name = "IX_M_ObatUnit_v_kdobat")]
-[Index("Rod", Name = "IX_M_ObatUnit_v_rod")]
-[Index("NmObat", Name = "IX_M_ObatUnit_vnmobat")]
+[Index("BarangId", Name = "IX_L_ObatUnit_barangid")]
+[Index("ExpiredDate", Name = "IX_L_ObatUnit_d_expireddate")]
+[Index("StokMax", Name = "IX_L_ObatUnit_d_stokmax")]
+[Index("StokMin", Name = "IX_L_ObatUnit_d_stokmin")]
+[Index("StokNow", Name = "IX_L_ObatUnit_d_stoknow")]
+[Index("IdObatUnit", Name = "IX_L_ObatUnit_id_obatunit")]
+[Index("IsAktif", Name = "IX_L_ObatUnit_is_aktif")]
+[Index("KodeInventory", Name = "IX_L_ObatUnit_v_kdinventory")]
+[Index("KdObat", Name = "IX_L_ObatUnit_v_kdobat")]
+[Index("Rod", Name = "IX_L_ObatUnit_v_rod")]
+[Index("NmObat", Name = "IX_L_ObatUnit_vnmobat")]
 public partial class L_Obatunit
 {
     [Key]

@@ -6,17 +6,17 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Table("L_JadwalDokter")]
-[Index("IdJadwal", Name = "IX_M_JadwalDokter_IdJadwal")]
-[Index("KdDokter", Name = "IX_M_JadwalDokter_KdDokter")]
-[Index("KodeRuangan", Name = "IX_M_JadwalDokter_KdRuangan")]
-[Index("NamaKlinik", Name = "IX_M_JadwalDokter_NamaKlinik")]
-[Index("Hari", Name = "IX_M_JadwalDokter_Hari")]
-[Index("JamStart", Name = "IX_M_JadwalDokter_JamStart")]
-[Index("JamFinish", Name = "IX_M_JadwalDokter_JamFinish")]
-[Index("IsAktif", Name = "IX_M_JadwalDokter_IsAktif")]
+[Index("IdJadwal", Name = "IX_L_JadwalDokter_IdJadwal")]
+[Index("KdDokter", Name = "IX_L_JadwalDokter_KdDokter")]
+[Index("KodeRuangan", Name = "IX_L_JadwalDokter_KdRuangan")]
+[Index("NamaKlinik", Name = "IX_L_JadwalDokter_NamaKlinik")]
+[Index("Hari", Name = "IX_L_JadwalDokter_Hari")]
+[Index("JamStart", Name = "IX_L_JadwalDokter_JamStart")]
+[Index("JamFinish", Name = "IX_L_JadwalDokter_JamFinish")]
+[Index("IsAktif", Name = "IX_L_JadwalDokter_IsAktif")]
 public partial class L_Jadwaldokter
 {
     [Key]

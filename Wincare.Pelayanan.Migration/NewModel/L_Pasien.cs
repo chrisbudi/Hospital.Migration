@@ -6,25 +6,25 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Table("L_Pasien")]
-[Index("AgamaPasien", Name = "IX_M_Pasien_agama")]
-[Index("AlamatPasien", Name = "IX_M_Pasien_alamat")]
-[Index("IsBlacklist", Name = "IX_M_Pasien_blacklist")]
-[Index("HpPasien", Name = "IX_M_Pasien_hp")]
-[Index("IdPasien", Name = "IX_M_Pasien_idpasien")]
-[Index("IsAktif", Name = "IX_M_Pasien_isaktif")]
-[Index("Kelaminpasien", Name = "IX_M_Pasien_kelamin")]
-[Index("KotaPasien", Name = "IX_M_Pasien_kota")]
-[Index("NamaPasien", Name = "IX_M_Pasien_namapasien")]
-[Index("Noktpsimpasien", Name = "IX_M_Pasien_noktp")]
-[Index("NoPenjamin", Name = "IX_M_Pasien_nopenjamin")]
-[Index("PekerjaanPasien", Name = "IX_M_Pasien_pekerjaan")]
-[Index("StatusKWNPasien", Name = "IX_M_Pasien_statuskawin")]
-[Index("TelpPasien", Name = "IX_M_Pasien_telp")]
-[Index("Tmptlahirpasien", Name = "IX_M_Pasien_tempatlahir")]
-[Index("Tgllahirpasien", Name = "IX_M_Pasien_tgllahir")]
+[Index("AgamaPasien", Name = "IX_L_Pasien_agama")]
+[Index("AlamatPasien", Name = "IX_L_Pasien_alamat")]
+[Index("IsBlacklist", Name = "IX_L_Pasien_blacklist")]
+[Index("HpPasien", Name = "IX_L_Pasien_hp")]
+[Index("IdPasien", Name = "IX_L_Pasien_idpasien")]
+[Index("IsAktif", Name = "IX_L_Pasien_isaktif")]
+[Index("Kelaminpasien", Name = "IX_L_Pasien_kelamin")]
+[Index("KotaPasien", Name = "IX_L_Pasien_kota")]
+[Index("NamaPasien", Name = "IX_L_Pasien_namapasien")]
+[Index("Noktpsimpasien", Name = "IX_L_Pasien_noktp")]
+[Index("NoPenjamin", Name = "IX_L_Pasien_nopenjamin")]
+[Index("PekerjaanPasien", Name = "IX_L_Pasien_pekerjaan")]
+[Index("StatusKWNPasien", Name = "IX_L_Pasien_statuskawin")]
+[Index("TelpPasien", Name = "IX_L_Pasien_telp")]
+[Index("Tmptlahirpasien", Name = "IX_L_Pasien_tempatlahir")]
+[Index("Tgllahirpasien", Name = "IX_L_Pasien_tgllahir")]
 public partial class L_Pasien
 {
    [Key]

@@ -6,17 +6,17 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Table("L_Ruang")]
-[Index("Koderuangan", Name = "IX_M_Ruang")]
-[Index("Nama", Name = "IX_M_Ruang_1")]
-[Index("Kamar", Name = "IX_M_Ruang_2")]
-[Index("KodeInventoryGudangObat", Name = "IX_M_Ruang_3")]
-[Index("KodeRequestGudangObat", Name = "IX_M_Ruang_4")]
-[Index("KodeTarif", Name = "IX_M_Ruang_5")]
-[Index("IsAktif", Name = "IX_M_Ruang_6")]
-[Index("IdRuang", Name = "IX_M_Ruang_7")]
+[Index("Koderuangan", Name = "IX_L_Ruang")]
+[Index("Nama", Name = "IX_L_Ruang_1")]
+[Index("Kamar", Name = "IX_L_Ruang_2")]
+[Index("KodeInventoryGudangObat", Name = "IX_L_Ruang_3")]
+[Index("KodeRequestGudangObat", Name = "IX_L_Ruang_4")]
+[Index("KodeTarif", Name = "IX_L_Ruang_5")]
+[Index("IsAktif", Name = "IX_L_Ruang_6")]
+[Index("IdRuang", Name = "IX_L_Ruang_7")]
 [Index("KdInhealth", Name = "IX_V_KDINHEALTH")]
 [Index("LynInhealth", Name = "IX_V_LYNINHEALTH")]
 public partial class L_Ruang

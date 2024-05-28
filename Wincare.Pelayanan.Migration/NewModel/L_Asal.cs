@@ -6,11 +6,11 @@ using Wincare.Pelayanan.Migration.Models;
 namespace WincareMigrations.NewModels;
 
 [Table("L_Asal")]
-[Index("IdAsal", Name = "IX_M_Asal_IdAsal")]
-[Index("IdAsalGroup", Name = "IX_M_Asal_IdAsalgroup")]
-[Index("IsAktif", Name = "IX_M_Asal_IsAktif")]
-[Index("KdAsal", Name = "IX_M_Asal_Kdasal")]
-[Index("NmAsal", Name = "IX_M_Asal_Nmasal")]
+[Index("IdAsal", Name = "IX_L_Asal_IdAsal")]
+[Index("IdAsalGroup", Name = "IX_L_Asal_IdAsalgroup")]
+[Index("IsAktif", Name = "IX_L_Asal_IsAktif")]
+[Index("KdAsal", Name = "IX_L_Asal_Kdasal")]
+[Index("NmAsal", Name = "IX_L_Asal_Nmasal")]
 public partial class L_Asal
 {
 

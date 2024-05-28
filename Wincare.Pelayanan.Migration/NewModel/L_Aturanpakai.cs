@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Table("L_AturanPakai")]
-[Index("IdAturanpakai", Name = "IX_M_AturanPakai_IdAturanPakai")]
-[Index("IsAktif", Name = "IX_M_AturanPakai_IsAktif")]
-[Index("KdAturanPakai", Name = "IX_M_AturanPakai_KdAturanPakai")]
-[Index("KetAturanpakai", Name = "IX_M_AturanPakai_KetAturanPakai")]
-[Index("NamaAturanpakai", Name = "IX_M_AturanPakai_NmAturanPakai")]
+[Index("IdAturanpakai", Name = "IX_L_AturanPakai_IdAturanPakai")]
+[Index("IsAktif", Name = "IX_L_AturanPakai_IsAktif")]
+[Index("KdAturanPakai", Name = "IX_L_AturanPakai_KdAturanPakai")]
+[Index("KetAturanpakai", Name = "IX_L_AturanPakai_KetAturanPakai")]
+[Index("NamaAturanpakai", Name = "IX_L_AturanPakai_NmAturanPakai")]
 public partial class L_Aturanpakai
 {
     [Key]

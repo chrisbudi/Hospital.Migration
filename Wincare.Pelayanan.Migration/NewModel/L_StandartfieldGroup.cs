@@ -6,31 +6,32 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
-[Table("TM_STANDARTFIELD_GROUP")]
-public partial class TmStandartfieldGroup
+[Table("L_StandartfieldGroup")]
+public partial class L_StandartfieldGroup
 {
     [Key]
-    [Column("ID_FIELDGROUP", TypeName = "numeric(18, 0)")]
+    [Column("IdFieldgroup", TypeName = "numeric(18, 0)")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public decimal IdFieldgroup { get; set; }
 
-    [Column("V_NMFIELDGROUP")]
+    [Column("Nmfieldgroup")]
     [StringLength(50)]
     [Unicode(false)]
     public string VNmfieldgroup { get; set; }
 
-    [Column("D_TANGGAL", TypeName = "datetime")]
+    [Column("DTanggal", TypeName = "TIMESTAMP")]
     public DateTime? DTanggal { get; set; }
 
-    [Column("IS_AKTIF")]
+    [Column("IsAktif")]
     public bool? IsAktif { get; set; }
 
-    [Column("V_KETERANGAN")]
+    [Column("VKeterangan")]
     [StringLength(50)]
     [Unicode(false)]
     public string VKeterangan { get; set; }
 
     [InverseProperty("IdFieldgroupNavigation")]
-    public virtual ICollection<TmStandartfield> TmStandartfields { get; set; } = new List<TmStandartfield>();
+    public virtual ICollection<L_Standartfield> L_Standartfields { get; set; } = new List<L_Standartfield>();
 }

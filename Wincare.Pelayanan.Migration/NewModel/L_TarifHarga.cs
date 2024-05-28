@@ -8,44 +8,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.NewModels;
 
-[Table("L_PaketHarga")]
-public partial class L_PaketHarga
+[Table("L_TarifHarga")]
+public partial class L_TarifHarga
 {
     [Key]
-    [Column("IdPaketkelas")]
+    [Column("IdTarifkelas")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdPaketkelas { get; set; }
+    public Guid IdTarifkelas { get; set; }
 
-    [Column("OldIdPaketkelas", TypeName = "numeric(18, 0)")]
-    public decimal OldIdPaketkelas { get; set; }
+    [Column("OldIdTarifkelas", TypeName = "numeric(18, 0)")]
+    public decimal OldIdTarifkelas { get; set; }
 
-
-    [Column("IdMasterPemeriksaanPenunjang")]
-    public Guid IdMasterPemeriksaanPenunjang { get; set; }
-
-    [Column("OldIdMasterPemeriksaanPenunjang", TypeName = "numeric(18, 0)")]
-    public decimal OldIdMasterPemeriksaanPenunjang { get; set; }
-
-
-    [Column("IdPenunjangDetail")]
-    public Guid? IdPenunjangDetail { get; set; }
-
-    [Column("OldIdPenunjangDetail", TypeName = "numeric(18, 0)")]
-    public decimal? OldIdPenunjangDetail { get; set; }
+    [Column("Kdtarifdetail")]
+    [StringLength(10)]
+    [Unicode(false)]
+    public string Kdtarifdetail { get; set; }
 
     [Column("RekananId")]
-    public Guid RekananId { get; set; }
+    public Guid? RekananId { get; set; }
 
-    [Column("OldRekananid", TypeName = "numeric(18, 0)")]
-    public decimal OldRekananId { get; set; }
+    [Column("OldRekananId", TypeName = "numeric(18, 0)")]
+    public decimal? OldRekananId { get; set; }
 
     [Column("Kelas")]
     [StringLength(50)]
     [Unicode(false)]
     public string Kelas { get; set; }
-
-    [Column("Jumlah", TypeName = "decimal(18, 0)")]
-    public decimal? Jumlah { get; set; }
 
     [Column("Harga", TypeName = "decimal(18, 0)")]
     public decimal? Harga { get; set; }
@@ -54,7 +42,7 @@ public partial class L_PaketHarga
     public decimal? Cito { get; set; }
 
     [Column("Penyulit", TypeName = "decimal(18, 0)")]
-    public decimal? DPenyulit { get; set; }
+    public decimal? Penyulit { get; set; }
 
     [Column("SecondTnd", TypeName = "decimal(18, 0)")]
     public decimal? SecondTnd { get; set; }
@@ -64,9 +52,6 @@ public partial class L_PaketHarga
 
     [Column("Diskon", TypeName = "decimal(18, 0)")]
     public decimal? Diskon { get; set; }
-
-    [Column("Subtotal", TypeName = "decimal(18, 0)")]
-    public decimal? DSubtotal { get; set; }
 
     [Column("Beapasien", TypeName = "decimal(18, 0)")]
     public decimal? Beapasien { get; set; }
@@ -89,20 +74,17 @@ public partial class L_PaketHarga
     [Column("Jasamedis5", TypeName = "decimal(18, 0)")]
     public decimal? Jasamedis5 { get; set; }
 
-    [Column("JasaRS", TypeName = "decimal(18, 0)")]
-    public decimal? JasaRS { get; set; }
+    [Column("Jasars", TypeName = "decimal(18, 0)")]
+    public decimal? Jasars { get; set; }
 
-    [Column("BahanAlkes", TypeName = "decimal(18, 0)")]
-    public decimal? BahanAlkes { get; set; }
+    [Column("Bahanalkes", TypeName = "decimal(18, 0)")]
+    public decimal? Bahanalkes { get; set; }
 
-    [Column("TglAwal", TypeName = "TIMESTAMP")]
+    [Column("Tglawal", TypeName = "TIMESTAMP")]
     public DateTime? Tglawal { get; set; }
 
-    [Column("TglAkhir", TypeName = "TIMESTAMP")]
+    [Column("Tglakhir", TypeName = "TIMESTAMP")]
     public DateTime? Tglakhir { get; set; }
-
-    [Column("LastUpdate", TypeName = "TIMESTAMP")]
-    public DateTime? Lastupdate { get; set; }
 
     [Column("By")]
     [StringLength(50)]
@@ -111,4 +93,7 @@ public partial class L_PaketHarga
 
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }
+
+    [Column("Lastupdate", TypeName = "TIMESTAMP")]
+    public DateTime? Lastupdate { get; set; }
 }

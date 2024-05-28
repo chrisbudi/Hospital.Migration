@@ -6,29 +6,30 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
-[Table("TM_TINDAKAN")]
-public partial class TmTindakan
+[Table("L_Tindakan")]
+public partial class L_Tindakan
 {
-    [Column("ID_TINDAKAN", TypeName = "numeric(18, 0)")]
+    [Key]
+    [Column("IdTindakan", TypeName = "numeric(18, 0)")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public decimal IdTindakan { get; set; }
 
-    [Key]
-    [Column("V_KDTINDAKAN")]
+    [Column("KdTindakan")]
     [StringLength(8)]
     [Unicode(false)]
-    public string VKdtindakan { get; set; }
+    public string Kdtindakan { get; set; }
 
-    [Column("V_NMTINDAKAN")]
+    [Column("NmTindakan")]
     [StringLength(200)]
     [Unicode(false)]
-    public string VNmtindakan { get; set; }
+    public string Nmtindakan { get; set; }
 
-    [Column("V_NMPENDEK")]
+    [Column("NmPendek")]
     [StringLength(100)]
     [Unicode(false)]
-    public string VNmpendek { get; set; }
+    public string Nmpendek { get; set; }
 
     [Column("IS_AKTIF")]
     public bool? IsAktif { get; set; }

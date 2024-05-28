@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Table("L_Dokter")]
-[Index("KdDokter", Name = "IX_M_Dokter_KdDokter")]
-[Index("NmDokter", Name = "IX_M_Dokter_NmDokter")]
+[Index("KdDokter", Name = "IX_L_Dokter_KdDokter")]
+[Index("NmDokter", Name = "IX_L_Dokter_NmDokter")]
 public partial class L_Dokter
 {
     [Key]

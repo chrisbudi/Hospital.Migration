@@ -6,14 +6,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Keyless]
-[Table("LIS_MSGQUEUE")]
-public partial class LisMsgqueue
+[Table("L_LisMsgqueue")]
+public partial class L_LisMsgqueue
 {
     [Required]
-    [Column("ID_PASIENLAB")]
+    [Column("IdPasienLab")]
     [StringLength(12)]
     [Unicode(false)]
     public string IdPasienlab { get; set; }

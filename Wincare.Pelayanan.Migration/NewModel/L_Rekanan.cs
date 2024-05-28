@@ -6,13 +6,13 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
  [Table("L_Rekanan")]
-[Index("IdRekanan", Name = "IX_M_Rekanan_IdRekanan")]
-[Index("NmRekanan", Name = "IX_M_Rekanan_NmRekanan")]
-[Index("IsAktif", Name = "IX_M_Rekanan_IsAktif")]
-[Index("Alias", Name = "IX_M_Rekanan_Alias")]
+[Index("IdRekanan", Name = "IX_L_Rekanan_IdRekanan")]
+[Index("NmRekanan", Name = "IX_L_Rekanan_NmRekanan")]
+[Index("IsAktif", Name = "IX_L_Rekanan_IsAktif")]
+[Index("Alias", Name = "IX_L_Rekanan_Alias")]
 public partial class L_Rekanan
 {
     [Key]
