@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Wincare.Pendaftaran.Migration.Models;
 
 [Table("D_Kamar")]
-public partial class TmhKamar
+public partial class D_Kamar
 {
     [Column("IdKamar", TypeName = "numeric(18, 0)")]
     public decimal Idkamar { get; set; }

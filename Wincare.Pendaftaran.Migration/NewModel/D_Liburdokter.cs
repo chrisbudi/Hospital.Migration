@@ -8,21 +8,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
-[Table("D_DokterNote")]
-public partial class D_DokterNote
+[Table("D_Liburdokter")]
+public partial class D_Liburdokter
 {
     [Key]
-    [Column("IdDokter", TypeName = "numeric(18, 0)")]
-    public decimal IdDokter { get; set; }
+    [Column("IdLiburDokter", TypeName = "numeric(18, 0)")]
+    public decimal IdLiburDokter { get; set; }
 
     [Required]
     [Column("KdDokter")]
     [StringLength(6)]
     [Unicode(false)]
-    public string Kddokter { get; set; }
+    public string KdDokter { get; set; }
+
+    [Column("TglAwal", TypeName = "datetime")]
+    public DateTime? TglAwal { get; set; }
+
+    [Column("TglAkhir", TypeName = "datetime")]
+    public DateTime? TglAkhir { get; set; }
 
     [Column("Keterangan")]
-    [StringLength(100)]
+    [StringLength(500)]
     [Unicode(false)]
     public string Keterangan { get; set; }
 

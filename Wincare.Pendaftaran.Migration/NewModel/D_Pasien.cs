@@ -26,7 +26,7 @@ namespace Wincare.Pendaftaran.Migration.Models;
 [Index("TmptLahirPasien", Name = "IX_PASIEN_tempatlahir")]
 [Index("TglLahirPasien", Name = "IX_PASIEN_tgllahir")]
 [Index("IdNumPasien", Name = "idnumpasien")]
-public partial class TmPasien
+public partial class D_Pasien
 {
     [Column("IdNumPasien", TypeName = "numeric(18, 0)")]
     public decimal IdNumPasien { get; set; }

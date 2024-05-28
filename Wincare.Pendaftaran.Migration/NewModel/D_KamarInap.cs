@@ -11,7 +11,7 @@ namespace Wincare.Pendaftaran.Migration.Models;
 [Table("D_KamarInap")]
 [Index("KdTmpTidur", Name = "IX_KAMARINAP_v_kdtmptidur")]
 [Index("Lantai", Name = "IX_KAMARINAP_v_lantai")]
-public partial class TmKamarinap
+public partial class D_KamarInap
 {
     [Column("IdKamarInap", TypeName = "numeric(18, 0)")]
     public decimal IdKamarInap { get; set; }

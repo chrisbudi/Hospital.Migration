@@ -19,7 +19,7 @@ namespace Wincare.Pendaftaran.Migration.Models;
 [Index("IdNumRuang", Name = "IX_RUANG_7")]
 [Index("KdInhealth", Name = "IX_KDINHEALTH")]
 [Index("LynInhealth", Name = "IX_LYNINHEALTH")]
-public partial class TmRuang
+public partial class D_Ruang
 {
     [Column("IdNumRuang", TypeName = "numeric(18, 0)")]
     public decimal IdNumRuang { get; set; }

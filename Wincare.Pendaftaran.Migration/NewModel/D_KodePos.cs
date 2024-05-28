@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Wincare.Pendaftaran.Migration.Models;
 
 [Table("D_KodePos")]
-public partial class TmKodepo
+public partial class D_KodePos
 {
     [Key]
     [Column("IdKodePos", TypeName = "numeric(18, 0)")]

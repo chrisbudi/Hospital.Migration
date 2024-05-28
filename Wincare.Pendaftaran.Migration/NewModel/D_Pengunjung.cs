@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Wincare.Pendaftaran.Migration.Models;
 
 [Table("D_Pengunjung")]
-public partial class TmhPengunjung
+public partial class D_Pengunjung
 {
     [Column("IdNumPengunjung", TypeName = "numeric(18, 0)")]
     public decimal IdNumPengunjung { get; set; }

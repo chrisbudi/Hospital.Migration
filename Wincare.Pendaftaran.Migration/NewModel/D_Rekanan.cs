@@ -14,7 +14,7 @@ namespace Wincare.Pendaftaran.Migration.Models;
 [Index("NmRekanan", Name = "IX_REKANAN_2")]
 [Index("Aktif", Name = "IX_REKANAN_3")]
 [Index("Alias", Name = "IX_REKANAN_4")]
-public partial class TmRekanan
+public partial class D_Rekanan
 {
     [Column("IdNumRekanan", TypeName = "numeric(18, 0)")]
     public decimal IdNumRekanan { get; set; }

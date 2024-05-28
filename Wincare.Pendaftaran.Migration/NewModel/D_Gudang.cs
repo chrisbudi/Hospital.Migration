@@ -14,7 +14,7 @@ namespace Wincare.Pendaftaran.Migration.Models;
 [Index("KodeInventory", Name = "IX_GUDANG_KDINV")]
 [Index("Listropp", Name = "IX_GUDANG_LISROP")]
 [Index("NamaGudangObat", Name = "IX_GUDANG_NAMAGUDANG")]
-public partial class TmGudang
+public partial class D_Gudang
 {
     [Column("IdGudangObat", TypeName = "numeric(18, 0)")]
     public decimal IdGudangobat { get; set; }

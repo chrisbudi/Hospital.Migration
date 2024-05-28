@@ -17,7 +17,7 @@ namespace Wincare.Pendaftaran.Migration.Models;
 [Index("JamStart", Name = "IX_JADWALDOKTER_5")]
 [Index("JamFinish", Name = "IX_JADWALDOKTER_6")]
 [Index("Aktif", Name = "IX_JADWALDOKTER_7")]
-public partial class TmJadwaldokter
+public partial class D_JadwalDokter
 {
     [Key]
     [Column("IdJadwal", TypeName = "numeric(18, 0)")]
