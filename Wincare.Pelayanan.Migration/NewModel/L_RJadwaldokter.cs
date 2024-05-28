@@ -8,50 +8,51 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.NewModels;;
 
-[Table("TR_JADWALDOKTER")]
-public partial class TrJadwaldokter
+[Table("L_RJadwalDokter")]
+public partial class L_RJadwaldokter
 {
     [Key]
-    [Column("ID_JADWAL")]
+    [Column("IdJadwal")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long IdJadwal { get; set; }
 
-    [Column("V_KDDOKTER")]
+    [Column("VKdDokter")]
     [StringLength(100)]
     [Unicode(false)]
     public string VKddokter { get; set; }
 
-    [Column("V_HARI")]
+    [Column("VHari")]
     [StringLength(30)]
     [Unicode(false)]
     public string VHari { get; set; }
 
-    [Column("V_JAMSTART")]
+    [Column("VJamStart")]
     [StringLength(5)]
     [Unicode(false)]
     public string VJamstart { get; set; }
 
-    [Column("V_JAMFINISH")]
+    [Column("VJamFinish")]
     [StringLength(5)]
     [Unicode(false)]
     public string VJamfinish { get; set; }
 
-    [Column("V_KODERUANGAN")]
+    [Column("VKodeRuangan")]
     [StringLength(5)]
     [Unicode(false)]
     public string VKoderuangan { get; set; }
 
-    [Column("V_NAMAKLINIK")]
+    [Column("VNamaKlinik")]
     [StringLength(5)]
     [Unicode(false)]
     public string VNamaklinik { get; set; }
 
-    [Column("I_SERVISTIME")]
+    [Column("IServisTime")]
     public int? IServistime { get; set; }
 
-    [Column("IS_AKTIF")]
+    [Column("IsAktif")]
     public bool? IsAktif { get; set; }
 
-    [Column("V_BY")]
+    [Column("VBy")]
     [StringLength(50)]
     [Unicode(false)]
     public string VBy { get; set; }

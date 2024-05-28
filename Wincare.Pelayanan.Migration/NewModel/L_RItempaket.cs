@@ -8,147 +8,152 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pelayanan.Migration.NewModels;;
 
-[Table("TR_ITEMPAKET")]
-public partial class TrItempaket
+[Table("L_RItemPaket")]
+public partial class L_RItemPaket
 {
     [Key]
-    [Column("ID_DETAILPAKET", TypeName = "numeric(18, 0)")]
-    public decimal IdDetailpaket { get; set; }
+    [Column("IdDetailPaket", TypeName = "numeric(18, 0)")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid IdDetailpaket { get; set; }
+    
+    [Column("OldIdDetailPaket", TypeName = "numeric(18, 0)")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid IdDetailpaket { get; set; }
 
-    [Column("ID_PAKET", TypeName = "numeric(18, 0)")]
+    [Column("IdPaket", TypeName = "numeric(18, 0)")]
     public decimal? IdPaket { get; set; }
 
-    [Column("V_NOMORPAKET")]
+    [Column("VNomorPaket")]
     [StringLength(12)]
     [Unicode(false)]
     public string VNomorpaket { get; set; }
 
-    [Column("ID_MASTERPEMERIKSAANPENUNJANG", TypeName = "numeric(18, 0)")]
+    [Column("IdMasterPemeriksaanPenunjang", TypeName = "numeric(18, 0)")]
     public decimal? IdMasterpemeriksaanpenunjang { get; set; }
 
-    [Column("ID_PENUNJANGDETAIL", TypeName = "numeric(18, 0)")]
+    [Column("IdPenunjangDetail", TypeName = "numeric(18, 0)")]
     public decimal? IdPenunjangdetail { get; set; }
 
-    [Column("V_KDDETAIL")]
+    [Column("VKodeDetail")]
     [StringLength(10)]
     [Unicode(false)]
     public string VKddetail { get; set; }
 
-    [Column("V_NMDETAIL")]
+    [Column("VNmDetail")]
     [StringLength(100)]
     [Unicode(false)]
     public string VNmdetail { get; set; }
 
-    [Column("V_GROUP")]
+    [Column("VGroup")]
     [StringLength(100)]
     [Unicode(false)]
     public string VGroup { get; set; }
 
-    [Column("V_TIPE")]
+    [Column("VTipe")]
     [StringLength(50)]
     [Unicode(false)]
     public string VTipe { get; set; }
 
-    [Column("V_KDDOKTER")]
+    [Column("VKdDokter")]
     [StringLength(6)]
     [Unicode(false)]
     public string VKddokter { get; set; }
 
-    [Column("V_NMDOKTER")]
+    [Column("VNmDokter")]
     [StringLength(50)]
     [Unicode(false)]
     public string VNmdokter { get; set; }
 
-    [Column("D_JUMLAH", TypeName = "decimal(18, 0)")]
+    [Column("DJumlah", TypeName = "decimal(18, 0)")]
     public decimal? DJumlah { get; set; }
 
-    [Column("D_HARGA", TypeName = "decimal(18, 0)")]
+    [Column("DHarga", TypeName = "decimal(18, 0)")]
     public decimal? DHarga { get; set; }
 
-    [Column("D_CITO", TypeName = "decimal(18, 0)")]
+    [Column("DCito", TypeName = "decimal(18, 0)")]
     public decimal? DCito { get; set; }
 
-    [Column("D_PENYULIT", TypeName = "decimal(18, 0)")]
+    [Column("DPenyulit", TypeName = "decimal(18, 0)")]
     public decimal? DPenyulit { get; set; }
 
-    [Column("D_2TND", TypeName = "decimal(18, 0)")]
+    [Column("D2tnd", TypeName = "decimal(18, 0)")]
     public decimal? D2tnd { get; set; }
 
-    [Column("D_ADM", TypeName = "decimal(18, 0)")]
+    [Column("DAdm", TypeName = "decimal(18, 0)")]
     public decimal? DAdm { get; set; }
 
-    [Column("D_DISKON", TypeName = "decimal(18, 0)")]
+    [Column("DDiskon", TypeName = "decimal(18, 0)")]
     public decimal? DDiskon { get; set; }
 
-    [Column("D_SUBTOTAL", TypeName = "decimal(18, 0)")]
+    [Column("DSubtotal", TypeName = "decimal(18, 0)")]
     public decimal? DSubtotal { get; set; }
 
-    [Column("D_BEAPASIEN", TypeName = "decimal(18, 0)")]
+    [Column("DBeaPasien", TypeName = "decimal(18, 0)")]
     public decimal? DBeapasien { get; set; }
 
-    [Column("D_BEAREKANAN", TypeName = "decimal(18, 0)")]
+    [Column("DBeaRekanan", TypeName = "decimal(18, 0)")]
     public decimal? DBearekanan { get; set; }
 
-    [Column("D_JASAMEDIS", TypeName = "decimal(18, 0)")]
+    [Column("DJasaMedis", TypeName = "decimal(18, 0)")]
     public decimal? DJasamedis { get; set; }
 
-    [Column("D_JASAMEDIS2", TypeName = "decimal(18, 0)")]
+    [Column("DJasaMedis2", TypeName = "decimal(18, 0)")]
     public decimal? DJasamedis2 { get; set; }
 
-    [Column("D_JASAMEDIS3", TypeName = "decimal(18, 0)")]
+    [Column("DJasaMedis3", TypeName = "decimal(18, 0)")]
     public decimal? DJasamedis3 { get; set; }
 
-    [Column("D_JASAMEDIS4", TypeName = "decimal(18, 0)")]
+    [Column("DJasaMedis4", TypeName = "decimal(18, 0)")]
     public decimal? DJasamedis4 { get; set; }
 
-    [Column("D_JASAMEDIS5", TypeName = "decimal(18, 0)")]
+    [Column("DJasaMedis5", TypeName = "decimal(18, 0)")]
     public decimal? DJasamedis5 { get; set; }
 
-    [Column("D_JASARS", TypeName = "decimal(18, 0)")]
+    [Column("DJasars", TypeName = "decimal(18, 0)")]
     public decimal? DJasars { get; set; }
 
-    [Column("D_BAHANALKES", TypeName = "decimal(18, 0)")]
+    [Column("DBahanalkes", TypeName = "decimal(18, 0)")]
     public decimal? DBahanalkes { get; set; }
 
-    [Column("V_KODETARIF")]
+    [Column("VKodeTarif")]
     [StringLength(10)]
     [Unicode(false)]
     public string VKodetarif { get; set; }
 
-    [Column("V_BY")]
+    [Column("VBy")]
     [StringLength(50)]
     [Unicode(false)]
     public string VBy { get; set; }
 
-    [Column("C_APPROVE")]
+    [Column("CApprove")]
     [StringLength(1)]
     [Unicode(false)]
     public string CApprove { get; set; }
 
-    [Column("D_APPROVE", TypeName = "datetime")]
+    [Column("DApprove", TypeName = "datetime")]
     public DateTime? DApprove { get; set; }
 
-    [Column("V_APPROVE_VER")]
+    [Column("VApproveVer")]
     [StringLength(50)]
     [Unicode(false)]
     public string VApproveVer { get; set; }
 
-    [Column("C_APPROVE_VER")]
+    [Column("CApproveVer")]
     [StringLength(1)]
     [Unicode(false)]
     public string CApproveVer { get; set; }
 
-    [Column("D_APPROVE_VER", TypeName = "datetime")]
+    [Column("DApproveVer", TypeName = "datetime")]
     public DateTime? DApproveVer { get; set; }
 
-    [Column("ID_STATUS")]
+    [Column("IdStatus")]
     public int? IdStatus { get; set; }
 
     [ForeignKey("IdPaket")]
-    [InverseProperty("TrItempakets")]
-    public virtual TtPaket IdPaketNavigation { get; set; }
+    [InverseProperty("L_RItempakets")]
+    public virtual L_TPaket IdPaketNavigation { get; set; }
 
     [ForeignKey("IdStatus")]
-    [InverseProperty("TrItempakets")]
-    public virtual TmStatus IdStatusNavigation { get; set; }
+    [InverseProperty("L_RItempakets")]
+    public virtual L_Status IdStatusNavigation { get; set; }
 }
