@@ -8,39 +8,39 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
-[Table("TT_PLAFONBPJS")]
-public partial class TtPlafonbpj
+[Table("D_Plafonbpj")]
+public partial class D_Plafonbpj
 {
     [Key]
-    [Column("IDBPJS", TypeName = "numeric(18, 0)")]
-    public decimal Idbpjs { get; set; }
+    [Column("IdBpjs", TypeName = "numeric(18, 0)")]
+    public decimal IdBpjs { get; set; }
 
-    [Column("ID_REGISTRASI")]
+    [Column("IdRegistrasi")]
     [StringLength(12)]
     [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
-    [Column("D_TGL", TypeName = "datetime")]
-    public DateTime? DTgl { get; set; }
+    [Column("Tgl", TypeName = "datetime")]
+    public DateTime? Tgl { get; set; }
 
-    [Column("D_BPJS", TypeName = "decimal(18, 0)")]
-    public decimal? DBpjs { get; set; }
+    [Column("Bpjs", TypeName = "decimal(18, 0)")]
+    public decimal? Bpjs { get; set; }
 
-    [Column("V_KETERANGAN")]
+    [Column("Keterangan")]
     [StringLength(50)]
     [Unicode(false)]
-    public string VKeterangan { get; set; }
+    public string Keterangan { get; set; }
 
-    [Column("V_BY")]
+    [Column("By")]
     [StringLength(50)]
     [Unicode(false)]
-    public string VBy { get; set; }
+    public string By { get; set; }
 
-    [Column("V_STATUS")]
+    [Column("Status")]
     [StringLength(50)]
     [Unicode(false)]
-    public string VStatus { get; set; }
+    public string Status { get; set; }
 
-    [Column("ID_STATUS")]
+    [Column("IdStatus")]
     public int? IdStatus { get; set; }
 }

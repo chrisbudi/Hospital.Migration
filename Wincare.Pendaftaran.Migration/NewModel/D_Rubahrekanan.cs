@@ -8,34 +8,34 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 
-[Table("TT_RUBAHREKANAN")]
-public partial class TtRubahrekanan
+[Table("D_Rubahrekanan")]
+public partial class D_Rubahrekanan
 {
     [Key]
-    [Column("ID_RUBAHREKANAN", TypeName = "numeric(18, 0)")]
-    public decimal IdRubahrekanan { get; set; }
+    [Column("IdRubahRekanan", TypeName = "numeric(18, 0)")]
+    public decimal IdRubahRekanan { get; set; }
 
-    [Column("D_TGLRUBAH", TypeName = "datetime")]
-    public DateTime? DTglrubah { get; set; }
+    [Column("TglRubah", TypeName = "datetime")]
+    public DateTime? TglRubah { get; set; }
 
-    [Column("ID_REGISTRASI")]
+    [Column("IdRegistrasi")]
     [StringLength(12)]
     [Unicode(false)]
     public string IdRegistrasi { get; set; }
 
-    [Column("REKANANID_ASAL", TypeName = "numeric(18, 0)")]
+    [Column("RekananidAsal", TypeName = "numeric(18, 0)")]
     public decimal? RekananidAsal { get; set; }
 
-    [Column("REKANANID_TUJUAN", TypeName = "numeric(18, 0)")]
+    [Column("RekananidTujuan", TypeName = "numeric(18, 0)")]
     public decimal? RekananidTujuan { get; set; }
 
-    [Column("V_KETERANGAN")]
+    [Column("Keterangan")]
     [StringLength(50)]
     [Unicode(false)]
-    public string VKeterangan { get; set; }
+    public string Keterangan { get; set; }
 
-    [Column("V_BY")]
+    [Column("By")]
     [StringLength(50)]
     [Unicode(false)]
-    public string VBy { get; set; }
+    public string By { get; set; }
 }

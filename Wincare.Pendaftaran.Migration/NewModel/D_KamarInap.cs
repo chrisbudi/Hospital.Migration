@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Wincare.Pendaftaran.Migration.Models;
 
 [Table("D_KamarInap")]
-[Index("KdTmpTidur", Name = "IX_KAMARINAP_v_kdtmptidur")]
-[Index("Lantai", Name = "IX_KAMARINAP_v_lantai")]
+[Index("KdTmpTidur", Name = "IX_KAMARINAP_kdtmptidur")]
+[Index("Lantai", Name = "IX_KAMARINAP_lantai")]
 public partial class D_KamarInap
 {
     [Column("IdKamarInap", TypeName = "numeric(18, 0)")]
@@ -62,6 +62,6 @@ public partial class D_KamarInap
     [Column("IdMapId", TypeName = "numeric(18, 0)")]
     public decimal? IdMapId { get; set; }
 
-    [Column("IsAktif")]
-    public bool? IsAktif { get; set; }
+    [Column("Aktif")]
+    public bool? Aktif { get; set; }
 }
