@@ -174,6 +174,7 @@ namespace WincareMigrations.Controllers.Master
         }
 
 
+        [HttpGet("FixMapping")]
         public async Task<IActionResult> FixMapping()
         {
             var coa = _dbs.TmCoas.ToList();

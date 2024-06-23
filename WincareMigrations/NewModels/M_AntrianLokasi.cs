@@ -12,11 +12,11 @@ namespace WincareMigrations.NewModels;
 [Index("Lokasi", Name = "IX_M_AntrianLokasi_vlokasi")]
 public partial class M_AntrianLokasi
 {
+    [Key]
     [Column("IdLokasi")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long IdLokasi { get; set; }
 
-    [Key]
     [Column("Kdlokasi")]
     [StringLength(5)]
     [Unicode(false)]
