@@ -11,14 +11,14 @@ public partial class M_TarifMatrix
     [Key]
     [Column("IdTarifmatrix")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdTarifmatrix { get; set; }
+    public Ulid IdTarifmatrix { get; set; }
 
     [Column("OldIdTarifmatrix", TypeName = "numeric(18, 0)")]
     public decimal OldIdTarifmatrix { get; set; }
 
 
     [Column("IdTarifdetail")]
-    public Guid IdTarifdetail { get; set; }
+    public Ulid IdTarifdetail { get; set; }
 
     [Column("Kdtarifdetail")]
     [StringLength(50)]
@@ -26,7 +26,7 @@ public partial class M_TarifMatrix
     public string Kdtarifdetail { get; set; }
 
     [Column("IdRuang")]
-    public Guid IdRuang { get; set; }
+    public Ulid IdRuang { get; set; }
 
     [Column("Koderuangan")]
     [StringLength(50)]

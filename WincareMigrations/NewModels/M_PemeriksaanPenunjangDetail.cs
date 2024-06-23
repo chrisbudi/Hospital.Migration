@@ -10,12 +10,12 @@ namespace WincareMigrations.NewModels;
 public partial class M_PemeriksaanPenunjangDetail
 {
     [Key]
-    [Column("IdPenunjangDetail", TypeName = "numeric(18, 0)")]
+    [Column("IdPenunjangDetail")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdPenunjangDetail { get; set; }
+    public long IdPenunjangDetail { get; set; }
 
-    [Column("IdMasterPemeriksaanPenunjang", TypeName = "numeric(18, 0)")]
-    public decimal? IdMasterPemeriksaanPenunjang { get; set; }
+    [Column("IdMasterPemeriksaanPenunjang")]
+    public long? IdMasterPemeriksaanPenunjang { get; set; }
 
     [Column("KdPemeriksaan")]
     [StringLength(8)]

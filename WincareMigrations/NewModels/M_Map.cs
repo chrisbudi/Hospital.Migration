@@ -10,9 +10,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Map
 {
     [Key]
-    [Column("IdMapid", TypeName = "numeric(18, 0)")]
+    [Column("IdMapid")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdMapid { get; set; }
+    public long IdMapid { get; set; }
 
     [Column("NmMap")]
     [StringLength(50)]
@@ -25,15 +25,15 @@ public partial class M_Map
     [Unicode(false)]
     public string KodeRuangan { get; set; }
 
-    [Column("IdRuang", TypeName = "numeric(18,0)")]
-    public decimal IdRuang { get; set; }
+    [Column("IdRuang")]
+    public long? IdRuang { get; set; }
 
     [Column("Note")]
     [StringLength(200)]
     [Unicode(false)]
     public string Note { get; set; }
 
-    [Column("Image", TypeName = "BYTEA")]
+    [Column("Image", TypeName = "bytea")]
     public byte[] Image { get; set; }
 
     [Column("IsAktif")]

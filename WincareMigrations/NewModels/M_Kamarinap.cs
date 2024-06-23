@@ -9,9 +9,9 @@ using WincareMigrations.NewModels;
 public partial class M_Kamarinap
 {
     [Key]
-    [Column("IdKamarInap", TypeName = "numeric(18, 0)")]
+    [Column("IdKamarInap")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdKamarinap { get; set; }
+    public long IdKamarinap { get; set; }
 
     [Column("KdTmpTidur")]
     [StringLength(6)]
@@ -25,8 +25,8 @@ public partial class M_Kamarinap
     public string Kelas { get; set; }
 
 
-    [Column("IdHargakamar", TypeName = "numeric(18, 0)")]
-    public decimal? IdHargakamar { get; set; }
+    [Column("IdHargakamar")]
+    public long? IdHargakamar { get; set; }
 
     [Column("Lantai")]
     [StringLength(6)]
@@ -59,8 +59,8 @@ public partial class M_Kamarinap
     [Column("IY")]
     public int? IY { get; set; }
 
-    [Column("IdMapid", TypeName = "numeric(18, 0)")]
-    public decimal? IdMapid { get; set; }
+    [Column("IdMapid")]
+    public long? IdMapid { get; set; }
 
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }

@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Wincare.Core.Migrations
 {
     /// <inheritdoc />
-    public partial class initialCreate : Migration
+    public partial class initMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -114,7 +114,7 @@ namespace Wincare.Core.Migrations
                 name: "M_Bank",
                 columns: table => new
                 {
-                    IdBank = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdBank = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdBank = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     Kdbank = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
                     NmBank = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
@@ -162,7 +162,7 @@ namespace Wincare.Core.Migrations
                 name: "M_CountTraffic",
                 columns: table => new
                 {
-                    IdCountTraffic = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdCountTraffic = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdCountTraffic = table.Column<decimal>(type: "numeric", nullable: false),
                     Tanggal = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
                     jam = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
@@ -191,7 +191,8 @@ namespace Wincare.Core.Migrations
                 name: "M_Diagnosa",
                 columns: table => new
                 {
-                    IdDiagnosa = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdDiagnosa = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdDiagnosa = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
                     NmDiagnosa = table.Column<string>(type: "character varying(300)", unicode: false, maxLength: 300, nullable: false),
                     Ispenyakit = table.Column<bool>(type: "boolean", nullable: true),
@@ -207,10 +208,11 @@ namespace Wincare.Core.Migrations
                 name: "M_DiagnosaMatrix",
                 columns: table => new
                 {
-                    IdMatrixDiagnosa = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
-                    IdRuangan = table.Column<decimal>(type: "numeric", nullable: false),
+                    IdMatrixDiagnosa = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IdRuangan = table.Column<long>(type: "bigint", nullable: true),
                     KodeRuangan = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
-                    IdDiagnosa = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    IdDiagnosa = table.Column<long>(type: "bigint", nullable: true),
                     KdDiagnosa = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
@@ -240,12 +242,13 @@ namespace Wincare.Core.Migrations
                 name: "M_DokterNote",
                 columns: table => new
                 {
-                    IdDokterNote = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdDokterNote = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     IdDokter = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KdDokter = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
                     Keterangan = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     By = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
-                    TglInput = table.Column<DateTime>(type: "TIMESTAMP", nullable: true)
+                    TglInput = table.Column<DateTime>(type: "timestamp", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -256,7 +259,8 @@ namespace Wincare.Core.Migrations
                 name: "M_DTD",
                 columns: table => new
                 {
-                    IdDTD = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdDTD = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdDTD = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
                     NmDTD = table.Column<string>(type: "character varying(200)", unicode: false, maxLength: 200, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
@@ -270,7 +274,8 @@ namespace Wincare.Core.Migrations
                 name: "M_Farmakoterapi",
                 columns: table => new
                 {
-                    IdFarmakoterapi = table.Column<decimal>(type: "numeric", nullable: false),
+                    IdFarmakoterapi = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Nmfarmakoterapi = table.Column<string>(type: "character varying(200)", unicode: false, maxLength: 200, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
@@ -283,7 +288,8 @@ namespace Wincare.Core.Migrations
                 name: "M_Gizi",
                 columns: table => new
                 {
-                    IdGizi = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdGizi = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     OldIdGizi = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     Kdmakanan = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
                     Nmmakanan = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
@@ -313,7 +319,8 @@ namespace Wincare.Core.Migrations
                 name: "M_Gudang",
                 columns: table => new
                 {
-                    IdGudangObat = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdGudangObat = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KodeInventory = table.Column<string>(type: "character varying(2)", unicode: false, maxLength: 2, nullable: false),
                     NamaGudangObat = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true),
@@ -332,7 +339,8 @@ namespace Wincare.Core.Migrations
                 name: "M_Hargakamar",
                 columns: table => new
                 {
-                    IdHargakamar = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdHargakamar = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Kelas = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     By = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
@@ -348,7 +356,7 @@ namespace Wincare.Core.Migrations
                 {
                     IdKamarinaprek = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KdTmpTidur = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
-                    RekananId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RekananId = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldRekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
@@ -396,7 +404,8 @@ namespace Wincare.Core.Migrations
                 name: "M_LaboratoriumGroup",
                 columns: table => new
                 {
-                    IdGroup = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdGroup = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Nmgroup = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true),
                     IdGrouptarif = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
@@ -411,9 +420,10 @@ namespace Wincare.Core.Migrations
                 name: "M_MasterPaketH",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    OldId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    IdMasterPemeriksaan = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    OldId = table.Column<long>(type: "bigint", nullable: false),
+                    IdMasterPemeriksaan = table.Column<long>(type: "bigint", nullable: true),
                     NmPemeriksaan = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     KdPemeriksaan = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Harga = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
@@ -429,14 +439,15 @@ namespace Wincare.Core.Migrations
                 name: "M_MasterTnd",
                 columns: table => new
                 {
-                    IdGroupTarif = table.Column<double>(type: "double precision", nullable: false),
+                    IdGroupTarif = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NmgroupTarif = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     KdTarifDetail = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     NmTarifDetail = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     Kelas = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Harga = table.Column<double>(type: "double precision", nullable: true),
-                    IsAktif = table.Column<double>(type: "double precision", nullable: true),
-                    HargaBpjs = table.Column<double>(type: "double precision", nullable: true)
+                    Harga = table.Column<decimal>(type: "numeric", nullable: true),
+                    IsAktif = table.Column<decimal>(type: "numeric", nullable: true),
+                    HargaBpjs = table.Column<decimal>(type: "numeric", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -461,8 +472,9 @@ namespace Wincare.Core.Migrations
                 name: "M_ObatUnit",
                 columns: table => new
                 {
-                    IdObatUnit = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    BarangId = table.Column<Guid>(type: "uuid", nullable: true),
+                    IdObatUnit = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    BarangId = table.Column<long>(type: "bigint", nullable: true),
                     OldBarangId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     KdObat = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
                     NmObat = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
@@ -484,7 +496,8 @@ namespace Wincare.Core.Migrations
                 name: "M_PaketDetail",
                 columns: table => new
                 {
-                    IdPaketdetail = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdPaketdetail = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdPaketDetail = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     NmPaketDetail = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Group = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
@@ -501,13 +514,14 @@ namespace Wincare.Core.Migrations
                 name: "M_PaketHarga",
                 columns: table => new
                 {
-                    IdPaketkelas = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdPaketkelas = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     OldIdPaketkelas = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    IdMasterPemeriksaanPenunjang = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdMasterPemeriksaanPenunjang = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdMasterPemeriksaanPenunjang = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    IdPenunjangDetail = table.Column<Guid>(type: "uuid", nullable: true),
+                    IdPenunjangDetail = table.Column<long>(type: "bigint", nullable: true),
                     OldIdPenunjangDetail = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    RekananId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RekananId = table.Column<long>(type: "bigint", nullable: false),
                     OldRekananid = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     Kelas = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Jumlah = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
@@ -527,9 +541,9 @@ namespace Wincare.Core.Migrations
                     Jasamedis5 = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     JasaRS = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     BahanAlkes = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    TglAwal = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
-                    TglAkhir = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
-                    LastUpdate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
+                    TglAwal = table.Column<DateTime>(type: "timestamp", nullable: true),
+                    TglAkhir = table.Column<DateTime>(type: "timestamp", nullable: true),
+                    LastUpdate = table.Column<DateTime>(type: "timestamp", nullable: true),
                     By = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
@@ -542,12 +556,13 @@ namespace Wincare.Core.Migrations
                 name: "M_PaketHargaBaru",
                 columns: table => new
                 {
-                    IdPaketkelas = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    IdMasterPemeriksaanPenunjang = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdPaketkelas = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IdMasterPemeriksaanPenunjang = table.Column<long>(type: "bigint", nullable: false),
                     OldIdMasterPemeriksaanPenunjang = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    IdPenunjangDetail = table.Column<Guid>(type: "uuid", nullable: true),
+                    IdPenunjangDetail = table.Column<long>(type: "bigint", nullable: true),
                     OldIdPenunjangDetail = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    RekananId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RekananId = table.Column<long>(type: "bigint", nullable: false),
                     OldRekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     Kelas = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Jumlah = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
@@ -567,9 +582,9 @@ namespace Wincare.Core.Migrations
                     Jasamedis5 = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     JasaRS = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Bahanalkes = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    Tglawal = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
-                    Tglakhir = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
-                    Lastupdate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
+                    Tglawal = table.Column<DateTime>(type: "timestamp", nullable: true),
+                    Tglakhir = table.Column<DateTime>(type: "timestamp", nullable: true),
+                    Lastupdate = table.Column<DateTime>(type: "timestamp", nullable: true),
                     By = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
@@ -582,9 +597,9 @@ namespace Wincare.Core.Migrations
                 name: "M_PaketMatrix",
                 columns: table => new
                 {
-                    IdPaketMatrix = table.Column<Guid>(type: "uuid", nullable: false),
-                    OldIdPaketmatrix = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    IdMasterpemeriksaanpenunjang = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdPaketMatrix = table.Column<string>(type: "character varying(26)", nullable: false),
+                    OldIdPaketmatrix = table.Column<long>(type: "bigint", nullable: false),
+                    IdMasterpemeriksaanpenunjang = table.Column<long>(type: "bigint", nullable: false),
                     Koderuangan = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
@@ -597,12 +612,13 @@ namespace Wincare.Core.Migrations
                 name: "M_PaketRekanan",
                 columns: table => new
                 {
-                    IdPaketRekanan = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdPaketRekanan = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     OldIdPaketRekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    IdMasterPemeriksaanPenunjang = table.Column<Guid>(type: "uuid", nullable: false),
-                    OldIdMasterPemeriksaanPenunjang = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    RekananId = table.Column<Guid>(type: "uuid", nullable: false),
-                    OldRekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdMasterPemeriksaanPenunjang = table.Column<string>(type: "character varying(26)", nullable: false),
+                    OldIdMasterPemeriksaanPenunjang = table.Column<long>(type: "bigint", nullable: false),
+                    RekananId = table.Column<string>(type: "character varying(26)", nullable: false),
+                    OldRekananId = table.Column<long>(type: "bigint", nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -614,18 +630,19 @@ namespace Wincare.Core.Migrations
                 name: "M_PemeriksaanPenunjang",
                 columns: table => new
                 {
-                    IdMasterPemeriksaanPenunjang = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdMasterPemeriksaanPenunjang = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdPemeriksaan = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
                     NmPemeriksaan = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     Harga = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     BeaPasien = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     BeaRekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Penunjang = table.Column<string>(type: "character varying(20)", unicode: false, maxLength: 20, nullable: false),
-                    RekananId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RekananId = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldRekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     By = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true),
-                    IdGroupTarif = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdGroupTarif = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdGroupTarif = table.Column<decimal>(type: "numeric(18,0)", nullable: true)
                 },
                 constraints: table =>
@@ -637,10 +654,11 @@ namespace Wincare.Core.Migrations
                 name: "M_RadiologiGroup",
                 columns: table => new
                 {
-                    IdGroup = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdGroup = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Nmgroup = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true),
-                    IdGrouptarif = table.Column<decimal>(type: "numeric(18,0)", nullable: true)
+                    IdGrouptarif = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -651,7 +669,8 @@ namespace Wincare.Core.Migrations
                 name: "M_Rekanan",
                 columns: table => new
                 {
-                    IdRekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdRekanan = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NmRekanan = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     Alamat = table.Column<string>(type: "character varying(200)", unicode: false, maxLength: 200, nullable: false),
                     Kota = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
@@ -674,7 +693,7 @@ namespace Wincare.Core.Migrations
                 columns: table => new
                 {
                     IdSettingAdm = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    RekananId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RekananId = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldRekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Kategori = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Biaya = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
@@ -692,7 +711,7 @@ namespace Wincare.Core.Migrations
                     IdSettingBayar = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CaraBayar = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
-                    KdAkun = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false)
+                    KdAkun = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -725,7 +744,7 @@ namespace Wincare.Core.Migrations
                     KdLokasi = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
                     KdJenisLayanan = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
                     KdCounter = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
-                    Tanggal = table.Column<DateTime>(type: "TIMESTAMP", nullable: true)
+                    Tanggal = table.Column<DateTime>(type: "timestamp", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -768,7 +787,7 @@ namespace Wincare.Core.Migrations
                 {
                     IdFieldgroup = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     Nmfieldgroup = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
-                    DTanggal = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
+                    DTanggal = table.Column<DateTime>(type: "timestamp", nullable: true),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true),
                     VKeterangan = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false)
                 },
@@ -794,7 +813,8 @@ namespace Wincare.Core.Migrations
                 name: "M_Supplier",
                 columns: table => new
                 {
-                    SupplierId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    SupplierId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NamaSupplier = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Alamat = table.Column<string>(type: "character varying(500)", unicode: false, maxLength: 500, nullable: false),
                     Cp = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
@@ -830,10 +850,10 @@ namespace Wincare.Core.Migrations
                 name: "M_TarifHarga",
                 columns: table => new
                 {
-                    IdTarifkelas = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdTarifkelas = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdTarifkelas = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     Kdtarifdetail = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
-                    RekananId = table.Column<Guid>(type: "uuid", nullable: true),
+                    RekananId = table.Column<string>(type: "character varying(26)", nullable: true),
                     OldRekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Kelas = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Harga = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
@@ -851,11 +871,11 @@ namespace Wincare.Core.Migrations
                     Jasamedis5 = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Jasars = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Bahanalkes = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    Tglawal = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
-                    Tglakhir = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
+                    Tglawal = table.Column<DateTime>(type: "timestamp", nullable: true),
+                    Tglakhir = table.Column<DateTime>(type: "timestamp", nullable: true),
                     By = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true),
-                    Lastupdate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true)
+                    Lastupdate = table.Column<DateTime>(type: "timestamp", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -866,11 +886,11 @@ namespace Wincare.Core.Migrations
                 name: "M_TarifMatrix",
                 columns: table => new
                 {
-                    IdTarifmatrix = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdTarifmatrix = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdTarifmatrix = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    IdTarifdetail = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdTarifdetail = table.Column<string>(type: "character varying(26)", nullable: false),
                     Kdtarifdetail = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
-                    IdRuang = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdRuang = table.Column<string>(type: "character varying(26)", nullable: false),
                     Koderuangan = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
@@ -912,10 +932,10 @@ namespace Wincare.Core.Migrations
                 name: "M_TarifRekanan",
                 columns: table => new
                 {
-                    IdTarifRekanan = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdTarifRekanan = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdTarifRekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KdTarifDetail = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
-                    RekananId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RekananId = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldRekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
@@ -928,7 +948,7 @@ namespace Wincare.Core.Migrations
                 name: "M_TarifRekananSub",
                 columns: table => new
                 {
-                    IdTarifrekanansub = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdTarifrekanansub = table.Column<string>(type: "character varying(26)", nullable: false),
                     IdTarifRekananSub = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     RekananIdHd = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     RekananidDt = table.Column<decimal>(type: "numeric(18,0)", nullable: false)
@@ -942,7 +962,7 @@ namespace Wincare.Core.Migrations
                 name: "M_Tennant",
                 columns: table => new
                 {
-                    IdTenant = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdTenant = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdTenant = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     TenantCode = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
                     TenantName = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
@@ -1033,11 +1053,12 @@ namespace Wincare.Core.Migrations
                 name: "M_Morfologi",
                 columns: table => new
                 {
-                    IdMorfologi = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdMorfologi = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdMorfologi = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
                     NmMorfologi = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     KdDiagnosa = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
-                    IdDiagnosa = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdDiagnosa = table.Column<long>(type: "bigint", nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -1055,9 +1076,10 @@ namespace Wincare.Core.Migrations
                 name: "M_FarmakoterapiSub",
                 columns: table => new
                 {
-                    IdSubFarmakoterapi = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdSubFarmakoterapi = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NmSubFarmakoterapi = table.Column<string>(type: "character varying(200)", unicode: false, maxLength: 200, nullable: false),
-                    IdFarmakoterapi = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    IdFarmakoterapi = table.Column<long>(type: "bigint", nullable: true),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -1074,16 +1096,17 @@ namespace Wincare.Core.Migrations
                 name: "M_Ruang",
                 columns: table => new
                 {
-                    IdRuang = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdRuang = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KodeRuangan = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
                     Nama = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     NoRuang = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
                     Kelompok = table.Column<string>(type: "character(1)", unicode: false, fixedLength: true, maxLength: 1, nullable: false),
                     Kamar = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
                     KodeInventory = table.Column<string>(type: "character varying(2)", unicode: false, maxLength: 2, nullable: false),
-                    KodeInventoryGudangObat = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    KodeInventoryGudangObat = table.Column<long>(type: "bigint", nullable: true),
                     KodeRequestObat = table.Column<string>(type: "character varying(2)", unicode: false, maxLength: 2, nullable: false),
-                    KodeRequestGudangObat = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    KodeRequestGudangObat = table.Column<long>(type: "bigint", nullable: true),
                     KodeTarif = table.Column<string>(type: "character varying(2)", unicode: false, maxLength: 2, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true),
                     IsTarif = table.Column<bool>(type: "boolean", nullable: true),
@@ -1112,10 +1135,11 @@ namespace Wincare.Core.Migrations
                 name: "M_Laboratorium",
                 columns: table => new
                 {
-                    IdPemeriksaanLab = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdPemeriksaanLab = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdPemeriksaanLab = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
                     NmPemeriksaanLab = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
-                    IdGroup = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    IdGroup = table.Column<long>(type: "bigint", nullable: true),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -1154,8 +1178,9 @@ namespace Wincare.Core.Migrations
                 name: "M_PemeriksaanPenunjangDetail",
                 columns: table => new
                 {
-                    IdPenunjangDetail = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    IdMasterPemeriksaanPenunjang = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    IdPenunjangDetail = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IdMasterPemeriksaanPenunjang = table.Column<long>(type: "bigint", nullable: true),
                     KdPemeriksaan = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
                     KdDetail = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
                     NmDetail = table.Column<string>(type: "character varying(200)", unicode: false, maxLength: 200, nullable: false),
@@ -1182,10 +1207,11 @@ namespace Wincare.Core.Migrations
                 name: "M_Radiologi",
                 columns: table => new
                 {
-                    IdPemeriksaanRad = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdPemeriksaanRad = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdPemeriksaanRad = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
                     NmPemeriksaanRad = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
-                    IdGroup = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    IdGroup = table.Column<long>(type: "bigint", nullable: true),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -1202,7 +1228,7 @@ namespace Wincare.Core.Migrations
                 name: "M_Pasien",
                 columns: table => new
                 {
-                    IdPasien = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdPasien = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdPasien = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     PasienNo = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
                     NamaPasien = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
@@ -1239,7 +1265,7 @@ namespace Wincare.Core.Migrations
                     Iscetakkartu = table.Column<string>(type: "character(1)", unicode: false, fixedLength: true, maxLength: 1, nullable: false),
                     Warganegara = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Jenispasien = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
-                    RekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    RekananId = table.Column<long>(type: "bigint", nullable: true),
                     By = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true),
                     Suku = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
@@ -1303,7 +1329,7 @@ namespace Wincare.Core.Migrations
                 name: "M_TarifDetail",
                 columns: table => new
                 {
-                    IdTarifdetail = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdTarifdetail = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdTarifdetail = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KodeTarifLayan = table.Column<string>(type: "character varying(2)", unicode: false, maxLength: 2, nullable: false),
                     KdTarifDetail = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
@@ -1332,7 +1358,7 @@ namespace Wincare.Core.Migrations
                 name: "M_CoaSubKlasifikasi",
                 columns: table => new
                 {
-                    IdSubKlasifikasi = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdSubKlasifikasi = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdSubKlasifikasi = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KdSubKlasifikasi = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     NmSubKlasifikasi = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
@@ -1355,7 +1381,7 @@ namespace Wincare.Core.Migrations
                 name: "M_Barang",
                 columns: table => new
                 {
-                    barangId = table.Column<Guid>(type: "uuid", nullable: false),
+                    barangId = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldBarangId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KelompokId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     kode = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
@@ -1364,7 +1390,7 @@ namespace Wincare.Core.Migrations
                     Merk = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Ukuran = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: true),
                     Jenis = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
-                    ExpiredDate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
+                    ExpiredDate = table.Column<DateTime>(type: "timestamp", nullable: true),
                     Etiket = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Isi = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Kandungan = table.Column<string>(type: "character varying(200)", unicode: false, maxLength: 200, nullable: false),
@@ -1374,8 +1400,8 @@ namespace Wincare.Core.Migrations
                     Note = table.Column<string>(type: "character varying(500)", unicode: false, maxLength: 500, nullable: false),
                     Farmakoterapi = table.Column<string>(type: "character varying(200)", unicode: false, maxLength: 200, nullable: false),
                     SubFarmakoterapi = table.Column<string>(type: "character varying(200)", unicode: false, maxLength: 200, nullable: false),
-                    IdFarmakoterapi = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    IdSubFarmakoterapi = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    IdFarmakoterapi = table.Column<long>(type: "bigint", nullable: true),
+                    IdSubFarmakoterapi = table.Column<long>(type: "bigint", nullable: true),
                     HargaBeli = table.Column<decimal>(type: "numeric(18,2)", nullable: true),
                     DiskonOn = table.Column<decimal>(type: "numeric(18,2)", nullable: true),
                     HargaJual = table.Column<decimal>(type: "numeric(18,2)", nullable: true),
@@ -1413,12 +1439,13 @@ namespace Wincare.Core.Migrations
                 name: "M_Map",
                 columns: table => new
                 {
-                    IdMapid = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdMapid = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     NmMap = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     KodeRuangan = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
-                    IdRuang = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdRuang = table.Column<long>(type: "bigint", nullable: true),
                     Note = table.Column<string>(type: "character varying(200)", unicode: false, maxLength: 200, nullable: false),
-                    Image = table.Column<byte[]>(type: "BYTEA", nullable: false),
+                    Image = table.Column<byte[]>(type: "bytea", nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -1437,10 +1464,10 @@ namespace Wincare.Core.Migrations
                 {
                     IdLabharga = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KdPemeriksaanLab = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
-                    IdPemeriksaanLab = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    RekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdPemeriksaanLab = table.Column<long>(type: "bigint", nullable: true),
+                    RekananId = table.Column<long>(type: "bigint", nullable: true),
                     Kelas = table.Column<string>(type: "character varying(20)", unicode: false, maxLength: 20, nullable: false),
-                    IdHargakamar = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    IdHargakamar = table.Column<long>(type: "bigint", nullable: true),
                     Harga = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Beapasien = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Bearekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
@@ -1452,11 +1479,11 @@ namespace Wincare.Core.Migrations
                     Penyulit = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     SecondTnd = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Adm = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    Tglawal = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
-                    Tglakhir = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
+                    Tglawal = table.Column<DateTime>(type: "timestamp", nullable: true),
+                    Tglakhir = table.Column<DateTime>(type: "timestamp", nullable: true),
                     By = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true),
-                    LastUpdate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true)
+                    LastUpdate = table.Column<DateTime>(type: "timestamp", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1482,10 +1509,11 @@ namespace Wincare.Core.Migrations
                 name: "M_LaboratoriumRekanan",
                 columns: table => new
                 {
-                    IdLabrekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdLabrekanan = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdPemeriksaanLab = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
-                    IdPemeriksaanLab = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    RekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdPemeriksaanLab = table.Column<long>(type: "bigint", nullable: true),
+                    RekananId = table.Column<long>(type: "bigint", nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -1507,12 +1535,13 @@ namespace Wincare.Core.Migrations
                 name: "M_RadiologiHarga",
                 columns: table => new
                 {
-                    IdRadHarga = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdRadHarga = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdPemeriksaanRad = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
-                    IdPemeriksaanRad = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    RekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdPemeriksaanRad = table.Column<long>(type: "bigint", nullable: true),
+                    RekananId = table.Column<long>(type: "bigint", nullable: true),
                     Kelas = table.Column<string>(type: "character varying(20)", unicode: false, maxLength: 20, nullable: false),
-                    IdHargakamar = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    IdHargakamar = table.Column<long>(type: "bigint", nullable: true),
                     Harga = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     BeaPasien = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     BeaRekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
@@ -1524,11 +1553,11 @@ namespace Wincare.Core.Migrations
                     Penyulit = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     SecondTnd = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Adm = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    Tglawal = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
-                    Tglakhir = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
+                    Tglawal = table.Column<DateTime>(type: "timestamp", nullable: true),
+                    Tglakhir = table.Column<DateTime>(type: "timestamp", nullable: true),
                     By = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true),
-                    Lastupdate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true)
+                    Lastupdate = table.Column<DateTime>(type: "timestamp", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -1554,10 +1583,11 @@ namespace Wincare.Core.Migrations
                 name: "M_RadiologiRekanan",
                 columns: table => new
                 {
-                    IdRadrekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdRadrekanan = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdPemeriksaanRad = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
-                    IdPemeriksaanRad = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    RekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdPemeriksaanRad = table.Column<long>(type: "bigint", nullable: true),
+                    RekananId = table.Column<long>(type: "bigint", nullable: true),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -1582,12 +1612,12 @@ namespace Wincare.Core.Migrations
                     IdNonmedishrg = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Kdtarif = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
-                    IdTarifNon = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdTarifNon = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Harga = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Beapasien = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Bearekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     OldRekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    RekananId = table.Column<Guid>(type: "uuid", nullable: true),
+                    RekananId = table.Column<string>(type: "character varying(26)", nullable: true),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -1628,7 +1658,7 @@ namespace Wincare.Core.Migrations
                     KdTarif = table.Column<string>(type: "character varying(10)", unicode: false, maxLength: 10, nullable: false),
                     IdTarifNon = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     OldIdRekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    IdRekanan = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdRekanan = table.Column<string>(type: "character varying(26)", nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -1646,15 +1676,15 @@ namespace Wincare.Core.Migrations
                 name: "M_Coa",
                 columns: table => new
                 {
-                    IdCoa = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdCoa = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdCoa = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     Kdakun = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
                     NmAkun = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     NmAkunAlias = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     DC = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
-                    TglSaldoAwal = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
+                    TglSaldoAwal = table.Column<DateTime>(type: "timestamp", nullable: true),
                     SaldoAwal = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    Subklasifikasi = table.Column<Guid>(type: "uuid", nullable: true),
+                    Subklasifikasi = table.Column<string>(type: "character varying(26)", nullable: true),
                     OldSubklasifikasi = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
@@ -1672,12 +1702,12 @@ namespace Wincare.Core.Migrations
                 name: "M_HargaBarang",
                 columns: table => new
                 {
-                    IdHargaBeli = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdHargaBeli = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdHargaBeli = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
-                    BarangId = table.Column<Guid>(type: "uuid", nullable: true),
+                    BarangId = table.Column<string>(type: "character varying(26)", nullable: true),
                     OldBarangId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    SupplierId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    LastUpdate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
+                    SupplierId = table.Column<long>(type: "bigint", nullable: true),
+                    LastUpdate = table.Column<DateTime>(type: "timestamp", nullable: true),
                     Harga = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     InputBy = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     DiskonOn = table.Column<decimal>(type: "numeric(18,2)", nullable: true),
@@ -1704,13 +1734,14 @@ namespace Wincare.Core.Migrations
                 name: "M_HargaRekanan",
                 columns: table => new
                 {
-                    IdHargaRekanan = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdHargaRekanan = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     OldIdHargaRekanan = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     OldBarangId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    BarangId = table.Column<Guid>(type: "uuid", nullable: true),
-                    RekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    BarangId = table.Column<string>(type: "character varying(26)", nullable: true),
+                    RekananId = table.Column<long>(type: "bigint", nullable: true),
                     Harga = table.Column<decimal>(type: "numeric(19,2)", nullable: true),
-                    LastUpdate = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
+                    LastUpdate = table.Column<DateTime>(type: "timestamp", nullable: true),
                     InpuBy = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Margin = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Diskon = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
@@ -1737,10 +1768,11 @@ namespace Wincare.Core.Migrations
                 name: "M_Kamarinap",
                 columns: table => new
                 {
-                    IdKamarInap = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdKamarInap = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdTmpTidur = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
                     Kelas = table.Column<string>(type: "character varying(20)", unicode: false, maxLength: 20, nullable: false),
-                    IdHargakamar = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    IdHargakamar = table.Column<long>(type: "bigint", nullable: true),
                     Lantai = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
                     Nokamar = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
                     KodeTarif = table.Column<string>(type: "character varying(2)", unicode: false, maxLength: 2, nullable: false),
@@ -1748,7 +1780,7 @@ namespace Wincare.Core.Migrations
                     Isi = table.Column<string>(type: "character(1)", unicode: false, fixedLength: true, maxLength: 1, nullable: false),
                     IX = table.Column<int>(type: "integer", nullable: true),
                     IY = table.Column<int>(type: "integer", nullable: true),
-                    IdMapid = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    IdMapid = table.Column<long>(type: "bigint", nullable: true),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
                 constraints: table =>
@@ -1782,7 +1814,7 @@ namespace Wincare.Core.Migrations
                     ImgFotodokter = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     KodeTarif = table.Column<string>(type: "character(2)", unicode: false, fixedLength: true, maxLength: 2, nullable: false),
                     KdAkun = table.Column<string>(type: "character varying(8)", unicode: false, maxLength: 8, nullable: false),
-                    IdCoa = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdCoa = table.Column<string>(type: "character varying(26)", nullable: true),
                     By = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsTtd = table.Column<string>(type: "text", nullable: false),
                     Pin = table.Column<decimal>(type: "numeric(18,2)", nullable: true),
@@ -1795,17 +1827,17 @@ namespace Wincare.Core.Migrations
                         name: "FK_M_DOKTER_M_COA",
                         column: x => x.IdCoa,
                         principalTable: "M_Coa",
-                        principalColumn: "IdCoa",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "IdCoa");
                 });
 
             migrationBuilder.CreateTable(
                 name: "M_KamarinapHarga",
                 columns: table => new
                 {
-                    IdKamarInapHarga = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdKamarInapHarga = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdTmpTidur = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
-                    IdKamarInap = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdKamarInap = table.Column<long>(type: "bigint", nullable: false),
                     RekananId = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Harga = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     BeaPasien = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
@@ -1818,8 +1850,8 @@ namespace Wincare.Core.Migrations
                     DPenyulit = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     SecondTnd = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Adm = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    Tglawal = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
-                    Tglakhir = table.Column<DateTime>(type: "TIMESTAMP", nullable: true),
+                    Tglawal = table.Column<DateTime>(type: "timestamp", nullable: true),
+                    Tglakhir = table.Column<DateTime>(type: "timestamp", nullable: true),
                     By = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
                 },
@@ -1838,14 +1870,15 @@ namespace Wincare.Core.Migrations
                 name: "M_JadwalDokter",
                 columns: table => new
                 {
-                    IdJadwal = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdJadwal = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     KdDokter = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
-                    IdDokter = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdDokter = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     Hari = table.Column<string>(type: "character varying(30)", unicode: false, maxLength: 30, nullable: false),
                     JamStart = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
                     JamFinish = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
                     KodeRuangan = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
-                    IdRuangan = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
+                    IdRuangan = table.Column<long>(type: "bigint", nullable: true),
                     NamaKlinik = table.Column<string>(type: "character varying(100)", unicode: false, maxLength: 100, nullable: false),
                     ServisTime = table.Column<int>(type: "integer", nullable: true),
                     IsAktif = table.Column<bool>(type: "boolean", nullable: true)
@@ -1857,8 +1890,7 @@ namespace Wincare.Core.Migrations
                         name: "FK_M_JADWALDOKTER_M_DOKTER_(kddokter)",
                         column: x => x.IdDokter,
                         principalTable: "M_Dokter",
-                        principalColumn: "IdDokter",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "IdDokter");
                     table.ForeignKey(
                         name: "FK_M_JADWALDOKTER_M_RUANG_(kdruangan)",
                         column: x => x.IdRuangan,
@@ -1870,15 +1902,15 @@ namespace Wincare.Core.Migrations
                 name: "M_User",
                 columns: table => new
                 {
-                    IdUser = table.Column<Guid>(type: "uuid", nullable: false),
+                    IdUser = table.Column<string>(type: "character varying(26)", nullable: false),
                     OldIdUser = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
                     KodeRuangan = table.Column<string>(type: "character varying(5)", unicode: false, maxLength: 5, nullable: false),
-                    IdRuang = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdRuang = table.Column<long>(type: "bigint", nullable: true),
                     Namalengkap = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Nmuser = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     Password = table.Column<string>(type: "character varying(50)", unicode: false, maxLength: 50, nullable: false),
                     KdDokter = table.Column<string>(type: "character varying(6)", unicode: false, maxLength: 6, nullable: false),
-                    IdDokter = table.Column<decimal>(type: "numeric(18,0)", nullable: false),
+                    IdDokter = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
                     IsUser = table.Column<bool>(type: "boolean", nullable: true),
                     IsManager = table.Column<bool>(type: "boolean", nullable: true),
                     IsAdmin = table.Column<bool>(type: "boolean", nullable: true),
@@ -1886,7 +1918,7 @@ namespace Wincare.Core.Migrations
                     IsDokter = table.Column<bool>(type: "boolean", nullable: true),
                     IsMemo = table.Column<bool>(type: "boolean", nullable: true),
                     IdGroupUser = table.Column<decimal>(type: "numeric(18,0)", nullable: true),
-                    Ttd = table.Column<string>(type: "text", nullable: false),
+                    Ttd = table.Column<string>(type: "text", nullable: true),
                     Isaktif = table.Column<bool>(type: "boolean", nullable: true),
                     Id = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
                     Transmigrated = table.Column<bool>(type: "boolean", nullable: true),
@@ -1900,8 +1932,7 @@ namespace Wincare.Core.Migrations
                         name: "FK_M_USER_M_DOKTER",
                         column: x => x.IdDokter,
                         principalTable: "M_Dokter",
-                        principalColumn: "IdDokter",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "IdDokter");
                     table.ForeignKey(
                         name: "FK_M_USER_M_RUANG",
                         column: x => x.IdRuang,

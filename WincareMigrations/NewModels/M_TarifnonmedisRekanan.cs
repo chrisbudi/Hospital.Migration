@@ -24,7 +24,7 @@ public partial class M_TarifnonmedisRekanan
     public decimal? OldIdRekanan { get; set; }
 
     [Column("IdRekanan")]
-    public Guid IdRekanan { get; set; }
+    public Ulid IdRekanan { get; set; }
 
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }

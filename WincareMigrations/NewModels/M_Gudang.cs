@@ -15,9 +15,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Gudang
 {
     [Key]
-    [Column("IdGudangObat", TypeName = "numeric(18, 0)")]
+    [Column("IdGudangObat")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdGudangObat { get; set; }
+    public long IdGudangObat { get; set; }
 
     [Column("KodeInventory")]
     [StringLength(2)]

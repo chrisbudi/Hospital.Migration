@@ -9,19 +9,19 @@ public partial class M_LaboratoriumRekanan
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    [Column("IdLabrekanan", TypeName = "numeric(18, 0)")]
-    public decimal IdLabRekanan { get; set; }
+    [Column("IdLabrekanan")]
+    public long IdLabRekanan { get; set; }
 
     [Column("KdPemeriksaanLab")]
     [StringLength(8)]
     [Unicode(false)]
     public string KdPemeriksaanLab { get; set; }
 
-    [Column("IdPemeriksaanLab", TypeName = "numeric(18, 0)")]
-    public decimal? IdPemeriksaanLab { get; set; }
+    [Column("IdPemeriksaanLab")]
+    public long? IdPemeriksaanLab { get; set; }
 
-    [Column("RekananId", TypeName = "numeric(18, 0)")]
-    public decimal RekananId { get; set; }
+    [Column("RekananId")]
+    public long RekananId { get; set; }
 
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }

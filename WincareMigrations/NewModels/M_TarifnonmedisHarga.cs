@@ -19,7 +19,7 @@ public partial class M_TarifnonmedisHarga
     public string Kdtarif { get; set; }
 
     [Column("IdTarifNon", TypeName = "numeric(18, 0)")]
-    public decimal IdTarifNon { get; set; }
+    public decimal? IdTarifNon { get; set; }
 
     [Column("Harga", TypeName = "decimal(18, 0)")]
     public decimal? DHarga { get; set; }
@@ -34,7 +34,7 @@ public partial class M_TarifnonmedisHarga
     public decimal? OldRekananId { get; set; }
 
     [Column("RekananId")]
-    public Guid? RekananId { get; set; }
+    public Ulid? RekananId { get; set; }
 
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }

@@ -37,6 +37,6 @@ public partial class M_SettingKomputerAntrian
     [Unicode(false)]
     public string KdCounter { get; set; }
 
-    [Column("Tanggal", TypeName = "TIMESTAMP")]
+    [Column("Tanggal", TypeName = "timestamp")]
     public DateTime? Tanggal { get; set; }
 }

@@ -10,7 +10,7 @@ public partial class M_Bank
     [Key]
     [Column("IdBank")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdBank { get; set; }
+    public Ulid IdBank { get; set; }
 
     [Column("OldIdBank", TypeName = "numeric(18, 0)")]
     public decimal OldIdBank { get; set; }

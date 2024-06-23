@@ -16,8 +16,8 @@ public partial class M_Supplier
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    [Column("SupplierId", TypeName = "numeric(18, 0)")]
-    public decimal SupplierId { get; set; }
+    [Column("SupplierId")]
+    public long SupplierId { get; set; }
 
     [Column("NamaSupplier")]
     [StringLength(50)]

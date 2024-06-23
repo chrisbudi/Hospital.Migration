@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EFCore.BulkExtensions;
+using Microsoft.AspNetCore.Mvc;
 using WincareMigrations.Models;
 using WincareMigrations.NewModels;
 
@@ -11,53 +12,72 @@ namespace WincareMigrations.Controllers.Master
         [HttpGet()]
         public Task<IActionResult> Antrian()
         {
-            var antrian = dbs.TmAntrianCounters.Select(s => new M_AntrianCounter
+            if (!dbt.TmAntrianCounters.Any())
             {
-                IdCounter = (long)s.IdCounter,
-                Kdcounter = s.VKdcounter,
-                Kdlayanan = s.VKdlayanan,
-                Kdlokasi = s.VKdlokasi,
-                Counter = s.VCounter,
-                IsAktif = s.IsAktif
-            }).ToList();
+                var antrian = dbs.TmAntrianCounters.Select(s => new M_AntrianCounter
+                {
+                    IdCounter = (long)s.IdCounter,
+                    Kdcounter = s.VKdcounter,
+                    Kdlayanan = s.VKdlayanan,
+                    Kdlokasi = s.VKdlokasi,
+                    Counter = s.VCounter,
+                    IsAktif = s.IsAktif
+                }).ToList();
 
-            var antrianAudio = dbs.TmAntrianCounterAudios.Select(s => new M_AntrianCounterAudio
+                dbt.BulkInsert(antrian, new BulkConfig { SqlBulkCopyOptions = Microsoft.Data.SqlClient.SqlBulkCopyOptions.KeepIdentity });
+                dbt.BulkSaveChanges();
+            }
+
+
+            if (!dbt.TmAntrianCounterAudios.Any())
             {
-                IdCounteraudio = (long)s.IdCounteraudio,
-                Kdcounter = s.VKdcounter,
-                Counter = s.VCounter,
-                IsAktif = s.IsAktif,
-                Kdlayanan = s.VKdlayanan,
-                Kdlokasi = s.VKdlokasi,
-                File = s.VFile,
-                Nomor = s.VNomor
-            }).ToList();
+                var antrianAudio = dbs.TmAntrianCounterAudios.Select(s => new M_AntrianCounterAudio
+                {
+                    IdCounteraudio = (long)s.IdCounteraudio,
+                    Kdcounter = s.VKdcounter,
+                    Counter = s.VCounter,
+                    IsAktif = s.IsAktif,
+                    Kdlayanan = s.VKdlayanan,
+                    Kdlokasi = s.VKdlokasi,
+                    File = s.VFile,
+                    Nomor = s.VNomor
+                }).ToList();
 
-            var antrianLayanan = dbs.TmAntrianLayanans.Select(s => new M_AntrianLayanan
+
+                dbt.BulkInsert(antrianAudio, new BulkConfig { SqlBulkCopyOptions = Microsoft.Data.SqlClient.SqlBulkCopyOptions.KeepIdentity });
+                dbt.BulkSaveChanges();
+            }
+
+            if (!dbt.TmAntrianLayanans.Any())
             {
-                IdLayanan = (long)s.IdLayanan,
-                Kdlayanan = s.VKdlayanan,
-                Layanan = s.VLayanan,
-                IsAktif = s.IsAktif,
-                Inisial = s.VInisial,
-                Kdlokasi = s.VKdlokasi
-            }).ToList();
+                var antrianLayanan = dbs.TmAntrianLayanans.Select(s => new M_AntrianLayanan
+                {
+                    IdLayanan = (long)s.IdLayanan,
+                    Kdlayanan = s.VKdlayanan,
+                    Layanan = s.VLayanan,
+                    IsAktif = s.IsAktif,
+                    Inisial = s.VInisial,
+                    Kdlokasi = s.VKdlokasi
+                }).ToList();
 
-            var antrianLokasi = dbs.TmAntrianLokasis.Select(s => new M_AntrianLokasi
+                dbt.BulkInsert(antrianLayanan, new BulkConfig { SqlBulkCopyOptions = Microsoft.Data.SqlClient.SqlBulkCopyOptions.KeepIdentity });
+                dbt.BulkSaveChanges();
+            }
+            if (!dbt.TmAntrianLokasis.Any())
             {
-                IdLokasi = (long)s.IdLokasi,
-                Kdlokasi = s.VKdlokasi,
-                Lokasi = s.VLokasi,
-                IsAktif = s.IsAktif,
-                Action = s.Action
-            }).ToList();
+                var antrianLokasi = dbs.TmAntrianLokasis.Select(s => new M_AntrianLokasi
+                {
+                    IdLokasi = (long)s.IdLokasi,
+                    Kdlokasi = s.VKdlokasi,
+                    Lokasi = s.VLokasi,
+                    IsAktif = s.IsAktif,
+                    Action = s.Action
+                }).ToList();
+                dbt.AddRange(antrianLokasi);
+                dbt.BulkSaveChanges();
+            }
 
 
-            dbt.TmAntrianCounters.AddRange(antrian);
-            dbt.TmAntrianCounterAudios.AddRange(antrianAudio);
-            dbt.TmAntrianLayanans.AddRange(antrianLayanan);
-            dbt.TmAntrianLokasis.AddRange(antrianLokasi);
-            dbt.SaveChanges();
 
 
             return Task.FromResult<IActionResult>(Ok("Antrian"));

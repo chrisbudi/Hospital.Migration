@@ -10,7 +10,7 @@ public partial class M_CountTraffic
     [Key]
     [Column("IdCountTraffic")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Idcounttraffic { get; set; }
+    public Ulid Idcounttraffic { get; set; }
 
     [Column("OldIdCountTraffic")]
     public decimal OldIdcounttraffic { get; set; }

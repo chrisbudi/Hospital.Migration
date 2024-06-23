@@ -8,17 +8,17 @@ namespace WincareMigrations.NewModels;
 public partial class M_FarmakoterapiSub
 {
     [Key]
-    [Column("IdSubFarmakoterapi", TypeName = "numeric(18, 0)")]
+    [Column("IdSubFarmakoterapi")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdSubfarmakoterapi { get; set; }
+    public long IdSubfarmakoterapi { get; set; }
 
     [Column("NmSubFarmakoterapi")]
     [StringLength(200)]
     [Unicode(false)]
     public string NmSubFarmakoterapi { get; set; }
 
-    [Column("IdFarmakoterapi", TypeName = "numeric(18, 0)")]
-    public decimal? IdFarmakoterapi { get; set; }
+    [Column("IdFarmakoterapi")]
+    public long? IdFarmakoterapi { get; set; }
 
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }

@@ -8,9 +8,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Morfologi
 {
     [Key]
-    [Column("IdMorfologi", TypeName = "numeric(18, 0)")]
+    [Column("IdMorfologi")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdMorfologi { get; set; }
+    public long IdMorfologi { get; set; }
 
     [Column("KdMorfologi")]
     [StringLength(8)]
@@ -27,8 +27,8 @@ public partial class M_Morfologi
     [Unicode(false)]
     public string Kddiagnosa { get; set; }
 
-    [Column("IdDiagnosa", TypeName = "decimal(18,0)")]
-    public decimal IdDiagnosa { get; set; }
+    [Column("IdDiagnosa")]
+    public long? IdDiagnosa { get; set; }
 
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }

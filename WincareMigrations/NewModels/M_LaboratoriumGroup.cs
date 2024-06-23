@@ -8,9 +8,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_LaboratoriumGroup
 {
     [Key]
-    [Column("IdGroup", TypeName = "numeric(18, 0)")]
+    [Column("IdGroup")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdGroup { get; set; }
+    public long IdGroup { get; set; }
 
     [Column("Nmgroup")]
     [StringLength(100)]

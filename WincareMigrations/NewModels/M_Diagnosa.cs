@@ -10,9 +10,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Diagnosa
 {
     [Key]
-    [Column("IdDiagnosa", TypeName = "numeric(18, 0)")]
+    [Column("IdDiagnosa")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdDiagnosa { get; set; }
+    public long IdDiagnosa { get; set; }
 
     [Column("KdDiagnosa")]
     [StringLength(8)]

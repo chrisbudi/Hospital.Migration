@@ -18,12 +18,12 @@ public partial class M_LaboratoriumHarga
     [Unicode(false)]
     public string KdPemeriksaanLab { get; set; }
 
-    [Column("IdPemeriksaanLab", TypeName = "numeric(18, 0)")]
-    public decimal? IdPemeriksaanLab { get; set; }
+    [Column("IdPemeriksaanLab")]
+    public long? IdPemeriksaanLab { get; set; }
 
 
-    [Column("RekananId", TypeName = "numeric(18, 0)")]
-    public decimal RekananId { get; set; }
+    [Column("RekananId")]
+    public long? RekananId { get; set; }
 
     [Required]
     [Column("Kelas")]
@@ -31,8 +31,8 @@ public partial class M_LaboratoriumHarga
     [Unicode(false)]
     public string Kelas { get; set; }
 
-    [Column("IdHargakamar", TypeName = "numeric(18, 0)")]
-    public decimal? IdHargakamar { get; set; }
+    [Column("IdHargakamar")]
+    public long? IdHargakamar { get; set; }
 
     [Column("Harga", TypeName = "decimal(18, 0)")]
     public decimal? Harga { get; set; }
@@ -67,10 +67,10 @@ public partial class M_LaboratoriumHarga
     [Column("Adm", TypeName = "decimal(18, 0)")]
     public decimal? DAdm { get; set; }
 
-    [Column("Tglawal", TypeName = "TIMESTAMP")]
+    [Column("Tglawal", TypeName = "timestamp")]
     public DateTime? DTglawal { get; set; }
 
-    [Column("Tglakhir", TypeName = "TIMESTAMP")]
+    [Column("Tglakhir", TypeName = "timestamp")]
     public DateTime? DTglakhir { get; set; }
 
     [Column("By")]
@@ -81,7 +81,7 @@ public partial class M_LaboratoriumHarga
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }
 
-    [Column("LastUpdate", TypeName = "TIMESTAMP")]
+    [Column("LastUpdate", TypeName = "timestamp")]
     public DateTime? DLastupdate { get; set; }
 
     [ForeignKey("RekananId")]

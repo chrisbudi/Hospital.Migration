@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Wincare.Core;
 
 namespace WincareMigrations.NewModels;
 
@@ -6,7 +7,7 @@ public partial class SimpleContext : DbContext
 
 {
 
-    private readonly string strUUid = "uuid_generate_v4()";
+    //private readonly string strUUid = "uuid_generate_v4()";
 
     //HasDefaultValueSql(strUUid)
 
@@ -188,9 +189,16 @@ public partial class SimpleContext : DbContext
 
     public virtual DbSet<M_UserGroup> TmUserGroups { get; set; }
 
+    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+    {
+        configurationBuilder
+            .Properties<Ulid>()
+            .HaveConversion<UlidToStringConverter>();
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
         modelBuilder.Entity<M_AntrianCounter>(entity =>
         {
             entity.Property(e => e.IdCounter).ValueGeneratedOnAdd();

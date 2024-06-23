@@ -10,7 +10,7 @@ public partial class M_Tenant
     [Key]
     [Column("IdTenant")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdTenant { get; set; }
+    public Ulid IdTenant { get; set; }
 
 
     [Column("OldIdTenant", TypeName = "numeric(18, 0)")]
@@ -54,8 +54,10 @@ public partial class M_Tenant
     [Column("CodeLogo", TypeName = "text")]
     public string Codelogo { get; set; }
 
+    [Column("StartDateTime", TypeName = "timestamp with time zone")]
     public DateTime StartDateTime { get; set; }
 
+    [Column("ExpiredDate", TypeName = "timestamp with time zone")]
     public DateTime ExpiredDate { get; set; }
 
     [Column("SubscriptionCode")]

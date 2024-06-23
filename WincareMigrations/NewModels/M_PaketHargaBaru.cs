@@ -9,23 +9,23 @@ public partial class M_PaketHargaBaru
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    [Column("IdPaketkelas", TypeName = "numeric(18, 0)")]
-    public decimal IdPaketkelas { get; set; }
+    [Column("IdPaketkelas")]
+    public long IdPaketkelas { get; set; }
 
     [Column("IdMasterPemeriksaanPenunjang")]
-    public Guid IdMasterPemeriksaanPenunjang { get; set; }
+    public long IdMasterPemeriksaanPenunjang { get; set; }
 
     [Column("OldIdMasterPemeriksaanPenunjang", TypeName = "numeric(18, 0)")]
     public decimal OldIdMasterPemeriksaanPenunjang { get; set; }
 
     [Column("IdPenunjangDetail")]
-    public Guid? IdPenunjangDetail { get; set; }
+    public long? IdPenunjangDetail { get; set; }
 
     [Column("OldIdPenunjangDetail", TypeName = "numeric(18, 0)")]
     public decimal? OldIdPenunjangDetail { get; set; }
 
     [Column("RekananId")]
-    public Guid Rekananid { get; set; }
+    public long Rekananid { get; set; }
 
     [Column("OldRekananId", TypeName = "numeric(18, 0)")]
     public decimal OldRekananid { get; set; }
@@ -86,13 +86,13 @@ public partial class M_PaketHargaBaru
     [Column("Bahanalkes", TypeName = "decimal(18, 0)")]
     public decimal? Bahanalkes { get; set; }
 
-    [Column("Tglawal", TypeName = "TIMESTAMP")]
+    [Column("Tglawal", TypeName = "timestamp")]
     public DateTime? Tglawal { get; set; }
 
-    [Column("Tglakhir", TypeName = "TIMESTAMP")]
+    [Column("Tglakhir", TypeName = "timestamp")]
     public DateTime? Tglakhir { get; set; }
 
-    [Column("Lastupdate", TypeName = "TIMESTAMP")]
+    [Column("Lastupdate", TypeName = "timestamp")]
     public DateTime? Lastupdate { get; set; }
 
     [Column("By")]

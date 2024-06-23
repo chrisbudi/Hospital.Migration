@@ -9,7 +9,7 @@ public partial class M_MasterTnd
     [Key]
     [Column("IdGroupTarif")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public double? IdGrouptarif { get; set; }
+    public long? IdGrouptarif { get; set; }
 
     [Column("NmgroupTarif")]
     [StringLength(255)]
@@ -28,11 +28,11 @@ public partial class M_MasterTnd
     public string VKelas { get; set; }
 
     [Column("Harga")]
-    public double? DHarga { get; set; }
+    public decimal? DHarga { get; set; }
 
     [Column("IsAktif")]
-    public double? IsAktif { get; set; }
+    public decimal? IsAktif { get; set; }
 
     [Column("HargaBpjs")]
-    public double? DHargaBpjs { get; set; }
+    public decimal? DHargaBpjs { get; set; }
 }

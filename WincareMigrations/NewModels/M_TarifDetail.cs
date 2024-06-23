@@ -10,7 +10,7 @@ public partial class M_TarifDetail
     [Key]
     [Column("IdTarifdetail")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdTarifdetail { get; set; }
+    public Ulid IdTarifdetail { get; set; }
 
     [Column("OldIdTarifdetail", TypeName = "numeric(18, 0)")]
     public decimal OldIdTarifdetail { get; set; }

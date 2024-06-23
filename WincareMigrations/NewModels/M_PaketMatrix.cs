@@ -10,13 +10,13 @@ public partial class M_PaketMatrix
 {
     [Key]
     [Column("IdPaketMatrix")]
-    public Guid IdPaketmatrix { get; set; }
+    public Ulid IdPaketmatrix { get; set; }
 
-    [Column("OldIdPaketmatrix", TypeName = "numeric(18, 0)")]
-    public decimal OldIdPaketmatrix { get; set; }
+    [Column("OldIdPaketmatrix")]
+    public long OldIdPaketmatrix { get; set; }
 
-    [Column("IdMasterpemeriksaanpenunjang", TypeName = "numeric(18, 0)")]
-    public decimal IdMasterpemeriksaanpenunjang { get; set; }
+    [Column("IdMasterpemeriksaanpenunjang")]
+    public long IdMasterpemeriksaanpenunjang { get; set; }
 
     [Column("Koderuangan")]
     [StringLength(5)]

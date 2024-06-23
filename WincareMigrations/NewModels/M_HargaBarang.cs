@@ -20,22 +20,22 @@ public partial class M_HargaBarang
     [Key]
     [Column("IdHargaBeli")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Idhargabeli { get; set; }
+    public Ulid Idhargabeli { get; set; }
 
 
     [Column("OldIdHargaBeli", TypeName = "numeric(18, 0)")]
     public decimal OldIdhargabeli { get; set; }
 
     [Column("BarangId")]
-    public Guid? BarangId { get; set; }
+    public Ulid? BarangId { get; set; }
 
     [Column("OldBarangId", TypeName = "numeric(18, 0)")]
     public decimal? OldBarangId { get; set; }
 
-    [Column("SupplierId", TypeName = "numeric(18, 0)")]
-    public decimal? SupplierId { get; set; }
+    [Column("SupplierId")]
+    public long? SupplierId { get; set; }
 
-    [Column("LastUpdate", TypeName = "TIMESTAMP")]
+    [Column("LastUpdate", TypeName = "timestamp")]
     public DateTime? LastUpdate { get; set; }
 
     [Column("Harga", TypeName = "decimal(18, 0)")]

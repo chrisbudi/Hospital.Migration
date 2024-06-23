@@ -11,8 +11,8 @@ public partial class M_RadiologiRekanan
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    [Column("IdRadrekanan", TypeName = "numeric(18, 0)")]
-    public decimal IdRadrekanan { get; set; }
+    [Column("IdRadrekanan")]
+    public long IdRadrekanan { get; set; }
 
     [Required]
     [Column("KdPemeriksaanRad")]
@@ -20,11 +20,11 @@ public partial class M_RadiologiRekanan
     [Unicode(false)]
     public string KdPemeriksaanRad { get; set; }
 
-    [Column("IdPemeriksaanRad", TypeName = "numeric(18, 0)")]
-    public decimal IdPemeriksaanRad { get; set; }
+    [Column("IdPemeriksaanRad")]
+    public long? IdPemeriksaanRad { get; set; }
 
-    [Column("RekananId", TypeName = "numeric(18, 0)")]
-    public decimal RekananId { get; set; }
+    [Column("RekananId")]
+    public long? RekananId { get; set; }
 
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }

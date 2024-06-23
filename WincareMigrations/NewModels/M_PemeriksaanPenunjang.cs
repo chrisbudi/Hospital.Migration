@@ -7,9 +7,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_PemeriksaanPenunjang
 {
     [Key]
-    [Column("IdMasterPemeriksaanPenunjang", TypeName = "numeric(18, 0)")]
+    [Column("IdMasterPemeriksaanPenunjang")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdMasterPemeriksaanPenunjang { get; set; }
+    public long IdMasterPemeriksaanPenunjang { get; set; }
 
     [Required]
     [Column("KdPemeriksaan")]
@@ -37,7 +37,7 @@ public partial class M_PemeriksaanPenunjang
     public string Penunjang { get; set; }
 
     [Column("RekananId")]
-    public Guid RekananId { get; set; }
+    public Ulid RekananId { get; set; }
 
     [Column("OldRekananId", TypeName = "numeric(18, 0)")]
     public decimal OldRekananId { get; set; }
@@ -51,7 +51,7 @@ public partial class M_PemeriksaanPenunjang
     public bool? IsAktif { get; set; }
 
     [Column("IdGroupTarif")]
-    public Guid IdGroupTarif { get; set; }
+    public Ulid IdGroupTarif { get; set; }
 
     [Column("OldIdGroupTarif", TypeName = "numeric(18, 0)")]
     public decimal? OldIdGroupTarif { get; set; }

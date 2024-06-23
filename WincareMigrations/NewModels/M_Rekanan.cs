@@ -12,9 +12,9 @@ namespace WincareMigrations.NewModels
     public partial class M_Rekanan
     {
         [Key]
-        [Column("IdRekanan", TypeName = "numeric(18, 0)")]
+        [Column("IdRekanan")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public decimal IdRekanan { get; set; }
+        public long IdRekanan { get; set; }
 
         [Column("NmRekanan")]
         [StringLength(100)]

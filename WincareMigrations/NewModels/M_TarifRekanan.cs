@@ -12,7 +12,7 @@ public partial class M_TarifRekanan
     [Key]
     [Column("IdTarifRekanan")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdTarifRekanan { get; set; }
+    public Ulid IdTarifRekanan { get; set; }
 
     [Column("OldIdTarifRekanan", TypeName = "numeric(18, 0)")]
     public decimal OldIdTarifRekanan { get; set; }
@@ -24,7 +24,7 @@ public partial class M_TarifRekanan
     public string KdTarifDetail { get; set; }
 
     [Column("RekananId")]
-    public Guid RekananId { get; set; }
+    public Ulid RekananId { get; set; }
 
     [Column("OldRekananId", TypeName = "numeric(18, 0)")]
     public decimal OldRekananId { get; set; }

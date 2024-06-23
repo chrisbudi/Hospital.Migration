@@ -6,17 +6,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 public partial class M_KamarinapHarga
 {
     [Key]
-    [Column("IdKamarInapHarga", TypeName = "numeric(18, 0)")]
+    [Column("IdKamarInapHarga")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdKamarInapHarga { get; set; }
+    public long IdKamarInapHarga { get; set; }
 
     [Column("KdTmpTidur")]
     [StringLength(6)]
     [Unicode(false)]
     public string KdTmpTidur { get; set; }
 
-    [Column("IdKamarInap", TypeName = "numeric(18, 0)")]
-    public decimal IdKamarinap { get; set; }
+    [Column("IdKamarInap")]
+    public long? IdKamarinap { get; set; }
 
     [Column("RekananId", TypeName = "numeric(18, 0)")]
     public decimal? RekananId { get; set; }
@@ -54,10 +54,10 @@ public partial class M_KamarinapHarga
     [Column("Adm", TypeName = "decimal(18, 0)")]
     public decimal? Adm { get; set; }
 
-    [Column("Tglawal", TypeName = "TIMESTAMP")]
+    [Column("Tglawal", TypeName = "timestamp")]
     public DateTime? Tglawal { get; set; }
 
-    [Column("Tglakhir", TypeName = "TIMESTAMP")]
+    [Column("Tglakhir", TypeName = "timestamp")]
     public DateTime? Tglakhir { get; set; }
 
     [Column("By")]

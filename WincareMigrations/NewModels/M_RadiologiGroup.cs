@@ -10,9 +10,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_RadiologiGroup
 {
     [Key]
-    [Column("IdGroup", TypeName = "numeric(18, 0)")]
+    [Column("IdGroup")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdGroup { get; set; }
+    public long IdGroup { get; set; }
 
     [Column("Nmgroup")]
     [StringLength(100)]
@@ -22,8 +22,8 @@ public partial class M_RadiologiGroup
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }
 
-    [Column("IdGrouptarif", TypeName = "numeric(18, 0)")]
-    public decimal? IdGrouptarif { get; set; }
+    [Column("IdGrouptarif")]
+    public long? IdGrouptarif { get; set; }
 
     [InverseProperty("IdGroupNavigation")]
     public virtual ICollection<M_Radiologi> M_Radiologis { get; set; } = new List<M_Radiologi>();

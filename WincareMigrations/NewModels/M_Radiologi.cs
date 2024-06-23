@@ -10,9 +10,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Radiologi
 {
     [Key]
-    [Column("IdPemeriksaanRad", TypeName = "numeric(18, 0)")]
+    [Column("IdPemeriksaanRad")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdPemeriksaanRad { get; set; }
+    public long IdPemeriksaanRad { get; set; }
 
 
     [Column("KdPemeriksaanRad")]
@@ -25,8 +25,8 @@ public partial class M_Radiologi
     [Unicode(false)]
     public string NmPemeriksaanRad { get; set; }
 
-    [Column("IdGroup", TypeName = "numeric(18, 0)")]
-    public decimal? IdGroup { get; set; }
+    [Column("IdGroup")]
+    public long? IdGroup { get; set; }
 
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }

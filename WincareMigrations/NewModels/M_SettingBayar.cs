@@ -18,7 +18,7 @@ public partial class M_SettingBayar
     public string CaraBayar { get; set; }
 
     [Column("KdAkun")]
-    [StringLength(8)]
+    [StringLength(50)]
     [Unicode(false)]
     public string VKdakun { get; set; }
 }

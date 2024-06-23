@@ -19,7 +19,7 @@ public partial class M_Hargarekanan
     [Key]
     [Column("IdHargaRekanan")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdHargaRekanan { get; set; }
+    public long IdHargaRekanan { get; set; }
 
     [Column("OldIdHargaRekanan", TypeName = "numeric(18, 0)")]
     public decimal OldIdHargaRekanan { get; set; }
@@ -28,17 +28,17 @@ public partial class M_Hargarekanan
     public decimal? OldBarangId { get; set; }
 
     [Column("BarangId")]
-    public Guid? BarangId { get; set; }
+    public Ulid? BarangId { get; set; }
 
 
-    [Column("RekananId", TypeName = "numeric(18, 0)")]
-    public decimal? RekananId { get; set; }
+    [Column("RekananId")]
+    public long? RekananId { get; set; }
 
 
     [Column("Harga", TypeName = "decimal(19, 2)")]
     public decimal? Harga { get; set; }
 
-    [Column("LastUpdate", TypeName = "TIMESTAMP")]
+    [Column("LastUpdate", TypeName = "timestamp")]
     public DateTime? LastUpdate { get; set; }
 
     [Column("InpuBy")]

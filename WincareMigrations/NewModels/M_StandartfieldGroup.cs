@@ -19,7 +19,7 @@ public partial class M_StandartfieldGroup
     [Unicode(false)]
     public string VNmfieldgroup { get; set; }
 
-    [Column("DTanggal", TypeName = "TIMESTAMP")]
+    [Column("DTanggal", TypeName = "timestamp")]
     public DateTime? DTanggal { get; set; }
 
     [Column("IsAktif")]

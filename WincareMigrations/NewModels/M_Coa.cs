@@ -17,7 +17,7 @@ public partial class M_Coa
     [Key]
     [Column("IdCoa")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdCoa { get; set; }
+    public Ulid IdCoa { get; set; }
 
     [Column("OldIdCoa", TypeName = "numeric(18, 0)")]
     public decimal OldIdCoa { get; set; }
@@ -42,14 +42,14 @@ public partial class M_Coa
     [Unicode(false)]
     public string DC { get; set; }
 
-    [Column("TglSaldoAwal", TypeName = "TIMESTAMP")]
+    [Column("TglSaldoAwal", TypeName = "timestamp")]
     public DateTime? DTglsaldoawal { get; set; }
 
     [Column("SaldoAwal", TypeName = "decimal(18, 0)")]
     public decimal? SaldoAwal { get; set; }
 
     [Column("Subklasifikasi")]
-    public Guid? IdSubklasifikasi { get; set; }
+    public Ulid? IdSubklasifikasi { get; set; }
 
     [Column("OldSubklasifikasi", TypeName = "numeric(18, 0)")]
     public decimal? OldIdSubklasifikasi { get; set; }

@@ -20,9 +20,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Ruang
 {
     [Key]
-    [Column("IdRuang", TypeName = "numeric(18, 0)")]
+    [Column("IdRuang")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdRuang { get; set; }
+    public long IdRuang { get; set; }
 
     [Column("KodeRuangan")]
     [StringLength(5)]
@@ -56,16 +56,16 @@ public partial class M_Ruang
     [Unicode(false)]
     public string KodeInventory { get; set; }
 
-    [Column("KodeInventoryGudangObat", TypeName = "numeric(18,0)")]
-    public decimal? KodeInventoryGudangObat { get; set; }
+    [Column("KodeInventoryGudangObat")]
+    public long? KodeInventoryGudangObat { get; set; }
 
     [Column("KodeRequestObat")]
     [StringLength(2)]
     [Unicode(false)]
     public string KodeRequestObat { get; set; }
 
-    [Column("KodeRequestGudangObat", TypeName = "numeric(18,0)")]
-    public decimal? KodeRequestGudangObat { get; set; }
+    [Column("KodeRequestGudangObat")]
+    public long? KodeRequestGudangObat { get; set; }
 
     [Column("KodeTarif")]
     [StringLength(2)]

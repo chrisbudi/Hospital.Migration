@@ -13,7 +13,7 @@ public partial class M_SettingAdm
     public int IdAdm { get; set; }
 
     [Column("RekananId")]
-    public Guid RekananId { get; set; }
+    public Ulid RekananId { get; set; }
 
     [Column("OldRekananId", TypeName = "numeric(18, 0)")]
     public decimal? OldRekananId { get; set; }

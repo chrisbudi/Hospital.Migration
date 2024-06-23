@@ -12,13 +12,13 @@ public partial class M_MasterPaketH
     [Key]
     [Column("Id")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Id { get; set; }
+    public long Id { get; set; }
 
-    [Column("OldId", TypeName = "numeric(18, 0)")]
-    public decimal OldId { get; set; }
+    [Column("OldId")]
+    public long OldId { get; set; }
 
-    [Column("IdMasterPemeriksaan", TypeName = "numeric(18, 0)")]
-    public decimal? Idmasterpemeriksaan { get; set; }
+    [Column("IdMasterPemeriksaan")]
+    public long? Idmasterpemeriksaan { get; set; }
 
     [Column("NmPemeriksaan")]
     [StringLength(100)]

@@ -25,7 +25,7 @@ public partial class M_Pasien
     [Key]
     [Column("IdPasien")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdPasien { get; set; }
+    public Ulid IdPasien { get; set; }
 
     [Column("OldIdPasien", TypeName = "numeric(18, 0)")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -203,8 +203,8 @@ public partial class M_Pasien
     [Unicode(false)]
     public string Jenispasien { get; set; }
 
-    [Column("RekananId", TypeName = "numeric(18, 0)")]
-    public decimal? RekananId { get; set; }
+    [Column("RekananId")]
+    public long? RekananId { get; set; }
 
     [Column("By")]
     [StringLength(50)]

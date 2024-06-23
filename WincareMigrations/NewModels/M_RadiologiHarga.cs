@@ -10,9 +10,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_RadiologiHarga
 {
     [Key]
-    [Column("IdRadHarga", TypeName = "numeric(18, 0)")]
+    [Column("IdRadHarga")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdRadharga { get; set; }
+    public long IdRadharga { get; set; }
 
     [Required]
     [Column("KdPemeriksaanRad")]
@@ -20,11 +20,11 @@ public partial class M_RadiologiHarga
     [Unicode(false)]
     public string KdPemeriksaanRad { get; set; }
 
-    [Column("IdPemeriksaanRad", TypeName = "numeric(18, 0)")]
-    public decimal IdPemeriksaanRad { get; set; }
+    [Column("IdPemeriksaanRad")]
+    public long? IdPemeriksaanRad { get; set; }
 
-    [Column("RekananId", TypeName = "numeric(18, 0)")]
-    public decimal Rekananid { get; set; }
+    [Column("RekananId")]
+    public long? Rekananid { get; set; }
 
     [Required]
     [Column("Kelas")]
@@ -32,8 +32,8 @@ public partial class M_RadiologiHarga
     [Unicode(false)]
     public string Kelas { get; set; }
 
-    [Column("IdHargakamar", TypeName = "numeric(18, 0)")]
-    public decimal? IdHargakamar { get; set; }
+    [Column("IdHargakamar")]
+    public long? IdHargakamar { get; set; }
 
     [Column("Harga", TypeName = "decimal(18, 0)")]
     public decimal? DHarga { get; set; }
@@ -68,10 +68,10 @@ public partial class M_RadiologiHarga
     [Column("Adm", TypeName = "decimal(18, 0)")]
     public decimal? Adm { get; set; }
 
-    [Column("Tglawal", TypeName = "TIMESTAMP")]
+    [Column("Tglawal", TypeName = "timestamp")]
     public DateTime? Tglawal { get; set; }
 
-    [Column("Tglakhir", TypeName = "TIMESTAMP")]
+    [Column("Tglakhir", TypeName = "timestamp")]
     public DateTime? DTglakhir { get; set; }
 
     [Column("By")]
@@ -82,7 +82,7 @@ public partial class M_RadiologiHarga
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }
 
-    [Column("Lastupdate", TypeName = "TIMESTAMP")]
+    [Column("Lastupdate", TypeName = "timestamp")]
     public DateTime? DLastupdate { get; set; }
 
     [ForeignKey("Rekananid")]

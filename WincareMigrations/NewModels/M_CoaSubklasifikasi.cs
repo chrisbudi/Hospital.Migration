@@ -14,7 +14,7 @@ public partial class M_CoaSubklasifikasi
     [Key]
     [Column("IdSubKlasifikasi")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdSubklasifikasi { get; set; }
+    public Ulid IdSubklasifikasi { get; set; }
 
     [Column("OldIdSubKlasifikasi", TypeName = "numeric(18, 0)")]
     public decimal OldIdSubklasifikasi { get; set; }

@@ -9,7 +9,7 @@ public partial class M_TarifHarga
     [Key]
     [Column("IdTarifkelas")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdTarifkelas { get; set; }
+    public Ulid IdTarifkelas { get; set; }
 
     [Column("OldIdTarifkelas", TypeName = "numeric(18, 0)")]
     public decimal OldIdTarifkelas { get; set; }
@@ -20,7 +20,7 @@ public partial class M_TarifHarga
     public string Kdtarifdetail { get; set; }
 
     [Column("RekananId")]
-    public Guid? RekananId { get; set; }
+    public Ulid? RekananId { get; set; }
 
     [Column("OldRekananId", TypeName = "numeric(18, 0)")]
     public decimal? OldRekananId { get; set; }
@@ -75,10 +75,10 @@ public partial class M_TarifHarga
     [Column("Bahanalkes", TypeName = "decimal(18, 0)")]
     public decimal? Bahanalkes { get; set; }
 
-    [Column("Tglawal", TypeName = "TIMESTAMP")]
+    [Column("Tglawal", TypeName = "timestamp")]
     public DateTime? Tglawal { get; set; }
 
-    [Column("Tglakhir", TypeName = "TIMESTAMP")]
+    [Column("Tglakhir", TypeName = "timestamp")]
     public DateTime? Tglakhir { get; set; }
 
     [Column("By")]
@@ -89,6 +89,6 @@ public partial class M_TarifHarga
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }
 
-    [Column("Lastupdate", TypeName = "TIMESTAMP")]
+    [Column("Lastupdate", TypeName = "timestamp")]
     public DateTime? Lastupdate { get; set; }
 }

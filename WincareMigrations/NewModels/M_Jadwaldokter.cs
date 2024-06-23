@@ -18,9 +18,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Jadwaldokter
 {
     [Key]
-    [Column("IdJadwal", TypeName = "numeric(18, 0)")]
+    [Column("IdJadwal")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdJadwal { get; set; }
+    public long IdJadwal { get; set; }
 
     [Column("KdDokter")]
     [StringLength(6)]
@@ -28,7 +28,7 @@ public partial class M_Jadwaldokter
     public string KdDokter { get; set; }
 
     [Column("IdDokter")]
-    public decimal IdDokter { get; set; }
+    public decimal? IdDokter { get; set; }
 
     [Required]
     [Column("Hari")]
@@ -53,8 +53,8 @@ public partial class M_Jadwaldokter
     [Unicode(false)]
     public string KodeRuangan { get; set; }
 
-    [Column("IdRuangan", TypeName = "numeric(18,0)")]
-    public decimal? IdRuangan { get; set; }
+    [Column("IdRuangan")]
+    public long? IdRuangan { get; set; }
 
 
     [Column("NamaKlinik")]

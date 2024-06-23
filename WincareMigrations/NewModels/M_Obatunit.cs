@@ -19,11 +19,11 @@ public partial class M_Obatunit
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    [Column("IdObatUnit", TypeName = "numeric(18, 0)")]
-    public decimal IdObatUnit { get; set; }
+    [Column("IdObatUnit")]
+    public long IdObatUnit { get; set; }
 
     [Column("BarangId")]
-    public Guid? BarangId { get; set; }
+    public long? BarangId { get; set; }
 
     [Column("OldBarangId", TypeName = "numeric(18, 0)")]
     public decimal? OldBarangId { get; set; }

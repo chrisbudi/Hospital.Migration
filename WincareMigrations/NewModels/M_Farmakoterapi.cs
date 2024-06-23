@@ -10,7 +10,7 @@ public partial class M_Farmakoterapi
     [Key]
     [Column("IdFarmakoterapi")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdFarmakoterapi { get; set; }
+    public long IdFarmakoterapi { get; set; }
 
     [Column("Nmfarmakoterapi")]
     [StringLength(200)]

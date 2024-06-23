@@ -12,8 +12,8 @@ using WincareMigrations.NewModels;
 namespace Wincare.Core.Migrations
 {
     [DbContext(typeof(SimpleContext))]
-    [Migration("20240526164957_initialCreate")]
-    partial class initialCreate
+    [Migration("20240623083251_initMigration")]
+    partial class initMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,10 +27,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("M_Gizi", b =>
                 {
-                    b.Property<Guid>("IdGizi")
+                    b.Property<long>("IdGizi")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdGizi");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdGizi"));
 
                     b.Property<decimal?>("DAir")
                         .HasColumnType("decimal(18, 0)")
@@ -130,10 +132,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("M_Kamarinap", b =>
                 {
-                    b.Property<decimal>("IdKamarinap")
+                    b.Property<long>("IdKamarinap")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdKamarInap");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdKamarinap"));
 
                     b.Property<int?>("IX")
                         .HasColumnType("integer")
@@ -143,12 +147,12 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("IY");
 
-                    b.Property<decimal?>("IdHargakamar")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("IdHargakamar")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdHargakamar");
 
-                    b.Property<decimal?>("IdMapid")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("IdMapid")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdMapid");
 
                     b.Property<bool?>("IsAktif")
@@ -220,10 +224,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("M_KamarinapHarga", b =>
                 {
-                    b.Property<decimal>("IdKamarInapHarga")
+                    b.Property<long>("IdKamarInapHarga")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdKamarInapHarga");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdKamarInapHarga"));
 
                     b.Property<decimal?>("Adm")
                         .HasColumnType("decimal(18, 0)")
@@ -260,8 +266,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Harga");
 
-                    b.Property<decimal>("IdKamarinap")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long>("IdKamarinap")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdKamarInap");
 
                     b.Property<bool?>("IsAktif")
@@ -296,11 +302,11 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("SecondTnd");
 
                     b.Property<DateTime?>("Tglakhir")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Tglakhir");
 
                     b.Property<DateTime?>("Tglawal")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Tglawal");
 
                     b.HasKey("IdKamarInapHarga");
@@ -670,9 +676,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Bank", b =>
                 {
-                    b.Property<Guid>("IdBank")
+                    b.Property<string>("IdBank")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdBank");
 
                     b.Property<string>("Alamat")
@@ -746,9 +752,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Barang", b =>
                 {
-                    b.Property<Guid>("BarangId")
+                    b.Property<string>("BarangId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("barangId");
 
                     b.Property<decimal?>("Diskonoff")
@@ -771,7 +777,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("EtiketQty");
 
                     b.Property<DateTime?>("Expireddate")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("ExpiredDate");
 
                     b.Property<string>("Farmakoterapi")
@@ -789,12 +795,12 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 2)")
                         .HasColumnName("HargaJual");
 
-                    b.Property<decimal?>("IdFarmakoterapi")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("IdFarmakoterapi")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdFarmakoterapi");
 
-                    b.Property<decimal?>("IdSubfarmakoterapi")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("IdSubfarmakoterapi")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdSubFarmakoterapi");
 
                     b.Property<bool?>("Isaktif")
@@ -1004,9 +1010,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Coa", b =>
                 {
-                    b.Property<Guid>("IdCoa")
+                    b.Property<string>("IdCoa")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdCoa");
 
                     b.Property<string>("DC")
@@ -1017,11 +1023,11 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("DC");
 
                     b.Property<DateTime?>("DTglsaldoawal")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("TglSaldoAwal");
 
-                    b.Property<Guid?>("IdSubklasifikasi")
-                        .HasColumnType("uuid")
+                    b.Property<string>("IdSubklasifikasi")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("Subklasifikasi");
 
                     b.Property<bool?>("IsAktif")
@@ -1144,9 +1150,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_CoaSubklasifikasi", b =>
                 {
-                    b.Property<Guid>("IdSubklasifikasi")
+                    b.Property<string>("IdSubklasifikasi")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdSubKlasifikasi");
 
                     b.Property<string>("DC")
@@ -1203,9 +1209,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_CountTraffic", b =>
                 {
-                    b.Property<Guid>("Idcounttraffic")
+                    b.Property<string>("Idcounttraffic")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdCountTraffic");
 
                     b.Property<string>("By")
@@ -1270,10 +1276,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Diagnosa", b =>
                 {
-                    b.Property<decimal>("IdDiagnosa")
+                    b.Property<long>("IdDiagnosa")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdDiagnosa");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdDiagnosa"));
 
                     b.Property<bool?>("IsAktif")
                         .HasColumnType("boolean")
@@ -1315,17 +1323,19 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_DiagnosaMatrix", b =>
                 {
-                    b.Property<decimal>("IdDiagnosaMatrix")
+                    b.Property<long>("IdDiagnosaMatrix")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(18, 2)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdMatrixDiagnosa");
 
-                    b.Property<decimal>("IdDiagnosa")
-                        .HasColumnType("decimal(18,2)")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdDiagnosaMatrix"));
+
+                    b.Property<long?>("IdDiagnosa")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdDiagnosa");
 
-                    b.Property<decimal>("IdRuangan")
-                        .HasColumnType("numeric")
+                    b.Property<long?>("IdRuangan")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdRuangan");
 
                     b.Property<bool?>("IsAktif")
@@ -1379,8 +1389,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("character varying(50)")
                         .HasColumnName("By");
 
-                    b.Property<Guid>("IdCoa")
-                        .HasColumnType("uuid")
+                    b.Property<string>("IdCoa")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdCoa");
 
                     b.Property<string>("ImgFotodokter")
@@ -1518,10 +1528,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_DokterNote", b =>
                 {
-                    b.Property<decimal>("IdDokterNote")
+                    b.Property<long>("IdDokterNote")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdDokterNote");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdDokterNote"));
 
                     b.Property<string>("By")
                         .IsRequired()
@@ -1549,7 +1561,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("Keterangan");
 
                     b.Property<DateTime?>("TglInput")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("TglInput");
 
                     b.HasKey("IdDokterNote");
@@ -1559,10 +1571,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Dtd", b =>
                 {
-                    b.Property<decimal>("IdDtd")
+                    b.Property<long>("IdDtd")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdDTD");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdDtd"));
 
                     b.Property<bool?>("IsAktif")
                         .HasColumnType("boolean")
@@ -1589,10 +1603,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Farmakoterapi", b =>
                 {
-                    b.Property<decimal>("IdFarmakoterapi")
+                    b.Property<long>("IdFarmakoterapi")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdFarmakoterapi");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdFarmakoterapi"));
 
                     b.Property<bool?>("IsAktif")
                         .HasColumnType("boolean")
@@ -1612,13 +1628,15 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_FarmakoterapiSub", b =>
                 {
-                    b.Property<decimal>("IdSubfarmakoterapi")
+                    b.Property<long>("IdSubfarmakoterapi")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdSubFarmakoterapi");
 
-                    b.Property<decimal?>("IdFarmakoterapi")
-                        .HasColumnType("numeric(18, 0)")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdSubfarmakoterapi"));
+
+                    b.Property<long?>("IdFarmakoterapi")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdFarmakoterapi");
 
                     b.Property<bool?>("IsAktif")
@@ -1641,10 +1659,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Gudang", b =>
                 {
-                    b.Property<decimal>("IdGudangObat")
+                    b.Property<long>("IdGudangObat")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdGudangObat");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdGudangObat"));
 
                     b.Property<bool?>("IsAktif")
                         .HasColumnType("boolean")
@@ -1704,13 +1724,13 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_HargaBarang", b =>
                 {
-                    b.Property<Guid>("Idhargabeli")
+                    b.Property<string>("Idhargabeli")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdHargaBeli");
 
-                    b.Property<Guid?>("BarangId")
-                        .HasColumnType("uuid")
+                    b.Property<string>("BarangId")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("BarangId");
 
                     b.Property<decimal?>("DiskonOff")
@@ -1737,7 +1757,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("IsAktif");
 
                     b.Property<DateTime?>("LastUpdate")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("LastUpdate");
 
                     b.Property<decimal?>("OldBarangId")
@@ -1752,8 +1772,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("PPN");
 
-                    b.Property<decimal?>("SupplierId")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("SupplierId")
+                        .HasColumnType("bigint")
                         .HasColumnName("SupplierId");
 
                     b.HasKey("Idhargabeli");
@@ -1779,10 +1799,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Hargakamar", b =>
                 {
-                    b.Property<decimal>("IdHargakamar")
+                    b.Property<long>("IdHargakamar")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdHargakamar");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdHargakamar"));
 
                     b.Property<string>("By")
                         .IsRequired()
@@ -1809,13 +1831,15 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Hargarekanan", b =>
                 {
-                    b.Property<Guid>("IdHargaRekanan")
+                    b.Property<long>("IdHargaRekanan")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdHargaRekanan");
 
-                    b.Property<Guid?>("BarangId")
-                        .HasColumnType("uuid")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdHargaRekanan"));
+
+                    b.Property<string>("BarangId")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("BarangId");
 
                     b.Property<decimal?>("Diskon")
@@ -1842,7 +1866,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("IsAktif");
 
                     b.Property<DateTime?>("LastUpdate")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("LastUpdate");
 
                     b.Property<decimal?>("Margin")
@@ -1861,8 +1885,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Ppn");
 
-                    b.Property<decimal?>("RekananId")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("RekananId")
+                        .HasColumnType("bigint")
                         .HasColumnName("RekananId");
 
                     b.HasKey("IdHargaRekanan");
@@ -1886,10 +1910,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Jadwaldokter", b =>
                 {
-                    b.Property<decimal>("IdJadwal")
+                    b.Property<long>("IdJadwal")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdJadwal");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdJadwal"));
 
                     b.Property<string>("Hari")
                         .IsRequired()
@@ -1898,12 +1924,12 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("character varying(30)")
                         .HasColumnName("Hari");
 
-                    b.Property<decimal>("IdDokter")
+                    b.Property<decimal?>("IdDokter")
                         .HasColumnType("numeric(18,0)")
                         .HasColumnName("IdDokter");
 
-                    b.Property<decimal?>("IdRuangan")
-                        .HasColumnType("numeric(18,0)")
+                    b.Property<long?>("IdRuangan")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdRuangan");
 
                     b.Property<bool?>("IsAktif")
@@ -1996,8 +2022,9 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("numeric(18, 0)")
                         .HasColumnName("OldRekananId");
 
-                    b.Property<Guid>("RekananId")
-                        .HasColumnType("uuid")
+                    b.Property<string>("RekananId")
+                        .IsRequired()
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("RekananId");
 
                     b.HasKey("IdKamarinaprek");
@@ -2115,13 +2142,15 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Laboratorium", b =>
                 {
-                    b.Property<decimal>("IdPemeriksaanLab")
+                    b.Property<long>("IdPemeriksaanLab")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPemeriksaanLab");
 
-                    b.Property<decimal?>("IdGroup")
-                        .HasColumnType("numeric(18, 0)")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdPemeriksaanLab"));
+
+                    b.Property<long?>("IdGroup")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdGroup");
 
                     b.Property<bool?>("IsAktif")
@@ -2151,10 +2180,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_LaboratoriumGroup", b =>
                 {
-                    b.Property<decimal>("IdGroup")
+                    b.Property<long>("IdGroup")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdGroup");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdGroup"));
 
                     b.Property<decimal?>("IdGrouptarif")
                         .HasColumnType("numeric(18, 0)")
@@ -2215,15 +2246,15 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("Adm");
 
                     b.Property<DateTime?>("DLastupdate")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("LastUpdate");
 
                     b.Property<DateTime?>("DTglakhir")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Tglakhir");
 
                     b.Property<DateTime?>("DTglawal")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Tglawal");
 
                     b.Property<decimal?>("Diskon")
@@ -2234,12 +2265,12 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Harga");
 
-                    b.Property<decimal?>("IdHargakamar")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("IdHargakamar")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdHargakamar");
 
-                    b.Property<decimal?>("IdPemeriksaanLab")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("IdPemeriksaanLab")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPemeriksaanLab");
 
                     b.Property<bool?>("IsAktif")
@@ -2272,8 +2303,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Penyulit");
 
-                    b.Property<decimal>("RekananId")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("RekananId")
+                        .HasColumnType("bigint")
                         .HasColumnName("RekananId");
 
                     b.Property<decimal?>("SecondTnd")
@@ -2293,13 +2324,15 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_LaboratoriumRekanan", b =>
                 {
-                    b.Property<decimal>("IdLabRekanan")
+                    b.Property<long>("IdLabRekanan")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdLabrekanan");
 
-                    b.Property<decimal?>("IdPemeriksaanLab")
-                        .HasColumnType("numeric(18, 0)")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdLabRekanan"));
+
+                    b.Property<long?>("IdPemeriksaanLab")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPemeriksaanLab");
 
                     b.Property<bool?>("IsAktif")
@@ -2313,8 +2346,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("character varying(8)")
                         .HasColumnName("KdPemeriksaanLab");
 
-                    b.Property<decimal>("RekananId")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long>("RekananId")
+                        .HasColumnType("bigint")
                         .HasColumnName("RekananId");
 
                     b.HasKey("IdLabRekanan");
@@ -2328,18 +2361,20 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Map", b =>
                 {
-                    b.Property<decimal>("IdMapid")
+                    b.Property<long>("IdMapid")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdMapid");
 
-                    b.Property<decimal>("IdRuang")
-                        .HasColumnType("numeric(18,0)")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdMapid"));
+
+                    b.Property<long?>("IdRuang")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdRuang");
 
                     b.Property<byte[]>("Image")
                         .IsRequired()
-                        .HasColumnType("BYTEA")
+                        .HasColumnType("bytea")
                         .HasColumnName("Image");
 
                     b.Property<bool?>("IsAktif")
@@ -2376,10 +2411,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_MasterPaketH", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("bigint")
                         .HasColumnName("Id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<decimal?>("DHarga")
                         .HasColumnType("decimal(18, 0)")
@@ -2389,12 +2426,12 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("numeric(18, 0)")
                         .HasColumnName("IdGroupTarif");
 
-                    b.Property<decimal?>("Idmasterpemeriksaan")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("Idmasterpemeriksaan")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdMasterPemeriksaan");
 
-                    b.Property<decimal>("OldId")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long>("OldId")
+                        .HasColumnType("bigint")
                         .HasColumnName("OldId");
 
                     b.Property<string>("VKdpemeriksaan")
@@ -2425,21 +2462,23 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_MasterTnd", b =>
                 {
-                    b.Property<double?>("IdGrouptarif")
+                    b.Property<long?>("IdGrouptarif")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("double precision")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdGroupTarif");
 
-                    b.Property<double?>("DHarga")
-                        .HasColumnType("double precision")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long?>("IdGrouptarif"));
+
+                    b.Property<decimal?>("DHarga")
+                        .HasColumnType("numeric")
                         .HasColumnName("Harga");
 
-                    b.Property<double?>("DHargaBpjs")
-                        .HasColumnType("double precision")
+                    b.Property<decimal?>("DHargaBpjs")
+                        .HasColumnType("numeric")
                         .HasColumnName("HargaBpjs");
 
-                    b.Property<double?>("IsAktif")
-                        .HasColumnType("double precision")
+                    b.Property<decimal?>("IsAktif")
+                        .HasColumnType("numeric")
                         .HasColumnName("IsAktif");
 
                     b.Property<string>("VKdtarifdetail")
@@ -2540,13 +2579,15 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Morfologi", b =>
                 {
-                    b.Property<decimal>("IdMorfologi")
+                    b.Property<long>("IdMorfologi")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdMorfologi");
 
-                    b.Property<decimal>("IdDiagnosa")
-                        .HasColumnType("decimal(18,0)")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdMorfologi"));
+
+                    b.Property<long>("IdDiagnosa")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdDiagnosa");
 
                     b.Property<bool?>("IsAktif")
@@ -2583,13 +2624,15 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Obatunit", b =>
                 {
-                    b.Property<decimal>("IdObatUnit")
+                    b.Property<long>("IdObatUnit")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdObatUnit");
 
-                    b.Property<Guid?>("BarangId")
-                        .HasColumnType("uuid")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdObatUnit"));
+
+                    b.Property<long?>("BarangId")
+                        .HasColumnType("bigint")
                         .HasColumnName("BarangId");
 
                     b.Property<string>("By")
@@ -2677,10 +2720,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_PaketHarga", b =>
                 {
-                    b.Property<Guid>("IdPaketkelas")
+                    b.Property<long>("IdPaketkelas")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPaketkelas");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdPaketkelas"));
 
                     b.Property<decimal?>("Adm")
                         .HasColumnType("decimal(18, 0)")
@@ -2725,12 +2770,13 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Harga");
 
-                    b.Property<Guid>("IdMasterPemeriksaanPenunjang")
-                        .HasColumnType("uuid")
+                    b.Property<string>("IdMasterPemeriksaanPenunjang")
+                        .IsRequired()
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdMasterPemeriksaanPenunjang");
 
-                    b.Property<Guid?>("IdPenunjangDetail")
-                        .HasColumnType("uuid")
+                    b.Property<long?>("IdPenunjangDetail")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPenunjangDetail");
 
                     b.Property<bool?>("IsAktif")
@@ -2773,7 +2819,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("Kelas");
 
                     b.Property<DateTime?>("Lastupdate")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("LastUpdate");
 
                     b.Property<decimal>("OldIdMasterPemeriksaanPenunjang")
@@ -2792,8 +2838,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("numeric(18, 0)")
                         .HasColumnName("OldRekananid");
 
-                    b.Property<Guid>("RekananId")
-                        .HasColumnType("uuid")
+                    b.Property<long>("RekananId")
+                        .HasColumnType("bigint")
                         .HasColumnName("RekananId");
 
                     b.Property<decimal?>("SecondTnd")
@@ -2801,11 +2847,11 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("SecondTnd");
 
                     b.Property<DateTime?>("Tglakhir")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("TglAkhir");
 
                     b.Property<DateTime?>("Tglawal")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("TglAwal");
 
                     b.HasKey("IdPaketkelas");
@@ -2815,10 +2861,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_PaketHargaBaru", b =>
                 {
-                    b.Property<decimal>("IdPaketkelas")
+                    b.Property<long>("IdPaketkelas")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPaketkelas");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdPaketkelas"));
 
                     b.Property<decimal?>("Adm")
                         .HasColumnType("decimal(18, 0)")
@@ -2855,12 +2903,12 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Harga");
 
-                    b.Property<Guid>("IdMasterPemeriksaanPenunjang")
-                        .HasColumnType("uuid")
+                    b.Property<long>("IdMasterPemeriksaanPenunjang")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdMasterPemeriksaanPenunjang");
 
-                    b.Property<Guid?>("IdPenunjangDetail")
-                        .HasColumnType("uuid")
+                    b.Property<long?>("IdPenunjangDetail")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPenunjangDetail");
 
                     b.Property<bool?>("IsAktif")
@@ -2903,7 +2951,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("Kelas");
 
                     b.Property<DateTime?>("Lastupdate")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Lastupdate");
 
                     b.Property<decimal>("OldIdMasterPemeriksaanPenunjang")
@@ -2922,8 +2970,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Penyulit");
 
-                    b.Property<Guid>("Rekananid")
-                        .HasColumnType("uuid")
+                    b.Property<long>("Rekananid")
+                        .HasColumnType("bigint")
                         .HasColumnName("RekananId");
 
                     b.Property<decimal?>("SecondTnd")
@@ -2935,11 +2983,11 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("Subtotal");
 
                     b.Property<DateTime?>("Tglakhir")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Tglakhir");
 
                     b.Property<DateTime?>("Tglawal")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Tglawal");
 
                     b.HasKey("IdPaketkelas");
@@ -2949,13 +2997,13 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_PaketMatrix", b =>
                 {
-                    b.Property<Guid>("IdPaketmatrix")
+                    b.Property<string>("IdPaketmatrix")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdPaketMatrix");
 
-                    b.Property<decimal>("IdMasterpemeriksaanpenunjang")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long>("IdMasterpemeriksaanpenunjang")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdMasterpemeriksaanpenunjang");
 
                     b.Property<bool?>("IsAktif")
@@ -2969,8 +3017,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("character varying(5)")
                         .HasColumnName("Koderuangan");
 
-                    b.Property<decimal>("OldIdPaketmatrix")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long>("OldIdPaketmatrix")
+                        .HasColumnType("bigint")
                         .HasColumnName("OldIdPaketmatrix");
 
                     b.HasKey("IdPaketmatrix");
@@ -2980,33 +3028,37 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_PaketRekanan", b =>
                 {
-                    b.Property<Guid>("IdPaketRekanan")
+                    b.Property<long>("IdPaketRekanan")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPaketRekanan");
 
-                    b.Property<Guid>("IdMasterPemeriksaanPenunjang")
-                        .HasColumnType("uuid")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdPaketRekanan"));
+
+                    b.Property<string>("IdMasterPemeriksaanPenunjang")
+                        .IsRequired()
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdMasterPemeriksaanPenunjang");
 
                     b.Property<bool?>("IsAktif")
                         .HasColumnType("boolean")
                         .HasColumnName("IsAktif");
 
-                    b.Property<decimal>("OldIdMasterPemeriksaanPenunjang")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long>("OldIdMasterPemeriksaanPenunjang")
+                        .HasColumnType("bigint")
                         .HasColumnName("OldIdMasterPemeriksaanPenunjang");
 
                     b.Property<decimal>("OldIdPaketRekanan")
                         .HasColumnType("numeric(18, 0)")
                         .HasColumnName("OldIdPaketRekanan");
 
-                    b.Property<decimal>("OldRekananId")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long>("OldRekananId")
+                        .HasColumnType("bigint")
                         .HasColumnName("OldRekananId");
 
-                    b.Property<Guid>("RekananId")
-                        .HasColumnType("uuid")
+                    b.Property<string>("RekananId")
+                        .IsRequired()
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("RekananId");
 
                     b.HasKey("IdPaketRekanan");
@@ -3016,10 +3068,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Paketdetail", b =>
                 {
-                    b.Property<decimal>("IdPaketdetail")
+                    b.Property<long>("IdPaketdetail")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPaketdetail");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdPaketdetail"));
 
                     b.Property<string>("Group")
                         .IsRequired()
@@ -3067,9 +3121,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Pasien", b =>
                 {
-                    b.Property<Guid>("IdPasien")
+                    b.Property<string>("IdPasien")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdPasien");
 
                     b.Property<string>("AgamaPasien")
@@ -3293,8 +3347,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("character varying(100)")
                         .HasColumnName("Provinsi");
 
-                    b.Property<decimal?>("RekananId")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("RekananId")
+                        .HasColumnType("bigint")
                         .HasColumnName("RekananId");
 
                     b.Property<string>("Rhesus")
@@ -3402,10 +3456,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_PemeriksaanPenunjang", b =>
                 {
-                    b.Property<decimal>("IdMasterPemeriksaanPenunjang")
+                    b.Property<long>("IdMasterPemeriksaanPenunjang")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdMasterPemeriksaanPenunjang");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdMasterPemeriksaanPenunjang"));
 
                     b.Property<decimal?>("BeaPasien")
                         .HasColumnType("decimal(18, 0)")
@@ -3426,8 +3482,9 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Harga");
 
-                    b.Property<Guid>("IdGroupTarif")
-                        .HasColumnType("uuid")
+                    b.Property<string>("IdGroupTarif")
+                        .IsRequired()
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdGroupTarif");
 
                     b.Property<bool?>("IsAktif")
@@ -3463,8 +3520,9 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("character varying(20)")
                         .HasColumnName("Penunjang");
 
-                    b.Property<Guid>("RekananId")
-                        .HasColumnType("uuid")
+                    b.Property<string>("RekananId")
+                        .IsRequired()
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("RekananId");
 
                     b.HasKey("IdMasterPemeriksaanPenunjang");
@@ -3474,10 +3532,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_PemeriksaanPenunjangDetail", b =>
                 {
-                    b.Property<decimal>("IdPenunjangDetail")
+                    b.Property<long>("IdPenunjangDetail")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPenunjangDetail");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdPenunjangDetail"));
 
                     b.Property<decimal?>("BeaPasien")
                         .HasColumnType("decimal(18, 0)")
@@ -3498,8 +3558,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Harga");
 
-                    b.Property<decimal?>("IdMasterPemeriksaanPenunjang")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("IdMasterPemeriksaanPenunjang")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdMasterPemeriksaanPenunjang");
 
                     b.Property<bool?>("IsAktif")
@@ -3554,13 +3614,15 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Radiologi", b =>
                 {
-                    b.Property<decimal>("IdPemeriksaanRad")
+                    b.Property<long>("IdPemeriksaanRad")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPemeriksaanRad");
 
-                    b.Property<decimal?>("IdGroup")
-                        .HasColumnType("numeric(18, 0)")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdPemeriksaanRad"));
+
+                    b.Property<long?>("IdGroup")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdGroup");
 
                     b.Property<bool?>("IsAktif")
@@ -3590,13 +3652,15 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_RadiologiGroup", b =>
                 {
-                    b.Property<decimal>("IdGroup")
+                    b.Property<long>("IdGroup")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdGroup");
 
-                    b.Property<decimal?>("IdGrouptarif")
-                        .HasColumnType("numeric(18, 0)")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdGroup"));
+
+                    b.Property<long?>("IdGrouptarif")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdGrouptarif");
 
                     b.Property<bool?>("IsAktif")
@@ -3617,10 +3681,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_RadiologiHarga", b =>
                 {
-                    b.Property<decimal>("IdRadharga")
+                    b.Property<long>("IdRadharga")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdRadHarga");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdRadharga"));
 
                     b.Property<decimal?>("Adm")
                         .HasColumnType("decimal(18, 0)")
@@ -3651,7 +3717,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("Harga");
 
                     b.Property<DateTime?>("DLastupdate")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Lastupdate");
 
                     b.Property<decimal?>("DSecondTnd")
@@ -3659,15 +3725,15 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("SecondTnd");
 
                     b.Property<DateTime?>("DTglakhir")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Tglakhir");
 
-                    b.Property<decimal?>("IdHargakamar")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("IdHargakamar")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdHargakamar");
 
-                    b.Property<decimal>("IdPemeriksaanRad")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("IdPemeriksaanRad")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPemeriksaanRad");
 
                     b.Property<bool?>("IsAktif")
@@ -3700,12 +3766,12 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Penyulit");
 
-                    b.Property<decimal>("Rekananid")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("Rekananid")
+                        .HasColumnType("bigint")
                         .HasColumnName("RekananId");
 
                     b.Property<DateTime?>("Tglawal")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Tglawal");
 
                     b.Property<string>("VBy")
@@ -3728,13 +3794,15 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_RadiologiRekanan", b =>
                 {
-                    b.Property<decimal>("IdRadrekanan")
+                    b.Property<long>("IdRadrekanan")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdRadrekanan");
 
-                    b.Property<decimal>("IdPemeriksaanRad")
-                        .HasColumnType("numeric(18, 0)")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdRadrekanan"));
+
+                    b.Property<long?>("IdPemeriksaanRad")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdPemeriksaanRad");
 
                     b.Property<bool?>("IsAktif")
@@ -3748,8 +3816,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("character varying(6)")
                         .HasColumnName("KdPemeriksaanRad");
 
-                    b.Property<decimal>("RekananId")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("RekananId")
+                        .HasColumnType("bigint")
                         .HasColumnName("RekananId");
 
                     b.HasKey("IdRadrekanan");
@@ -3763,10 +3831,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Rekanan", b =>
                 {
-                    b.Property<decimal>("IdRekanan")
+                    b.Property<long>("IdRekanan")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdRekanan");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdRekanan"));
 
                     b.Property<string>("Alamat")
                         .IsRequired()
@@ -3847,10 +3917,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Ruang", b =>
                 {
-                    b.Property<decimal>("IdRuang")
+                    b.Property<long>("IdRuang")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdRuang");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("IdRuang"));
 
                     b.Property<string>("GdgPaket")
                         .IsRequired()
@@ -3910,12 +3982,12 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("character varying(2)")
                         .HasColumnName("KodeInventory");
 
-                    b.Property<decimal?>("KodeInventoryGudangObat")
-                        .HasColumnType("numeric(18,0)")
+                    b.Property<long?>("KodeInventoryGudangObat")
+                        .HasColumnType("bigint")
                         .HasColumnName("KodeInventoryGudangObat");
 
-                    b.Property<decimal?>("KodeRequestGudangObat")
-                        .HasColumnType("numeric(18,0)")
+                    b.Property<long?>("KodeRequestGudangObat")
+                        .HasColumnType("bigint")
                         .HasColumnName("KodeRequestGudangObat");
 
                     b.Property<string>("KodeRequestObat")
@@ -4011,8 +4083,9 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 2)")
                         .HasColumnName("Percent");
 
-                    b.Property<Guid>("RekananId")
-                        .HasColumnType("uuid")
+                    b.Property<string>("RekananId")
+                        .IsRequired()
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("RekananId");
 
                     b.HasKey("IdAdm");
@@ -4038,9 +4111,9 @@ namespace Wincare.Core.Migrations
 
                     b.Property<string>("VKdakun")
                         .IsRequired()
-                        .HasMaxLength(8)
+                        .HasMaxLength(50)
                         .IsUnicode(false)
-                        .HasColumnType("character varying(8)")
+                        .HasColumnType("character varying(50)")
                         .HasColumnName("KdAkun");
 
                     b.HasKey("IdSettingBayar");
@@ -4125,7 +4198,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("NmKomputer");
 
                     b.Property<DateTime?>("Tanggal")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Tanggal");
 
                     b.HasKey("IdSettingKomp");
@@ -4258,7 +4331,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("IdFieldgroup");
 
                     b.Property<DateTime?>("DTanggal")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("DTanggal");
 
                     b.Property<bool?>("IsAktif")
@@ -4311,10 +4384,12 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Supplier", b =>
                 {
-                    b.Property<decimal>("SupplierId")
+                    b.Property<long>("SupplierId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(18, 0)")
+                        .HasColumnType("bigint")
                         .HasColumnName("SupplierId");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("SupplierId"));
 
                     b.Property<string>("Alamat")
                         .IsRequired()
@@ -4393,9 +4468,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_TarifDetail", b =>
                 {
-                    b.Property<Guid>("IdTarifdetail")
+                    b.Property<string>("IdTarifdetail")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdTarifdetail");
 
                     b.Property<int?>("IdGroupTarif")
@@ -4484,9 +4559,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_TarifHarga", b =>
                 {
-                    b.Property<Guid>("IdTarifkelas")
+                    b.Property<string>("IdTarifkelas")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdTarifkelas");
 
                     b.Property<decimal?>("Adm")
@@ -4567,7 +4642,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("Kelas");
 
                     b.Property<DateTime?>("Lastupdate")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Lastupdate");
 
                     b.Property<decimal>("OldIdTarifkelas")
@@ -4582,8 +4657,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Penyulit");
 
-                    b.Property<Guid?>("RekananId")
-                        .HasColumnType("uuid")
+                    b.Property<string>("RekananId")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("RekananId");
 
                     b.Property<decimal?>("SecondTnd")
@@ -4591,11 +4666,11 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("SecondTnd");
 
                     b.Property<DateTime?>("Tglakhir")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Tglakhir");
 
                     b.Property<DateTime?>("Tglawal")
-                        .HasColumnType("TIMESTAMP")
+                        .HasColumnType("timestamp")
                         .HasColumnName("Tglawal");
 
                     b.HasKey("IdTarifkelas");
@@ -4605,17 +4680,19 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_TarifMatrix", b =>
                 {
-                    b.Property<Guid>("IdTarifmatrix")
+                    b.Property<string>("IdTarifmatrix")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdTarifmatrix");
 
-                    b.Property<Guid>("IdRuang")
-                        .HasColumnType("uuid")
+                    b.Property<string>("IdRuang")
+                        .IsRequired()
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdRuang");
 
-                    b.Property<Guid>("IdTarifdetail")
-                        .HasColumnType("uuid")
+                    b.Property<string>("IdTarifdetail")
+                        .IsRequired()
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdTarifdetail");
 
                     b.Property<bool?>("IsAktif")
@@ -4722,9 +4799,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_TarifRekanan", b =>
                 {
-                    b.Property<Guid>("IdTarifRekanan")
+                    b.Property<string>("IdTarifRekanan")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdTarifRekanan");
 
                     b.Property<bool?>("IsAktif")
@@ -4746,8 +4823,9 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("numeric(18, 0)")
                         .HasColumnName("OldRekananId");
 
-                    b.Property<Guid>("RekananId")
-                        .HasColumnType("uuid")
+                    b.Property<string>("RekananId")
+                        .IsRequired()
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("RekananId");
 
                     b.HasKey("IdTarifRekanan");
@@ -4757,9 +4835,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_TarifRekananSub", b =>
                 {
-                    b.Property<Guid>("IdTarifrekanansub")
+                    b.Property<string>("IdTarifrekanansub")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdTarifrekanansub");
 
                     b.Property<decimal>("OldIdTarifRekananSub")
@@ -4828,7 +4906,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("decimal(18, 0)")
                         .HasColumnName("Harga");
 
-                    b.Property<decimal>("IdTarifNon")
+                    b.Property<decimal?>("IdTarifNon")
                         .HasColumnType("numeric(18, 0)")
                         .HasColumnName("IdTarifNon");
 
@@ -4847,8 +4925,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("numeric(18, 0)")
                         .HasColumnName("OldRekananId");
 
-                    b.Property<Guid?>("RekananId")
-                        .HasColumnType("uuid")
+                    b.Property<string>("RekananId")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("RekananId");
 
                     b.HasKey("IdNonmedishrg");
@@ -4899,8 +4977,9 @@ namespace Wincare.Core.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdNonMedRek"));
 
-                    b.Property<Guid>("IdRekanan")
-                        .HasColumnType("uuid")
+                    b.Property<string>("IdRekanan")
+                        .IsRequired()
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdRekanan");
 
                     b.Property<decimal>("IdTarifNon")
@@ -4931,9 +5010,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_Tenant", b =>
                 {
-                    b.Property<Guid>("IdTenant")
+                    b.Property<string>("IdTenant")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdTenant");
 
                     b.Property<string>("Codelogo")
@@ -4949,7 +5028,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("Email");
 
                     b.Property<DateTime>("ExpiredDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("ExpiredDate");
 
                     b.Property<string>("Logo")
                         .IsRequired()
@@ -4970,7 +5050,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnName("Phone");
 
                     b.Property<DateTime>("StartDateTime")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("StartDateTime");
 
                     b.Property<string>("SubscriptionCode")
                         .IsRequired()
@@ -5050,9 +5131,9 @@ namespace Wincare.Core.Migrations
 
             modelBuilder.Entity("WincareMigrations.NewModels.M_User", b =>
                 {
-                    b.Property<Guid>("Iduser")
+                    b.Property<string>("Iduser")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("character varying(26)")
                         .HasColumnName("IdUser");
 
                     b.Property<string>("Id")
@@ -5060,7 +5141,7 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("character varying(128)")
                         .HasColumnName("Id");
 
-                    b.Property<decimal>("IdDokter")
+                    b.Property<decimal?>("IdDokter")
                         .HasColumnType("decimal(18,0)")
                         .HasColumnName("IdDokter");
 
@@ -5075,8 +5156,8 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("character varying(50)")
                         .HasColumnName("IdKaryawan");
 
-                    b.Property<decimal>("IdRuang")
-                        .HasColumnType("numeric(18, 0)")
+                    b.Property<long?>("IdRuang")
+                        .HasColumnType("bigint")
                         .HasColumnName("IdRuang");
 
                     b.Property<bool?>("IsAdmin")
@@ -5154,7 +5235,6 @@ namespace Wincare.Core.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("Ttd")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("Ttd");
 
@@ -5286,8 +5366,6 @@ namespace Wincare.Core.Migrations
                     b.HasOne("WincareMigrations.NewModels.M_Coa", "KdAkunNavigation")
                         .WithMany("M_Dokters")
                         .HasForeignKey("IdCoa")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("FK_M_DOKTER_M_COA");
 
                     b.Navigation("KdAkunNavigation");
@@ -5342,8 +5420,6 @@ namespace Wincare.Core.Migrations
                     b.HasOne("WincareMigrations.NewModels.M_Dokter", "KdDokterNavigation")
                         .WithMany("M_JadwalDokters")
                         .HasForeignKey("IdDokter")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("FK_M_JADWALDOKTER_M_DOKTER_(kddokter)");
 
                     b.HasOne("WincareMigrations.NewModels.M_Ruang", "KoderuanganNavigation")
@@ -5381,7 +5457,6 @@ namespace Wincare.Core.Migrations
                     b.HasOne("WincareMigrations.NewModels.M_Rekanan", "Rekanan")
                         .WithMany("M_LaboratoriumHargas")
                         .HasForeignKey("RekananId")
-                        .IsRequired()
                         .HasConstraintName("FK_M_LABORATORIUM_HARGA_M_REKANAN");
 
                     b.Navigation("KdPemeriksaanlabNavigation");
@@ -5414,7 +5489,6 @@ namespace Wincare.Core.Migrations
                     b.HasOne("WincareMigrations.NewModels.M_Ruang", "KoderuanganNavigation")
                         .WithMany("M_Maps")
                         .HasForeignKey("IdRuang")
-                        .IsRequired()
                         .HasConstraintName("FK_M_MAP_M_RUANG");
 
                     b.Navigation("KoderuanganNavigation");
@@ -5482,13 +5556,11 @@ namespace Wincare.Core.Migrations
                     b.HasOne("WincareMigrations.NewModels.M_Radiologi", "KdpemeriksaanRadNavigation")
                         .WithMany("M_RadiologiHargas")
                         .HasForeignKey("IdPemeriksaanRad")
-                        .IsRequired()
                         .HasConstraintName("FK_M_RADIOLOGI_HARGA_M_RADIOLOGI");
 
                     b.HasOne("WincareMigrations.NewModels.M_Rekanan", "Rekanan")
                         .WithMany("M_RadiologiHargas")
                         .HasForeignKey("Rekananid")
-                        .IsRequired()
                         .HasConstraintName("FK_M_RADIOLOGI_HARGA_M_REKANAN");
 
                     b.Navigation("KdpemeriksaanRadNavigation");
@@ -5503,13 +5575,11 @@ namespace Wincare.Core.Migrations
                     b.HasOne("WincareMigrations.NewModels.M_Radiologi", "KdpemeriksaanRadNavigation")
                         .WithMany("M_RadiologiRekanans")
                         .HasForeignKey("IdPemeriksaanRad")
-                        .IsRequired()
                         .HasConstraintName("FK_M_RADIOLOGI_REKANAN_M_RADIOLOGI");
 
                     b.HasOne("WincareMigrations.NewModels.M_Rekanan", "Rekanan")
                         .WithMany("M_RadiologiRekanans")
                         .HasForeignKey("RekananId")
-                        .IsRequired()
                         .HasConstraintName("FK_M_RADIOLOGI_REKANAN_M_REKANAN");
 
                     b.Navigation("KdpemeriksaanRadNavigation");
@@ -5577,7 +5647,6 @@ namespace Wincare.Core.Migrations
                     b.HasOne("WincareMigrations.NewModels.M_TarifNonMedis", "KdtarifNavigation")
                         .WithMany("M_TarifnonmedisHargas")
                         .HasForeignKey("IdTarifNon")
-                        .IsRequired()
                         .HasConstraintName("FK_M_TARIFNONMEDIS_HARGA_M_TARIFNONMEDIS");
 
                     b.Navigation("KdtarifNavigation");
@@ -5611,8 +5680,6 @@ namespace Wincare.Core.Migrations
                     b.HasOne("WincareMigrations.NewModels.M_Dokter", "KdDokterNavigation")
                         .WithMany("M_Users")
                         .HasForeignKey("IdDokter")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("FK_M_USER_M_DOKTER");
 
                     b.HasOne("WincareMigrations.NewModels.M_UserGroup", "IdGroupuserNavigation")
@@ -5623,7 +5690,6 @@ namespace Wincare.Core.Migrations
                     b.HasOne("WincareMigrations.NewModels.M_Ruang", "KoderuanganNavigation")
                         .WithMany("M_Users")
                         .HasForeignKey("IdRuang")
-                        .IsRequired()
                         .HasConstraintName("FK_M_USER_M_RUANG");
 
                     b.Navigation("IdGroupuserNavigation");

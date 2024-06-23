@@ -8,7 +8,7 @@ public partial class M_Gizi
     [Key]
     [Column("IdGizi")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdGizi { get; set; }
+    public long IdGizi { get; set; }
 
 
     [Column("OldIdGizi", TypeName = "numeric(18, 0)")]

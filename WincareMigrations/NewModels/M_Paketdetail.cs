@@ -7,9 +7,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Paketdetail
 {
     [Key]
-    [Column("IdPaketdetail", TypeName = "numeric(18, 0)")]
+    [Column("IdPaketdetail")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdPaketdetail { get; set; }
+    public long IdPaketdetail { get; set; }
 
     [Column("KdPaketDetail")]
     [StringLength(50)]

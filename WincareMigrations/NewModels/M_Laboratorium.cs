@@ -8,9 +8,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Laboratorium
 {
     [Key]
-    [Column("IdPemeriksaanLab", TypeName = "numeric(18, 0)")]
+    [Column("IdPemeriksaanLab")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdPemeriksaanLab { get; set; }
+    public long IdPemeriksaanLab { get; set; }
 
     [Column("KdPemeriksaanLab")]
     [StringLength(8)]
@@ -22,8 +22,8 @@ public partial class M_Laboratorium
     [Unicode(false)]
     public string NmPemeriksaanLab { get; set; }
 
-    [Column("IdGroup", TypeName = "numeric(18, 0)")]
-    public decimal? IdGroup { get; set; }
+    [Column("IdGroup")]
+    public long? IdGroup { get; set; }
 
     [Column("IsAktif")]
     public bool? IsAktif { get; set; }

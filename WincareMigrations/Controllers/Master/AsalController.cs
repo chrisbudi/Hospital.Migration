@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EFCore.BulkExtensions;
+using Microsoft.AspNetCore.Mvc;
 using WincareMigrations.Models;
 using WincareMigrations.NewModels;
 
@@ -12,32 +13,36 @@ namespace WincareMigrations.Controllers.Master
         [HttpGet()]
         public Task<IActionResult> GetAsal()
         {
+
+            if (!_dbs.TmAsalGroups.Any())
+            {
+
+                var dataAsalGroup = _dbWin.TmAsalGroups.Select(s => new M_AsalGroup
+                {
+                    IdAsalGroup = (int)s.IdAsalgroup,
+                    NamaGroupAsal = s.VNmgroupasal,
+                    IsAktif = s.IsAktif
+                });
+                _dbs.BulkInsertAsync(dataAsalGroup, new BulkConfig { SqlBulkCopyOptions = Microsoft.Data.SqlClient.SqlBulkCopyOptions.KeepIdentity });
+                _dbs.BulkSaveChangesAsync();
+            }
+
             // load source 
-            var data = _dbWin.TmAsals.Select(s => new M_Asal
+            if (!_dbs.TmAsalGroups.Any())
             {
-                IdAsal = (long)s.IdAsal,
-                IdAsalGroup = (int)s.IdAsalgroup,
-                KdAsal = s.VKdasal,
-                NmAsal = s.VNmasal,
-                IsAktif = s.IsAktif
-            }).ToList();
+                var data = _dbWin.TmAsals.Select(s => new M_Asal
+                {
+                    IdAsal = (long)s.IdAsal,
+                    IdAsalGroup = (int)s.IdAsalgroup,
+                    KdAsal = s.VKdasal,
+                    NmAsal = s.VNmasal,
+                    IsAktif = s.IsAktif
+                });
 
+                _dbs.BulkInsertAsync(data, new BulkConfig { SqlBulkCopyOptions = Microsoft.Data.SqlClient.SqlBulkCopyOptions.KeepIdentity });
+                _dbs.BulkSaveChangesAsync();
 
-            _dbs.TmAsals.AddRange(data);
-
-            var dataAsalGroup = _dbWin.TmAsalGroups.Select(s => new M_AsalGroup
-            {
-                IdAsalGroup = (int)s.IdAsalgroup,
-                NamaGroupAsal = s.VNmgroupasal,
-                IsAktif = s.IsAktif
-            }).ToList();
-
-
-            _dbs.TmAsalGroups.AddRange(dataAsalGroup);
-
-            _dbs.SaveChanges();
-
-
+            }
 
             return Task.FromResult<IActionResult>(Ok("Asal"));
         }

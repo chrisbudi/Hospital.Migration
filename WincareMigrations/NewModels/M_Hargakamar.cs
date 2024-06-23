@@ -10,9 +10,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Hargakamar
 {
     [Key]
-    [Column("IdHargakamar", TypeName = "numeric(18, 0)")]
+    [Column("IdHargakamar")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdHargakamar { get; set; }
+    public long IdHargakamar { get; set; }
 
     [Column("Kelas")]
     [StringLength(50)]

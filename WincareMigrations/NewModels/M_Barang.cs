@@ -27,7 +27,7 @@ public partial class M_Barang
     [Key]
     [Column("barangId")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid BarangId { get; set; }
+    public Ulid BarangId { get; set; }
 
     [Column("OldBarangId", TypeName = "numeric(18, 0)")]
     public decimal OldBarangId { get; set; }
@@ -66,7 +66,7 @@ public partial class M_Barang
     [Unicode(false)]
     public string Jenis { get; set; }
 
-    [Column("ExpiredDate", TypeName = "TIMESTAMP")]
+    [Column("ExpiredDate", TypeName = "timestamp")]
     public DateTime? Expireddate { get; set; }
 
     [Column("Etiket")]
@@ -112,11 +112,11 @@ public partial class M_Barang
     [Unicode(false)]
     public string Subfarmakoterapi { get; set; }
 
-    [Column("IdFarmakoterapi", TypeName = "numeric(18, 0)")]
-    public decimal? IdFarmakoterapi { get; set; }
+    [Column("IdFarmakoterapi")]
+    public long? IdFarmakoterapi { get; set; }
 
-    [Column("IdSubFarmakoterapi", TypeName = "numeric(18, 0)")]
-    public decimal? IdSubfarmakoterapi { get; set; }
+    [Column("IdSubFarmakoterapi")]
+    public long? IdSubfarmakoterapi { get; set; }
 
     [Column("HargaBeli", TypeName = "decimal(18, 2)")]
     public decimal? Hargabeli { get; set; }

@@ -8,9 +8,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_Dtd
 {
     [Key]
-    [Column("IdDTD", TypeName = "numeric(18, 0)")]
+    [Column("IdDTD")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdDtd { get; set; }
+    public long IdDtd { get; set; }
 
     [Column("KdDTD")]
     [StringLength(8)]

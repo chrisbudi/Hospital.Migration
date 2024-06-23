@@ -11,7 +11,7 @@ public partial class M_TarifRekananSub
     [Key]
     [Column("IdTarifrekanansub")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdTarifrekanansub { get; set; }
+    public Ulid IdTarifrekanansub { get; set; }
 
     [Column("IdTarifRekananSub", TypeName = "numeric(18, 0)")]
     public decimal OldIdTarifRekananSub { get; set; }

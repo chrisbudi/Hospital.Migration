@@ -8,9 +8,9 @@ namespace WincareMigrations.NewModels;
 public partial class M_DokterNote
 {
     [Key]
-    [Column("IdDokterNote", TypeName = "numeric(18, 0)")]
+    [Column("IdDokterNote")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public decimal IdDokterNote { get; set; }
+    public long IdDokterNote { get; set; }
 
     [Column("IdDokter", TypeName = "numeric(18, 0)")]
     public decimal IdDokter { get; set; }
@@ -31,6 +31,6 @@ public partial class M_DokterNote
     [Unicode(false)]
     public string By { get; set; }
 
-    [Column("TglInput", TypeName = "TIMESTAMP")]
+    [Column("TglInput", TypeName = "timestamp")]
     public DateTime? TglInput { get; set; }
 }

@@ -12,7 +12,7 @@ public partial class M_User
     [Key]
     [Column("IdUser")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Iduser { get; set; }
+    public Ulid Iduser { get; set; }
 
     [Column("OldIdUser", TypeName = "numeric(18, 0)")]
     public decimal OldIduser { get; set; }
@@ -23,31 +23,31 @@ public partial class M_User
     [Unicode(false)]
     public string KodeRuangan { get; set; }
 
-    [Column("IdRuang", TypeName = "numeric(18, 0)")]
-    public decimal IdRuang { get; set; }
+    [Column("IdRuang")]
+    public long? IdRuang { get; set; }
 
     [Column("Namalengkap")]
     [StringLength(50)]
     [Unicode(false)]
-    public string Namalengkap { get; set; }
+    public string? Namalengkap { get; set; }
 
     [Column("Nmuser")]
     [StringLength(50)]
     [Unicode(false)]
-    public string Nmuser { get; set; }
+    public string? Nmuser { get; set; }
 
     [Column("Password")]
     [StringLength(50)]
     [Unicode(false)]
-    public string Password { get; set; }
+    public string? Password { get; set; }
 
     [Column("KdDokter")]
     [StringLength(6)]
     [Unicode(false)]
-    public string KdDokter { get; set; }
+    public string? KdDokter { get; set; }
 
     [Column("IdDokter", TypeName = "decimal(18,0)")]
-    public decimal IdDokter { get; set; }
+    public decimal? IdDokter { get; set; }
 
     [Column("IsUser")]
     public bool? IsUser { get; set; }
@@ -71,7 +71,7 @@ public partial class M_User
     public decimal? IdGroupUser { get; set; }
 
     [Column("Ttd", TypeName = "text")]
-    public string Ttd { get; set; }
+    public string? Ttd { get; set; }
 
     [Column("Isaktif")]
     public bool? IsAktif { get; set; }
@@ -85,7 +85,7 @@ public partial class M_User
     [Column("IdKaryawan")]
     [StringLength(50)]
     [Unicode(false)]
-    public string IdKaryawan { get; set; }
+    public string? IdKaryawan { get; set; }
 
     [Column("PIN", TypeName = "numeric(10, 2)")]
     public decimal? Pin { get; set; }
