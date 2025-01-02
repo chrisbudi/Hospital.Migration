@@ -40,5 +40,5 @@ public partial class L_Diagnosa
     public bool? IsAktif { get; set; }
 
     [InverseProperty("KdDiagnosaNavigation")]
-    public virtual ICollection<TmMorfologi> TmMorfologis { get; set; } = new List<TmMorfologi>();
+    public virtual ICollection<L_Morfologi> TmMorfologis { get; set; } = new List<L_Morfologi>();
 }

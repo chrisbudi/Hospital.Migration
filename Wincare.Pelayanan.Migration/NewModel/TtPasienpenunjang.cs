@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Table("TT_PASIENPENUNJANG")]
 [Index("IdRegistrasi", "DTglkunjungan", "VPenunjang", "VKddokter", "IdPasienpenunjang", "CIsdone", "IdNumpasienpenj", Name = "IX_TT_PASIENPENUNJANG", IsUnique = true)]

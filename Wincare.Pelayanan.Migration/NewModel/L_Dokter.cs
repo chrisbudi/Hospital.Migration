@@ -54,8 +54,7 @@ public partial class L_Dokter
     [Unicode(false)]
     public string Telppraktek { get; set; }
 
-    [Column("IsAktif")]
-    public bool? IsAktif { get; set; }
+    [Column("IsAktif")] public bool? IsAktif { get; set; }
 
     [Column("ImgFotodokter")]
     [StringLength(100)]
@@ -72,16 +71,14 @@ public partial class L_Dokter
     [Unicode(false)]
     public string Kdakun { get; set; }
 
-    [Column("IdCoa")]
-    public Guid IdCoa { get; set; }
+    [Column("IdCoa")] public Guid IdCoa { get; set; }
 
     [Column("By")]
     [StringLength(50)]
     [Unicode(false)]
     public string By { get; set; }
 
-    [Column("IsTtd", TypeName = "text")]
-    public string Ttd { get; set; }
+    [Column("IsTtd", TypeName = "text")] public string Ttd { get; set; }
 
     [Column("Pin", TypeName = "numeric(18, 2)")]
     public decimal? Pin { get; set; }
@@ -92,12 +89,6 @@ public partial class L_Dokter
     public string Nosip { get; set; }
 
     [InverseProperty("KdDokterNavigation")]
-    public virtual ICollection<M_Jadwaldokter> M_JadwalDokters { get; set; } = new List<M_Jadwaldokter>();
+    public virtual ICollection<L_Jadwaldokter> M_JadwalDokters { get; set; } = new List<L_Jadwaldokter>();
 
-    [InverseProperty("KdDokterNavigation")]
-    public virtual ICollection<M_User> M_Users { get; set; } = new List<M_User>();
-
-    [ForeignKey("IdCoa")]
-    [InverseProperty("M_Dokters")]
-    public virtual M_Coa KdAkunNavigation { get; set; }
 }

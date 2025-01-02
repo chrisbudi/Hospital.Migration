@@ -1,0 +1,92 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+
+namespace Wincare.Pendaftaran.Migration.NewModel;
+
+[Table("TT_RETURALKES")]
+public partial class D_Returalke
+{
+    [Key]
+    [Column("ID_RETURALKES", TypeName = "numeric(18, 0)")]
+    public decimal IdReturalkes { get; set; }
+
+    [Required]
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
+    public string IdRegistrasi { get; set; }
+
+    [Column("ID_ALKES", TypeName = "numeric(18, 0)")]
+    public decimal IdAlkes { get; set; }
+
+    [Column("ID_BARANG", TypeName = "numeric(18, 0)")]
+    public decimal? IdBarang { get; set; }
+
+    [Required]
+    [Column("V_KDOBAT")]
+    [StringLength(10)]
+    [Unicode(false)]
+    public string VKdobat { get; set; }
+
+    [Column("V_NMOBAT")]
+    [StringLength(100)]
+    [Unicode(false)]
+    public string VNmobat { get; set; }
+
+    [Column("D_JML", TypeName = "decimal(18, 0)")]
+    public decimal? DJml { get; set; }
+
+    [Column("D_HARGA", TypeName = "decimal(18, 0)")]
+    public decimal? DHarga { get; set; }
+
+    [Column("C_TIPEASKES")]
+    [StringLength(10)]
+    [Unicode(false)]
+    public string CTipeaskes { get; set; }
+    // DISINI APPROVE
+    [Column("C_APPROVE")]
+    [StringLength(1)]
+    [Unicode(false)]
+    public string CApprove { get; set; }
+
+    [Column("V_APPROVE")]
+    [StringLength(50)]
+    [Unicode(false)]
+    public string VApprove { get; set; }
+
+    [Column("D_APPROVE", TypeName = "datetime")]
+    public DateTime? DApprove { get; set; }
+
+    [Column("D_TGLRETUR", TypeName = "datetime")]
+    public DateTime? DTglretur { get; set; }
+
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
+    public string VBy { get; set; }
+
+    [Column("V_NOTE")]
+    [StringLength(200)]
+    [Unicode(false)]
+    public string VNote { get; set; }
+
+    [Column("V_SETTINGRETUR")]
+    [StringLength(15)]
+    [Unicode(false)]
+    public string VSettingretur { get; set; }
+
+    [Column("V_APPROVE_VER")]
+    [StringLength(50)]
+    [Unicode(false)]
+    public string VApproveVer { get; set; }
+
+    [Column("C_APPROVE_VER")]
+    [StringLength(1)]
+    [Unicode(false)]
+    public string CApproveVer { get; set; }
+
+    [Column("D_APPROVE_VER", TypeName = "datetime")]
+    public DateTime? DApproveVer { get; set; }
+}

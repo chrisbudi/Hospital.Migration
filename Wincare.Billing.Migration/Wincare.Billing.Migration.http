@@ -1,0 +1,6 @@
+@Wincare.Billing.Migration_HostAddress = http://localhost:5246
+
+GET {{Wincare.Billing.Migration_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

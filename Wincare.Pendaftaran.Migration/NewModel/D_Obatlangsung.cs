@@ -1,0 +1,107 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+
+namespace Wincare.Pendaftaran.Migration.NewModel;
+
+[Table("TT_OBATLANGSUNG")]
+[Index("IdRekanan", Name = "IX_TT_OBATLANGSUNG")]
+[Index("DTanggal", Name = "IX_TT_OBATLANGSUNG_1")]
+[Index("VNmpembeli", Name = "IX_TT_OBATLANGSUNG_2")]
+[Index("IdRegistrasi", Name = "IX_TT_OBATLANGSUNG_3")]
+[Index("VNokuitansi", Name = "IX_TT_OBATLANGSUNG_4")]
+[Index("VNmdokter", Name = "IX_TT_OBATLANGSUNG_5")]
+[Index("VKoderequestobat", Name = "IX_TT_OBATLANGSUNG_6")]
+public partial class D_Obatlangsung
+{
+    [Column("ID_OBATLANGSUNG", TypeName = "numeric(18, 0)")]
+    public decimal IdObatlangsung { get; set; }
+
+    [Key]
+    [Column("V_NOKUITANSI")]
+    [StringLength(10)]
+    [Unicode(false)]
+    public string VNokuitansi { get; set; }
+
+    [Column("D_TANGGAL", TypeName = "datetime")]
+    public DateTime? DTanggal { get; set; }
+
+    [Column("V_NMPEMBELI")]
+    [StringLength(50)]
+    [Unicode(false)]
+    public string VNmpembeli { get; set; }
+
+    [Column("V_KETERANGAN")]
+    [StringLength(100)]
+    [Unicode(false)]
+    public string VKeterangan { get; set; }
+
+    [Column("D_BIAYA")]
+    [StringLength(30)]
+    [Unicode(false)]
+    public string DBiaya { get; set; }
+
+    [Column("ID_REGISTRASI")]
+    [StringLength(12)]
+    [Unicode(false)]
+    public string IdRegistrasi { get; set; }
+
+    [Column("B_BAYAR")]
+    [StringLength(1)]
+    [Unicode(false)]
+    public string BBayar { get; set; }
+
+    [Column("D_JASAR", TypeName = "numeric(18, 0)")]
+    public decimal? DJasar { get; set; }
+
+    [Column("V_KDDOKTER")]
+    [StringLength(6)]
+    [Unicode(false)]
+    public string VKddokter { get; set; }
+
+    [Column("V_NMDOKTER")]
+    [StringLength(100)]
+    [Unicode(false)]
+    public string VNmdokter { get; set; }
+
+    [Column("V_BY")]
+    [StringLength(50)]
+    [Unicode(false)]
+    public string VBy { get; set; }
+
+    [Column("D_TGLAPP", TypeName = "datetime")]
+    public DateTime? DTglapp { get; set; }
+    // DISINI APPROVE
+    [Column("V_APPROVE_VER")]
+    [StringLength(50)]
+    [Unicode(false)]
+    public string VApproveVer { get; set; }
+
+    [Column("C_APPROVE_VER")]
+    [StringLength(1)]
+    [Unicode(false)]
+    public string CApproveVer { get; set; }
+
+    [Column("D_APPROVE_VER", TypeName = "datetime")]
+    public DateTime? DApproveVer { get; set; }
+
+    [Column("ID_REKANAN", TypeName = "numeric(18, 0)")]
+    public decimal? IdRekanan { get; set; }
+
+    [Column("V_STATUS")]
+    [StringLength(10)]
+    [Unicode(false)]
+    public string VStatus { get; set; }
+
+    [Column("V_KODEREQUESTOBAT")]
+    [StringLength(2)]
+    [Unicode(false)]
+    public string VKoderequestobat { get; set; }
+
+    [Column("ID_STATUS")]
+    public int? IdStatus { get; set; }
+
+    [InverseProperty("VNokuitansiNavigation")]
+    public virtual ICollection<D_result_Itemobatlangsung> TrItemobatlangsungs { get; set; } = new List<D_result_Itemobatlangsung>();
+}

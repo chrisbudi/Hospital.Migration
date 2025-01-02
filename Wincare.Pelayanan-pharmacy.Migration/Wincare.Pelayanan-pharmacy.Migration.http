@@ -1,0 +1,6 @@
+@Wincare.Pelayanan_pharmacy.Migration_HostAddress = http://localhost:5289
+
+GET {{Wincare.Pelayanan_pharmacy.Migration_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

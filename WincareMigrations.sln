@@ -11,6 +11,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wincare.Pendaftaran.Migrati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wincare.BackOffice.Migration", "Wincare.BackOffice.Migration\Wincare.BackOffice.Migration.csproj", "{9FEC6395-5DE9-4C3C-B71F-CEB2394A982E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wincare.Queue.Migration", "Wincare.Queue.Migration\Wincare.Queue.Migration.csproj", "{387BE2DE-50B0-43E3-82DA-ED7A990F0138}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wincare.Billing.Migration", "Wincare.Billing.Migration\Wincare.Billing.Migration.csproj", "{8A855C3E-9377-4B92-8FA8-51E67DB0CEF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wincare.Payment.Migration", "Wincare.Payment.Migration\Wincare.Payment.Migration.csproj", "{C02CDC56-2217-4DFD-A32B-10965EC125C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wincare.Pelayanan-pharmacy.Migration", "Wincare.Pelayanan-pharmacy.Migration\Wincare.Pelayanan-pharmacy.Migration.csproj", "{297AA9A8-BE6C-4EEE-B851-7948AAAB7ECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wincare.Pelayanan-Prescription.Migration", "Wincare.Pelayanan-Prescription.Migration\Wincare.Pelayanan-Prescription.Migration.csproj", "{681BA82C-6FEA-4B35-B987-21CFA757B553}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +43,26 @@ Global
 		{9FEC6395-5DE9-4C3C-B71F-CEB2394A982E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FEC6395-5DE9-4C3C-B71F-CEB2394A982E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FEC6395-5DE9-4C3C-B71F-CEB2394A982E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{387BE2DE-50B0-43E3-82DA-ED7A990F0138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{387BE2DE-50B0-43E3-82DA-ED7A990F0138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{387BE2DE-50B0-43E3-82DA-ED7A990F0138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{387BE2DE-50B0-43E3-82DA-ED7A990F0138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A855C3E-9377-4B92-8FA8-51E67DB0CEF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A855C3E-9377-4B92-8FA8-51E67DB0CEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A855C3E-9377-4B92-8FA8-51E67DB0CEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A855C3E-9377-4B92-8FA8-51E67DB0CEF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C02CDC56-2217-4DFD-A32B-10965EC125C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C02CDC56-2217-4DFD-A32B-10965EC125C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C02CDC56-2217-4DFD-A32B-10965EC125C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C02CDC56-2217-4DFD-A32B-10965EC125C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{297AA9A8-BE6C-4EEE-B851-7948AAAB7ECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{297AA9A8-BE6C-4EEE-B851-7948AAAB7ECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{297AA9A8-BE6C-4EEE-B851-7948AAAB7ECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{297AA9A8-BE6C-4EEE-B851-7948AAAB7ECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{681BA82C-6FEA-4B35-B987-21CFA757B553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{681BA82C-6FEA-4B35-B987-21CFA757B553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{681BA82C-6FEA-4B35-B987-21CFA757B553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{681BA82C-6FEA-4B35-B987-21CFA757B553}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

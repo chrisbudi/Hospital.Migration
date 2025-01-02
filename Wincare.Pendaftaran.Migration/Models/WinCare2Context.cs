@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Wincare.Pendaftaran.Migration.NewModel;
 
 namespace Wincare.Pendaftaran.Migration.Models;
 

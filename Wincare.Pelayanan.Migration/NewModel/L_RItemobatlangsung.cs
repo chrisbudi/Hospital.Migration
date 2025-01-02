@@ -6,19 +6,19 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Wincare.Pelayanan.Migration.NewModels;;
+namespace Wincare.Pelayanan.Migration.NewModels;
 
 [Table("L_RitemObatLangsung")]
 public partial class L_RitemObatLangsung
 {
     [Key]
-    [Column("IdItemObatLangsung", TypeName = "numeric(18, 0)")]
+    [Column("IdItemObatLangsung")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid IdItemobatlangsung { get; set; }
-    
+
     [Column("OldIdItemObatLangsung", TypeName = "numeric(18, 0)")]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid IdItemobatlangsung { get; set; }
+    public decimal OldIdItemobatlangsung { get; set; }
 
     [Column("NoKuitansi")]
     [StringLength(10)]
@@ -97,5 +97,5 @@ public partial class L_RitemObatLangsung
 
     [ForeignKey("Nokuitansi")]
     [InverseProperty("L_RItemobatlangsungs")]
-    public virtual L_TObatlangsung NokuitansiNavigation { get; set; }
+    public virtual TtObatlangsung NokuitansiNavigation { get; set; }
 }
